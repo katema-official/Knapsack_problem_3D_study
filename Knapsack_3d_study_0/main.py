@@ -93,12 +93,12 @@ def placeable(placed_array, lengths, point):
     #does the box we want to place intersect with any other box?
     for box in placed_array:
         if do_boxes_intersect(box.x0, box.y0, box.z0, box.xlen, box.ylen, box.zlen,
-                point.x, point.y, point.z, lengths(0), lengths(1), lengths(2)):
+                point.x, point.y, point.z, lengths[0], lengths[1], lengths[2]):
             return False
     #does the box we want to place exceed the container limitations?
-    if(point.x + lengths(0) > cont_x or
-        point.y + lengths(1) > cont_y or
-        point.z + lengths(2) > cont_z):
+    if(point.x + lengths[0] > cont_x or
+        point.y + lengths[1] > cont_y or
+        point.z + lengths[2] > cont_z):
             return False
 
     return True
@@ -137,28 +137,54 @@ def give_permutation(x,y,z,i):
         return (z,y,x)
 
 
-def start_ordering(boxes_array):
+def start_ordering(boxes_array, solutions):
     unplaced = boxes_array[:]
     placed = []
     #the available points must be interpreted as the left_bottom_behind points available
     available_points = [Point(0,0,0)]
-    order_boxes(unplaced, placed, available_points)
+    order_boxes(unplaced, placed, available_points, solutions)
 
 
 
 
 
 
-def order_boxes(unplaced, placed, available_points):
+def order_boxes(unplaced, placed, available_points, solutions):
     if len(unplaced) == 0:
-        return placed
+        solutions.append(placed)
+        print("hi")
 
-    curr = unplaced[0]
-    for possible_point in available_points: #for all the points available...
-        for i in range(1,7):    #for all possible permutations of a box...
-            perm = give_permutation(curr.xlen, curr.ylen, curr.zlen, i)
-            if placeable(placed, perm, possible_point) == True: #if the box doesn't collide with any other box previously placed...
-
+    for box_to_place in unplaced:   #for all the boxes that still need to be placed...
+        for possible_point in available_points: #for all the points available...
+            for i in range(1,7):    #for all possible permutations of a box...
+                perm = give_permutation(box_to_place.xlen, box_to_place.ylen, box_to_place.zlen, i)
+                if placeable(placed, perm, possible_point): #if the box doesn't collide with any other box previously placed...
+                    #we can place the box
+                    box_to_place.x0 = possible_point.x
+                    box_to_place.y0 = possible_point.y
+                    box_to_place.z0 = possible_point.z
+                    box_to_place.xlen = perm[0]
+                    box_to_place.ylen = perm[1]
+                    box_to_place.zlen = perm[2]
+                    new_available_points = available_points[:]
+                    new_available_points.remove(possible_point)
+                    new_available_points.extend([Point(box_to_place.x0 + box_to_place.xlen,
+                                                      box_to_place.y0,
+                                                      box_to_place.z0),
+                                        Point(box_to_place.x0,
+                                                      box_to_place.y0 + box_to_place.ylen,
+                                                      box_to_place.z0),
+                                        Point(box_to_place.x0,
+                                                      box_to_place.y0,
+                                                      box_to_place.z0 + box_to_place.zlen)])
+                    new_unplaced = unplaced[:]
+                    new_unplaced.remove(box_to_place)
+                    new_placed = placed[:]
+                    new_placed.append(box_to_place)
+                    order_boxes(new_unplaced,
+                                new_placed,
+                                new_available_points,
+                                solutions)
 
 
 if __name__ == '__main__':
@@ -173,15 +199,13 @@ if __name__ == '__main__':
     box2 = Box("Pluto", 40, 30, 20)
     box3 = Box("Pietro", 30, 50, 60)
 
-    boxes = [box1, box2, box3]
+    boxes = [box1, box2]#, box3]
 
-    start_ordering(boxes)
+    solutions = []
+    start_ordering(boxes, solutions)
+    print("solutions are " + str(len(solutions)))
 
 
-    cube1 = Entity(model='cube', color=hsv(200, 1, 1), scale=1, collider='box')
-
-    place_box(0,0,0,x,y,z)
-    place_box(1, 0, 0, x, y, z)
 
 
 
