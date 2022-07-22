@@ -64,12 +64,12 @@ def create_container():
 
 
 def place_box(x0,y0,z0, x_len, y_len, z_len):
-    i = x0 + 5
-    j = y0 + 5
-    k = z0 + 5
-    box = Entity(model='cube', color=hsv((10*x0 + 5) % 256,
-                                         (10*y0 + 5) % 256,
-                                         (10*z0 + 5) % 256), scale=1, collider='box')
+    box = Entity(model='cube', color=rgb(random.randint(0,255),
+                                         random.randint(0,255),
+                                         random.randint(0,255)), scale=1, collider='box')
+    box.scale_x = x_len
+    box.scale_y = y_len
+    box.scale_z = z_len
     box.position = (0 - cont_x/2 + x0 + x_len/2,
                     0 - cont_y/2 + y0 + y_len/2,
                     0 + cont_z/2 - z0 - z_len/2)
@@ -77,28 +77,47 @@ def place_box(x0,y0,z0, x_len, y_len, z_len):
 def do_boxes_intersect(x0_a, y0_a, z0_a, xlen_a, ylen_a, zlen_a,
                        x0_b, y0_b, z0_b, xlen_b, ylen_b, zlen_b):
     #intersection on x axis
-    if(x0_a + xlen_a > x0_b or x0_b + xlen_b > x0_a):
-        return True
+    overlapx = False
+    if(x0_a < x0_b):
+        overlapx = x0_a + xlen_a > x0_b
+    else:
+        if(x0_a == x0_b): overlapx = True
+        else: overlapx = x0_b + xlen_b > x0_a
+
     #intersection on y axis
-    if (y0_a + ylen_a > y0_b or y0_b + ylen_b > y0_a):
-        return True
+    overlapy = False
+    if (y0_a < y0_b):
+        overlapy = y0_a + ylen_a > y0_b
+    else:
+        if (y0_a == y0_b): overlapy = True
+        else: overlapy = y0_b + ylen_b > y0_a
+
     #intersection on z axis
-    if (z0_a + zlen_a > z0_b or z0_b + zlen_b > z0_a):
-        return True
+    overlapz = False
+    if (z0_a < z0_b):
+        overlapz = z0_a + zlen_a > z0_b
+    else:
+        if (z0_a == z0_b): overlapz = True
+        else: overlapz = z0_b + zlen_b > z0_a
+
+    if(overlapx and overlapy and overlapz): return True
+
     return False
 
 
 #boxes placed, tuple (x,y,z), point (x0,y0,z0)
 def placeable(placed_array, lengths, point):
+
+    #does the box we want to place exceed the container limitations?
+    if (point.x + lengths[0] > cont_x or
+            point.y + lengths[1] > cont_y or
+            point.z + lengths[2] > cont_z):
+        return False
+
     #does the box we want to place intersect with any other box?
     for box in placed_array:
         if do_boxes_intersect(box.x0, box.y0, box.z0, box.xlen, box.ylen, box.zlen,
                 point.x, point.y, point.z, lengths[0], lengths[1], lengths[2]):
-            return False
-    #does the box we want to place exceed the container limitations?
-    if(point.x + lengths[0] > cont_x or
-        point.y + lengths[1] > cont_y or
-        point.z + lengths[2] > cont_z):
             return False
 
     return True
@@ -150,41 +169,43 @@ def start_ordering(boxes_array, solutions):
 
 
 def order_boxes(unplaced, placed, available_points, solutions):
+
+    if(len(solutions) > 0): return
+
     if len(unplaced) == 0:
         solutions.append(placed)
-        print("hi")
-
-    for box_to_place in unplaced:   #for all the boxes that still need to be placed...
-        for possible_point in available_points: #for all the points available...
-            for i in range(1,7):    #for all possible permutations of a box...
-                perm = give_permutation(box_to_place.xlen, box_to_place.ylen, box_to_place.zlen, i)
-                if placeable(placed, perm, possible_point): #if the box doesn't collide with any other box previously placed...
-                    #we can place the box
-                    box_to_place.x0 = possible_point.x
-                    box_to_place.y0 = possible_point.y
-                    box_to_place.z0 = possible_point.z
-                    box_to_place.xlen = perm[0]
-                    box_to_place.ylen = perm[1]
-                    box_to_place.zlen = perm[2]
-                    new_available_points = available_points[:]
-                    new_available_points.remove(possible_point)
-                    new_available_points.extend([Point(box_to_place.x0 + box_to_place.xlen,
-                                                      box_to_place.y0,
-                                                      box_to_place.z0),
-                                        Point(box_to_place.x0,
-                                                      box_to_place.y0 + box_to_place.ylen,
-                                                      box_to_place.z0),
-                                        Point(box_to_place.x0,
-                                                      box_to_place.y0,
-                                                      box_to_place.z0 + box_to_place.zlen)])
-                    new_unplaced = unplaced[:]
-                    new_unplaced.remove(box_to_place)
-                    new_placed = placed[:]
-                    new_placed.append(box_to_place)
-                    order_boxes(new_unplaced,
-                                new_placed,
-                                new_available_points,
-                                solutions)
+    else:
+        for box_to_place in unplaced:   #for all the boxes that still need to be placed...
+            for possible_point in available_points: #for all the points available...
+                for i in range(1,7):    #for all possible permutations of a box...
+                    perm = give_permutation(box_to_place.xlen, box_to_place.ylen, box_to_place.zlen, i)
+                    if placeable(placed, perm, possible_point): #if the box doesn't collide with any other box previously placed...
+                        #we can place the box
+                        box_to_place.x0 = possible_point.x
+                        box_to_place.y0 = possible_point.y
+                        box_to_place.z0 = possible_point.z
+                        box_to_place.xlen = perm[0]
+                        box_to_place.ylen = perm[1]
+                        box_to_place.zlen = perm[2]
+                        new_available_points = available_points[:]
+                        new_available_points.remove(possible_point)
+                        new_available_points.extend([Point(box_to_place.x0 + box_to_place.xlen,
+                                                          box_to_place.y0,
+                                                          box_to_place.z0),
+                                            Point(box_to_place.x0,
+                                                          box_to_place.y0 + box_to_place.ylen,
+                                                          box_to_place.z0),
+                                            Point(box_to_place.x0,
+                                                          box_to_place.y0,
+                                                          box_to_place.z0 + box_to_place.zlen)])
+                        new_unplaced = unplaced[:]
+                        new_unplaced.remove(box_to_place)
+                        new_placed = placed[:]
+                        new_placed.append(box_to_place)
+                        order_boxes(new_unplaced,
+                                    new_placed,
+                                    new_available_points,
+                                    solutions)
 
 
 if __name__ == '__main__':
@@ -198,16 +219,28 @@ if __name__ == '__main__':
     box1 = Box("Pippo", 20, 10, 30)
     box2 = Box("Pluto", 40, 30, 20)
     box3 = Box("Pietro", 30, 50, 60)
+    box4 = Box("Paperino", 50, 30, 80)
+    box5 = Box("Topolino", 30, 40, 10)
+    box6 = Box("Minnie", 50, 20, 70)
 
-    boxes = [box1, box2]#, box3]
+    boxes = [box1, box2, box3]#, box4, box5, box6]
+
+    start = time.time()
 
     solutions = []
     start_ordering(boxes, solutions)
     print("solutions are " + str(len(solutions)))
+    final_solution = solutions[0]
+    for sol in solutions[1:]:
+        if len(sol) > len(final_solution):
+            final_solution = sol
+            print("updated")
 
+    for b in final_solution:
+        place_box(b.x0, b.y0, b.z0, b.xlen, b.ylen, b.zlen)
 
-
-
+    mins = (time.time() - start) / 60
+    print("elapsed: " + str(mins))
 
 
     editor_camera = EditorCamera(enabled = True)  # add camera controls for orbiting and moving the camera
