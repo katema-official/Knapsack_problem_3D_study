@@ -11,9 +11,33 @@ def camera_control():
     camera.y += held_keys["e"] * 0.3
     camera.y -= held_keys["q"] * 0.3
 
+class BoxesController:
+    sorted_boxes = []
+    state = -2
+    #def __init__(self, sorted_boxes):
+    #    self.sorted_boxes = sorted_boxes
+    #    self.state = -2
+
+    def move_boxes(cls):
+        cls.state = cls.state + 1
+        print(cls.state)
+        if(cls.state == -1):
+            enlarge_boxes(cls.sorted_boxes)
+        #else:
+        #    if(cls.state < len(cls.sorted_boxes)):
+        #        replace_box(cls.sorted_boxes[cls.state])
+        #    else:
+        #        cls.state = -2
+        cls.state = -2
+
+def input(key):
+    if key == "p":
+        BoxesController.move_boxes(BoxesController)
 
 def update():
     camera_control()
+    #if(held_keys["p"]):
+    #    BoxesController.move_boxes(BoxesController)
 
 
 cont_x = 120
@@ -63,6 +87,23 @@ def create_container():
     
 
 
+def replace_box(box):
+    print("hi")
+    box.entity.x = 0 - cont_x / 2 + box.x0 + box.xlen / 2
+    box.entity.y = 0 - cont_y / 2 + box.y0 + box.ylen / 2
+    box.entity.z = 0 + cont_z / 2 - box.z0 - box.zlen / 2
+
+def enlarge_boxes(boxes):
+    for box in boxes:
+        #if box.x0 == box.z0: pass
+        #else:
+            if box.x0 > box.z0:
+                box.entity.x = 0 - cont_x/2 + box.x0 + box.xlen*4
+            else:
+                box.entity.z = 0 + cont_z/2 - box.z0 - box.zlen*4
+        #box.entity.y = 0 - cont_y / 2 + box.y0 + box.ylen * 2
+
+
 def place_box(x0,y0,z0, x_len, y_len, z_len):
     box = Entity(model='cube', color=rgb(random.randint(0,255),
                                          random.randint(0,255),
@@ -73,6 +114,8 @@ def place_box(x0,y0,z0, x_len, y_len, z_len):
     box.position = (0 - cont_x/2 + x0 + x_len/2,
                     0 - cont_y/2 + y0 + y_len/2,
                     0 + cont_z/2 - z0 - z_len/2)
+
+    return box
 
 def do_boxes_intersect(x0_a, y0_a, z0_a, xlen_a, ylen_a, zlen_a,
                        x0_b, y0_b, z0_b, xlen_b, ylen_b, zlen_b):
@@ -131,6 +174,7 @@ class Box:
         self.x0 = None
         self.y0 = None
         self.z0 = None
+        self.entity = None
 
 class Point:
     def __init__(self, x, y, z):
@@ -170,42 +214,46 @@ def start_ordering(boxes_array, solutions):
 
 def order_boxes(unplaced, placed, available_points, solutions):
 
-    if(len(solutions) > 0): return
+    if(len(solutions) == 0):
 
-    if len(unplaced) == 0:
-        solutions.append(placed)
-    else:
-        for box_to_place in unplaced:   #for all the boxes that still need to be placed...
-            for possible_point in available_points: #for all the points available...
-                for i in range(1,7):    #for all possible permutations of a box...
-                    perm = give_permutation(box_to_place.xlen, box_to_place.ylen, box_to_place.zlen, i)
-                    if placeable(placed, perm, possible_point): #if the box doesn't collide with any other box previously placed...
-                        #we can place the box
-                        box_to_place.x0 = possible_point.x
-                        box_to_place.y0 = possible_point.y
-                        box_to_place.z0 = possible_point.z
-                        box_to_place.xlen = perm[0]
-                        box_to_place.ylen = perm[1]
-                        box_to_place.zlen = perm[2]
-                        new_available_points = available_points[:]
-                        new_available_points.remove(possible_point)
-                        new_available_points.extend([Point(box_to_place.x0 + box_to_place.xlen,
-                                                          box_to_place.y0,
-                                                          box_to_place.z0),
-                                            Point(box_to_place.x0,
-                                                          box_to_place.y0 + box_to_place.ylen,
-                                                          box_to_place.z0),
-                                            Point(box_to_place.x0,
-                                                          box_to_place.y0,
-                                                          box_to_place.z0 + box_to_place.zlen)])
-                        new_unplaced = unplaced[:]
-                        new_unplaced.remove(box_to_place)
-                        new_placed = placed[:]
-                        new_placed.append(box_to_place)
-                        order_boxes(new_unplaced,
-                                    new_placed,
-                                    new_available_points,
-                                    solutions)
+        if len(unplaced) == 0:
+            solutions.append(placed)
+            for elem in solutions[0]:
+                print("{}, {}, {}, {}, {}, {}\n".format(elem.x0, elem.y0, elem.z0, elem.xlen, elem.ylen, elem.zlen))
+
+        else:
+            for box_to_place in unplaced:   #for all the boxes that still need to be placed...
+                for possible_point in available_points: #for all the points available...
+                    for i in range(1,7):    #for all possible permutations of a box...
+                        perm = give_permutation(box_to_place.xlen, box_to_place.ylen, box_to_place.zlen, i)
+                        if placeable(placed, perm, possible_point): #if the box doesn't collide with any other box previously placed...
+                            #we can place the box
+                            box_copy = Box(box_to_place.name, perm[0], perm[1], perm[2])
+                            box_copy.x0 = possible_point.x
+                            box_copy.y0 = possible_point.y
+                            box_copy.z0 = possible_point.z
+                            #box_to_place.xlen = perm[0]
+                            #box_to_place.ylen = perm[1]
+                            #box_to_place.zlen = perm[2]
+                            new_available_points = available_points[:]
+                            new_available_points.remove(possible_point)
+                            new_available_points.extend([Point(box_copy.x0 + box_copy.xlen,
+                                                              box_copy.y0,
+                                                              box_copy.z0),
+                                                Point(box_copy.x0,
+                                                              box_copy.y0 + box_copy.ylen,
+                                                              box_copy.z0),
+                                                Point(box_copy.x0,
+                                                              box_copy.y0,
+                                                              box_copy.z0 + box_copy.zlen)])
+                            new_unplaced = unplaced[:]
+                            new_unplaced.remove(box_to_place)
+                            new_placed = placed[:]
+                            new_placed.append(box_copy)
+                            order_boxes(new_unplaced,
+                                        new_placed,
+                                        new_available_points,
+                                        solutions)
 
 
 if __name__ == '__main__':
@@ -222,22 +270,54 @@ if __name__ == '__main__':
     box4 = Box("Paperino", 50, 30, 80)
     box5 = Box("Topolino", 30, 40, 10)
     box6 = Box("Minnie", 50, 20, 70)
+    box7 = Box("Aaa", 70, 40, 60)
+    box8 = Box("Bbb", 30, 10, 20)
 
-    boxes = [box1, box2, box3]#, box4, box5, box6]
+    boxes = [box1, box2, box3, box4, box5, box6]#, box7, box8]
 
     start = time.time()
 
     solutions = []
     start_ordering(boxes, solutions)
     print("solutions are " + str(len(solutions)))
+    for elem in solutions[0]:
+        print("{}, {}, {}, {}, {}, {}\n".format(elem.x0, elem.y0, elem.z0, elem.xlen, elem.ylen, elem.zlen))
+
+
     final_solution = solutions[0]
     for sol in solutions[1:]:
         if len(sol) > len(final_solution):
             final_solution = sol
             print("updated")
 
+    #different ways to sort the boxes
+    #let's sort the boxes from the closest one to (0,0,0) to the furthest
+    final_solution.sort(reverse = True, key = lambda box: (0 - cont_x / 2 + box.x0)**2 +
+                                                            (0 - cont_y / 2 + box.y0)**2 +
+                                                            (0 + cont_z / 2 - box.z0)**2 )
+
+    #let's sort starting from the ones below
+    #final_solution.sort(reverse=False, key=lambda box: (0 - cont_y + box.y0)
+    #                                                    + (0 - cont_x / 2 + box.x0)**2
+    #                                                    + (0 + cont_z / 2 - box.z0)**2)
+
+
+
     for b in final_solution:
-        place_box(b.x0, b.y0, b.z0, b.xlen, b.ylen, b.zlen)
+        b.entity = place_box(b.x0, b.y0, b.z0, b.xlen, b.ylen, b.zlen)
+
+
+        def tmp(box):
+            def replace():
+                print("hi")
+                box.entity.x = 0 - cont_x / 2 + box.x0 + box.xlen / 2
+                box.entity.y = 0 - cont_y / 2 + box.y0 + box.ylen / 2
+                box.entity.z = 0 + cont_z / 2 - box.z0 - box.zlen / 2
+            return replace
+
+        b.entity.on_click = tmp(b)
+
+    BoxesController.sorted_boxes = final_solution
 
     mins = (time.time() - start) / 60
     print("elapsed: " + str(mins))
