@@ -14,9 +14,6 @@ def camera_control():
 class BoxesController:
     sorted_boxes = []
     state = -2
-    #def __init__(self, sorted_boxes):
-    #    self.sorted_boxes = sorted_boxes
-    #    self.state = -2
 
     def move_boxes(cls):
         cls.state = cls.state + 1
@@ -36,8 +33,7 @@ def input(key):
 
 def update():
     camera_control()
-    #if(held_keys["p"]):
-    #    BoxesController.move_boxes(BoxesController)
+
 
 
 cont_x = 120
@@ -88,7 +84,6 @@ def create_container():
 
 
 def replace_box(box):
-    print("hi")
     box.entity.x = 0 - cont_x / 2 + box.x0 + box.xlen / 2
     box.entity.y = 0 - cont_y / 2 + box.y0 + box.ylen / 2
     box.entity.z = 0 + cont_z / 2 - box.z0 - box.zlen / 2
@@ -98,9 +93,9 @@ def enlarge_boxes(boxes):
         #if box.x0 == box.z0: pass
         #else:
             if box.x0 > box.z0:
-                box.entity.x = 0 - cont_x/2 + box.x0 + box.xlen*4
+                box.entity.x = 0 - cont_x/2 + box.x0 + cont_x + box.xlen
             else:
-                box.entity.z = 0 + cont_z/2 - box.z0 - box.zlen*4
+                box.entity.z = 0 + cont_z/2 - box.z0 - cont_z - box.zlen
         #box.entity.y = 0 - cont_y / 2 + box.y0 + box.ylen * 2
 
 
@@ -256,6 +251,11 @@ def order_boxes(unplaced, placed, available_points, solutions):
                                         solutions)
 
 
+def randomly_generate_box(max_x, max_y, max_z):
+    box = Box("a", random.randint(1,max_x), random.randint(1,max_y), random.randint(1,max_z))
+    return box
+
+
 if __name__ == '__main__':
     app = Ursina()
 
@@ -273,7 +273,11 @@ if __name__ == '__main__':
     box7 = Box("Aaa", 70, 40, 60)
     box8 = Box("Bbb", 30, 10, 20)
 
-    boxes = [box1, box2, box3, box4, box5, box6]#, box7, box8]
+    #boxes = [box1, box2, box3, box4, box5, box6, box7, box8]
+
+    boxes = []
+    for i in range(10):
+        boxes.append(randomly_generate_box(50,50,50))
 
     start = time.time()
 
