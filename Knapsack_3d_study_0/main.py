@@ -160,6 +160,51 @@ def placeable(placed_array, lengths, point):
 
     return True
 
+
+
+
+
+
+def base_area(left_z, right_z, left_x, right_x, base_box):
+    true_left_z = max(left_z, base_box.z0)
+    true_right_z = min(right_z, base_box.z0 + base_box.zlen)
+    true_left_x = max(left_x, base_box.x0)
+    true_right_x = min(right_x, base_box.x0 + base_box.xlen)
+    if true_right_z > true_left_z and true_right_x > true_left_x:
+        return (true_right_z - true_left_z) * (true_right_x - true_left_x)
+    return 0
+
+#to check if "box" has a base to be placed, in order for it to not fall
+def does_box_have_base(box, point, placed_boxes):
+    if point.y == 0:
+        return True
+
+    #firs: find the boxes that could constitute the base of the new box
+    boxes_with_correct_height = []
+    for b in placed_boxes:
+        if b.y0 + b.ylen == point.y:    #if the upper surface of the box could be a base for the new point...
+            boxes_with_correct_height.append(b)
+
+    #second: compute the total area that can sustain the new box
+    areas = []
+    for b in boxes_with_correct_height:
+        a = base_area(point.z, point.z+box.zlen, point.x, point.x+box.xlen, b)
+        if a > 0:
+            areas.append(a)
+    final_base_area = sum(areas)
+
+    #third: check if the box has a base large enough to be sustained
+    if final_base_area >= (box.zlen * box.xlen) / 2:
+        return True
+
+    return False
+
+
+
+
+
+
+
 class Box:
     def __init__(self, name, xlen, ylen, zlen):
         self.name = name
@@ -221,38 +266,39 @@ def order_boxes(unplaced, placed, available_points, solutions):
                 for possible_point in available_points: #for all the points available...
                     for i in range(1,7):    #for all possible permutations of a box...
                         perm = give_permutation(box_to_place.xlen, box_to_place.ylen, box_to_place.zlen, i)
-                        if placeable(placed, perm, possible_point): #if the box doesn't collide with any other box previously placed...
-                            #we can place the box
-                            box_copy = Box(box_to_place.name, perm[0], perm[1], perm[2])
-                            box_copy.x0 = possible_point.x
-                            box_copy.y0 = possible_point.y
-                            box_copy.z0 = possible_point.z
-                            #box_to_place.xlen = perm[0]
-                            #box_to_place.ylen = perm[1]
-                            #box_to_place.zlen = perm[2]
-                            new_available_points = available_points[:]
-                            new_available_points.remove(possible_point)
-                            new_available_points.extend([Point(box_copy.x0 + box_copy.xlen,
-                                                              box_copy.y0,
-                                                              box_copy.z0),
-                                                Point(box_copy.x0,
-                                                              box_copy.y0 + box_copy.ylen,
-                                                              box_copy.z0),
-                                                Point(box_copy.x0,
-                                                              box_copy.y0,
-                                                              box_copy.z0 + box_copy.zlen)])
-                            new_unplaced = unplaced[:]
-                            new_unplaced.remove(box_to_place)
-                            new_placed = placed[:]
-                            new_placed.append(box_copy)
-                            order_boxes(new_unplaced,
-                                        new_placed,
-                                        new_available_points,
-                                        solutions)
+                        if does_box_have_base(box_to_place, possible_point, placed):    #EXTRA control: if the box wouldn't float mid-air...
+                            if placeable(placed, perm, possible_point): #if the box doesn't collide with any other box previously placed...
+                                #we can place the box
+                                box_copy = Box(box_to_place.name, perm[0], perm[1], perm[2])
+                                box_copy.x0 = possible_point.x
+                                box_copy.y0 = possible_point.y
+                                box_copy.z0 = possible_point.z
+                                #box_to_place.xlen = perm[0]
+                                #box_to_place.ylen = perm[1]
+                                #box_to_place.zlen = perm[2]
+                                new_available_points = available_points[:]
+                                new_available_points.remove(possible_point)
+                                new_available_points.extend([Point(box_copy.x0 + box_copy.xlen,
+                                                                  box_copy.y0,
+                                                                  box_copy.z0),
+                                                    Point(box_copy.x0,
+                                                                  box_copy.y0 + box_copy.ylen,
+                                                                  box_copy.z0),
+                                                    Point(box_copy.x0,
+                                                                  box_copy.y0,
+                                                                  box_copy.z0 + box_copy.zlen)])
+                                new_unplaced = unplaced[:]
+                                new_unplaced.remove(box_to_place)
+                                new_placed = placed[:]
+                                new_placed.append(box_copy)
+                                order_boxes(new_unplaced,
+                                            new_placed,
+                                            new_available_points,
+                                            solutions)
 
 
 def randomly_generate_box(max_x, max_y, max_z):
-    box = Box("a", random.randint(1,max_x), random.randint(1,max_y), random.randint(1,max_z))
+    box = Box("a", random.randint(10,max_x), random.randint(10,max_y), random.randint(10,max_z))
     return box
 
 
@@ -273,11 +319,11 @@ if __name__ == '__main__':
     box7 = Box("Aaa", 70, 40, 60)
     box8 = Box("Bbb", 30, 10, 20)
 
-    #boxes = [box1, box2, box3, box4, box5, box6, box7, box8]
+    boxes = [box1, box2, box3, box4, box5, box6, box7, box8]
 
-    boxes = []
-    for i in range(10):
-        boxes.append(randomly_generate_box(50,50,50))
+    #boxes = []
+    #for i in range(10):
+    #    boxes.append(randomly_generate_box(50,50,50))
 
     start = time.time()
 
