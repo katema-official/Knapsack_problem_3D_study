@@ -1,5 +1,5 @@
 
---- Job try1.gms Start 08/01/22 21:00:19 39.3.0 55b56f9b WEX-WEI x86 64bit/MS Windows
+--- Job try1.gms Start 08/02/22 15:13:17 39.3.0 55b56f9b WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\39\gmsprmNT.txt
 --- GAMS Parameters defined
@@ -20,8 +20,229 @@ Licensee: GAMS Demo license for Alessio La Greca         G220731|0002CO-GEN
 Processor information: 1 socket(s), 6 core(s), and 12 thread(s) available
 GAMS 39.3.0   Copyright (C) 1987-2022 GAMS Development. All rights reserved
 --- Starting compilation
---- try1.gms(95) 3 Mb
---- Starting execution: elapsed 0:00:00.015
---- try1.gms(35) 4 Mb
-*** Status: Normal completion
---- Job try1.gms Stop 08/01/22 21:00:19 elapsed 0:00:00.016
+--- try1.gms(253) 3 Mb 157 Errors
+*** Error  65 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    Discrete variables can only appear in MIP, RMIP, MINLP
+      RMINLP MIQCP or RMIQCP MPEC RMPEC problems.
+*** Error  53 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    Endogenous $ operation not allowed
+*** Error  65 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    Discrete variables can only appear in MIP, RMIP, MINLP
+      RMINLP MIQCP or RMIQCP MPEC RMPEC problems.
+*** Error  53 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    Endogenous $ operation not allowed
+*** Error  65 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    Discrete variables can only appear in MIP, RMIP, MINLP
+      RMINLP MIQCP or RMIQCP MPEC RMPEC problems.
+*** Error  53 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    Endogenous $ operation not allowed
+*** Error  65 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    Discrete variables can only appear in MIP, RMIP, MINLP
+      RMINLP MIQCP or RMIQCP MPEC RMPEC problems.
+*** Error  53 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    Endogenous $ operation not allowed
+*** Error  65 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    Discrete variables can only appear in MIP, RMIP, MINLP
+      RMINLP MIQCP or RMIQCP MPEC RMPEC problems.
+*** Error 300 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    Remaining errors not printed for this line
+*** The following DNLP errors were detected in model try1:
+     65 equation max.. discrete variable "s" not allowed
+     65 equation c_1.. discrete variable "r" not allowed
+     65 equation c_1.. discrete variable "l" not allowed
+     65 equation c_1.. discrete variable "b" not allowed
+     65 equation c_1.. discrete variable "f" not allowed
+     65 equation c_1.. discrete variable "u" not allowed
+     65 equation c_1.. discrete variable "o" not allowed
+     65 equation c_1.. discrete variable "s" not allowed
+     65 equation c_1.. discrete variable "s" not allowed
+     65 equation c_1.. discrete variable "s" not allowed
+     65 equation c_1.. discrete variable "s" not allowed
+     53 equation c_1.. VAR $ operation
+     65 equation c_2a.. discrete variable "X_w" not allowed
+     65 equation c_2a.. discrete variable "Z_w" not allowed
+     65 equation c_2a.. discrete variable "Y_h" not allowed
+     65 equation c_2a.. discrete variable "Z_d" not allowed
+     65 equation c_2a.. discrete variable "X_w" not allowed
+     65 equation c_2a.. discrete variable "Z_w" not allowed
+     65 equation c_2a.. discrete variable "Y_h" not allowed
+     65 equation c_2a.. discrete variable "Z_d" not allowed
+     65 equation c_2a.. discrete variable "s" not allowed
+     65 equation c_2a.. discrete variable "s" not allowed
+     53 equation c_2a.. VAR $ operation
+     65 equation c_2a.. discrete variable "l" not allowed
+     65 equation c_2b.. discrete variable "X_w" not allowed
+     65 equation c_2b.. discrete variable "Z_w" not allowed
+     65 equation c_2b.. discrete variable "Y_h" not allowed
+     65 equation c_2b.. discrete variable "Z_d" not allowed
+     65 equation c_2b.. discrete variable "X_w" not allowed
+     65 equation c_2b.. discrete variable "Z_w" not allowed
+     65 equation c_2b.. discrete variable "Y_h" not allowed
+     65 equation c_2b.. discrete variable "Z_d" not allowed
+     65 equation c_2b.. discrete variable "s" not allowed
+     65 equation c_2b.. discrete variable "s" not allowed
+     53 equation c_2b.. VAR $ operation
+     65 equation c_2b.. discrete variable "r" not allowed
+     65 equation c_2c.. discrete variable "Z_d" not allowed
+     65 equation c_2c.. discrete variable "Z_w" not allowed
+     65 equation c_2c.. discrete variable "Z_d" not allowed
+     65 equation c_2c.. discrete variable "Z_w" not allowed
+     65 equation c_2c.. discrete variable "s" not allowed
+     65 equation c_2c.. discrete variable "s" not allowed
+     53 equation c_2c.. VAR $ operation
+     65 equation c_2c.. discrete variable "b" not allowed
+     65 equation c_2d.. discrete variable "Z_d" not allowed
+     65 equation c_2d.. discrete variable "Z_w" not allowed
+     65 equation c_2d.. discrete variable "Z_d" not allowed
+     65 equation c_2d.. discrete variable "Z_w" not allowed
+     65 equation c_2d.. discrete variable "s" not allowed
+     65 equation c_2d.. discrete variable "s" not allowed
+     53 equation c_2d.. VAR $ operation
+     65 equation c_2d.. discrete variable "f" not allowed
+     65 equation c_2e.. discrete variable "Y_h" not allowed
+     65 equation c_2e.. discrete variable "X_w" not allowed
+     65 equation c_2e.. discrete variable "Z_w" not allowed
+     65 equation c_2e.. discrete variable "X_w" not allowed
+     65 equation c_2e.. discrete variable "Z_w" not allowed
+     65 equation c_2e.. discrete variable "Y_h" not allowed
+     65 equation c_2e.. discrete variable "s" not allowed
+     65 equation c_2e.. discrete variable "s" not allowed
+     53 equation c_2e.. VAR $ operation
+     65 equation c_2e.. discrete variable "u" not allowed
+     65 equation c_2f.. discrete variable "Y_h" not allowed
+     65 equation c_2f.. discrete variable "X_w" not allowed
+     65 equation c_2f.. discrete variable "Z_w" not allowed
+     65 equation c_2f.. discrete variable "X_w" not allowed
+     65 equation c_2f.. discrete variable "Z_w" not allowed
+     65 equation c_2f.. discrete variable "Y_h" not allowed
+     65 equation c_2f.. discrete variable "s" not allowed
+     65 equation c_2f.. discrete variable "s" not allowed
+     53 equation c_2f.. VAR $ operation
+     65 equation c_2f.. discrete variable "o" not allowed
+     65 equation c_3a.. discrete variable "X_w" not allowed
+     65 equation c_3a.. discrete variable "Z_w" not allowed
+     65 equation c_3a.. discrete variable "Y_h" not allowed
+     65 equation c_3a.. discrete variable "Z_d" not allowed
+     65 equation c_3a.. discrete variable "X_w" not allowed
+     65 equation c_3a.. discrete variable "Z_w" not allowed
+     65 equation c_3a.. discrete variable "Y_h" not allowed
+     65 equation c_3a.. discrete variable "Z_d" not allowed
+     65 equation c_3b.. discrete variable "Y_h" not allowed
+     65 equation c_3b.. discrete variable "X_w" not allowed
+     65 equation c_3b.. discrete variable "Z_w" not allowed
+     65 equation c_3b.. discrete variable "X_w" not allowed
+     65 equation c_3b.. discrete variable "Z_w" not allowed
+     65 equation c_3b.. discrete variable "Y_h" not allowed
+     65 equation c_3c.. discrete variable "Z_d" not allowed
+     65 equation c_3c.. discrete variable "Z_w" not allowed
+     65 equation c_3c.. discrete variable "Z_d" not allowed
+     65 equation c_3c.. discrete variable "Z_w" not allowed
+     65 equation c_4a.. discrete variable "X_w" not allowed
+     65 equation c_4a.. discrete variable "Z_w" not allowed
+     65 equation c_4b.. discrete variable "Z_w" not allowed
+     65 equation c_4b.. discrete variable "Z_d" not allowed
+     65 equation c_4c_1.. discrete variable "Z_w" not allowed
+     65 equation c_4c_1.. discrete variable "Y_h" not allowed
+     65 equation c_4c_1.. discrete variable "Z_d" not allowed
+     65 equation c_4c_2.. discrete variable "Z_w" not allowed
+     65 equation c_4c_2.. discrete variable "Y_h" not allowed
+     65 equation c_4c_2.. discrete variable "Z_d" not allowed
+     65 equation c_4d_1.. discrete variable "X_w" not allowed
+     65 equation c_4d_1.. discrete variable "Z_w" not allowed
+     65 equation c_4d_1.. discrete variable "Y_h" not allowed
+     65 equation c_4d_1.. discrete variable "Z_d" not allowed
+     65 equation c_4d_2.. discrete variable "X_w" not allowed
+     65 equation c_4d_2.. discrete variable "Z_w" not allowed
+     65 equation c_4d_2.. discrete variable "Y_h" not allowed
+     65 equation c_4d_2.. discrete variable "Z_d" not allowed
+     65 equation c_4e_1.. discrete variable "X_w" not allowed
+     65 equation c_4e_1.. discrete variable "Z_w" not allowed
+     65 equation c_4e_1.. discrete variable "Y_h" not allowed
+     65 equation c_4e_2.. discrete variable "X_w" not allowed
+     65 equation c_4e_2.. discrete variable "Z_w" not allowed
+     65 equation c_4e_2.. discrete variable "Y_h" not allowed
+     65 equation c_7a_1.. discrete variable "ya" not allowed
+     65 equation c_7a_2.. discrete variable "ya" not allowed
+     65 equation c_7b_1.. discrete variable "xa" not allowed
+     65 equation c_7b_2.. discrete variable "xa" not allowed
+     65 equation c_7c_1.. discrete variable "ya" not allowed
+     65 equation c_7c_1.. discrete variable "xa" not allowed
+     65 equation c_7c_1.. discrete variable "za" not allowed
+     65 equation c_7c_2.. discrete variable "za" not allowed
+     65 equation c_7c_2.. discrete variable "ya" not allowed
+     65 equation c_7c_2.. discrete variable "xa" not allowed
+     65 equation c_8a_1.. discrete variable "yb" not allowed
+     65 equation c_8a_2.. discrete variable "yb" not allowed
+     65 equation c_8b_1.. discrete variable "xb" not allowed
+     65 equation c_8b_2.. discrete variable "xb" not allowed
+     65 equation c_8c_1.. discrete variable "yb" not allowed
+     65 equation c_8c_1.. discrete variable "xb" not allowed
+     65 equation c_8c_1.. discrete variable "zb" not allowed
+     65 equation c_8c_2.. discrete variable "zb" not allowed
+     65 equation c_8c_2.. discrete variable "yb" not allowed
+     65 equation c_8c_2.. discrete variable "xb" not allowed
+     65 equation c_9a_1.. discrete variable "yc" not allowed
+     65 equation c_9a_2.. discrete variable "yc" not allowed
+     65 equation c_9b_1.. discrete variable "xc" not allowed
+     65 equation c_9b_2.. discrete variable "xc" not allowed
+     65 equation c_9c_1.. discrete variable "yc" not allowed
+     65 equation c_9c_1.. discrete variable "xc" not allowed
+     65 equation c_9c_1.. discrete variable "zc" not allowed
+     65 equation c_9c_2.. discrete variable "zc" not allowed
+     65 equation c_9c_2.. discrete variable "yc" not allowed
+     65 equation c_9c_2.. discrete variable "xc" not allowed
+     65 equation c_10a_1.. discrete variable "yd" not allowed
+     65 equation c_10a_2.. discrete variable "yd" not allowed
+     65 equation c_10b_1.. discrete variable "xd" not allowed
+     65 equation c_10b_2.. discrete variable "xd" not allowed
+     65 equation c_10c_1.. discrete variable "yd" not allowed
+     65 equation c_10c_1.. discrete variable "xd" not allowed
+     65 equation c_10c_1.. discrete variable "zd" not allowed
+     65 equation c_10c_2.. discrete variable "zd" not allowed
+     65 equation c_10c_2.. discrete variable "yd" not allowed
+     65 equation c_10c_2.. discrete variable "xd" not allowed
+     65 equation c_11_1.. discrete variable "za" not allowed
+     65 equation c_11_1.. discrete variable "zb" not allowed
+     65 equation c_11_1.. discrete variable "Cs1" not allowed
+     65 equation c_11_2.. discrete variable "Cs1" not allowed
+     65 equation c_11_2.. discrete variable "za" not allowed
+     65 equation c_11_2.. discrete variable "zb" not allowed
+     65 equation c_12_1.. discrete variable "za" not allowed
+     65 equation c_12_1.. discrete variable "zd" not allowed
+     65 equation c_12_1.. discrete variable "Cs2" not allowed
+     65 equation c_12_2.. discrete variable "Cs2" not allowed
+     65 equation c_12_2.. discrete variable "za" not allowed
+     65 equation c_12_2.. discrete variable "zd" not allowed
+     65 equation c_13_1.. discrete variable "zc" not allowed
+     65 equation c_13_1.. discrete variable "zb" not allowed
+     65 equation c_13_1.. discrete variable "Cs3" not allowed
+     65 equation c_13_2.. discrete variable "Cs3" not allowed
+     65 equation c_13_2.. discrete variable "zc" not allowed
+     65 equation c_13_2.. discrete variable "zb" not allowed
+     65 equation c_14_1.. discrete variable "zc" not allowed
+     65 equation c_14_1.. discrete variable "zd" not allowed
+     65 equation c_14_1.. discrete variable "Cs4" not allowed
+     65 equation c_14_2.. discrete variable "Cs4" not allowed
+     65 equation c_14_2.. discrete variable "zc" not allowed
+     65 equation c_14_2.. discrete variable "zd" not allowed
+     65 equation c_15.. discrete variable "Cs1" not allowed
+     65 equation c_15.. discrete variable "Cs2" not allowed
+     65 equation c_15.. discrete variable "Cs3" not allowed
+     65 equation c_15.. discrete variable "Cs4" not allowed
+     65 equation c_15.. discrete variable "u" not allowed
+     65 equation c_15.. discrete variable "o" not allowed
+     65 equation c_16.. discrete variable "X_w" not allowed
+     65 equation c_16.. discrete variable "Z_w" not allowed
+     65 equation c_16.. discrete variable "Y_h" not allowed
+     65 equation c_16.. discrete variable "Z_d" not allowed
+     65 equation c_16.. discrete variable "X_w" not allowed
+     65 equation c_16.. discrete variable "Z_w" not allowed
+     65 equation c_16.. discrete variable "Y_h" not allowed
+     65 equation c_16.. discrete variable "Z_d" not allowed
+     65 equation c_17.. discrete variable "Z_d" not allowed
+     65 equation c_17.. discrete variable "Z_w" not allowed
+     65 equation c_17.. discrete variable "Z_d" not allowed
+     65 equation c_17.. discrete variable "Z_w" not allowed
+--- try1.gms(253) 3 Mb 157 Errors
+*** Status: Compilation error(s)
+--- Job try1.gms Stop 08/02/22 15:13:17 elapsed 0:00:00.021

@@ -1,4 +1,4 @@
-GAMS 39.3.0  55b56f9b Jul 7, 2022           WEX-WEI x86 64bit/MS Windows - 08/02/22 11:24:35 Page 1
+GAMS 39.3.0  55b56f9b Jul 7, 2022           WEX-WEI x86 64bit/MS Windows - 08/02/22 15:20:08 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -10,125 +10,268 @@ C o m p i l a t i o n
    5  Scalars
    6      Wcontainer width of container /3/
    7      Hcontainer height of container /3/
-   8      Dcontainer depth of container /3/;
-   9   
-  10  Parameters
-  11      w(i) width of box
-  12      /   b1  3
-  13          b2  3
-  14          b3  2
-  15          b4  3
-  16          b5  1/
-  17   
-  18      h(i) height of box
-  19      /   b1  2
-  20          b2  1
-  21          b3  1
-  22          b4  3
-  23          b5  3/
-  24   
-  25      d(i) depth of box
-  26      /   b1  2
-  27          b2  1
-  28          b3  2
-  29          b4  1
-  30          b5  1/
-  31   
-  32      p(i) volume of box;
-  33   
+   8      Dcontainer depth of container /3/
+   9      M a very large value / 100000 /;
+  10   
+  11  Parameters
+  12      w(i) width of box
+  13      /   b1  3
+  14          b2  3
+  15          b3  2
+  16          b4  3
+  17          b5  1/
+  18   
+  19      h(i) height of box
+  20      /   b1  2
+  21          b2  1
+  22          b3  1
+  23          b4  3
+  24          b5  3/
+  25   
+  26      d(i) depth of box
+  27      /   b1  2
+  28          b2  1
+  29          b3  2
+  30          b4  1
+  31          b5  1/
+  32   
+  33      p(i) volume of box;
   34   
-  35      p(i) = w(i) * h(i) * d(i);
-  36   
-  37  Variables
-  38      x(i) x coordinate of box i
-  39      y(i) y coordinate of box i
-  40      z(i) z coordinate of box i
-  41      X_w(i) if the width of box i is parallel to X axis
-  42      Z_w(i) if the width of box i is parallel to Z axis
-  43      Y_h(i) if the height of box i is parallel to Y axis
-  44      Z_d(i) if the depth of box i is parallel to Z axis
-  45      r(i,j) if box i is to the right of box j
-  46      l(i,j) if box i is to the left of box j
-  47      b(i,j) if box i is behind box j
-  48      f(i,j) if box i is in front of box j
-  49      u(i,j) if box i is under box j
-  50      o(i,j) if box i os over box j
-  51      s(i) if box i is packed in the container
-  52      ya(i,j) if xj >= xi
-  53      xa(i,j) if xj < xi_
-  54      yb(i,j) if zj >= zi
-  55      xb(i,j) if zj < zi_
-  56      yc(i,j) if xj_ > xi
-  57      xc(i,j) if xj_ <= xi_
-  58      yd(i,j) if zj_ > zi
-  59      xd(i,j) if zj_ <= zi_
-  60      za(i,j) if xi <= xj < xi_
-  61      zb(i,j) if zi <= zj < zi_
-  62      zc(i,j) if xi < xj_ <= xi_
-  63      zd(i,j) if zi < zj_ <= zi_
-  64   
-  65      Cs1(i,j) if za(ij) and zb(ij)
-  66      Cs2(i,j) if za(ij) and zd(ij)
-  67      Cs3(i,j) if zc(ij) and zb(ij)
-  68      Cs4(i,j) if zc(ij) and zd(ij)
-  69   
+  35   
+  36      p(i) = w(i) * h(i) * d(i);
+  37   
+  38  Variables
+  39      x(i) x coordinate of box i
+  40      y(i) y coordinate of box i
+  41      z(i) z coordinate of box i
+  42      X_w(i) if the width of box i is parallel to X axis
+  43      Z_w(i) if the width of box i is parallel to Z axis
+  44      Y_h(i) if the height of box i is parallel to Y axis
+  45      Z_d(i) if the depth of box i is parallel to Z axis
+  46      r(i,j) if box i is to the right of box j
+  47      l(i,j) if box i is to the left of box j
+  48      b(i,j) if box i is behind box j
+  49      f(i,j) if box i is in front of box j
+  50      u(i,j) if box i is under box j
+  51      o(i,j) if box i os over box j
+  52      s(i) if box i is packed in the container
+  53      ya(i,j) if xj >= xi
+  54      xa(i,j) if xj < xi_
+  55      yb(i,j) if zj >= zi
+  56      xb(i,j) if zj < zi_
+  57      yc(i,j) if xj_ > xi
+  58      xc(i,j) if xj_ <= xi_
+  59      yd(i,j) if zj_ > zi
+  60      xd(i,j) if zj_ <= zi_
+  61      za(i,j) if xi <= xj < xi_
+  62      zb(i,j) if zi <= zj < zi_
+  63      zc(i,j) if xi < xj_ <= xi_
+  64      zd(i,j) if zi < zj_ <= zi_
+  65   
+  66      Cs1(i,j) if za(ij) and zb(ij)
+  67      Cs2(i,j) if za(ij) and zd(ij)
+  68      Cs3(i,j) if zc(ij) and zb(ij)
+  69      Cs4(i,j) if zc(ij) and zd(ij)
   70   
-  71      x_(i) right wall of box i
-  72      z_(i) front wall of box i;
-  73   
-  74  binary variables
-  75      X_w
-  76      Z_w
-  77      Y_h
-  78      Z_d
-  79      r
-  80      l
-  81      b
-  82      f
-  83      u
-  84      o
-  85      s
-  86      ya
-  87      xa
-  88      yb
-  89      xb
-  90      yc
-  91      xc
-  92      yd
-  93      xd
-  94      za
-  95      zb
-  96      zc
-  97      zd
-  98      Cs1
-  99      Cs2
- 100      Cs3
- 101      Cs4;
- 102   
- 103  positive variables
- 104      x
- 105      y
- 106      z
- 107      x_
- 108      z_
- 109   
- 110   
- 111   
+  71   
+  72      x_(i) right wall of box i
+  73      z_(i) front wall of box i
+  74   
+  75      to_maximize variable that represents the quantity to maximize;
+  76   
+  77  binary variables
+  78      X_w
+  79      Z_w
+  80      Y_h
+  81      Z_d
+  82      r
+  83      l
+  84      b
+  85      f
+  86      u
+  87      o
+  88      s
+  89      ya
+  90      xa
+  91      yb
+  92      xb
+  93      yc
+  94      xc
+  95      yd
+  96      xd
+  97      za
+  98      zb
+  99      zc
+ 100      zd
+ 101      Cs1
+ 102      Cs2
+ 103      Cs3
+ 104      Cs4;
+ 105   
+ 106  positive variables
+ 107      x
+ 108      y
+ 109      z
+ 110      x_
+ 111      z_
  112   
- 113   
- 114   
- 115   
+ 113  equations
+ 114      max the quantity to maximize
+ 115      c_1(i,j) if two boxes are placed then where are they in respect with each other
  116   
- 117   
+ 117      c_2a(i,j) fix the x coordinate to be packed
+ 118      c_2b(i,j) fix the x coordinate to be packed
+ 119      c_2c(i,j) fix the z coordinate to be packed
+ 120      c_2d(i,j) fix the z coordinate to be packed
+ 121      c_2e(i,j) fix the y coordinate to be packed
+ 122      c_2f(i,j) fix the y coordinate to be packed
+ 123   
+ 124      c_3a(i) box does not exceed bin width
+ 125      c_3b(i) box does not exceed bin height
+ 126      c_3c(i) box does not exceen bin depth
+ 127   
+ 128      c_4a(i) the width of box is parallel to just one axis
+ 129      c_4b(i) only width or depth of box is parallel to axis Z
+ 130      c_4c_1(i) height can be parallel only to Z or Y
+ 131      c_4c_2(i)
+ 132      c_4d_1(i) width height and depth are not parallel to more that one axes
+ 133      c_4d_2(i)
+ 134      c_4e_1(i)
+ 135      c_4e_2(i)
+ 136   
+ 137      c_7a_1(i,j)
+ 138      c_7a_2(i,j)
+ 139      c_7b_1(i,j)
+ 140      c_7b_2(i,j)
+ 141      c_7c_1(i,j)
+ 142      c_7c_2(i,j)
+ 143   
+ 144      c_8a_1(i,j)
+ 145      c_8a_2(i,j)
+ 146      c_8b_1(i,j)
+ 147      c_8b_2(i,j)
+ 148      c_8c_1(i,j)
+ 149      c_8c_2(i,j)
+ 150   
+ 151      c_9a_1(i,j)
+ 152      c_9a_2(i,j)
+ 153      c_9b_1(i,j)
+ 154      c_9b_2(i,j)
+ 155      c_9c_1(i,j)
+ 156      c_9c_2(i,j)
+ 157   
+ 158      c_10a_1(i,j)
+ 159      c_10a_2(i,j)
+ 160      c_10b_1(i,j)
+ 161      c_10b_2(i,j)
+ 162      c_10c_1(i,j)
+ 163      c_10c_2(i,j)
+ 164   
+ 165      c_11_1(i,j)
+ 166      c_11_2(i,j)
+ 167      c_12_1(i,j)
+ 168      c_12_2(i,j)
+ 169      c_13_1(i,j)
+ 170      c_13_2(i,j)
+ 171      c_14_1(i,j)
+ 172      c_14_2(i,j)
+ 173      c_15(i,j)
+ 174   
+ 175      c_16(i) definition of x_
+ 176      c_17(i) definition on z_
+ 177   
+ 178      c_22_1(i)
+ 179      c_22_2(i)
+ 180      c_22_3(i)
+ 181  ;
+ 182   
+ 183  max.. to_maximize =e= sum(i, p(i)*s(i));
+ 184   
+ 185  c_1(i,j).. r(i,j) + l(i,j) + b(i,j) + f(i,j) + u(i,j) + o(i,j) =e= s(i) + s(j) - 1 $ ((s(i) + s(j) = 2) and not sameas(i,j));
+ 186   
+ 187  c_2a(i,j).. x(i) + w(i)*X_w(i) + h(i)*(Z_w(i) - Y_h(i) + Z_d(i)) + d(i)*(1 - X_w(i) - Z_w(i) + Y_h(i) - Z_d(i)) =l= x(j) + M *(1 - l(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
+ 188  c_2b(i,j).. x(j) + w(j)*X_w(j) + h(j)*(Z_w(j) - Y_h(j) + Z_d(j)) + d(j)*(1 - X_w(j) - Z_w(j) + Y_h(j) - Z_d(j)) =l= x(i) + M *(1 - r(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
+ 189  c_2c(i,j).. z(i) + d(i)*Z_d(i) + h(i)*(1 - Z_w(i) - Z_d(i)) + w(i)*Z_w(i) =l= z(j) + M * (1 - b(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
+ 190  c_2d(i,j).. z(j) + d(j)*Z_d(j) + h(j)*(1 - Z_w(j) - Z_d(j)) + w(j)*Z_w(j) =l= z(i) + M * (1 - f(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
+ 191  c_2e(i,j).. y(i) + h(i)*Y_h(i) + w(i)*(1 - X_w(i) - Z_w(i)) + d(i)*(X_w(i) + Z_w(i) - Y_h(i)) =l= y(j) + M*(1 - u(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
+ 192  c_2f(i,j).. y(j) + h(j)*Y_h(j) + w(j)*(1 - X_w(j) - Z_w(j)) + d(j)*(X_w(j) + Z_w(j) - Y_h(j)) =l= y(i) + M*(1 - o(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
+ 193   
+ 194  c_3a(i).. x(i) + w(i)*X_w(i) + h(i)*(Z_w(i) - Y_h(i) + Z_d(i)) + d(i)*(1 - X_w(i) - Z_w(i) + Y_h(i) - Z_d(i)) =l= Wcontainer;
+ 195  c_3b(i).. y(i) + h(i)*Y_h(i) + w(i)*(1 - X_w(i) - Z_w(i)) + d(i)*(X_w(i) + Z_w(i) - Y_h(i)) =l= Hcontainer;
+ 196  c_3c(i).. z(i) + d(i)*Z_d(i) + h(i)*(1 - Z_w(i) - Z_d(i)) + w(i)*Z_w(i) =l= Dcontainer;
+ 197   
+ 198  c_4a(i).. X_w(i) + Z_w(i) =l= 1;
+ 199  c_4b(i).. Z_w(i) + Z_d(i) =l= 1;
+ 200  c_4c_1(i).. 0 =l= Z_w(i) - Y_h(i) + Z_d(i);
+ 201  c_4c_2(i).. Z_w(i) - Y_h(i) + Z_d(i) =l= 1;
+ 202  c_4d_1(i).. 0 =l= 1 - X_w(i) - Z_w(i) + Y_h(i) - Z_d(i);
+ 203  c_4d_2(i).. 1 - X_w(i) - Z_w(i) + Y_h(i) - Z_d(i) =l= 1;
+ 204  c_4e_1(i).. 0 =l= X_w(i) + Z_w(i) - Y_h(i);
+ 205  c_4e_2(i).. X_w(i) + Z_w(i) - Y_h(i) =l= 1;
+ 206   
+ 207  c_7a_1(i,j).. x(j) - x(i) =l= M*ya(i,j) $ (not sameas(i,j));
+ 208  c_7a_2(i,j).. x(j) - x(i) =g= M*(ya(i,j) - 1) $ (not sameas(i,j));
+ 209  c_7b_1(i,j).. x_(i) - x(j) =l= M*xa(i,j) $ (not sameas(i,j));
+ 210  c_7b_2(i,j).. x_(i) - x(j) =g= M*(xa(i,j) - 1) + 0.5 $ (not sameas(i,j));
+ 211  c_7c_1(i,j).. (ya(i,j) + xa(i,j) - 1)/2 =l= za(i,j) $ (not sameas(i,j));
+ 212  c_7c_2(i,j).. za(i,j) =l= (ya(i,j) + xa(i,j))/2 $ (not sameas(i,j));
+ 213   
+ 214  c_8a_1(i,j).. z(j) - z(i) =l= M*yb(i,j) $ (not sameas(i,j));
+ 215  c_8a_2(i,j).. z(j) - z(i) =g= M*(yb(i,j) - 1) $ (not sameas(i,j));
+ 216  c_8b_1(i,j).. z_(i) - z(j) =l= M*xb(i,j) $ (not sameas(i,j));
+ 217  c_8b_2(i,j).. z_(i) - z(j) =g= M*(xb(i,j) - 1) + 0.5 $ (not sameas(i,j));
+ 218  c_8c_1(i,j).. (yb(i,j) + xb(i,j) - 1)/2 =l= zb(i,j) $ (not sameas(i,j));
+ 219  c_8c_2(i,j).. zb(i,j) =l= (yb(i,j) + xb(i,j))/2 $ (not sameas(i,j));
+ 220   
+ 221  c_9a_1(i,j).. x_(j) - x(i) =l= M*yc(i,j) $ (not sameas(i,j));
+ 222  c_9a_2(i,j).. x_(j) - x(i) =g= M*(yc(i,j) - 1) + 0.5 $ (not sameas(i,j));
+ 223  c_9b_1(i,j).. x_(i) - x_(j) =l= M*xc(i,j) $ (not sameas(i,j));
+ 224  c_9b_2(i,j).. x_(i) - x_(j) =g= M*(xc(i,j) - 1) $ (not sameas(i,j));
+ 225  c_9c_1(i,j).. (yc(i,j) + xc(i,j) - 1)/2 =l= zc(i,j) $ (not sameas(i,j));
+ 226  c_9c_2(i,j).. zc(i,j) =l= (yc(i,j) + xc(i,j))/2 $ (not sameas(i,j));
+ 227   
+ 228  c_10a_1(i,j).. z_(j) - z(i) =l= M*yd(i,j) $ (not sameas(i,j));
+ 229  c_10a_2(i,j).. z_(j) - z(i) =g= M*(yd(i,j) - 1) + 0.5 $ (not sameas(i,j));
+ 230  c_10b_1(i,j).. z_(i) - z_(j) =l= M*xd(i,j) $ (not sameas(i,j));
+ 231  c_10b_2(i,j).. z_(i) - z_(j) =g= M*(xd(i,j) - 1) $ (not sameas(i,j));
+ 232  c_10c_1(i,j).. (yd(i,j) + xd(i,j) - 1)/2 =l= zd(i,j) $ (not sameas(i,j));
+ 233  c_10c_2(i,j).. zd(i,j) =l= (yd(i,j) + xd(i,j))/2 $ (not sameas(i,j));
+ 234   
+ 235  c_11_1(i,j).. (za(i,j) + zb(i,j) - 1)/2 =l= Cs1(i,j) $ (not sameas(i,j));
+ 236  c_11_2(i,j).. Cs1(i,j) =l= (za(i,j) + zb(i,j))/2 $ (not sameas(i,j));
+ 237  c_12_1(i,j).. (za(i,j) + zd(i,j) - 1)/2 =l= Cs2(i,j) $ (not sameas(i,j));
+ 238  c_12_2(i,j).. Cs2(i,j) =l= (za(i,j) + zd(i,j))/2 $ (not sameas(i,j));
+ 239  c_13_1(i,j).. (zc(i,j) + zb(i,j) - 1)/2 =l= Cs3(i,j) $ (not sameas(i,j));
+ 240  c_13_2(i,j).. Cs3(i,j) =l= (zc(i,j) + zb(i,j))/2 $ (not sameas(i,j));
+ 241  c_14_1(i,j).. (zc(i,j) + zd(i,j) - 1)/2 =l= Cs4(i,j) $ (not sameas(i,j));
+ 242  c_14_2(i,j).. Cs4(i,j) =l= (zc(i,j) + zd(i,j))/2 $ (not sameas(i,j));
+ 243  c_15(i,j).. Cs1(i,j) + Cs2(i,j) + Cs3(i,j) + Cs4(i,j) =e= u(i,j) + o(i,j) $ (not sameas(i,j));
+ 244   
+ 245  c_16(i).. x_(i) =e= x(i) + w(i)*X_w(i) + h(i)*(Z_w(i) - Y_h(i) + Z_d(i)) + d(i)*(1 - X_w(i) - Z_w(i) + Y_h(i) - Z_d(i));
+ 246  c_17(i).. z_(i) =e= z(i) + d(i)*Z_d(i) + h(i)*(1 - Z_w(i) - Z_d(i)) + w(i)*Z_w(i);
+ 247   
+ 248  c_22_1(i).. x(i) =g= 0;
+ 249  c_22_2(i).. y(i) =g= 0;
+ 250  c_22_3(i).. z(i) =g= 0;
+ 251   
+ 252  model try1 /all/;
+ 253  solve try1 using mip maximizing to_maximize;
+****                                             $57,256
+****  57  Endogenous relational operations require model type "dnlp"
+**** 256  Error(s) in analyzing solve statement.
+**** The following MIP errors were detected in model try1:
+****  57 equation c_1.. VAR operands relational or boolean
+****  57 equation c_2a.. VAR operands relational or boolean
+****  57 equation c_2b.. VAR operands relational or boolean
+****  57 equation c_2c.. VAR operands relational or boolean
+****  57 equation c_2d.. VAR operands relational or boolean
+****  57 equation c_2e.. VAR operands relational or boolean
+****  57 equation c_2f.. VAR operands relational or boolean
+
+**** 2 ERROR(S)   0 WARNING(S)
 
 
 COMPILATION TIME     =        0.000 SECONDS      3 MB  39.3.0 55b56f9b WEX-WEI
-GAMS 39.3.0  55b56f9b Jul 7, 2022           WEX-WEI x86 64bit/MS Windows - 08/02/22 11:24:35 Page 2
-G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-E x e c u t i o n
-
-
-EXECUTION TIME       =        0.000 SECONDS      4 MB  39.3.0 55b56f9b WEX-WEI
 
 
 USER: GAMS Demo license for Alessio La Greca         G220731|0002CO-GEN
@@ -139,3 +282,5 @@ USER: GAMS Demo license for Alessio La Greca         G220731|0002CO-GEN
 
 Input      C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
 Output     C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.lst
+
+**** USER ERROR(S) ENCOUNTERED
