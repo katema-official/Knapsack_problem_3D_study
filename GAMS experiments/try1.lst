@@ -1,0 +1,141 @@
+GAMS 39.3.0  55b56f9b Jul 7, 2022           WEX-WEI x86 64bit/MS Windows - 08/02/22 11:24:35 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  Sets
+   2      i boxes /b1*b5/
+   3      alias(i,j) ;
+   4   
+   5  Scalars
+   6      Wcontainer width of container /3/
+   7      Hcontainer height of container /3/
+   8      Dcontainer depth of container /3/;
+   9   
+  10  Parameters
+  11      w(i) width of box
+  12      /   b1  3
+  13          b2  3
+  14          b3  2
+  15          b4  3
+  16          b5  1/
+  17   
+  18      h(i) height of box
+  19      /   b1  2
+  20          b2  1
+  21          b3  1
+  22          b4  3
+  23          b5  3/
+  24   
+  25      d(i) depth of box
+  26      /   b1  2
+  27          b2  1
+  28          b3  2
+  29          b4  1
+  30          b5  1/
+  31   
+  32      p(i) volume of box;
+  33   
+  34   
+  35      p(i) = w(i) * h(i) * d(i);
+  36   
+  37  Variables
+  38      x(i) x coordinate of box i
+  39      y(i) y coordinate of box i
+  40      z(i) z coordinate of box i
+  41      X_w(i) if the width of box i is parallel to X axis
+  42      Z_w(i) if the width of box i is parallel to Z axis
+  43      Y_h(i) if the height of box i is parallel to Y axis
+  44      Z_d(i) if the depth of box i is parallel to Z axis
+  45      r(i,j) if box i is to the right of box j
+  46      l(i,j) if box i is to the left of box j
+  47      b(i,j) if box i is behind box j
+  48      f(i,j) if box i is in front of box j
+  49      u(i,j) if box i is under box j
+  50      o(i,j) if box i os over box j
+  51      s(i) if box i is packed in the container
+  52      ya(i,j) if xj >= xi
+  53      xa(i,j) if xj < xi_
+  54      yb(i,j) if zj >= zi
+  55      xb(i,j) if zj < zi_
+  56      yc(i,j) if xj_ > xi
+  57      xc(i,j) if xj_ <= xi_
+  58      yd(i,j) if zj_ > zi
+  59      xd(i,j) if zj_ <= zi_
+  60      za(i,j) if xi <= xj < xi_
+  61      zb(i,j) if zi <= zj < zi_
+  62      zc(i,j) if xi < xj_ <= xi_
+  63      zd(i,j) if zi < zj_ <= zi_
+  64   
+  65      Cs1(i,j) if za(ij) and zb(ij)
+  66      Cs2(i,j) if za(ij) and zd(ij)
+  67      Cs3(i,j) if zc(ij) and zb(ij)
+  68      Cs4(i,j) if zc(ij) and zd(ij)
+  69   
+  70   
+  71      x_(i) right wall of box i
+  72      z_(i) front wall of box i;
+  73   
+  74  binary variables
+  75      X_w
+  76      Z_w
+  77      Y_h
+  78      Z_d
+  79      r
+  80      l
+  81      b
+  82      f
+  83      u
+  84      o
+  85      s
+  86      ya
+  87      xa
+  88      yb
+  89      xb
+  90      yc
+  91      xc
+  92      yd
+  93      xd
+  94      za
+  95      zb
+  96      zc
+  97      zd
+  98      Cs1
+  99      Cs2
+ 100      Cs3
+ 101      Cs4;
+ 102   
+ 103  positive variables
+ 104      x
+ 105      y
+ 106      z
+ 107      x_
+ 108      z_
+ 109   
+ 110   
+ 111   
+ 112   
+ 113   
+ 114   
+ 115   
+ 116   
+ 117   
+
+
+COMPILATION TIME     =        0.000 SECONDS      3 MB  39.3.0 55b56f9b WEX-WEI
+GAMS 39.3.0  55b56f9b Jul 7, 2022           WEX-WEI x86 64bit/MS Windows - 08/02/22 11:24:35 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+EXECUTION TIME       =        0.000 SECONDS      4 MB  39.3.0 55b56f9b WEX-WEI
+
+
+USER: GAMS Demo license for Alessio La Greca         G220731|0002CO-GEN
+      University of Milan, Italy                               DL071214
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+Output     C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.lst

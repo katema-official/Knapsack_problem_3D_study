@@ -36,9 +36,9 @@ def update():
 
 
 
-cont_x = 120
-cont_y = 60
-cont_z = 80
+cont_x = 120#120
+cont_y = 60#60
+cont_z = 80#80
 
 def create_container():
     left_wall = Entity(model = "cube", color = rgb(0,0,0,1), scale = 1, collider = "box")
@@ -250,13 +250,18 @@ def start_ordering(boxes_array, solutions):
 
 
 
-
+def ratio_occupancy(placed_boxes):
+    volume_occupied = 0
+    for b in placed_boxes:
+        volume_occupied += b.xlen*b.ylen*b.zlen
+    total_volume = cont_x*cont_y*cont_z
+    return volume_occupied / total_volume
 
 def order_boxes(unplaced, placed, available_points, solutions):
 
     if(len(solutions) == 0):
 
-        if len(unplaced) == 0:
+        if ratio_occupancy(placed) > 0.6: #len(unplaced) == 0:
             solutions.append(placed)
             for elem in solutions[0]:
                 print("{}, {}, {}, {}, {}, {}\n".format(elem.x0, elem.y0, elem.z0, elem.xlen, elem.ylen, elem.zlen))
@@ -310,20 +315,27 @@ if __name__ == '__main__':
     z = 1
     create_container()
 
-    box1 = Box("Pippo", 20, 10, 30)
-    box2 = Box("Pluto", 40, 30, 20)
-    box3 = Box("Pietro", 30, 50, 60)
-    box4 = Box("Paperino", 50, 30, 80)
-    box5 = Box("Topolino", 30, 40, 10)
-    box6 = Box("Minnie", 50, 20, 70)
-    box7 = Box("Aaa", 70, 40, 60)
-    box8 = Box("Bbb", 30, 10, 20)
+    custom = False
 
-    boxes = [box1, box2, box3, box4, box5, box6, box7, box8]
+    boxes = []
+    if custom:
+        boxes = [Box("a", 20,20,10), Box("a", 10,10,10), Box("a", 20,10,10), Box("a", 10,20,10)]
 
-    #boxes = []
-    #for i in range(10):
-    #    boxes.append(randomly_generate_box(50,50,50))
+        """
+        box1 = Box("Pippo", 20, 10, 30)
+        box2 = Box("Pluto", 40, 30, 20)
+        box3 = Box("Pietro", 30, 50, 60)
+        box4 = Box("Paperino", 50, 30, 80)
+        box5 = Box("Topolino", 30, 40, 10)
+        box6 = Box("Minnie", 50, 20, 70)
+        box7 = Box("Aaa", 70, 40, 60)
+        box8 = Box("Bbb", 30, 10, 20)
+        boxes = [box1, box2, box3, box4, box5, box6, box7, box8]
+        """
+    else:
+        boxes = []
+        for i in range(50):
+            boxes.append(randomly_generate_box(50,50,50))
 
     start = time.time()
 
