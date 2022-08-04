@@ -36,6 +36,7 @@ Parameters
     p(i) = w(i) * h(i) * d(i);
     
 Variables
+    n(i,j) 1 if neither box i nor j are placed
     x(i) x coordinate of box i
     y(i) y coordinate of box i
     z(i) z coordinate of box i
@@ -75,6 +76,7 @@ Variables
     to_maximize variable that represents the quantity to maximize;
 
 binary variables
+    n
     X_w
     Z_w
     Y_h
@@ -112,6 +114,10 @@ positive variables
 
 equations
     max the quantity to maximize
+        
+    c_0a(i,j) if two boxes are NOT placed the variable n(ij) must take value 1 to fix c_1(ij)
+    c_0b(i,j) 
+
     c_1(i,j) if two boxes are placed then where are they in respect with each other
     
     c_2a(i,j) fix the x coordinate to be packed
@@ -178,11 +184,15 @@ equations
     c_22_1(i)
     c_22_2(i)
     c_22_3(i)
+    
 ;
     
 max.. to_maximize =e= sum(i, p(i)*s(i));
 
-c_1(i,j).. r(i,j) + l(i,j) + b(i,j) + f(i,j) + u(i,j) + o(i,j) =e= s(i) + s(j) - 1 $ ((s(i) + s(j) = 2) and not sameas(i,j));
+c_0a(i,j).. (-p(i) - p(j))/2 + 1 =l= n(i,j) $ (not sameas(i,j));
+c_0b(i,j).. n(i,j) =l= (-p(i) - p(j))/2 + 0.5 $ (not sameas(i,j));
+
+c_1(i,j).. r(i,j) + l(i,j) + b(i,j) + f(i,j) + u(i,j) + o(i,j) - n(i,j) =e= s(i) + s(j) - 1 $ (not sameas(i,j));
 
 c_2a(i,j).. x(i) + w(i)*X_w(i) + h(i)*(Z_w(i) - Y_h(i) + Z_d(i)) + d(i)*(1 - X_w(i) - Z_w(i) + Y_h(i) - Z_d(i)) =l= x(j) + M *(1 - l(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
 c_2b(i,j).. x(j) + w(j)*X_w(j) + h(j)*(Z_w(j) - Y_h(j) + Z_d(j)) + d(j)*(1 - X_w(j) - Z_w(j) + Y_h(j) - Z_d(j)) =l= x(i) + M *(1 - r(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));

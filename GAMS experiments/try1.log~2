@@ -1,5 +1,5 @@
 
---- Job try1.gms Start 08/02/22 15:13:28 39.3.0 55b56f9b WEX-WEI x86 64bit/MS Windows
+--- Job try1.gms Start 08/04/22 10:57:57 39.3.0 55b56f9b WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\39\gmsprmNT.txt
 --- GAMS Parameters defined
@@ -20,19 +20,21 @@ Licensee: GAMS Demo license for Alessio La Greca         G220731|0002CO-GEN
 Processor information: 1 socket(s), 6 core(s), and 12 thread(s) available
 GAMS 39.3.0   Copyright (C) 1987-2022 GAMS Development. All rights reserved
 --- Starting compilation
---- try1.gms(253) 3 Mb 2 Errors
-*** Error  57 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
-    Endogenous relational operations require model type "dnlp"
-*** Error 256 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
-    Error(s) in analyzing solve statement.
-*** The following MIP errors were detected in model try1:
-     57 equation c_1.. VAR operands relational or boolean
-     57 equation c_2a.. VAR operands relational or boolean
-     57 equation c_2b.. VAR operands relational or boolean
-     57 equation c_2c.. VAR operands relational or boolean
-     57 equation c_2d.. VAR operands relational or boolean
-     57 equation c_2e.. VAR operands relational or boolean
-     57 equation c_2f.. VAR operands relational or boolean
---- try1.gms(253) 3 Mb 2 Errors
+--- try1.gms(192) 3 Mb 1 Error
+*** Error 445 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    More than one operator in a row. You need to use parenthesis
+      if you want to use such statements. For example
+          x := x + - not y;  ->  x := x + (- (not y));
+          sum(i$not x, ..)   ->  sum(i$(not x),..)
+--- try1.gms(193) 3 Mb 2 Errors
+*** Error 445 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    More than one operator in a row. You need to use parenthesis
+      if you want to use such statements. For example
+          x := x + - not y;  ->  x := x + (- (not y));
+          sum(i$not x, ..)   ->  sum(i$(not x),..)
+--- try1.gms(263) 3 Mb 3 Errors
+*** Error 257 in C:\Users\aless\Desktop\Knapsack_problem_3D_study\GAMS experiments\try1.gms
+    Solve statement not checked because of previous errors
+--- try1.gms(263) 3 Mb 3 Errors
 *** Status: Compilation error(s)
---- Job try1.gms Stop 08/02/22 15:13:28 elapsed 0:00:00.020
+--- Job try1.gms Stop 08/04/22 10:57:57 elapsed 0:00:00.020
