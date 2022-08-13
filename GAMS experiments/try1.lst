@@ -1,4 +1,4 @@
-GAMS 39.3.0  55b56f9b Jul 7, 2022           WEX-WEI x86 64bit/MS Windows - 08/04/22 10:58:16 Page 1
+GAMS 39.3.0  55b56f9b Jul 7, 2022           WEX-WEI x86 64bit/MS Windows - 08/04/22 11:45:39 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -199,12 +199,12 @@ C o m p i l a t i o n
  194   
  195  c_1(i,j).. r(i,j) + l(i,j) + b(i,j) + f(i,j) + u(i,j) + o(i,j) - n(i,j) =e= s(i) + s(j) - 1 $ (not sameas(i,j));
  196   
- 197  c_2a(i,j).. x(i) + w(i)*X_w(i) + h(i)*(Z_w(i) - Y_h(i) + Z_d(i)) + d(i)*(1 - X_w(i) - Z_w(i) + Y_h(i) - Z_d(i)) =l= x(j) + M *(1 - l(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
- 198  c_2b(i,j).. x(j) + w(j)*X_w(j) + h(j)*(Z_w(j) - Y_h(j) + Z_d(j)) + d(j)*(1 - X_w(j) - Z_w(j) + Y_h(j) - Z_d(j)) =l= x(i) + M *(1 - r(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
- 199  c_2c(i,j).. z(i) + d(i)*Z_d(i) + h(i)*(1 - Z_w(i) - Z_d(i)) + w(i)*Z_w(i) =l= z(j) + M * (1 - b(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
- 200  c_2d(i,j).. z(j) + d(j)*Z_d(j) + h(j)*(1 - Z_w(j) - Z_d(j)) + w(j)*Z_w(j) =l= z(i) + M * (1 - f(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
- 201  c_2e(i,j).. y(i) + h(i)*Y_h(i) + w(i)*(1 - X_w(i) - Z_w(i)) + d(i)*(X_w(i) + Z_w(i) - Y_h(i)) =l= y(j) + M*(1 - u(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
- 202  c_2f(i,j).. y(j) + h(j)*Y_h(j) + w(j)*(1 - X_w(j) - Z_w(j)) + d(j)*(X_w(j) + Z_w(j) - Y_h(j)) =l= y(i) + M*(1 - o(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
+ 197  c_2a(i,j).. x(i) + w(i)*X_w(i) + h(i)*(Z_w(i) - Y_h(i) + Z_d(i)) + d(i)*(1 - X_w(i) - Z_w(i) + Y_h(i) - Z_d(i)) =l= x(j) + M *(1 - l(i,j)) $ (not sameas(i,j));
+ 198  c_2b(i,j).. x(j) + w(j)*X_w(j) + h(j)*(Z_w(j) - Y_h(j) + Z_d(j)) + d(j)*(1 - X_w(j) - Z_w(j) + Y_h(j) - Z_d(j)) =l= x(i) + M *(1 - r(i,j)) $ (not sameas(i,j));
+ 199  c_2c(i,j).. z(i) + d(i)*Z_d(i) + h(i)*(1 - Z_w(i) - Z_d(i)) + w(i)*Z_w(i) =l= z(j) + M * (1 - b(i,j)) $ (not sameas(i,j));
+ 200  c_2d(i,j).. z(j) + d(j)*Z_d(j) + h(j)*(1 - Z_w(j) - Z_d(j)) + w(j)*Z_w(j) =l= z(i) + M * (1 - f(i,j)) $ (not sameas(i,j));
+ 201  c_2e(i,j).. y(i) + h(i)*Y_h(i) + w(i)*(1 - X_w(i) - Z_w(i)) + d(i)*(X_w(i) + Z_w(i) - Y_h(i)) =l= y(j) + M*(1 - u(i,j)) $ (not sameas(i,j));
+ 202  c_2f(i,j).. y(j) + h(j)*Y_h(j) + w(j)*(1 - X_w(j) - Z_w(j)) + d(j)*(X_w(j) + Z_w(j) - Y_h(j)) =l= y(i) + M*(1 - o(i,j)) $ (not sameas(i,j));
  203   
  204  c_3a(i).. x(i) + w(i)*X_w(i) + h(i)*(Z_w(i) - Y_h(i) + Z_d(i)) + d(i)*(1 - X_w(i) - Z_w(i) + Y_h(i) - Z_d(i)) =l= Wcontainer;
  205  c_3b(i).. y(i) + h(i)*Y_h(i) + w(i)*(1 - X_w(i) - Z_w(i)) + d(i)*(X_w(i) + Z_w(i) - Y_h(i)) =l= Hcontainer;
@@ -266,21 +266,2300 @@ C o m p i l a t i o n
  261   
  262  model try1 /all/;
  263  solve try1 using mip maximizing to_maximize;
-****                                             $57,256
-****  57  Endogenous relational operations require model type "dnlp"
-**** 256  Error(s) in analyzing solve statement.
-**** The following MIP errors were detected in model try1:
-****  57 equation c_2a.. VAR operands relational or boolean
-****  57 equation c_2b.. VAR operands relational or boolean
-****  57 equation c_2c.. VAR operands relational or boolean
-****  57 equation c_2d.. VAR operands relational or boolean
-****  57 equation c_2e.. VAR operands relational or boolean
-****  57 equation c_2f.. VAR operands relational or boolean
-
-**** 2 ERROR(S)   0 WARNING(S)
 
 
 COMPILATION TIME     =        0.000 SECONDS      3 MB  39.3.0 55b56f9b WEX-WEI
+GAMS 39.3.0  55b56f9b Jul 7, 2022           WEX-WEI x86 64bit/MS Windows - 08/04/22 11:45:39 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE try1 Using MIP From line 263
+
+
+---- max  =E=  the quantity to maximize
+
+max..  - 12*s(b1) - 3*s(b2) - 4*s(b3) - 9*s(b4) - 3*s(b5) + to_maximize =E= 0 ; (LHS = 0)
+     
+
+---- c_0a  =L=  if two boxes are NOT placed the variable n(ij) must take value 1 to fix c_1(ij)
+
+c_0a(b1,b2)..  - n(b1,b2) =L= 6.5 ; (LHS = 0)
+     
+c_0a(b1,b3)..  - n(b1,b3) =L= 7 ; (LHS = 0)
+     
+c_0a(b1,b4)..  - n(b1,b4) =L= 9.5 ; (LHS = 0)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- c_0b  =L=  
+
+c_0b(b1,b1)..  n(b1,b1) =L= -12 ; (LHS = 0, INFES = 12 ****)
+     
+c_0b(b1,b2)..  n(b1,b2) =L= -7 ; (LHS = 0, INFES = 7 ****)
+     
+c_0b(b1,b3)..  n(b1,b3) =L= -7.5 ; (LHS = 0, INFES = 7.5 ****)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_1  =E=  if two boxes are placed then where are they in respect with each other
+
+c_1(b1,b1)..  - n(b1,b1) + r(b1,b1) + l(b1,b1) + b(b1,b1) + f(b1,b1) + u(b1,b1) + o(b1,b1) - 2*s(b1) =E= 0 ; (LHS = 0)
+     
+c_1(b1,b2)..  - n(b1,b2) + r(b1,b2) + l(b1,b2) + b(b1,b2) + f(b1,b2) + u(b1,b2) + o(b1,b2) - s(b1) - s(b2) =E= -1 ; (LHS = 0, INFES = 1 ****)
+     
+c_1(b1,b3)..  - n(b1,b3) + r(b1,b3) + l(b1,b3) + b(b1,b3) + f(b1,b3) + u(b1,b3) + o(b1,b3) - s(b1) - s(b3) =E= -1 ; (LHS = 0, INFES = 1 ****)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_2a  =L=  fix the x coordinate to be packed
+
+c_2a(b1,b1)..  X_w(b1) =L= -2 ; (LHS = 0, INFES = 2 ****)
+     
+c_2a(b1,b2)..  x(b1) - x(b2) + X_w(b1) + 100000*l(b1,b2) =L= 99998 ; (LHS = 0)
+     
+c_2a(b1,b3)..  x(b1) - x(b3) + X_w(b1) + 100000*l(b1,b3) =L= 99998 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_2b  =L=  fix the x coordinate to be packed
+
+c_2b(b1,b1)..  X_w(b1) =L= -2 ; (LHS = 0, INFES = 2 ****)
+     
+c_2b(b1,b2)..  - x(b1) + x(b2) + 2*X_w(b2) + 100000*r(b1,b2) =L= 99999 ; (LHS = 0)
+     
+c_2b(b1,b3)..  - x(b1) + x(b3) - Z_w(b3) + Y_h(b3) - Z_d(b3) + 100000*r(b1,b3) =L= 99998 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_2c  =L=  fix the z coordinate to be packed
+
+c_2c(b1,b1)..  Z_w(b1) =L= -2 ; (LHS = 0, INFES = 2 ****)
+     
+c_2c(b1,b2)..  z(b1) - z(b2) + Z_w(b1) + 100000*b(b1,b2) =L= 99998 ; (LHS = 0)
+     
+c_2c(b1,b3)..  z(b1) - z(b3) + Z_w(b1) + 100000*b(b1,b3) =L= 99998 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_2d  =L=  fix the z coordinate to be packed
+
+c_2d(b1,b1)..  Z_w(b1) =L= -2 ; (LHS = 0, INFES = 2 ****)
+     
+c_2d(b1,b2)..  - z(b1) + z(b2) + 2*Z_w(b2) + 100000*f(b1,b2) =L= 99999 ; (LHS = 0)
+     
+c_2d(b1,b3)..  - z(b1) + z(b3) + Z_w(b3) + Z_d(b3) + 100000*f(b1,b3) =L= 99999 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_2e  =L=  fix the y coordinate to be packed
+
+c_2e(b1,b1)..  - X_w(b1) - Z_w(b1) =L= -3 ; (LHS = 0, INFES = 3 ****)
+     
+c_2e(b1,b2)..  y(b1) - y(b2) - X_w(b1) - Z_w(b1) + 100000*u(b1,b2) =L= 99997 ; (LHS = 0)
+     
+c_2e(b1,b3)..  y(b1) - y(b3) - X_w(b1) - Z_w(b1) + 100000*u(b1,b3) =L= 99997 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_2f  =L=  fix the y coordinate to be packed
+
+c_2f(b1,b1)..  - X_w(b1) - Z_w(b1) =L= -3 ; (LHS = 0, INFES = 3 ****)
+     
+c_2f(b1,b2)..  - y(b1) + y(b2) - 2*X_w(b2) - 2*Z_w(b2) + 100000*o(b1,b2) =L= 99997 ; (LHS = 0)
+     
+c_2f(b1,b3)..  - y(b1) + y(b3) - Y_h(b3) + 100000*o(b1,b3) =L= 99998 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_3a  =L=  box does not exceed bin width
+
+c_3a(b1)..  x(b1) + X_w(b1) =L= 1 ; (LHS = 0)
+     
+c_3a(b2)..  x(b2) + 2*X_w(b2) =L= 2 ; (LHS = 0)
+     
+c_3a(b3)..  x(b3) - Z_w(b3) + Y_h(b3) - Z_d(b3) =L= 1 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_3b  =L=  box does not exceed bin height
+
+c_3b(b1)..  y(b1) - X_w(b1) - Z_w(b1) =L= 0 ; (LHS = 0)
+     
+c_3b(b2)..  y(b2) - 2*X_w(b2) - 2*Z_w(b2) =L= 0 ; (LHS = 0)
+     
+c_3b(b3)..  y(b3) - Y_h(b3) =L= 1 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_3c  =L=  box does not exceen bin depth
+
+c_3c(b1)..  z(b1) + Z_w(b1) =L= 1 ; (LHS = 0)
+     
+c_3c(b2)..  z(b2) + 2*Z_w(b2) =L= 2 ; (LHS = 0)
+     
+c_3c(b3)..  z(b3) + Z_w(b3) + Z_d(b3) =L= 2 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_4a  =L=  the width of box is parallel to just one axis
+
+c_4a(b1)..  X_w(b1) + Z_w(b1) =L= 1 ; (LHS = 0)
+     
+c_4a(b2)..  X_w(b2) + Z_w(b2) =L= 1 ; (LHS = 0)
+     
+c_4a(b3)..  X_w(b3) + Z_w(b3) =L= 1 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_4b  =L=  only width or depth of box is parallel to axis Z
+
+c_4b(b1)..  Z_w(b1) + Z_d(b1) =L= 1 ; (LHS = 0)
+     
+c_4b(b2)..  Z_w(b2) + Z_d(b2) =L= 1 ; (LHS = 0)
+     
+c_4b(b3)..  Z_w(b3) + Z_d(b3) =L= 1 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_4c_1  =L=  height can be parallel only to Z or Y
+
+c_4c_1(b1)..  - Z_w(b1) + Y_h(b1) - Z_d(b1) =L= 0 ; (LHS = 0)
+     
+c_4c_1(b2)..  - Z_w(b2) + Y_h(b2) - Z_d(b2) =L= 0 ; (LHS = 0)
+     
+c_4c_1(b3)..  - Z_w(b3) + Y_h(b3) - Z_d(b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_4c_2  =L=  
+
+c_4c_2(b1)..  Z_w(b1) - Y_h(b1) + Z_d(b1) =L= 1 ; (LHS = 0)
+     
+c_4c_2(b2)..  Z_w(b2) - Y_h(b2) + Z_d(b2) =L= 1 ; (LHS = 0)
+     
+c_4c_2(b3)..  Z_w(b3) - Y_h(b3) + Z_d(b3) =L= 1 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_4d_1  =L=  width height and depth are not parallel to more that one axes
+
+c_4d_1(b1)..  X_w(b1) + Z_w(b1) - Y_h(b1) + Z_d(b1) =L= 1 ; (LHS = 0)
+     
+c_4d_1(b2)..  X_w(b2) + Z_w(b2) - Y_h(b2) + Z_d(b2) =L= 1 ; (LHS = 0)
+     
+c_4d_1(b3)..  X_w(b3) + Z_w(b3) - Y_h(b3) + Z_d(b3) =L= 1 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_4d_2  =L=  
+
+c_4d_2(b1)..  - X_w(b1) - Z_w(b1) + Y_h(b1) - Z_d(b1) =L= 0 ; (LHS = 0)
+     
+c_4d_2(b2)..  - X_w(b2) - Z_w(b2) + Y_h(b2) - Z_d(b2) =L= 0 ; (LHS = 0)
+     
+c_4d_2(b3)..  - X_w(b3) - Z_w(b3) + Y_h(b3) - Z_d(b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_4e_1  =L=  
+
+c_4e_1(b1)..  - X_w(b1) - Z_w(b1) + Y_h(b1) =L= 0 ; (LHS = 0)
+     
+c_4e_1(b2)..  - X_w(b2) - Z_w(b2) + Y_h(b2) =L= 0 ; (LHS = 0)
+     
+c_4e_1(b3)..  - X_w(b3) - Z_w(b3) + Y_h(b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_4e_2  =L=  
+
+c_4e_2(b1)..  X_w(b1) + Z_w(b1) - Y_h(b1) =L= 1 ; (LHS = 0)
+     
+c_4e_2(b2)..  X_w(b2) + Z_w(b2) - Y_h(b2) =L= 1 ; (LHS = 0)
+     
+c_4e_2(b3)..  X_w(b3) + Z_w(b3) - Y_h(b3) =L= 1 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_7a_1  =L=  
+
+c_7a_1(b1,b2)..  - x(b1) + x(b2) - 100000*ya(b1,b2) =L= 0 ; (LHS = 0)
+     
+c_7a_1(b1,b3)..  - x(b1) + x(b3) - 100000*ya(b1,b3) =L= 0 ; (LHS = 0)
+     
+c_7a_1(b1,b4)..  - x(b1) + x(b4) - 100000*ya(b1,b4) =L= 0 ; (LHS = 0)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- c_7a_2  =G=  
+
+c_7a_2(b1,b2)..  - x(b1) + x(b2) - 100000*ya(b1,b2) =G= -100000 ; (LHS = 0)
+     
+c_7a_2(b1,b3)..  - x(b1) + x(b3) - 100000*ya(b1,b3) =G= -100000 ; (LHS = 0)
+     
+c_7a_2(b1,b4)..  - x(b1) + x(b4) - 100000*ya(b1,b4) =G= -100000 ; (LHS = 0)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- c_7b_1  =L=  
+
+c_7b_1(b1,b1)..  - x(b1) + x_(b1) =L= 0 ; (LHS = 0)
+     
+c_7b_1(b1,b2)..  - x(b2) - 100000*xa(b1,b2) + x_(b1) =L= 0 ; (LHS = 0)
+     
+c_7b_1(b1,b3)..  - x(b3) - 100000*xa(b1,b3) + x_(b1) =L= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_7b_2  =G=  
+
+c_7b_2(b1,b1)..  - x(b1) - 100000*xa(b1,b1) + x_(b1) =G= -100000 ; (LHS = 0)
+     
+c_7b_2(b1,b2)..  - x(b2) - 100000*xa(b1,b2) + x_(b1) =G= -99999.5 ; (LHS = 0)
+     
+c_7b_2(b1,b3)..  - x(b3) - 100000*xa(b1,b3) + x_(b1) =G= -99999.5 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_7c_1  =L=  
+
+c_7c_1(b1,b1)..  0.5*ya(b1,b1) + 0.5*xa(b1,b1) =L= 0.5 ; (LHS = 0)
+     
+c_7c_1(b1,b2)..  0.5*ya(b1,b2) + 0.5*xa(b1,b2) - za(b1,b2) =L= 0.5 ; (LHS = 0)
+     
+c_7c_1(b1,b3)..  0.5*ya(b1,b3) + 0.5*xa(b1,b3) - za(b1,b3) =L= 0.5 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+**** Exec Error at line 222: division by zero (0)
+**** Evaluation error(s) in equation "c_7c_2(b1,b1)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_7c_2(b2,b2)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_7c_2(b3,b3)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_7c_2(b4,b4)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_7c_2(b5,b5)"
+        Problem in RHS evaluation
+
+---- c_7c_2  =L=  
+
+c_7c_2(b1,b1)..  - ya(b1,b1) - xa(b1,b1) + za(b1,b1) =L= UNDF ; (LHS = UNDF)
+     
+c_7c_2(b1,b2)..  - 0.5*ya(b1,b2) - 0.5*xa(b1,b2) + za(b1,b2) =L= 0 ; (LHS = 0)
+     
+c_7c_2(b1,b3)..  - 0.5*ya(b1,b3) - 0.5*xa(b1,b3) + za(b1,b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_8a_1  =L=  
+
+c_8a_1(b1,b2)..  - z(b1) + z(b2) - 100000*yb(b1,b2) =L= 0 ; (LHS = 0)
+     
+c_8a_1(b1,b3)..  - z(b1) + z(b3) - 100000*yb(b1,b3) =L= 0 ; (LHS = 0)
+     
+c_8a_1(b1,b4)..  - z(b1) + z(b4) - 100000*yb(b1,b4) =L= 0 ; (LHS = 0)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- c_8a_2  =G=  
+
+c_8a_2(b1,b2)..  - z(b1) + z(b2) - 100000*yb(b1,b2) =G= -100000 ; (LHS = 0)
+     
+c_8a_2(b1,b3)..  - z(b1) + z(b3) - 100000*yb(b1,b3) =G= -100000 ; (LHS = 0)
+     
+c_8a_2(b1,b4)..  - z(b1) + z(b4) - 100000*yb(b1,b4) =G= -100000 ; (LHS = 0)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- c_8b_1  =L=  
+
+c_8b_1(b1,b1)..  - z(b1) + z_(b1) =L= 0 ; (LHS = 0)
+     
+c_8b_1(b1,b2)..  - z(b2) - 100000*xb(b1,b2) + z_(b1) =L= 0 ; (LHS = 0)
+     
+c_8b_1(b1,b3)..  - z(b3) - 100000*xb(b1,b3) + z_(b1) =L= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_8b_2  =G=  
+
+c_8b_2(b1,b1)..  - z(b1) - 100000*xb(b1,b1) + z_(b1) =G= -100000 ; (LHS = 0)
+     
+c_8b_2(b1,b2)..  - z(b2) - 100000*xb(b1,b2) + z_(b1) =G= -99999.5 ; (LHS = 0)
+     
+c_8b_2(b1,b3)..  - z(b3) - 100000*xb(b1,b3) + z_(b1) =G= -99999.5 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_8c_1  =L=  
+
+c_8c_1(b1,b1)..  0.5*yb(b1,b1) + 0.5*xb(b1,b1) =L= 0.5 ; (LHS = 0)
+     
+c_8c_1(b1,b2)..  0.5*yb(b1,b2) + 0.5*xb(b1,b2) - zb(b1,b2) =L= 0.5 ; (LHS = 0)
+     
+c_8c_1(b1,b3)..  0.5*yb(b1,b3) + 0.5*xb(b1,b3) - zb(b1,b3) =L= 0.5 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+**** Exec Error at line 229: division by zero (0)
+**** Evaluation error(s) in equation "c_8c_2(b1,b1)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_8c_2(b2,b2)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_8c_2(b3,b3)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_8c_2(b4,b4)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_8c_2(b5,b5)"
+        Problem in RHS evaluation
+
+---- c_8c_2  =L=  
+
+c_8c_2(b1,b1)..  - yb(b1,b1) - xb(b1,b1) + zb(b1,b1) =L= UNDF ; (LHS = UNDF)
+     
+c_8c_2(b1,b2)..  - 0.5*yb(b1,b2) - 0.5*xb(b1,b2) + zb(b1,b2) =L= 0 ; (LHS = 0)
+     
+c_8c_2(b1,b3)..  - 0.5*yb(b1,b3) - 0.5*xb(b1,b3) + zb(b1,b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_9a_1  =L=  
+
+c_9a_1(b1,b1)..  - x(b1) + x_(b1) =L= 0 ; (LHS = 0)
+     
+c_9a_1(b1,b2)..  - x(b1) - 100000*yc(b1,b2) + x_(b2) =L= 0 ; (LHS = 0)
+     
+c_9a_1(b1,b3)..  - x(b1) - 100000*yc(b1,b3) + x_(b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_9a_2  =G=  
+
+c_9a_2(b1,b1)..  - x(b1) - 100000*yc(b1,b1) + x_(b1) =G= -100000 ; (LHS = 0)
+     
+c_9a_2(b1,b2)..  - x(b1) - 100000*yc(b1,b2) + x_(b2) =G= -99999.5 ; (LHS = 0)
+     
+c_9a_2(b1,b3)..  - x(b1) - 100000*yc(b1,b3) + x_(b3) =G= -99999.5 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_9b_1  =L=  
+
+c_9b_1(b1,b2)..  - 100000*xc(b1,b2) + x_(b1) - x_(b2) =L= 0 ; (LHS = 0)
+     
+c_9b_1(b1,b3)..  - 100000*xc(b1,b3) + x_(b1) - x_(b3) =L= 0 ; (LHS = 0)
+     
+c_9b_1(b1,b4)..  - 100000*xc(b1,b4) + x_(b1) - x_(b4) =L= 0 ; (LHS = 0)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- c_9b_2  =G=  
+
+c_9b_2(b1,b2)..  - 100000*xc(b1,b2) + x_(b1) - x_(b2) =G= -100000 ; (LHS = 0)
+     
+c_9b_2(b1,b3)..  - 100000*xc(b1,b3) + x_(b1) - x_(b3) =G= -100000 ; (LHS = 0)
+     
+c_9b_2(b1,b4)..  - 100000*xc(b1,b4) + x_(b1) - x_(b4) =G= -100000 ; (LHS = 0)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- c_9c_1  =L=  
+
+c_9c_1(b1,b1)..  0.5*yc(b1,b1) + 0.5*xc(b1,b1) =L= 0.5 ; (LHS = 0)
+     
+c_9c_1(b1,b2)..  0.5*yc(b1,b2) + 0.5*xc(b1,b2) - zc(b1,b2) =L= 0.5 ; (LHS = 0)
+     
+c_9c_1(b1,b3)..  0.5*yc(b1,b3) + 0.5*xc(b1,b3) - zc(b1,b3) =L= 0.5 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+**** Exec Error at line 236: division by zero (0)
+**** Evaluation error(s) in equation "c_9c_2(b1,b1)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_9c_2(b2,b2)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_9c_2(b3,b3)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_9c_2(b4,b4)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_9c_2(b5,b5)"
+        Problem in RHS evaluation
+
+---- c_9c_2  =L=  
+
+c_9c_2(b1,b1)..  - yc(b1,b1) - xc(b1,b1) + zc(b1,b1) =L= UNDF ; (LHS = UNDF)
+     
+c_9c_2(b1,b2)..  - 0.5*yc(b1,b2) - 0.5*xc(b1,b2) + zc(b1,b2) =L= 0 ; (LHS = 0)
+     
+c_9c_2(b1,b3)..  - 0.5*yc(b1,b3) - 0.5*xc(b1,b3) + zc(b1,b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_10a_1  =L=  
+
+c_10a_1(b1,b1)..  - z(b1) + z_(b1) =L= 0 ; (LHS = 0)
+     
+c_10a_1(b1,b2)..  - z(b1) - 100000*yd(b1,b2) + z_(b2) =L= 0 ; (LHS = 0)
+     
+c_10a_1(b1,b3)..  - z(b1) - 100000*yd(b1,b3) + z_(b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_10a_2  =G=  
+
+c_10a_2(b1,b1)..  - z(b1) - 100000*yd(b1,b1) + z_(b1) =G= -100000 ; (LHS = 0)
+     
+c_10a_2(b1,b2)..  - z(b1) - 100000*yd(b1,b2) + z_(b2) =G= -99999.5 ; (LHS = 0)
+     
+c_10a_2(b1,b3)..  - z(b1) - 100000*yd(b1,b3) + z_(b3) =G= -99999.5 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_10b_1  =L=  
+
+c_10b_1(b1,b2)..  - 100000*xd(b1,b2) + z_(b1) - z_(b2) =L= 0 ; (LHS = 0)
+     
+c_10b_1(b1,b3)..  - 100000*xd(b1,b3) + z_(b1) - z_(b3) =L= 0 ; (LHS = 0)
+     
+c_10b_1(b1,b4)..  - 100000*xd(b1,b4) + z_(b1) - z_(b4) =L= 0 ; (LHS = 0)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- c_10b_2  =G=  
+
+c_10b_2(b1,b2)..  - 100000*xd(b1,b2) + z_(b1) - z_(b2) =G= -100000 ; (LHS = 0)
+     
+c_10b_2(b1,b3)..  - 100000*xd(b1,b3) + z_(b1) - z_(b3) =G= -100000 ; (LHS = 0)
+     
+c_10b_2(b1,b4)..  - 100000*xd(b1,b4) + z_(b1) - z_(b4) =G= -100000 ; (LHS = 0)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- c_10c_1  =L=  
+
+c_10c_1(b1,b1)..  0.5*yd(b1,b1) + 0.5*xd(b1,b1) =L= 0.5 ; (LHS = 0)
+     
+c_10c_1(b1,b2)..  0.5*yd(b1,b2) + 0.5*xd(b1,b2) - zd(b1,b2) =L= 0.5 ; (LHS = 0)
+     
+c_10c_1(b1,b3)..  0.5*yd(b1,b3) + 0.5*xd(b1,b3) - zd(b1,b3) =L= 0.5 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+**** Exec Error at line 243: division by zero (0)
+**** Evaluation error(s) in equation "c_10c_2(b1,b1)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_10c_2(b2,b2)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_10c_2(b3,b3)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_10c_2(b4,b4)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_10c_2(b5,b5)"
+        Problem in RHS evaluation
+
+---- c_10c_2  =L=  
+
+c_10c_2(b1,b1)..  - yd(b1,b1) - xd(b1,b1) + zd(b1,b1) =L= UNDF ; (LHS = UNDF)
+     
+c_10c_2(b1,b2)..  - 0.5*yd(b1,b2) - 0.5*xd(b1,b2) + zd(b1,b2) =L= 0 ; (LHS = 0)
+     
+c_10c_2(b1,b3)..  - 0.5*yd(b1,b3) - 0.5*xd(b1,b3) + zd(b1,b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_11_1  =L=  
+
+c_11_1(b1,b1)..  0.5*za(b1,b1) + 0.5*zb(b1,b1) =L= 0.5 ; (LHS = 0)
+     
+c_11_1(b1,b2)..  0.5*za(b1,b2) + 0.5*zb(b1,b2) - Cs1(b1,b2) =L= 0.5 ; (LHS = 0)
+     
+c_11_1(b1,b3)..  0.5*za(b1,b3) + 0.5*zb(b1,b3) - Cs1(b1,b3) =L= 0.5 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+**** Exec Error at line 246: division by zero (0)
+**** Evaluation error(s) in equation "c_11_2(b1,b1)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_11_2(b2,b2)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_11_2(b3,b3)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_11_2(b4,b4)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_11_2(b5,b5)"
+        Problem in RHS evaluation
+
+---- c_11_2  =L=  
+
+c_11_2(b1,b1)..  - za(b1,b1) - zb(b1,b1) + Cs1(b1,b1) =L= UNDF ; (LHS = UNDF)
+     
+c_11_2(b1,b2)..  - 0.5*za(b1,b2) - 0.5*zb(b1,b2) + Cs1(b1,b2) =L= 0 ; (LHS = 0)
+     
+c_11_2(b1,b3)..  - 0.5*za(b1,b3) - 0.5*zb(b1,b3) + Cs1(b1,b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_12_1  =L=  
+
+c_12_1(b1,b1)..  0.5*za(b1,b1) + 0.5*zd(b1,b1) =L= 0.5 ; (LHS = 0)
+     
+c_12_1(b1,b2)..  0.5*za(b1,b2) + 0.5*zd(b1,b2) - Cs2(b1,b2) =L= 0.5 ; (LHS = 0)
+     
+c_12_1(b1,b3)..  0.5*za(b1,b3) + 0.5*zd(b1,b3) - Cs2(b1,b3) =L= 0.5 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+**** Exec Error at line 248: division by zero (0)
+**** Evaluation error(s) in equation "c_12_2(b1,b1)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_12_2(b2,b2)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_12_2(b3,b3)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_12_2(b4,b4)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_12_2(b5,b5)"
+        Problem in RHS evaluation
+
+---- c_12_2  =L=  
+
+c_12_2(b1,b1)..  - za(b1,b1) - zd(b1,b1) + Cs2(b1,b1) =L= UNDF ; (LHS = UNDF)
+     
+c_12_2(b1,b2)..  - 0.5*za(b1,b2) - 0.5*zd(b1,b2) + Cs2(b1,b2) =L= 0 ; (LHS = 0)
+     
+c_12_2(b1,b3)..  - 0.5*za(b1,b3) - 0.5*zd(b1,b3) + Cs2(b1,b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_13_1  =L=  
+
+c_13_1(b1,b1)..  0.5*zb(b1,b1) + 0.5*zc(b1,b1) =L= 0.5 ; (LHS = 0)
+     
+c_13_1(b1,b2)..  0.5*zb(b1,b2) + 0.5*zc(b1,b2) - Cs3(b1,b2) =L= 0.5 ; (LHS = 0)
+     
+c_13_1(b1,b3)..  0.5*zb(b1,b3) + 0.5*zc(b1,b3) - Cs3(b1,b3) =L= 0.5 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+**** Exec Error at line 250: division by zero (0)
+**** Evaluation error(s) in equation "c_13_2(b1,b1)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_13_2(b2,b2)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_13_2(b3,b3)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_13_2(b4,b4)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_13_2(b5,b5)"
+        Problem in RHS evaluation
+
+---- c_13_2  =L=  
+
+c_13_2(b1,b1)..  - zb(b1,b1) - zc(b1,b1) + Cs3(b1,b1) =L= UNDF ; (LHS = UNDF)
+     
+c_13_2(b1,b2)..  - 0.5*zb(b1,b2) - 0.5*zc(b1,b2) + Cs3(b1,b2) =L= 0 ; (LHS = 0)
+     
+c_13_2(b1,b3)..  - 0.5*zb(b1,b3) - 0.5*zc(b1,b3) + Cs3(b1,b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_14_1  =L=  
+
+c_14_1(b1,b1)..  0.5*zc(b1,b1) + 0.5*zd(b1,b1) =L= 0.5 ; (LHS = 0)
+     
+c_14_1(b1,b2)..  0.5*zc(b1,b2) + 0.5*zd(b1,b2) - Cs4(b1,b2) =L= 0.5 ; (LHS = 0)
+     
+c_14_1(b1,b3)..  0.5*zc(b1,b3) + 0.5*zd(b1,b3) - Cs4(b1,b3) =L= 0.5 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+**** Exec Error at line 252: division by zero (0)
+**** Evaluation error(s) in equation "c_14_2(b1,b1)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_14_2(b2,b2)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_14_2(b3,b3)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_14_2(b4,b4)"
+        Problem in RHS evaluation
+**** Evaluation error(s) in equation "c_14_2(b5,b5)"
+        Problem in RHS evaluation
+
+---- c_14_2  =L=  
+
+c_14_2(b1,b1)..  - zc(b1,b1) - zd(b1,b1) + Cs4(b1,b1) =L= UNDF ; (LHS = UNDF)
+     
+c_14_2(b1,b2)..  - 0.5*zc(b1,b2) - 0.5*zd(b1,b2) + Cs4(b1,b2) =L= 0 ; (LHS = 0)
+     
+c_14_2(b1,b3)..  - 0.5*zc(b1,b3) - 0.5*zd(b1,b3) + Cs4(b1,b3) =L= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_15  =E=  
+
+c_15(b1,b1)..  - u(b1,b1) + Cs1(b1,b1) + Cs2(b1,b1) + Cs3(b1,b1) + Cs4(b1,b1) =E= 0 ; (LHS = 0)
+     
+c_15(b1,b2)..  - u(b1,b2) - o(b1,b2) + Cs1(b1,b2) + Cs2(b1,b2) + Cs3(b1,b2) + Cs4(b1,b2) =E= 0 ; (LHS = 0)
+     
+c_15(b1,b3)..  - u(b1,b3) - o(b1,b3) + Cs1(b1,b3) + Cs2(b1,b3) + Cs3(b1,b3) + Cs4(b1,b3) =E= 0 ; (LHS = 0)
+     
+REMAINING 22 ENTRIES SKIPPED
+
+
+---- c_16  =E=  definition of x_
+
+c_16(b1)..  - x(b1) - X_w(b1) + x_(b1) =E= 2 ; (LHS = 0, INFES = 2 ****)
+     
+c_16(b2)..  - x(b2) - 2*X_w(b2) + x_(b2) =E= 1 ; (LHS = 0, INFES = 1 ****)
+     
+c_16(b3)..  - x(b3) + Z_w(b3) - Y_h(b3) + Z_d(b3) + x_(b3) =E= 2 ; (LHS = 0, INFES = 2 ****)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_17  =E=  definition on z_
+
+c_17(b1)..  - z(b1) - Z_w(b1) + z_(b1) =E= 2 ; (LHS = 0, INFES = 2 ****)
+     
+c_17(b2)..  - z(b2) - 2*Z_w(b2) + z_(b2) =E= 1 ; (LHS = 0, INFES = 1 ****)
+     
+c_17(b3)..  - z(b3) - Z_w(b3) - Z_d(b3) + z_(b3) =E= 1 ; (LHS = 0, INFES = 1 ****)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_22_1  =G=  
+
+c_22_1(b1)..  x(b1) =G= 0 ; (LHS = 0)
+     
+c_22_1(b2)..  x(b2) =G= 0 ; (LHS = 0)
+     
+c_22_1(b3)..  x(b3) =G= 0 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_22_2  =G=  
+
+c_22_2(b1)..  y(b1) =G= 0 ; (LHS = 0)
+     
+c_22_2(b2)..  y(b2) =G= 0 ; (LHS = 0)
+     
+c_22_2(b3)..  y(b3) =G= 0 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+
+---- c_22_3  =G=  
+
+c_22_3(b1)..  z(b1) =G= 0 ; (LHS = 0)
+     
+c_22_3(b2)..  z(b2) =G= 0 ; (LHS = 0)
+     
+c_22_3(b3)..  z(b3) =G= 0 ; (LHS = 0)
+     
+REMAINING 2 ENTRIES SKIPPED
+
+GAMS 39.3.0  55b56f9b Jul 7, 2022           WEX-WEI x86 64bit/MS Windows - 08/04/22 11:45:39 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE try1 Using MIP From line 263
+
+
+---- n  1 if neither box i nor j are placed
+
+n(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_0b(b1,b1)
+       -1       c_1(b1,b1)
+
+n(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_0a(b1,b2)
+        1       c_0b(b1,b2)
+       -1       c_1(b1,b2)
+
+n(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_0a(b1,b3)
+        1       c_0b(b1,b3)
+       -1       c_1(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- x  x coordinate of box i
+
+x(b1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       c_2a(b1,b2)
+        1       c_2a(b1,b3)
+        1       c_2a(b1,b4)
+        1       c_2a(b1,b5)
+       -1       c_2a(b2,b1)
+       -1       c_2a(b3,b1)
+       -1       c_2a(b4,b1)
+       -1       c_2a(b5,b1)
+       -1       c_2b(b1,b2)
+       -1       c_2b(b1,b3)
+       -1       c_2b(b1,b4)
+       -1       c_2b(b1,b5)
+        1       c_2b(b2,b1)
+        1       c_2b(b3,b1)
+        1       c_2b(b4,b1)
+        1       c_2b(b5,b1)
+        1       c_3a(b1)
+       -1       c_7a_1(b1,b2)
+       -1       c_7a_1(b1,b3)
+       -1       c_7a_1(b1,b4)
+       -1       c_7a_1(b1,b5)
+        1       c_7a_1(b2,b1)
+        1       c_7a_1(b3,b1)
+        1       c_7a_1(b4,b1)
+        1       c_7a_1(b5,b1)
+       -1       c_7a_2(b1,b2)
+       -1       c_7a_2(b1,b3)
+       -1       c_7a_2(b1,b4)
+       -1       c_7a_2(b1,b5)
+        1       c_7a_2(b2,b1)
+        1       c_7a_2(b3,b1)
+        1       c_7a_2(b4,b1)
+        1       c_7a_2(b5,b1)
+       -1       c_7b_1(b1,b1)
+       -1       c_7b_1(b2,b1)
+       -1       c_7b_1(b3,b1)
+       -1       c_7b_1(b4,b1)
+       -1       c_7b_1(b5,b1)
+       -1       c_7b_2(b1,b1)
+       -1       c_7b_2(b2,b1)
+       -1       c_7b_2(b3,b1)
+       -1       c_7b_2(b4,b1)
+       -1       c_7b_2(b5,b1)
+       -1       c_9a_1(b1,b1)
+       -1       c_9a_1(b1,b2)
+       -1       c_9a_1(b1,b3)
+       -1       c_9a_1(b1,b4)
+       -1       c_9a_1(b1,b5)
+       -1       c_9a_2(b1,b1)
+       -1       c_9a_2(b1,b2)
+       -1       c_9a_2(b1,b3)
+       -1       c_9a_2(b1,b4)
+       -1       c_9a_2(b1,b5)
+       -1       c_16(b1)
+        1       c_22_1(b1)
+
+x(b2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       c_2a(b1,b2)
+        1       c_2a(b2,b1)
+        1       c_2a(b2,b3)
+        1       c_2a(b2,b4)
+        1       c_2a(b2,b5)
+       -1       c_2a(b3,b2)
+       -1       c_2a(b4,b2)
+       -1       c_2a(b5,b2)
+        1       c_2b(b1,b2)
+       -1       c_2b(b2,b1)
+       -1       c_2b(b2,b3)
+       -1       c_2b(b2,b4)
+       -1       c_2b(b2,b5)
+        1       c_2b(b3,b2)
+        1       c_2b(b4,b2)
+        1       c_2b(b5,b2)
+        1       c_3a(b2)
+        1       c_7a_1(b1,b2)
+       -1       c_7a_1(b2,b1)
+       -1       c_7a_1(b2,b3)
+       -1       c_7a_1(b2,b4)
+       -1       c_7a_1(b2,b5)
+        1       c_7a_1(b3,b2)
+        1       c_7a_1(b4,b2)
+        1       c_7a_1(b5,b2)
+        1       c_7a_2(b1,b2)
+       -1       c_7a_2(b2,b1)
+       -1       c_7a_2(b2,b3)
+       -1       c_7a_2(b2,b4)
+       -1       c_7a_2(b2,b5)
+        1       c_7a_2(b3,b2)
+        1       c_7a_2(b4,b2)
+        1       c_7a_2(b5,b2)
+       -1       c_7b_1(b1,b2)
+       -1       c_7b_1(b2,b2)
+       -1       c_7b_1(b3,b2)
+       -1       c_7b_1(b4,b2)
+       -1       c_7b_1(b5,b2)
+       -1       c_7b_2(b1,b2)
+       -1       c_7b_2(b2,b2)
+       -1       c_7b_2(b3,b2)
+       -1       c_7b_2(b4,b2)
+       -1       c_7b_2(b5,b2)
+       -1       c_9a_1(b2,b1)
+       -1       c_9a_1(b2,b2)
+       -1       c_9a_1(b2,b3)
+       -1       c_9a_1(b2,b4)
+       -1       c_9a_1(b2,b5)
+       -1       c_9a_2(b2,b1)
+       -1       c_9a_2(b2,b2)
+       -1       c_9a_2(b2,b3)
+       -1       c_9a_2(b2,b4)
+       -1       c_9a_2(b2,b5)
+       -1       c_16(b2)
+        1       c_22_1(b2)
+
+x(b3)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       c_2a(b1,b3)
+       -1       c_2a(b2,b3)
+        1       c_2a(b3,b1)
+        1       c_2a(b3,b2)
+        1       c_2a(b3,b4)
+        1       c_2a(b3,b5)
+       -1       c_2a(b4,b3)
+       -1       c_2a(b5,b3)
+        1       c_2b(b1,b3)
+        1       c_2b(b2,b3)
+       -1       c_2b(b3,b1)
+       -1       c_2b(b3,b2)
+       -1       c_2b(b3,b4)
+       -1       c_2b(b3,b5)
+        1       c_2b(b4,b3)
+        1       c_2b(b5,b3)
+        1       c_3a(b3)
+        1       c_7a_1(b1,b3)
+        1       c_7a_1(b2,b3)
+       -1       c_7a_1(b3,b1)
+       -1       c_7a_1(b3,b2)
+       -1       c_7a_1(b3,b4)
+       -1       c_7a_1(b3,b5)
+        1       c_7a_1(b4,b3)
+        1       c_7a_1(b5,b3)
+        1       c_7a_2(b1,b3)
+        1       c_7a_2(b2,b3)
+       -1       c_7a_2(b3,b1)
+       -1       c_7a_2(b3,b2)
+       -1       c_7a_2(b3,b4)
+       -1       c_7a_2(b3,b5)
+        1       c_7a_2(b4,b3)
+        1       c_7a_2(b5,b3)
+       -1       c_7b_1(b1,b3)
+       -1       c_7b_1(b2,b3)
+       -1       c_7b_1(b3,b3)
+       -1       c_7b_1(b4,b3)
+       -1       c_7b_1(b5,b3)
+       -1       c_7b_2(b1,b3)
+       -1       c_7b_2(b2,b3)
+       -1       c_7b_2(b3,b3)
+       -1       c_7b_2(b4,b3)
+       -1       c_7b_2(b5,b3)
+       -1       c_9a_1(b3,b1)
+       -1       c_9a_1(b3,b2)
+       -1       c_9a_1(b3,b3)
+       -1       c_9a_1(b3,b4)
+       -1       c_9a_1(b3,b5)
+       -1       c_9a_2(b3,b1)
+       -1       c_9a_2(b3,b2)
+       -1       c_9a_2(b3,b3)
+       -1       c_9a_2(b3,b4)
+       -1       c_9a_2(b3,b5)
+       -1       c_16(b3)
+        1       c_22_1(b3)
+
+REMAINING 2 ENTRIES SKIPPED
+
+---- y  y coordinate of box i
+
+y(b1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       c_2e(b1,b2)
+        1       c_2e(b1,b3)
+        1       c_2e(b1,b4)
+        1       c_2e(b1,b5)
+       -1       c_2e(b2,b1)
+       -1       c_2e(b3,b1)
+       -1       c_2e(b4,b1)
+       -1       c_2e(b5,b1)
+       -1       c_2f(b1,b2)
+       -1       c_2f(b1,b3)
+       -1       c_2f(b1,b4)
+       -1       c_2f(b1,b5)
+        1       c_2f(b2,b1)
+        1       c_2f(b3,b1)
+        1       c_2f(b4,b1)
+        1       c_2f(b5,b1)
+        1       c_3b(b1)
+        1       c_22_2(b1)
+
+y(b2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       c_2e(b1,b2)
+        1       c_2e(b2,b1)
+        1       c_2e(b2,b3)
+        1       c_2e(b2,b4)
+        1       c_2e(b2,b5)
+       -1       c_2e(b3,b2)
+       -1       c_2e(b4,b2)
+       -1       c_2e(b5,b2)
+        1       c_2f(b1,b2)
+       -1       c_2f(b2,b1)
+       -1       c_2f(b2,b3)
+       -1       c_2f(b2,b4)
+       -1       c_2f(b2,b5)
+        1       c_2f(b3,b2)
+        1       c_2f(b4,b2)
+        1       c_2f(b5,b2)
+        1       c_3b(b2)
+        1       c_22_2(b2)
+
+y(b3)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       c_2e(b1,b3)
+       -1       c_2e(b2,b3)
+        1       c_2e(b3,b1)
+        1       c_2e(b3,b2)
+        1       c_2e(b3,b4)
+        1       c_2e(b3,b5)
+       -1       c_2e(b4,b3)
+       -1       c_2e(b5,b3)
+        1       c_2f(b1,b3)
+        1       c_2f(b2,b3)
+       -1       c_2f(b3,b1)
+       -1       c_2f(b3,b2)
+       -1       c_2f(b3,b4)
+       -1       c_2f(b3,b5)
+        1       c_2f(b4,b3)
+        1       c_2f(b5,b3)
+        1       c_3b(b3)
+        1       c_22_2(b3)
+
+REMAINING 2 ENTRIES SKIPPED
+
+---- z  z coordinate of box i
+
+z(b1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       c_2c(b1,b2)
+        1       c_2c(b1,b3)
+        1       c_2c(b1,b4)
+        1       c_2c(b1,b5)
+       -1       c_2c(b2,b1)
+       -1       c_2c(b3,b1)
+       -1       c_2c(b4,b1)
+       -1       c_2c(b5,b1)
+       -1       c_2d(b1,b2)
+       -1       c_2d(b1,b3)
+       -1       c_2d(b1,b4)
+       -1       c_2d(b1,b5)
+        1       c_2d(b2,b1)
+        1       c_2d(b3,b1)
+        1       c_2d(b4,b1)
+        1       c_2d(b5,b1)
+        1       c_3c(b1)
+       -1       c_8a_1(b1,b2)
+       -1       c_8a_1(b1,b3)
+       -1       c_8a_1(b1,b4)
+       -1       c_8a_1(b1,b5)
+        1       c_8a_1(b2,b1)
+        1       c_8a_1(b3,b1)
+        1       c_8a_1(b4,b1)
+        1       c_8a_1(b5,b1)
+       -1       c_8a_2(b1,b2)
+       -1       c_8a_2(b1,b3)
+       -1       c_8a_2(b1,b4)
+       -1       c_8a_2(b1,b5)
+        1       c_8a_2(b2,b1)
+        1       c_8a_2(b3,b1)
+        1       c_8a_2(b4,b1)
+        1       c_8a_2(b5,b1)
+       -1       c_8b_1(b1,b1)
+       -1       c_8b_1(b2,b1)
+       -1       c_8b_1(b3,b1)
+       -1       c_8b_1(b4,b1)
+       -1       c_8b_1(b5,b1)
+       -1       c_8b_2(b1,b1)
+       -1       c_8b_2(b2,b1)
+       -1       c_8b_2(b3,b1)
+       -1       c_8b_2(b4,b1)
+       -1       c_8b_2(b5,b1)
+       -1       c_10a_1(b1,b1)
+       -1       c_10a_1(b1,b2)
+       -1       c_10a_1(b1,b3)
+       -1       c_10a_1(b1,b4)
+       -1       c_10a_1(b1,b5)
+       -1       c_10a_2(b1,b1)
+       -1       c_10a_2(b1,b2)
+       -1       c_10a_2(b1,b3)
+       -1       c_10a_2(b1,b4)
+       -1       c_10a_2(b1,b5)
+       -1       c_17(b1)
+        1       c_22_3(b1)
+
+z(b2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       c_2c(b1,b2)
+        1       c_2c(b2,b1)
+        1       c_2c(b2,b3)
+        1       c_2c(b2,b4)
+        1       c_2c(b2,b5)
+       -1       c_2c(b3,b2)
+       -1       c_2c(b4,b2)
+       -1       c_2c(b5,b2)
+        1       c_2d(b1,b2)
+       -1       c_2d(b2,b1)
+       -1       c_2d(b2,b3)
+       -1       c_2d(b2,b4)
+       -1       c_2d(b2,b5)
+        1       c_2d(b3,b2)
+        1       c_2d(b4,b2)
+        1       c_2d(b5,b2)
+        1       c_3c(b2)
+        1       c_8a_1(b1,b2)
+       -1       c_8a_1(b2,b1)
+       -1       c_8a_1(b2,b3)
+       -1       c_8a_1(b2,b4)
+       -1       c_8a_1(b2,b5)
+        1       c_8a_1(b3,b2)
+        1       c_8a_1(b4,b2)
+        1       c_8a_1(b5,b2)
+        1       c_8a_2(b1,b2)
+       -1       c_8a_2(b2,b1)
+       -1       c_8a_2(b2,b3)
+       -1       c_8a_2(b2,b4)
+       -1       c_8a_2(b2,b5)
+        1       c_8a_2(b3,b2)
+        1       c_8a_2(b4,b2)
+        1       c_8a_2(b5,b2)
+       -1       c_8b_1(b1,b2)
+       -1       c_8b_1(b2,b2)
+       -1       c_8b_1(b3,b2)
+       -1       c_8b_1(b4,b2)
+       -1       c_8b_1(b5,b2)
+       -1       c_8b_2(b1,b2)
+       -1       c_8b_2(b2,b2)
+       -1       c_8b_2(b3,b2)
+       -1       c_8b_2(b4,b2)
+       -1       c_8b_2(b5,b2)
+       -1       c_10a_1(b2,b1)
+       -1       c_10a_1(b2,b2)
+       -1       c_10a_1(b2,b3)
+       -1       c_10a_1(b2,b4)
+       -1       c_10a_1(b2,b5)
+       -1       c_10a_2(b2,b1)
+       -1       c_10a_2(b2,b2)
+       -1       c_10a_2(b2,b3)
+       -1       c_10a_2(b2,b4)
+       -1       c_10a_2(b2,b5)
+       -1       c_17(b2)
+        1       c_22_3(b2)
+
+z(b3)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       c_2c(b1,b3)
+       -1       c_2c(b2,b3)
+        1       c_2c(b3,b1)
+        1       c_2c(b3,b2)
+        1       c_2c(b3,b4)
+        1       c_2c(b3,b5)
+       -1       c_2c(b4,b3)
+       -1       c_2c(b5,b3)
+        1       c_2d(b1,b3)
+        1       c_2d(b2,b3)
+       -1       c_2d(b3,b1)
+       -1       c_2d(b3,b2)
+       -1       c_2d(b3,b4)
+       -1       c_2d(b3,b5)
+        1       c_2d(b4,b3)
+        1       c_2d(b5,b3)
+        1       c_3c(b3)
+        1       c_8a_1(b1,b3)
+        1       c_8a_1(b2,b3)
+       -1       c_8a_1(b3,b1)
+       -1       c_8a_1(b3,b2)
+       -1       c_8a_1(b3,b4)
+       -1       c_8a_1(b3,b5)
+        1       c_8a_1(b4,b3)
+        1       c_8a_1(b5,b3)
+        1       c_8a_2(b1,b3)
+        1       c_8a_2(b2,b3)
+       -1       c_8a_2(b3,b1)
+       -1       c_8a_2(b3,b2)
+       -1       c_8a_2(b3,b4)
+       -1       c_8a_2(b3,b5)
+        1       c_8a_2(b4,b3)
+        1       c_8a_2(b5,b3)
+       -1       c_8b_1(b1,b3)
+       -1       c_8b_1(b2,b3)
+       -1       c_8b_1(b3,b3)
+       -1       c_8b_1(b4,b3)
+       -1       c_8b_1(b5,b3)
+       -1       c_8b_2(b1,b3)
+       -1       c_8b_2(b2,b3)
+       -1       c_8b_2(b3,b3)
+       -1       c_8b_2(b4,b3)
+       -1       c_8b_2(b5,b3)
+       -1       c_10a_1(b3,b1)
+       -1       c_10a_1(b3,b2)
+       -1       c_10a_1(b3,b3)
+       -1       c_10a_1(b3,b4)
+       -1       c_10a_1(b3,b5)
+       -1       c_10a_2(b3,b1)
+       -1       c_10a_2(b3,b2)
+       -1       c_10a_2(b3,b3)
+       -1       c_10a_2(b3,b4)
+       -1       c_10a_2(b3,b5)
+       -1       c_17(b3)
+        1       c_22_3(b3)
+
+REMAINING 2 ENTRIES SKIPPED
+
+---- X_w  if the width of box i is parallel to X axis
+
+X_w(b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_2a(b1,b1)
+        1       c_2a(b1,b2)
+        1       c_2a(b1,b3)
+        1       c_2a(b1,b4)
+        1       c_2a(b1,b5)
+        1       c_2b(b1,b1)
+        1       c_2b(b2,b1)
+        1       c_2b(b3,b1)
+        1       c_2b(b4,b1)
+        1       c_2b(b5,b1)
+       -1       c_2e(b1,b1)
+       -1       c_2e(b1,b2)
+       -1       c_2e(b1,b3)
+       -1       c_2e(b1,b4)
+       -1       c_2e(b1,b5)
+       -1       c_2f(b1,b1)
+       -1       c_2f(b2,b1)
+       -1       c_2f(b3,b1)
+       -1       c_2f(b4,b1)
+       -1       c_2f(b5,b1)
+        1       c_3a(b1)
+       -1       c_3b(b1)
+        1       c_4a(b1)
+        1       c_4d_1(b1)
+       -1       c_4d_2(b1)
+       -1       c_4e_1(b1)
+        1       c_4e_2(b1)
+       -1       c_16(b1)
+
+X_w(b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        2       c_2a(b2,b1)
+        2       c_2a(b2,b2)
+        2       c_2a(b2,b3)
+        2       c_2a(b2,b4)
+        2       c_2a(b2,b5)
+        2       c_2b(b1,b2)
+        2       c_2b(b2,b2)
+        2       c_2b(b3,b2)
+        2       c_2b(b4,b2)
+        2       c_2b(b5,b2)
+       -2       c_2e(b2,b1)
+       -2       c_2e(b2,b2)
+       -2       c_2e(b2,b3)
+       -2       c_2e(b2,b4)
+       -2       c_2e(b2,b5)
+       -2       c_2f(b1,b2)
+       -2       c_2f(b2,b2)
+       -2       c_2f(b3,b2)
+       -2       c_2f(b4,b2)
+       -2       c_2f(b5,b2)
+        2       c_3a(b2)
+       -2       c_3b(b2)
+        1       c_4a(b2)
+        1       c_4d_1(b2)
+       -1       c_4d_2(b2)
+       -1       c_4e_1(b2)
+        1       c_4e_2(b2)
+       -2       c_16(b2)
+
+X_w(b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_4a(b3)
+        1       c_4d_1(b3)
+       -1       c_4d_2(b3)
+       -1       c_4e_1(b3)
+        1       c_4e_2(b3)
+
+REMAINING 2 ENTRIES SKIPPED
+
+---- Z_w  if the width of box i is parallel to Z axis
+
+Z_w(b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_2c(b1,b1)
+        1       c_2c(b1,b2)
+        1       c_2c(b1,b3)
+        1       c_2c(b1,b4)
+        1       c_2c(b1,b5)
+        1       c_2d(b1,b1)
+        1       c_2d(b2,b1)
+        1       c_2d(b3,b1)
+        1       c_2d(b4,b1)
+        1       c_2d(b5,b1)
+       -1       c_2e(b1,b1)
+       -1       c_2e(b1,b2)
+       -1       c_2e(b1,b3)
+       -1       c_2e(b1,b4)
+       -1       c_2e(b1,b5)
+       -1       c_2f(b1,b1)
+       -1       c_2f(b2,b1)
+       -1       c_2f(b3,b1)
+       -1       c_2f(b4,b1)
+       -1       c_2f(b5,b1)
+       -1       c_3b(b1)
+        1       c_3c(b1)
+        1       c_4a(b1)
+        1       c_4b(b1)
+       -1       c_4c_1(b1)
+        1       c_4c_2(b1)
+        1       c_4d_1(b1)
+       -1       c_4d_2(b1)
+       -1       c_4e_1(b1)
+        1       c_4e_2(b1)
+       -1       c_17(b1)
+
+Z_w(b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        2       c_2c(b2,b1)
+        2       c_2c(b2,b2)
+        2       c_2c(b2,b3)
+        2       c_2c(b2,b4)
+        2       c_2c(b2,b5)
+        2       c_2d(b1,b2)
+        2       c_2d(b2,b2)
+        2       c_2d(b3,b2)
+        2       c_2d(b4,b2)
+        2       c_2d(b5,b2)
+       -2       c_2e(b2,b1)
+       -2       c_2e(b2,b2)
+       -2       c_2e(b2,b3)
+       -2       c_2e(b2,b4)
+       -2       c_2e(b2,b5)
+       -2       c_2f(b1,b2)
+       -2       c_2f(b2,b2)
+       -2       c_2f(b3,b2)
+       -2       c_2f(b4,b2)
+       -2       c_2f(b5,b2)
+       -2       c_3b(b2)
+        2       c_3c(b2)
+        1       c_4a(b2)
+        1       c_4b(b2)
+       -1       c_4c_1(b2)
+        1       c_4c_2(b2)
+        1       c_4d_1(b2)
+       -1       c_4d_2(b2)
+       -1       c_4e_1(b2)
+        1       c_4e_2(b2)
+       -2       c_17(b2)
+
+Z_w(b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_2a(b3,b1)
+       -1       c_2a(b3,b2)
+       -1       c_2a(b3,b3)
+       -1       c_2a(b3,b4)
+       -1       c_2a(b3,b5)
+       -1       c_2b(b1,b3)
+       -1       c_2b(b2,b3)
+       -1       c_2b(b3,b3)
+       -1       c_2b(b4,b3)
+       -1       c_2b(b5,b3)
+        1       c_2c(b3,b1)
+        1       c_2c(b3,b2)
+        1       c_2c(b3,b3)
+        1       c_2c(b3,b4)
+        1       c_2c(b3,b5)
+        1       c_2d(b1,b3)
+        1       c_2d(b2,b3)
+        1       c_2d(b3,b3)
+        1       c_2d(b4,b3)
+        1       c_2d(b5,b3)
+       -1       c_3a(b3)
+        1       c_3c(b3)
+        1       c_4a(b3)
+        1       c_4b(b3)
+       -1       c_4c_1(b3)
+        1       c_4c_2(b3)
+        1       c_4d_1(b3)
+       -1       c_4d_2(b3)
+       -1       c_4e_1(b3)
+        1       c_4e_2(b3)
+        1       c_16(b3)
+       -1       c_17(b3)
+
+REMAINING 2 ENTRIES SKIPPED
+
+---- Y_h  if the height of box i is parallel to Y axis
+
+Y_h(b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_4c_1(b1)
+       -1       c_4c_2(b1)
+       -1       c_4d_1(b1)
+        1       c_4d_2(b1)
+        1       c_4e_1(b1)
+       -1       c_4e_2(b1)
+
+Y_h(b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_4c_1(b2)
+       -1       c_4c_2(b2)
+       -1       c_4d_1(b2)
+        1       c_4d_2(b2)
+        1       c_4e_1(b2)
+       -1       c_4e_2(b2)
+
+Y_h(b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_2a(b3,b1)
+        1       c_2a(b3,b2)
+        1       c_2a(b3,b3)
+        1       c_2a(b3,b4)
+        1       c_2a(b3,b5)
+        1       c_2b(b1,b3)
+        1       c_2b(b2,b3)
+        1       c_2b(b3,b3)
+        1       c_2b(b4,b3)
+        1       c_2b(b5,b3)
+       -1       c_2e(b3,b1)
+       -1       c_2e(b3,b2)
+       -1       c_2e(b3,b3)
+       -1       c_2e(b3,b4)
+       -1       c_2e(b3,b5)
+       -1       c_2f(b1,b3)
+       -1       c_2f(b2,b3)
+       -1       c_2f(b3,b3)
+       -1       c_2f(b4,b3)
+       -1       c_2f(b5,b3)
+        1       c_3a(b3)
+       -1       c_3b(b3)
+        1       c_4c_1(b3)
+       -1       c_4c_2(b3)
+       -1       c_4d_1(b3)
+        1       c_4d_2(b3)
+        1       c_4e_1(b3)
+       -1       c_4e_2(b3)
+       -1       c_16(b3)
+
+REMAINING 2 ENTRIES SKIPPED
+
+---- Z_d  if the depth of box i is parallel to Z axis
+
+Z_d(b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_4b(b1)
+       -1       c_4c_1(b1)
+        1       c_4c_2(b1)
+        1       c_4d_1(b1)
+       -1       c_4d_2(b1)
+
+Z_d(b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_4b(b2)
+       -1       c_4c_1(b2)
+        1       c_4c_2(b2)
+        1       c_4d_1(b2)
+       -1       c_4d_2(b2)
+
+Z_d(b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_2a(b3,b1)
+       -1       c_2a(b3,b2)
+       -1       c_2a(b3,b3)
+       -1       c_2a(b3,b4)
+       -1       c_2a(b3,b5)
+       -1       c_2b(b1,b3)
+       -1       c_2b(b2,b3)
+       -1       c_2b(b3,b3)
+       -1       c_2b(b4,b3)
+       -1       c_2b(b5,b3)
+        1       c_2c(b3,b1)
+        1       c_2c(b3,b2)
+        1       c_2c(b3,b3)
+        1       c_2c(b3,b4)
+        1       c_2c(b3,b5)
+        1       c_2d(b1,b3)
+        1       c_2d(b2,b3)
+        1       c_2d(b3,b3)
+        1       c_2d(b4,b3)
+        1       c_2d(b5,b3)
+       -1       c_3a(b3)
+        1       c_3c(b3)
+        1       c_4b(b3)
+       -1       c_4c_1(b3)
+        1       c_4c_2(b3)
+        1       c_4d_1(b3)
+       -1       c_4d_2(b3)
+        1       c_16(b3)
+       -1       c_17(b3)
+
+REMAINING 2 ENTRIES SKIPPED
+
+---- r  if box i is to the right of box j
+
+r(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b1)
+
+r(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b2)
+   100000       c_2b(b1,b2)
+
+r(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b3)
+   100000       c_2b(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- l  if box i is to the left of box j
+
+l(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b1)
+
+l(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b2)
+   100000       c_2a(b1,b2)
+
+l(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b3)
+   100000       c_2a(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- b  if box i is behind box j
+
+b(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b1)
+
+b(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b2)
+   100000       c_2c(b1,b2)
+
+b(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b3)
+   100000       c_2c(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- f  if box i is in front of box j
+
+f(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b1)
+
+f(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b2)
+   100000       c_2d(b1,b2)
+
+f(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b3)
+   100000       c_2d(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- u  if box i is under box j
+
+u(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b1)
+       -1       c_15(b1,b1)
+
+u(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b2)
+   100000       c_2e(b1,b2)
+       -1       c_15(b1,b2)
+
+u(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b3)
+   100000       c_2e(b1,b3)
+       -1       c_15(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- o  if box i os over box j
+
+o(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b1)
+
+o(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b2)
+   100000       c_2f(b1,b2)
+       -1       c_15(b1,b2)
+
+o(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_1(b1,b3)
+   100000       c_2f(b1,b3)
+       -1       c_15(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- s  if box i is packed in the container
+
+s(b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+      -12       max
+       -2       c_1(b1,b1)
+       -1       c_1(b1,b2)
+       -1       c_1(b1,b3)
+       -1       c_1(b1,b4)
+       -1       c_1(b1,b5)
+       -1       c_1(b2,b1)
+       -1       c_1(b3,b1)
+       -1       c_1(b4,b1)
+       -1       c_1(b5,b1)
+
+s(b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -3       max
+       -1       c_1(b1,b2)
+       -1       c_1(b2,b1)
+       -2       c_1(b2,b2)
+       -1       c_1(b2,b3)
+       -1       c_1(b2,b4)
+       -1       c_1(b2,b5)
+       -1       c_1(b3,b2)
+       -1       c_1(b4,b2)
+       -1       c_1(b5,b2)
+
+s(b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -4       max
+       -1       c_1(b1,b3)
+       -1       c_1(b2,b3)
+       -1       c_1(b3,b1)
+       -1       c_1(b3,b2)
+       -2       c_1(b3,b3)
+       -1       c_1(b3,b4)
+       -1       c_1(b3,b5)
+       -1       c_1(b4,b3)
+       -1       c_1(b5,b3)
+
+REMAINING 2 ENTRIES SKIPPED
+
+---- ya  if xj >= xi
+
+ya(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        0.5     c_7c_1(b1,b1)
+       -1       c_7c_2(b1,b1)
+
+ya(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_7a_1(b1,b2)
+  -100000       c_7a_2(b1,b2)
+        0.5     c_7c_1(b1,b2)
+       -0.5     c_7c_2(b1,b2)
+
+ya(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_7a_1(b1,b3)
+  -100000       c_7a_2(b1,b3)
+        0.5     c_7c_1(b1,b3)
+       -0.5     c_7c_2(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- xa  if xj < xi_
+
+xa(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_7b_2(b1,b1)
+        0.5     c_7c_1(b1,b1)
+       -1       c_7c_2(b1,b1)
+
+xa(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_7b_1(b1,b2)
+  -100000       c_7b_2(b1,b2)
+        0.5     c_7c_1(b1,b2)
+       -0.5     c_7c_2(b1,b2)
+
+xa(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_7b_1(b1,b3)
+  -100000       c_7b_2(b1,b3)
+        0.5     c_7c_1(b1,b3)
+       -0.5     c_7c_2(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- yb  if zj >= zi
+
+yb(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        0.5     c_8c_1(b1,b1)
+       -1       c_8c_2(b1,b1)
+
+yb(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_8a_1(b1,b2)
+  -100000       c_8a_2(b1,b2)
+        0.5     c_8c_1(b1,b2)
+       -0.5     c_8c_2(b1,b2)
+
+yb(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_8a_1(b1,b3)
+  -100000       c_8a_2(b1,b3)
+        0.5     c_8c_1(b1,b3)
+       -0.5     c_8c_2(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- xb  if zj < zi_
+
+xb(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_8b_2(b1,b1)
+        0.5     c_8c_1(b1,b1)
+       -1       c_8c_2(b1,b1)
+
+xb(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_8b_1(b1,b2)
+  -100000       c_8b_2(b1,b2)
+        0.5     c_8c_1(b1,b2)
+       -0.5     c_8c_2(b1,b2)
+
+xb(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_8b_1(b1,b3)
+  -100000       c_8b_2(b1,b3)
+        0.5     c_8c_1(b1,b3)
+       -0.5     c_8c_2(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- yc  if xj_ > xi
+
+yc(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_9a_2(b1,b1)
+        0.5     c_9c_1(b1,b1)
+       -1       c_9c_2(b1,b1)
+
+yc(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_9a_1(b1,b2)
+  -100000       c_9a_2(b1,b2)
+        0.5     c_9c_1(b1,b2)
+       -0.5     c_9c_2(b1,b2)
+
+yc(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_9a_1(b1,b3)
+  -100000       c_9a_2(b1,b3)
+        0.5     c_9c_1(b1,b3)
+       -0.5     c_9c_2(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- xc  if xj_ <= xi_
+
+xc(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        0.5     c_9c_1(b1,b1)
+       -1       c_9c_2(b1,b1)
+
+xc(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_9b_1(b1,b2)
+  -100000       c_9b_2(b1,b2)
+        0.5     c_9c_1(b1,b2)
+       -0.5     c_9c_2(b1,b2)
+
+xc(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_9b_1(b1,b3)
+  -100000       c_9b_2(b1,b3)
+        0.5     c_9c_1(b1,b3)
+       -0.5     c_9c_2(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- yd  if zj_ > zi
+
+yd(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_10a_2(b1,b1)
+        0.5     c_10c_1(b1,b1)
+       -1       c_10c_2(b1,b1)
+
+yd(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_10a_1(b1,b2)
+  -100000       c_10a_2(b1,b2)
+        0.5     c_10c_1(b1,b2)
+       -0.5     c_10c_2(b1,b2)
+
+yd(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_10a_1(b1,b3)
+  -100000       c_10a_2(b1,b3)
+        0.5     c_10c_1(b1,b3)
+       -0.5     c_10c_2(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- xd  if zj_ <= zi_
+
+xd(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        0.5     c_10c_1(b1,b1)
+       -1       c_10c_2(b1,b1)
+
+xd(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_10b_1(b1,b2)
+  -100000       c_10b_2(b1,b2)
+        0.5     c_10c_1(b1,b2)
+       -0.5     c_10c_2(b1,b2)
+
+xd(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+  -100000       c_10b_1(b1,b3)
+  -100000       c_10b_2(b1,b3)
+        0.5     c_10c_1(b1,b3)
+       -0.5     c_10c_2(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- za  if xi <= xj < xi_
+
+za(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_7c_2(b1,b1)
+        0.5     c_11_1(b1,b1)
+       -1       c_11_2(b1,b1)
+        0.5     c_12_1(b1,b1)
+       -1       c_12_2(b1,b1)
+
+za(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_7c_1(b1,b2)
+        1       c_7c_2(b1,b2)
+        0.5     c_11_1(b1,b2)
+       -0.5     c_11_2(b1,b2)
+        0.5     c_12_1(b1,b2)
+       -0.5     c_12_2(b1,b2)
+
+za(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_7c_1(b1,b3)
+        1       c_7c_2(b1,b3)
+        0.5     c_11_1(b1,b3)
+       -0.5     c_11_2(b1,b3)
+        0.5     c_12_1(b1,b3)
+       -0.5     c_12_2(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- zb  if zi <= zj < zi_
+
+zb(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_8c_2(b1,b1)
+        0.5     c_11_1(b1,b1)
+       -1       c_11_2(b1,b1)
+        0.5     c_13_1(b1,b1)
+       -1       c_13_2(b1,b1)
+
+zb(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_8c_1(b1,b2)
+        1       c_8c_2(b1,b2)
+        0.5     c_11_1(b1,b2)
+       -0.5     c_11_2(b1,b2)
+        0.5     c_13_1(b1,b2)
+       -0.5     c_13_2(b1,b2)
+
+zb(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_8c_1(b1,b3)
+        1       c_8c_2(b1,b3)
+        0.5     c_11_1(b1,b3)
+       -0.5     c_11_2(b1,b3)
+        0.5     c_13_1(b1,b3)
+       -0.5     c_13_2(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- zc  if xi < xj_ <= xi_
+
+zc(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_9c_2(b1,b1)
+        0.5     c_13_1(b1,b1)
+       -1       c_13_2(b1,b1)
+        0.5     c_14_1(b1,b1)
+       -1       c_14_2(b1,b1)
+
+zc(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_9c_1(b1,b2)
+        1       c_9c_2(b1,b2)
+        0.5     c_13_1(b1,b2)
+       -0.5     c_13_2(b1,b2)
+        0.5     c_14_1(b1,b2)
+       -0.5     c_14_2(b1,b2)
+
+zc(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_9c_1(b1,b3)
+        1       c_9c_2(b1,b3)
+        0.5     c_13_1(b1,b3)
+       -0.5     c_13_2(b1,b3)
+        0.5     c_14_1(b1,b3)
+       -0.5     c_14_2(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- zd  if zi < zj_ <= zi_
+
+zd(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_10c_2(b1,b1)
+        0.5     c_12_1(b1,b1)
+       -1       c_12_2(b1,b1)
+        0.5     c_14_1(b1,b1)
+       -1       c_14_2(b1,b1)
+
+zd(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_10c_1(b1,b2)
+        1       c_10c_2(b1,b2)
+        0.5     c_12_1(b1,b2)
+       -0.5     c_12_2(b1,b2)
+        0.5     c_14_1(b1,b2)
+       -0.5     c_14_2(b1,b2)
+
+zd(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_10c_1(b1,b3)
+        1       c_10c_2(b1,b3)
+        0.5     c_12_1(b1,b3)
+       -0.5     c_12_2(b1,b3)
+        0.5     c_14_1(b1,b3)
+       -0.5     c_14_2(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- Cs1  if za(ij) and zb(ij)
+
+Cs1(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_11_2(b1,b1)
+        1       c_15(b1,b1)
+
+Cs1(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_11_1(b1,b2)
+        1       c_11_2(b1,b2)
+        1       c_15(b1,b2)
+
+Cs1(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_11_1(b1,b3)
+        1       c_11_2(b1,b3)
+        1       c_15(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- Cs2  if za(ij) and zd(ij)
+
+Cs2(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_12_2(b1,b1)
+        1       c_15(b1,b1)
+
+Cs2(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_12_1(b1,b2)
+        1       c_12_2(b1,b2)
+        1       c_15(b1,b2)
+
+Cs2(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_12_1(b1,b3)
+        1       c_12_2(b1,b3)
+        1       c_15(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- Cs3  if zc(ij) and zb(ij)
+
+Cs3(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_13_2(b1,b1)
+        1       c_15(b1,b1)
+
+Cs3(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_13_1(b1,b2)
+        1       c_13_2(b1,b2)
+        1       c_15(b1,b2)
+
+Cs3(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_13_1(b1,b3)
+        1       c_13_2(b1,b3)
+        1       c_15(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- Cs4  if zc(ij) and zd(ij)
+
+Cs4(b1,b1)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+        1       c_14_2(b1,b1)
+        1       c_15(b1,b1)
+
+Cs4(b1,b2)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_14_1(b1,b2)
+        1       c_14_2(b1,b2)
+        1       c_15(b1,b2)
+
+Cs4(b1,b3)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+       -1       c_14_1(b1,b3)
+        1       c_14_2(b1,b3)
+        1       c_15(b1,b3)
+
+REMAINING 22 ENTRIES SKIPPED
+
+---- x_  right wall of box i
+
+x_(b1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       c_7b_1(b1,b1)
+        1       c_7b_1(b1,b2)
+        1       c_7b_1(b1,b3)
+        1       c_7b_1(b1,b4)
+        1       c_7b_1(b1,b5)
+        1       c_7b_2(b1,b1)
+        1       c_7b_2(b1,b2)
+        1       c_7b_2(b1,b3)
+        1       c_7b_2(b1,b4)
+        1       c_7b_2(b1,b5)
+        1       c_9a_1(b1,b1)
+        1       c_9a_1(b2,b1)
+        1       c_9a_1(b3,b1)
+        1       c_9a_1(b4,b1)
+        1       c_9a_1(b5,b1)
+        1       c_9a_2(b1,b1)
+        1       c_9a_2(b2,b1)
+        1       c_9a_2(b3,b1)
+        1       c_9a_2(b4,b1)
+        1       c_9a_2(b5,b1)
+        1       c_9b_1(b1,b2)
+        1       c_9b_1(b1,b3)
+        1       c_9b_1(b1,b4)
+        1       c_9b_1(b1,b5)
+       -1       c_9b_1(b2,b1)
+       -1       c_9b_1(b3,b1)
+       -1       c_9b_1(b4,b1)
+       -1       c_9b_1(b5,b1)
+        1       c_9b_2(b1,b2)
+        1       c_9b_2(b1,b3)
+        1       c_9b_2(b1,b4)
+        1       c_9b_2(b1,b5)
+       -1       c_9b_2(b2,b1)
+       -1       c_9b_2(b3,b1)
+       -1       c_9b_2(b4,b1)
+       -1       c_9b_2(b5,b1)
+        1       c_16(b1)
+
+x_(b2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       c_7b_1(b2,b1)
+        1       c_7b_1(b2,b2)
+        1       c_7b_1(b2,b3)
+        1       c_7b_1(b2,b4)
+        1       c_7b_1(b2,b5)
+        1       c_7b_2(b2,b1)
+        1       c_7b_2(b2,b2)
+        1       c_7b_2(b2,b3)
+        1       c_7b_2(b2,b4)
+        1       c_7b_2(b2,b5)
+        1       c_9a_1(b1,b2)
+        1       c_9a_1(b2,b2)
+        1       c_9a_1(b3,b2)
+        1       c_9a_1(b4,b2)
+        1       c_9a_1(b5,b2)
+        1       c_9a_2(b1,b2)
+        1       c_9a_2(b2,b2)
+        1       c_9a_2(b3,b2)
+        1       c_9a_2(b4,b2)
+        1       c_9a_2(b5,b2)
+       -1       c_9b_1(b1,b2)
+        1       c_9b_1(b2,b1)
+        1       c_9b_1(b2,b3)
+        1       c_9b_1(b2,b4)
+        1       c_9b_1(b2,b5)
+       -1       c_9b_1(b3,b2)
+       -1       c_9b_1(b4,b2)
+       -1       c_9b_1(b5,b2)
+       -1       c_9b_2(b1,b2)
+        1       c_9b_2(b2,b1)
+        1       c_9b_2(b2,b3)
+        1       c_9b_2(b2,b4)
+        1       c_9b_2(b2,b5)
+       -1       c_9b_2(b3,b2)
+       -1       c_9b_2(b4,b2)
+       -1       c_9b_2(b5,b2)
+        1       c_16(b2)
+
+x_(b3)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       c_7b_1(b3,b1)
+        1       c_7b_1(b3,b2)
+        1       c_7b_1(b3,b3)
+        1       c_7b_1(b3,b4)
+        1       c_7b_1(b3,b5)
+        1       c_7b_2(b3,b1)
+        1       c_7b_2(b3,b2)
+        1       c_7b_2(b3,b3)
+        1       c_7b_2(b3,b4)
+        1       c_7b_2(b3,b5)
+        1       c_9a_1(b1,b3)
+        1       c_9a_1(b2,b3)
+        1       c_9a_1(b3,b3)
+        1       c_9a_1(b4,b3)
+        1       c_9a_1(b5,b3)
+        1       c_9a_2(b1,b3)
+        1       c_9a_2(b2,b3)
+        1       c_9a_2(b3,b3)
+        1       c_9a_2(b4,b3)
+        1       c_9a_2(b5,b3)
+       -1       c_9b_1(b1,b3)
+       -1       c_9b_1(b2,b3)
+        1       c_9b_1(b3,b1)
+        1       c_9b_1(b3,b2)
+        1       c_9b_1(b3,b4)
+        1       c_9b_1(b3,b5)
+       -1       c_9b_1(b4,b3)
+       -1       c_9b_1(b5,b3)
+       -1       c_9b_2(b1,b3)
+       -1       c_9b_2(b2,b3)
+        1       c_9b_2(b3,b1)
+        1       c_9b_2(b3,b2)
+        1       c_9b_2(b3,b4)
+        1       c_9b_2(b3,b5)
+       -1       c_9b_2(b4,b3)
+       -1       c_9b_2(b5,b3)
+        1       c_16(b3)
+
+REMAINING 2 ENTRIES SKIPPED
+
+---- z_  front wall of box i
+
+z_(b1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       c_8b_1(b1,b1)
+        1       c_8b_1(b1,b2)
+        1       c_8b_1(b1,b3)
+        1       c_8b_1(b1,b4)
+        1       c_8b_1(b1,b5)
+        1       c_8b_2(b1,b1)
+        1       c_8b_2(b1,b2)
+        1       c_8b_2(b1,b3)
+        1       c_8b_2(b1,b4)
+        1       c_8b_2(b1,b5)
+        1       c_10a_1(b1,b1)
+        1       c_10a_1(b2,b1)
+        1       c_10a_1(b3,b1)
+        1       c_10a_1(b4,b1)
+        1       c_10a_1(b5,b1)
+        1       c_10a_2(b1,b1)
+        1       c_10a_2(b2,b1)
+        1       c_10a_2(b3,b1)
+        1       c_10a_2(b4,b1)
+        1       c_10a_2(b5,b1)
+        1       c_10b_1(b1,b2)
+        1       c_10b_1(b1,b3)
+        1       c_10b_1(b1,b4)
+        1       c_10b_1(b1,b5)
+       -1       c_10b_1(b2,b1)
+       -1       c_10b_1(b3,b1)
+       -1       c_10b_1(b4,b1)
+       -1       c_10b_1(b5,b1)
+        1       c_10b_2(b1,b2)
+        1       c_10b_2(b1,b3)
+        1       c_10b_2(b1,b4)
+        1       c_10b_2(b1,b5)
+       -1       c_10b_2(b2,b1)
+       -1       c_10b_2(b3,b1)
+       -1       c_10b_2(b4,b1)
+       -1       c_10b_2(b5,b1)
+        1       c_17(b1)
+
+z_(b2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       c_8b_1(b2,b1)
+        1       c_8b_1(b2,b2)
+        1       c_8b_1(b2,b3)
+        1       c_8b_1(b2,b4)
+        1       c_8b_1(b2,b5)
+        1       c_8b_2(b2,b1)
+        1       c_8b_2(b2,b2)
+        1       c_8b_2(b2,b3)
+        1       c_8b_2(b2,b4)
+        1       c_8b_2(b2,b5)
+        1       c_10a_1(b1,b2)
+        1       c_10a_1(b2,b2)
+        1       c_10a_1(b3,b2)
+        1       c_10a_1(b4,b2)
+        1       c_10a_1(b5,b2)
+        1       c_10a_2(b1,b2)
+        1       c_10a_2(b2,b2)
+        1       c_10a_2(b3,b2)
+        1       c_10a_2(b4,b2)
+        1       c_10a_2(b5,b2)
+       -1       c_10b_1(b1,b2)
+        1       c_10b_1(b2,b1)
+        1       c_10b_1(b2,b3)
+        1       c_10b_1(b2,b4)
+        1       c_10b_1(b2,b5)
+       -1       c_10b_1(b3,b2)
+       -1       c_10b_1(b4,b2)
+       -1       c_10b_1(b5,b2)
+       -1       c_10b_2(b1,b2)
+        1       c_10b_2(b2,b1)
+        1       c_10b_2(b2,b3)
+        1       c_10b_2(b2,b4)
+        1       c_10b_2(b2,b5)
+       -1       c_10b_2(b3,b2)
+       -1       c_10b_2(b4,b2)
+       -1       c_10b_2(b5,b2)
+        1       c_17(b2)
+
+z_(b3)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       c_8b_1(b3,b1)
+        1       c_8b_1(b3,b2)
+        1       c_8b_1(b3,b3)
+        1       c_8b_1(b3,b4)
+        1       c_8b_1(b3,b5)
+        1       c_8b_2(b3,b1)
+        1       c_8b_2(b3,b2)
+        1       c_8b_2(b3,b3)
+        1       c_8b_2(b3,b4)
+        1       c_8b_2(b3,b5)
+        1       c_10a_1(b1,b3)
+        1       c_10a_1(b2,b3)
+        1       c_10a_1(b3,b3)
+        1       c_10a_1(b4,b3)
+        1       c_10a_1(b5,b3)
+        1       c_10a_2(b1,b3)
+        1       c_10a_2(b2,b3)
+        1       c_10a_2(b3,b3)
+        1       c_10a_2(b4,b3)
+        1       c_10a_2(b5,b3)
+       -1       c_10b_1(b1,b3)
+       -1       c_10b_1(b2,b3)
+        1       c_10b_1(b3,b1)
+        1       c_10b_1(b3,b2)
+        1       c_10b_1(b3,b4)
+        1       c_10b_1(b3,b5)
+       -1       c_10b_1(b4,b3)
+       -1       c_10b_1(b5,b3)
+       -1       c_10b_2(b1,b3)
+       -1       c_10b_2(b2,b3)
+        1       c_10b_2(b3,b1)
+        1       c_10b_2(b3,b2)
+        1       c_10b_2(b3,b4)
+        1       c_10b_2(b3,b5)
+       -1       c_10b_2(b4,b3)
+       -1       c_10b_2(b5,b3)
+        1       c_17(b3)
+
+REMAINING 2 ENTRIES SKIPPED
+
+---- to_maximize  variable that represents the quantity to maximize
+
+to_maximize
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       max
+
+GAMS 39.3.0  55b56f9b Jul 7, 2022           WEX-WEI x86 64bit/MS Windows - 08/04/22 11:45:39 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE try1 Using MIP From line 263
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS          59     SINGLE EQUATIONS        1,086
+BLOCKS OF VARIABLES          34     SINGLE VARIABLES          626
+NON ZERO ELEMENTS         3,493
+
+
+GENERATION TIME      =        0.016 SECONDS      4 MB  39.3.0 55b56f9b WEX-WEI
+
+**** SOLVE from line 263 ABORTED, EXECERROR = 8
+
+
+EXECUTION TIME       =        0.016 SECONDS      4 MB  39.3.0 55b56f9b WEX-WEI
 
 
 USER: GAMS Demo license for Alessio La Greca         G220731|0002CO-GEN

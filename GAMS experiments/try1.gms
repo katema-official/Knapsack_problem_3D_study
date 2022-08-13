@@ -194,12 +194,12 @@ c_0b(i,j).. n(i,j) =l= (-p(i) - p(j))/2 + 0.5 $ (not sameas(i,j));
 
 c_1(i,j).. r(i,j) + l(i,j) + b(i,j) + f(i,j) + u(i,j) + o(i,j) - n(i,j) =e= s(i) + s(j) - 1 $ (not sameas(i,j));
 
-c_2a(i,j).. x(i) + w(i)*X_w(i) + h(i)*(Z_w(i) - Y_h(i) + Z_d(i)) + d(i)*(1 - X_w(i) - Z_w(i) + Y_h(i) - Z_d(i)) =l= x(j) + M *(1 - l(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
-c_2b(i,j).. x(j) + w(j)*X_w(j) + h(j)*(Z_w(j) - Y_h(j) + Z_d(j)) + d(j)*(1 - X_w(j) - Z_w(j) + Y_h(j) - Z_d(j)) =l= x(i) + M *(1 - r(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
-c_2c(i,j).. z(i) + d(i)*Z_d(i) + h(i)*(1 - Z_w(i) - Z_d(i)) + w(i)*Z_w(i) =l= z(j) + M * (1 - b(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
-c_2d(i,j).. z(j) + d(j)*Z_d(j) + h(j)*(1 - Z_w(j) - Z_d(j)) + w(j)*Z_w(j) =l= z(i) + M * (1 - f(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
-c_2e(i,j).. y(i) + h(i)*Y_h(i) + w(i)*(1 - X_w(i) - Z_w(i)) + d(i)*(X_w(i) + Z_w(i) - Y_h(i)) =l= y(j) + M*(1 - u(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
-c_2f(i,j).. y(j) + h(j)*Y_h(j) + w(j)*(1 - X_w(j) - Z_w(j)) + d(j)*(X_w(j) + Z_w(j) - Y_h(j)) =l= y(i) + M*(1 - o(i,j)) $ ((s(i) + s(j) = 2) and not sameas(i,j));
+c_2a(i,j).. x(i) + w(i)*X_w(i) + h(i)*(Z_w(i) - Y_h(i) + Z_d(i)) + d(i)*(1 - X_w(i) - Z_w(i) + Y_h(i) - Z_d(i)) =l= x(j) + M *(1 - l(i,j)) $ (not sameas(i,j));
+c_2b(i,j).. x(j) + w(j)*X_w(j) + h(j)*(Z_w(j) - Y_h(j) + Z_d(j)) + d(j)*(1 - X_w(j) - Z_w(j) + Y_h(j) - Z_d(j)) =l= x(i) + M *(1 - r(i,j)) $ (not sameas(i,j));
+c_2c(i,j).. z(i) + d(i)*Z_d(i) + h(i)*(1 - Z_w(i) - Z_d(i)) + w(i)*Z_w(i) =l= z(j) + M * (1 - b(i,j)) $ (not sameas(i,j));
+c_2d(i,j).. z(j) + d(j)*Z_d(j) + h(j)*(1 - Z_w(j) - Z_d(j)) + w(j)*Z_w(j) =l= z(i) + M * (1 - f(i,j)) $ (not sameas(i,j));
+c_2e(i,j).. y(i) + h(i)*Y_h(i) + w(i)*(1 - X_w(i) - Z_w(i)) + d(i)*(X_w(i) + Z_w(i) - Y_h(i)) =l= y(j) + M*(1 - u(i,j)) $ (not sameas(i,j));
+c_2f(i,j).. y(j) + h(j)*Y_h(j) + w(j)*(1 - X_w(j) - Z_w(j)) + d(j)*(X_w(j) + Z_w(j) - Y_h(j)) =l= y(i) + M*(1 - o(i,j)) $ (not sameas(i,j));
 
 c_3a(i).. x(i) + w(i)*X_w(i) + h(i)*(Z_w(i) - Y_h(i) + Z_d(i)) + d(i)*(1 - X_w(i) - Z_w(i) + Y_h(i) - Z_d(i)) =l= Wcontainer;
 c_3b(i).. y(i) + h(i)*Y_h(i) + w(i)*(1 - X_w(i) - Z_w(i)) + d(i)*(X_w(i) + Z_w(i) - Y_h(i)) =l= Hcontainer;
