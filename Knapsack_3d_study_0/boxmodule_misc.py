@@ -1,6 +1,6 @@
 #the container (bin) dimensions
-cont_x = 120#120
-cont_y = 60#60
+cont_x = 80#120
+cont_y = 80#60
 cont_z = 80#80
 
 #function that tells if, given two boxes with their tentative LBB point and their

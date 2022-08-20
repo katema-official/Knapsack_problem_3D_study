@@ -32,7 +32,7 @@ def place_boxes_sequence_triples(a,b,c,boxes):
     boxes[first].x0 = 0
     boxes[first].y0 = 0
     boxes[first].z0 = 0
-    place_box(0,0,0,boxes[first].xlen,boxes[first].ylen,boxes[first].zlen)
+    place_box(0,0,0,boxes[first].xlen,boxes[first].ylen,boxes[first].zlen, boxes[first].color)
     placed_boxes = [first]
     P_x = []
     P_y = []
@@ -77,7 +77,7 @@ def place_boxes_sequence_triples(a,b,c,boxes):
         boxes[current].x0 = x_i
         boxes[current].y0 = y_i
         boxes[current].z0 = z_i
-        place_box(x_i, y_i, z_i, boxes[current].xlen, boxes[current].ylen, boxes[current].zlen)
+        place_box(x_i, y_i, z_i, boxes[current].xlen, boxes[current].ylen, boxes[current].zlen, boxes[current].color)
 
         P_x = []
         P_y = []
@@ -92,16 +92,15 @@ if __name__ == "__main__":
 
     create_container()
 
-    cont_x = 100
-    cont_y = 100
-    cont_z = 100
-
-
-
     #generate the boxes
     boxes = []
-    for i in range(5):
-        boxes.append(randomly_generate_box(50, 50, 50))
+    #for i in range(10):
+    #    boxes.append(randomly_generate_box(50, 50, 50))
+    boxes.append(Box("a", 10, 50, 50, rgb(255,0,0)))
+    boxes.append(Box("b", 20, 30, 10, rgb(250,163,32)))
+    boxes.append(Box("c", 10, 50, 30, rgb(252,244,27)))
+    boxes.append(Box("d", 40, 40, 40, rgb(45,247,14)))
+    boxes.append(Box("e", 80, 60, 40, rgb(17,32,252)))
 
     #generate the A sequence randomly. Same for B and C sequence
     a = list(range(5))
