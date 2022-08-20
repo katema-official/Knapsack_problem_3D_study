@@ -27,32 +27,45 @@ def give_X_ij(seq, i, j):
         return False
 
 
+#function that checks if a given newly placed box falls above another previously
+#placed box. If that is so, it returns the height of its upper surface.
+#(function written mainly to compress the code used in the enforce_vertical_stability function)
+def check_height(x0, x0_plus_len, z0, z0_plus_len, x_i, z_i, box_already_placed):
+    for x_j_ in range(x0, x0_plus_len):
+        for z_j_ in range(z0, z0_plus_len):
+            if(x_i == x_j_ and z_i == z_j_):
+                return box_already_placed.y0 + box_already_placed.ylen
+    return 0
+
+
 def enforce_vertical_stability(x_i, y_i, z_i, xlen, ylen, zlen, P_y, boxes):
     possible_heights = []
     #(1)
     for k in P_y:
-        x_j_ = boxes[k].x0
-        z_j_ = boxes[k].z0
-        if(x_i == x_j_ and z_i == z_j_):
-            possible_heights.append(boxes[k].y0 + boxes[k].ylen)
+        h = check_height(boxes[k].x0, boxes[k].x0 + boxes[k].xlen,
+                                boxes[k].z0, boxes[k].z0 + boxes[k].zlen,
+                                x_i, z_i, boxes[k])
+        if h != 0: possible_heights.append(h)
     #(2)
     for k in P_y:
-        x_j_ = boxes[k].x0 + boxes[k].xlen
-        z_j_ = boxes[k].z0
-        if(x_i + xlen == x_j_ and z_i == z_j_):
-            possible_heights.append(boxes[k].y0 + boxes[k].ylen)
+        h = check_height(boxes[k].x0 + 1, boxes[k].x0 + boxes[k].xlen + 1,
+                         boxes[k].z0, boxes[k].z0 + boxes[k].zlen,
+                         x_i, z_i, boxes[k])
+        if h != 0: possible_heights.append(h)
     #(3)
     for k in P_y:
-        x_j_ = boxes[k].x0
-        z_j_ = boxes[k].z0 + boxes[k].zlen
-        if (x_i == x_j_ and z_i + zlen == z_j_):
-            possible_heights.append(boxes[k].y0 + boxes[k].ylen)
+        h = check_height(boxes[k].x0, boxes[k].x0 + boxes[k].xlen,
+                         boxes[k].z0 + 1, boxes[k].z0 + boxes[k].zlen + 1,
+                         x_i, z_i, boxes[k])
+        if h != 0: possible_heights.append(h)
     #(4)
     for k in P_y:
-        x_j_ = boxes[k].x0 + boxes[k].xlen
-        z_j_ = boxes[k].z0 + boxes[k].zlen
-        if(x_i + xlen == x_j_ and z_i + zlen == z_j_):
-            possible_heights.append(boxes[k].y0 + boxes[k].ylen)
+        h = check_height(boxes[k].x0 + 1, boxes[k].x0 + boxes[k].xlen + 1,
+                         boxes[k].z0 + 1, boxes[k].z0 + boxes[k].zlen + 1,
+                         x_i, z_i, boxes[k])
+        if h != 0: possible_heights.append(h)
+
+
     possible_heights.append(0)
     final_height = max(possible_heights)
 
@@ -122,8 +135,6 @@ def place_boxes_sequence_triples(a,b,c,boxes):
         P_y = []
         P_z = []
         placed_boxes.append(current)
-        print(placed_boxes)
-        print("x_i = " + str(x_i) + ", y_i = " + str(y_i) + ", z_i = " + str(z_i))
 
 
 if __name__ == "__main__":
@@ -155,10 +166,13 @@ if __name__ == "__main__":
     print(c)
 
     #for customization
-    if True:
+    if False:
         a = [4, 2, 1, 3, 0]
         b = [2, 4, 0, 3, 1]
         c = [2, 0, 1, 4, 3]
+        a = [1, 3, 4, 2, 0]
+        b = [4, 0, 1, 2, 3]
+        c = [4, 2, 0, 3, 1]
 
     place_boxes_sequence_triples(a,b,c,boxes)
 
