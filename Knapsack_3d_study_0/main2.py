@@ -26,6 +26,39 @@ def give_X_ij(seq, i, j):
     else:
         return False
 
+
+def enforce_vertical_stability(x_i, y_i, z_i, xlen, ylen, zlen, P_y, boxes):
+    possible_heights = []
+    #(1)
+    for k in P_y:
+        x_j_ = boxes[k].x0
+        z_j_ = boxes[k].z0
+        if(x_i == x_j_ and z_i == z_j_):
+            possible_heights.append(boxes[k].y0 + boxes[k].ylen)
+    #(2)
+    for k in P_y:
+        x_j_ = boxes[k].x0 + boxes[k].xlen
+        z_j_ = boxes[k].z0
+        if(x_i + xlen == x_j_ and z_i == z_j_):
+            possible_heights.append(boxes[k].y0 + boxes[k].ylen)
+    #(3)
+    for k in P_y:
+        x_j_ = boxes[k].x0
+        z_j_ = boxes[k].z0 + boxes[k].zlen
+        if (x_i == x_j_ and z_i + zlen == z_j_):
+            possible_heights.append(boxes[k].y0 + boxes[k].ylen)
+    #(4)
+    for k in P_y:
+        x_j_ = boxes[k].x0 + boxes[k].xlen
+        z_j_ = boxes[k].z0 + boxes[k].zlen
+        if(x_i + xlen == x_j_ and z_i + zlen == z_j_):
+            possible_heights.append(boxes[k].y0 + boxes[k].ylen)
+    possible_heights.append(0)
+    final_height = max(possible_heights)
+
+    return final_height
+
+
 #function that places the boxes according to the three sequences
 def place_boxes_sequence_triples(a,b,c,boxes):
     first = b[0]
@@ -75,8 +108,14 @@ def place_boxes_sequence_triples(a,b,c,boxes):
                 z_i = actual_box.z0 + actual_box.zlen
 
         boxes[current].x0 = x_i
-        boxes[current].y0 = y_i
         boxes[current].z0 = z_i
+
+        #now for the vertical stability: let's "push" the boxes below as possible as we can
+        y_i = enforce_vertical_stability(x_i, y_i, z_i,
+                                         boxes[current].xlen, boxes[current].ylen, boxes[current].zlen, P_y, boxes)
+
+        boxes[current].y0 = y_i
+
         place_box(x_i, y_i, z_i, boxes[current].xlen, boxes[current].ylen, boxes[current].zlen, boxes[current].color)
 
         P_x = []
@@ -114,6 +153,12 @@ if __name__ == "__main__":
     c = list(range(5))
     random.shuffle(c)
     print(c)
+
+    #for customization
+    if True:
+        a = [4, 2, 1, 3, 0]
+        b = [2, 4, 0, 3, 1]
+        c = [2, 0, 1, 4, 3]
 
     place_boxes_sequence_triples(a,b,c,boxes)
 
