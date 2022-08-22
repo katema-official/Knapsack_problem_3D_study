@@ -137,6 +137,121 @@ def place_boxes_sequence_triples(a,b,c,boxes):
         placed_boxes.append(current)
 
 
+#define the volume of the container occupied by the boxes. Note that
+#to count the volume occupied we only take into account boxes that are
+#completely inside the container.
+def volume_occupied(boxes, container_x, container_y, container_z):
+    #volume_total = container_x*container_y*container_z
+    volume_summed = 0
+    for box in boxes:
+        if box.x0 + box.xlen <= container_x and \
+            box.y0 + box.ylen <= container_y and \
+            box.z0 + box.zlen <= container_z:
+                volume_summed += box.xlen*box.ylen*box.zlen
+    return volume_summed
+
+def generate_neighbours(a_best, b_best, c_best, boxes):
+    n = len(boxes)
+    # The neighbourhood of each solution is defined as one of these five permutations:
+    # either exchange two boxes from one of the sequences; exchange two boxes in
+    # sequences A and B; exchange two boxes in sequences A and C; exchange two boxes
+    # in sequences C and B; or exchange two boxes in all sequences.
+    neighbours = []
+
+    i = random.choice(list(range(n)))
+    j = random.choice(e for e in list(range(n)) if e != i)
+    x0 = a_best.index(i)    #index of box i in a
+    y0 = a_best.index(j)    #index of box j in a
+    x1 = b_best.index(i)
+    y1 = b_best.index(j)
+    x2 = c_best.index(i)
+    y2 = c_best.index(j)
+
+    #first neighbour
+    n1 = (a_best[:], b_best[:], c_best[:])
+    list_chosen = random.choice([0,1,2]) #extremes included
+    x = n1[list_chosen].index(i)
+    y = n1[list_chosen].index(j)
+    n1[list_chosen][x], n1[list_chosen][y]= n1[list_chosen][y], n1[list_chosen][x]
+    neighbours.append(n1)
+
+    #second neighbour
+    n2 = (a_best[:], b_best[:], c_best[:])
+    n2[0][x0], n2[0][y0] = n2[0][y0], n2[0][x0]
+    n2[1][x1], n2[1][y1] = n2[1][y1], n2[1][x1]
+    neighbours.append(n2)
+
+    #third neighbour
+    n3 = (a_best[:], b_best[:], c_best[:])
+    n3[0][x0], n3[0][y0] = n3[0][y0], n3[0][x0]
+    n3[2][x2], n3[2][y2] = n3[2][y2], n3[2][x2]
+    neighbours.append(n3)
+
+    #fourth neighbour
+    n4 = (a_best[:], b_best[:], c_best[:])
+    n4[1][x1], n4[1][y1] = n4[1][y1], n4[1][x1]
+    n4[2][x2], n4[2][y2] = n4[2][y2], n4[2][x2]
+    neighbours.append(n4)
+
+    #fifth neighbour
+    n5 = (a_best[:], b_best[:], c_best[:])
+    n5[0][x0], n5[0][y0] = n5[0][y0], n5[0][x0]
+    n5[1][x1], n5[1][y1] = n5[1][y1], n5[1][x1]
+    n5[2][x2], n5[2][y2] = n5[2][y2], n5[2][x2]
+    neighbours.append(n5)
+
+    return neighbours
+
+
+
+class SimulatedAnnealing:
+
+    a = []
+    b = []
+    c = []
+    boxes = []
+
+    temperature = 100
+    beta = 0.0001
+    alpha = 0.00001
+
+    a_best = []
+    b_best = []
+    c_best = []
+
+    best_volume = 0
+
+    max_number_of_iterations = 100
+    current_iteration = 0
+
+    def initialize(cls, a, b, c, boxes):
+        place_boxes_sequence_triples(a, b, c, boxes[:])
+        cls.a_best = a
+        cls.a = a
+        cls.b_best = b
+        cls.b = b
+        cls.c_best = c
+        cls.c = c
+        cls.boxes = boxes
+        cls.best_volume = volume_occupied(boxes, cont_x, cont_y, cont_z)
+
+
+    def make_a_step(cls):
+        #here the Simulated Annealing algorithm will modify the current solution
+        #and find another one
+        while(cls.current_iteration < cls.max_number_of_iterations):
+            neighbours = generate_neighbours(cls.a_best, cls.b_best, cls.c_best, cls.boxes)
+
+
+
+
+
+#see class above
+def input(key):
+    if key == "l":
+        SimulatedAnnealing.make_a_step(SimulatedAnnealing)
+
+
 if __name__ == "__main__":
     app = Ursina()
 
@@ -166,7 +281,7 @@ if __name__ == "__main__":
     print(c)
 
     #for customization
-    if False:
+    if True:
         a = [4, 2, 1, 3, 0]
         b = [2, 4, 0, 3, 1]
         c = [2, 0, 1, 4, 3]
@@ -174,9 +289,12 @@ if __name__ == "__main__":
         b = [4, 0, 1, 2, 3]
         c = [4, 2, 0, 3, 1]
 
-    place_boxes_sequence_triples(a,b,c,boxes)
+    SimulatedAnnealing.initialize(SimulatedAnnealing, a, b, c, boxes)
 
-    print("a")
+
+
+    print(volume_occupied(boxes, cont_x, cont_y, cont_z))
+
     editor_camera = EditorCamera(enabled=True)  # add camera controls for orbiting and moving the camera
 
     app.run()
