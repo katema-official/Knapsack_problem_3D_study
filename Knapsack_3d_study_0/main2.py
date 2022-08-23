@@ -1,3 +1,5 @@
+import ursina
+
 from boxmodule_misc import *
 from boxmodule_ursina import *
 
@@ -78,7 +80,7 @@ def place_boxes_sequence_triples(a,b,c,boxes):
     boxes[first].x0 = 0
     boxes[first].y0 = 0
     boxes[first].z0 = 0
-    place_box(0,0,0,boxes[first].xlen,boxes[first].ylen,boxes[first].zlen, boxes[first].color)
+    #place_box(0,0,0,boxes[first].xlen,boxes[first].ylen,boxes[first].zlen, boxes[first].color)
     placed_boxes = [first]
     P_x = []
     P_y = []
@@ -129,12 +131,22 @@ def place_boxes_sequence_triples(a,b,c,boxes):
 
         boxes[current].y0 = y_i
 
-        place_box(x_i, y_i, z_i, boxes[current].xlen, boxes[current].ylen, boxes[current].zlen, boxes[current].color)
-
         P_x = []
         P_y = []
         P_z = []
         placed_boxes.append(current)
+
+def place_boxes_in_space(boxes):
+    for box in boxes:
+        box.entity = place_box(box.x0, box.y0, box.z0, box.xlen, box.ylen, box.zlen, box.color)
+
+def destroy_placed_boxes_in_space(boxes):
+    for box in boxes:
+        ursina.destroy(box.entity)
+
+#def replace_boxes_in_space(boxes):
+#    for box in boxes:
+#        replace_box(box)
 
 
 #define the volume of the container occupied by the boxes. Note that
@@ -159,7 +171,7 @@ def generate_neighbours(a_best, b_best, c_best, boxes):
     neighbours = []
 
     i = random.choice(list(range(n)))
-    j = random.choice(e for e in list(range(n)) if e != i)
+    j = random.choice([e for e in list(range(n)) if e != i])
     x0 = a_best.index(i)    #index of box i in a
     y0 = a_best.index(j)    #index of box j in a
     x1 = b_best.index(i)
@@ -225,23 +237,49 @@ class SimulatedAnnealing:
     current_iteration = 0
 
     def initialize(cls, a, b, c, boxes):
-        place_boxes_sequence_triples(a, b, c, boxes[:])
+        cls.boxes = boxes
+        place_boxes_sequence_triples(a, b, c, cls.boxes)
         cls.a_best = a
         cls.a = a
         cls.b_best = b
         cls.b = b
         cls.c_best = c
         cls.c = c
-        cls.boxes = boxes
-        cls.best_volume = volume_occupied(boxes, cont_x, cont_y, cont_z)
+        cls.best_volume = volume_occupied(cls.boxes, cont_x, cont_y, cont_z)
+        place_boxes_in_space(cls.boxes)
 
 
     def make_a_step(cls):
         #here the Simulated Annealing algorithm will modify the current solution
         #and find another one
-        while(cls.current_iteration < cls.max_number_of_iterations):
+        #while(cls.current_iteration < cls.max_number_of_iterations):
             neighbours = generate_neighbours(cls.a_best, cls.b_best, cls.c_best, cls.boxes)
+            neighbour_chosen = random.choice(neighbours)
+            boxes_neighbour_chosen = cls.boxes[:]
+            place_boxes_sequence_triples(neighbour_chosen[0], neighbour_chosen[1],
+                neighbour_chosen[2], boxes_neighbour_chosen)
+            neighbour_volume = volume_occupied(boxes_neighbour_chosen, cont_x, cont_y, cont_z)
+            found_better = False
+            if neighbour_volume > cls.best_volume:
+                found_better = True
+            else:
+                #We accept a worse solution at random, but the chance of
+                #doing so decreases with the temperature
+                cls.temperature = cls.temperature / (1 + cls.beta * cls.temperature)
+                delta = (cls.best_volume - neighbour_volume) / cls.best_volume
+                i = random.uniform(0,1)
+                if i < math.e ** (-delta / cls.temperature):
+                    found_better = True
 
+            if found_better:
+                #cls.current_iteration = cls.current_iteration + 1
+                cls.a_best = neighbour_chosen[0]
+                cls.b_best = neighbour_chosen[1]
+                cls.c_best = neighbour_chosen[2]
+                cls.best_volume = neighbour_volume
+                destroy_placed_boxes_in_space(cls.boxes)
+                cls.boxes = boxes_neighbour_chosen
+                place_boxes_in_space(cls.boxes)
 
 
 
