@@ -223,9 +223,9 @@ class SimulatedAnnealing:
     c = []
     boxes = []
 
-    temperature = 100
-    beta = 0.0001
-    alpha = 0.00001
+    temperature = 1
+    beta = 0.01
+    alpha = 0.001
 
     a_best = []
     b_best = []
@@ -260,7 +260,8 @@ class SimulatedAnnealing:
                 neighbour_chosen[2], boxes_neighbour_chosen)
             neighbour_volume = volume_occupied(boxes_neighbour_chosen, cont_x, cont_y, cont_z)
             found_better = False
-            if neighbour_volume > cls.best_volume:
+            print("neighbour_volume = " + str(neighbour_volume) + ", best_volume = " + str(cls.best_volume))
+            if neighbour_volume >= cls.best_volume:
                 found_better = True
             else:
                 #We accept a worse solution at random, but the chance of
@@ -270,12 +271,21 @@ class SimulatedAnnealing:
                 i = random.uniform(0,1)
                 if i < math.e ** (-delta / cls.temperature):
                     found_better = True
+                    print("worst, but probability was " + str(math.e ** (-delta / cls.temperature)) + \
+                          " and temperature is " + str(cls.temperature) + " and delta was " + str(delta))
+                else:
+                    #increase temperature
+                    cls.temperature = cls.temperature / (1 - cls.alpha * cls.temperature)
+                    print("temperature increased to " + str(cls.temperature))
 
             if found_better:
                 #cls.current_iteration = cls.current_iteration + 1
                 cls.a_best = neighbour_chosen[0]
                 cls.b_best = neighbour_chosen[1]
                 cls.c_best = neighbour_chosen[2]
+                print(cls.a_best)
+                print(cls.b_best)
+                print(cls.c_best)
                 cls.best_volume = neighbour_volume
                 destroy_placed_boxes_in_space(cls.boxes)
                 cls.boxes = boxes_neighbour_chosen
@@ -326,6 +336,10 @@ if __name__ == "__main__":
         a = [1, 3, 4, 2, 0]
         b = [4, 0, 1, 2, 3]
         c = [4, 2, 0, 3, 1]
+
+        a = [1, 0, 3, 2, 4]
+        b = [3, 4, 2, 0, 1]
+        c = [2, 1, 3, 4, 0]
 
     SimulatedAnnealing.initialize(SimulatedAnnealing, a, b, c, boxes)
 
