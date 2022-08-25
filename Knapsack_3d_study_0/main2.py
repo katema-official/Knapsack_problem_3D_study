@@ -32,9 +32,10 @@ def give_X_ij(seq, i, j):
 #function that checks if a given newly placed box falls above another previously
 #placed box. If that is so, it returns the height of its upper surface.
 #(function written mainly to compress the code used in the enforce_vertical_stability function)
+#NOTE: both x_0 and x0_plus_len (same goes for z) must be checked!
 def check_height(x0, x0_plus_len, z0, z0_plus_len, x_i, z_i, box_already_placed):
-    for x_j_ in range(x0, x0_plus_len):
-        for z_j_ in range(z0, z0_plus_len):
+    for x_j_ in range(x0, x0_plus_len + 1):
+        for z_j_ in range(z0, z0_plus_len + 1):
             if(x_i == x_j_ and z_i == z_j_):
                 return box_already_placed.y0 + box_already_placed.ylen
     return 0
@@ -44,27 +45,27 @@ def enforce_vertical_stability(x_i, y_i, z_i, xlen, ylen, zlen, P_y, boxes):
     possible_heights = []
     #(1)
     for k in P_y:
-        h = check_height(boxes[k].x0, boxes[k].x0 + boxes[k].xlen,
-                                boxes[k].z0, boxes[k].z0 + boxes[k].zlen,
+        h = check_height(boxes[k].x0, boxes[k].x0 + boxes[k].xlen - 1,
+                                boxes[k].z0, boxes[k].z0 + boxes[k].zlen - 1,
                                 x_i, z_i, boxes[k])
         if h != 0: possible_heights.append(h)
     #(2)
     for k in P_y:
-        h = check_height(boxes[k].x0 + 1, boxes[k].x0 + boxes[k].xlen + 1,
-                         boxes[k].z0, boxes[k].z0 + boxes[k].zlen,
-                         x_i, z_i, boxes[k])
+        h = check_height(boxes[k].x0 + 1, boxes[k].x0 + boxes[k].xlen,
+                         boxes[k].z0, boxes[k].z0 + boxes[k].zlen - 1,
+                         x_i + xlen, z_i, boxes[k])
         if h != 0: possible_heights.append(h)
     #(3)
     for k in P_y:
-        h = check_height(boxes[k].x0, boxes[k].x0 + boxes[k].xlen,
-                         boxes[k].z0 + 1, boxes[k].z0 + boxes[k].zlen + 1,
-                         x_i, z_i, boxes[k])
+        h = check_height(boxes[k].x0, boxes[k].x0 + boxes[k].xlen - 1,
+                         boxes[k].z0 + 1, boxes[k].z0 + boxes[k].zlen,
+                         x_i, z_i + zlen, boxes[k])
         if h != 0: possible_heights.append(h)
     #(4)
     for k in P_y:
-        h = check_height(boxes[k].x0 + 1, boxes[k].x0 + boxes[k].xlen + 1,
-                         boxes[k].z0 + 1, boxes[k].z0 + boxes[k].zlen + 1,
-                         x_i, z_i, boxes[k])
+        h = check_height(boxes[k].x0 + 1, boxes[k].x0 + boxes[k].xlen,
+                         boxes[k].z0 + 1, boxes[k].z0 + boxes[k].zlen,
+                         x_i + xlen, z_i + zlen, boxes[k])
         if h != 0: possible_heights.append(h)
 
 
@@ -72,6 +73,40 @@ def enforce_vertical_stability(x_i, y_i, z_i, xlen, ylen, zlen, P_y, boxes):
     final_height = max(possible_heights)
 
     return final_height
+
+
+
+#my take on enforcing vertical stability
+def enforce_vertical_stability_2(x_i, y_i, z_i, xlen, ylen, zlen, P_y, boxes):
+    max_h = 0
+    for k in P_y:
+        k_x0 = boxes[k].x0
+        k_z0 = boxes[k].z0
+        k_x1 = boxes[k].x0 + boxes[k].xlen
+        k_z1 = boxes[k].z0 + boxes[k].zlen
+        #the box k is below the box we have to place if one of its four points
+        #falls under the lower surface of the box to be placed
+        if (k_x0 >= x_i and k_x0 < x_i + xlen and k_z0 >= z_i and k_z0 < z_i + zlen) or \
+            (k_x1 > x_i and k_x1 <= x_i + xlen and k_z0 >= z_i and k_z0 < z_i + zlen) or \
+            (k_x0 >= x_i and k_x0 < x_i + xlen and k_z1 > z_i and k_z1 <= z_i + zlen) or \
+            (k_x1 > x_i and k_x0 <= x_i + xlen and k_z0 > z_i and k_z0 <= z_i + zlen):
+                if boxes[k].y0 + boxes[k].ylen > max_h:
+                    max_h = boxes[k].y0 + boxes[k].ylen
+        else:
+            #at the same time, the box k is below the box we have to place if one of the
+            #four points of the box we have to place falls above the box k
+            btp_x0 = x_i    #btp = box to place
+            btp_z0 = z_i
+            btp_x1 = x_i + xlen
+            btp_z1 = z_i + zlen
+            if (btp_x0 >= k_x0 and btp_x0 < k_x1 and btp_z0 >= k_z0 and btp_z0 < k_z1) or \
+                    (btp_x1 > k_x0 and btp_x1 <= k_x1 and btp_z0 >= k_z0 and btp_z0 < k_z1) or \
+                    (btp_x0 >= k_x0 and btp_x0 < k_x1 and btp_z1 > k_z0 and btp_z1 <= k_z1) or \
+                    (btp_x1 > k_x0 and btp_x0 <= k_x1 and btp_z0 > k_z0 and btp_z0 <= k_z1):
+                        if boxes[k].y0 + boxes[k].ylen > max_h:
+                            max_h = boxes[k].y0 + boxes[k].ylen
+
+    return max_h
 
 
 #function that places the boxes according to the three sequences
@@ -90,7 +125,7 @@ def place_boxes_sequence_triples(a,b,c,boxes):
         current = b[k]  #the currently considered box that we want to place
         for old in placed_boxes:
             #In P_x we put the boxes (already placed) that are to the left than the new one
-            if give_X_ij(a,old, current) and give_X_ij(b, old, current) and not give_X_ij(c, old, current):
+            if give_X_ij(a, old, current) and give_X_ij(b, old, current) and not give_X_ij(c, old, current):
                 P_x.append(old)
             #In P_y we put the boxes (already placed) that are below the new one
             if not give_X_ij(a, old, current) and give_X_ij(b, old, current) and give_X_ij(c, old, current):
@@ -126,7 +161,7 @@ def place_boxes_sequence_triples(a,b,c,boxes):
         boxes[current].z0 = z_i
 
         #now for the vertical stability: let's "push" the boxes below as possible as we can
-        y_i = enforce_vertical_stability(x_i, y_i, z_i,
+        y_i = enforce_vertical_stability_2(x_i, y_i, z_i,
                                          boxes[current].xlen, boxes[current].ylen, boxes[current].zlen, P_y, boxes)
 
         boxes[current].y0 = y_i
@@ -223,9 +258,9 @@ class SimulatedAnnealing:
     c = []
     boxes = []
 
-    temperature = 1
-    beta = 0.01
-    alpha = 0.001
+    temperature = 0.2
+    beta = 0.2
+    alpha = 0.002
 
     a_best = []
     b_best = []
@@ -340,6 +375,22 @@ if __name__ == "__main__":
         a = [1, 0, 3, 2, 4]
         b = [3, 4, 2, 0, 1]
         c = [2, 1, 3, 4, 0]
+
+        a = [2, 4, 3, 1, 0]
+        b = [2, 1, 0, 4, 3]
+        c = [3, 2, 0, 1, 4]
+
+        a = [1, 3, 4, 2, 0]
+        b = [4, 2, 1, 3, 0]
+        c = [4, 2, 0, 3, 1]
+
+        a = [1, 0, 3, 2, 4]
+        b = [3, 4, 1, 2, 0]
+        c = [3, 4, 2, 0, 1]
+
+        a = [2, 1, 0, 3, 4]
+        b = [2, 3, 4, 0, 1]
+        c = [0, 3, 2, 4, 1]
 
     SimulatedAnnealing.initialize(SimulatedAnnealing, a, b, c, boxes)
 
