@@ -89,7 +89,7 @@ def enforce_vertical_stability_2(x_i, y_i, z_i, xlen, ylen, zlen, P_y, boxes):
         if (k_x0 >= x_i and k_x0 < x_i + xlen and k_z0 >= z_i and k_z0 < z_i + zlen) or \
             (k_x1 > x_i and k_x1 <= x_i + xlen and k_z0 >= z_i and k_z0 < z_i + zlen) or \
             (k_x0 >= x_i and k_x0 < x_i + xlen and k_z1 > z_i and k_z1 <= z_i + zlen) or \
-            (k_x1 > x_i and k_x0 <= x_i + xlen and k_z0 > z_i and k_z0 <= z_i + zlen):
+            (k_x1 > x_i and k_x1 <= x_i + xlen and k_z1 > z_i and k_z1 <= z_i + zlen):
                 if boxes[k].y0 + boxes[k].ylen > max_h:
                     max_h = boxes[k].y0 + boxes[k].ylen
         else:
@@ -102,7 +102,7 @@ def enforce_vertical_stability_2(x_i, y_i, z_i, xlen, ylen, zlen, P_y, boxes):
             if (btp_x0 >= k_x0 and btp_x0 < k_x1 and btp_z0 >= k_z0 and btp_z0 < k_z1) or \
                     (btp_x1 > k_x0 and btp_x1 <= k_x1 and btp_z0 >= k_z0 and btp_z0 < k_z1) or \
                     (btp_x0 >= k_x0 and btp_x0 < k_x1 and btp_z1 > k_z0 and btp_z1 <= k_z1) or \
-                    (btp_x1 > k_x0 and btp_x0 <= k_x1 and btp_z0 > k_z0 and btp_z0 <= k_z1):
+                    (btp_x1 > k_x0 and btp_x1 <= k_x1 and btp_z1 > k_z0 and btp_z1 <= k_z1):
                         if boxes[k].y0 + boxes[k].ylen > max_h:
                             max_h = boxes[k].y0 + boxes[k].ylen
 
@@ -391,6 +391,22 @@ if __name__ == "__main__":
         a = [2, 1, 0, 3, 4]
         b = [2, 3, 4, 0, 1]
         c = [0, 3, 2, 4, 1]
+
+        #one of the best solutions (277000 volume, everything except red box)
+        #[4, 3, 0, 1, 2]
+        #[1, 3, 2, 4, 0]
+        #[4, 2, 1, 0, 3]
+        #another
+        #[4, 0, 2, 1, 3]
+        #[1, 2, 3, 4, 0]
+        #[4, 3, 1, 2, 0]
+        #even better, might think of adding to the volume function (fitness, basically)
+        #a penality term that penalizes solutions where a big box is sustained by a small one.
+        #It could at least be chosen if the two solutions have the same fitness.
+        #[4, 0, 1, 2, 3]
+        #[1, 2, 3, 4, 0]
+        #[4, 3, 2, 1, 0]
+
 
     SimulatedAnnealing.initialize(SimulatedAnnealing, a, b, c, boxes)
 
