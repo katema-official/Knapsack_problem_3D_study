@@ -250,6 +250,45 @@ def generate_neighbours(a_best, b_best, c_best, boxes):
     return neighbours
 
 
+def generate_neighbours_extended_rotation_1(a_best, b_best, c_best, boxes, p):
+    #this function is an extension of the generate_neighbour. In addition to the
+    #neighbours already generated, we allow ONE of the boxes to change its orientation
+    #with a certain probability.
+    neighbours = generate_neighbours(a_best, b_best, c_best, boxes)
+    u = random.uniform(0,1)
+    if u < p:
+        #with a certain probability, we choose a box...
+        b = random.choice(boxes)
+        #...and randomly change its orientation
+        b.xlen, b.ylen, b.zlen = give_permutation(b.xlen, b.ylen, b.zlen, random.choice(list(range(1,7))))
+    return neighbours
+
+#other approaches would be to incorporate the rotation changes directly into the
+#neighbour solutions, so that they can be evaluated properly when considering
+#to accept that solution or not.
+
+#to do so, we can hard-code this directly into the neighbours, but we can also choose
+#a neighbour solution as we did before, and then, with a certain probability, rotate
+#each of the box. We can also fix a priori a number of boxes to rotate, like 1 (would
+#be the approach done before), or randomize it.
+
+#let's try to implement the one that, with a certain probability, rotates
+#each of the boxes.
+def generate_neighbours_extended_rotation_2(a_best, b_best, c_best, boxes, p):
+    #this function is an extension of the generate_neighbour. In addition to the
+    #neighbours already generated, we allow ONE of the boxes to change its orientation
+    #with a certain probability.
+    neighbours = generate_neighbours(a_best, b_best, c_best, boxes)
+    for b in boxes:
+        u = random.uniform(0,1)
+        if u < p:
+            #with a certain probability, change the orientation of a box
+            b.xlen, b.ylen, b.zlen = give_permutation(b.xlen, b.ylen, b.zlen, random.choice(list(range(1,7))))
+    return neighbours
+
+
+
+
 
 class SimulatedAnnealing:
 
@@ -288,7 +327,7 @@ class SimulatedAnnealing:
         #here the Simulated Annealing algorithm will modify the current solution
         #and find another one
         #while(cls.current_iteration < cls.max_number_of_iterations):
-            neighbours = generate_neighbours(cls.a_best, cls.b_best, cls.c_best, cls.boxes)
+            neighbours = generate_neighbours_extended_rotation_2(cls.a_best, cls.b_best, cls.c_best, cls.boxes, 0.2)
             neighbour_chosen = random.choice(neighbours)
             boxes_neighbour_chosen = cls.boxes[:]
             place_boxes_sequence_triples(neighbour_chosen[0], neighbour_chosen[1],
