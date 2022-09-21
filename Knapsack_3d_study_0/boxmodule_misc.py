@@ -1,7 +1,7 @@
 #the container (bin) dimensions
-cont_x = 80#120
-cont_y = 80#60
-cont_z = 80#80
+cont_x = 800#860#120
+cont_y = 700#591#60
+cont_z = 1000#590#80
 
 #function that tells if, given two boxes with their tentative LBB point and their
 #current orientation (width, height and depth), they overlap (one is inside the other).

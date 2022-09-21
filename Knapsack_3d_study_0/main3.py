@@ -191,10 +191,12 @@ def volume_occupied(boxes, container_x, container_y, container_z):
     #volume_total = container_x*container_y*container_z
     volume_summed = 0
     for box in boxes:
-        if box.x0 + box.xlen <= container_x and \
-            box.y0 + box.ylen <= container_y and \
-            box.z0 + box.zlen <= container_z:
-                volume_summed += box.xlen*box.ylen*box.zlen
+        #THIS TIME, we consider also the partial volume of partial boxes
+        #in the bin
+        x_in_bin = box.xlen if box.x0 + box.xlen <= container_x else max(container_x - box.x0,0)
+        y_in_bin = box.ylen if box.y0 + box.ylen <= container_y else max(container_y - box.y0,0)
+        z_in_bin = box.zlen if box.z0 + box.zlen <= container_z else max(container_z - box.z0,0)
+        volume_summed += x_in_bin*y_in_bin*z_in_bin
     return volume_summed
 
 def generate_neighbours(a_best, b_best, c_best, boxes):
@@ -382,6 +384,8 @@ def input(key):
         SimulatedAnnealing.make_a_step(SimulatedAnnealing)
         destroy_placed_boxes_in_space(SimulatedAnnealing.boxes)
         place_boxes_in_space(SimulatedAnnealing.boxes)
+        print("best_volume = " + str(SimulatedAnnealing.best_volume / (cont_x * cont_y * cont_z)))
+
 
     #for bigger problems, let's use an authomatic approach
     if key == "k":
