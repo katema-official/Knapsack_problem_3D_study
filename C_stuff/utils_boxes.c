@@ -3,7 +3,10 @@
 #include <time.h>
 #include <string.h>
 #include <stdio.h>
+#include <math.h>
 #define max(a,b) (((a) > (b)) ? (a) : (b))
+
+double get_random() { return (double)rand() / (double)RAND_MAX; }
 
 void debug_print(int n_boxes, box* boxes, int* a, int* b, int* c){
     for(int i = 0; i < n_boxes; i++){
@@ -384,7 +387,8 @@ void place_boxes_sequence_triples(int* a, int* b, int* c, box** boxes, int n_box
 
 void sa_make_a_step(box** boxes, int n_boxes, int* temperature, int alpha, int beta, 
                     int** current_a, int** current_b, int** current_c, 
-                    int** best_a, int** best_b, int** best_c, int* best_volume, box** boxes_neighbour){
+                    int** best_a, int** best_b, int** best_c, int* best_volume, box** boxes_neighbour,
+                    int cont_x, int cont_y, int cont_z){
     //make a copy of boxes, a, b and c
     memcpy(&(*boxes_neighbour), &(*boxes), sizeof(*boxes));
     memcpy(&(*current_a), &(*best_a), sizeof(*best_a));
@@ -395,13 +399,38 @@ void sa_make_a_step(box** boxes, int n_boxes, int* temperature, int alpha, int b
     //simply copies of boxes, best_a, best_b and best_c. It it this function that will change them to produce
     //a true neighbour.
     get_neighbour(boxes_neighbour, n_boxes, current_a, current_b, current_c);
-
     place_boxes_sequence_triples(*current_a, *current_b, *current_c, &(*boxes_neighbour), n_boxes);
+    int neighbour_volume = volume_occupied(*boxes_neighbour, n_boxes, cont_x, cont_y, cont_z, 1);
+    int found_better = 0;
+    if(neighbour_volume >= *best_volume){
+        found_better = 1;
+    }else{
+        //We accept a worse solution at random, but the chance of doing so decreases with the temperature
+        *temperature = *temperature / (1 + beta * (*temperature));
+        int delta = (*best_volume - neighbour_volume) / *best_volume;
+        int i = get_random();
+        if(i < exp(-delta/(*temperature))){
+            found_better = 1;
+        }else{
+            //increase temperature
+            *temperature = *temperature / (1 - alpha * (*temperature));
+        }
+    }
     
+    if(found_better){
+        memcpy(&(*best_a), &(*current_a), sizeof(*current_a));
+        memcpy(&(*best_b), &(*current_b), sizeof(*current_b));
+        memcpy(&(*best_c), &(*current_c), sizeof(*current_c));
+        *best_volume = neighbour_volume;
+        memcpy(&(*boxes), &(*boxes_neighbour), sizeof(*boxes_neighbour));
+
+    }
+
 
 }
 
-box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, int n_boxes, int md, int secs){
+box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, int n_boxes, int md, int secs,
+                                    int cont_x, int cont_y, int cont_z){
     int* best_a = a;
     int* best_b = b;
     int* best_c = c;
@@ -430,7 +459,7 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
         case 0:
             for(int i = 0; i < max_number_of_iterations; i++){
                 sa_make_a_step(&boxes, n_boxes, &temperature, alpha, beta, &current_a, &current_b, &current_c, 
-                                &best_a, &best_b, &best_c, &best_volume, &boxes_neighbour);
+                                &best_a, &best_b, &best_c, &best_volume, &boxes_neighbour, cont_x, cont_y, cont_z);
             }
         break;
         case 1:
@@ -441,7 +470,7 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
                 //simulated annealing multiple times before checking the time.
                 for(int i = 0; i < 100; i ++){
                     sa_make_a_step(&boxes, n_boxes, &temperature, alpha, beta, &current_a, &current_b, &current_c, 
-                                &best_a, &best_b, &best_c, &best_volume, &boxes_neighbour);
+                                &best_a, &best_b, &best_c, &best_volume, &boxes_neighbour, cont_x, cont_y, cont_z);
                 }
                 clock_t end = clock();
                 seconds = (float)(end - start) / CLOCKS_PER_SEC;
