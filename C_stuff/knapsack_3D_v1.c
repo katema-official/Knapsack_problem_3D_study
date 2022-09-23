@@ -43,6 +43,30 @@ int main(){
     }
 
 
+    int debug = 1;
+    if(debug){
+        printf("DEBUG");
+        boxes[0].xlen = 37;
+        boxes[0].ylen = 16;
+        boxes[0].zlen = 46;
+        boxes[1].xlen = 19;
+        boxes[1].ylen = 33;
+        boxes[1].zlen = 43;
+        boxes[2].xlen = 9;
+        boxes[2].ylen = 48;
+        boxes[2].zlen = 44;
+        boxes[3].xlen = 18;
+        boxes[3].ylen = 15;
+        boxes[3].zlen = 33;
+        boxes[4].xlen = 6;
+        boxes[4].ylen = 9;
+        boxes[4].zlen = 9;
+        a[0] = 1; a[1] = 4; a[2] = 2; a[3] = 5; a[4] = 3;
+        b[0] = 1; b[1] = 2; b[2] = 3; b[3] = 4; b[4] = 5;
+        a[0] = 4; a[1] = 2; a[2] = 5; a[3] = 1; a[4] = 3;
+    }
+
+
     //*************************
     //****a bunch of prints****
     //*************************

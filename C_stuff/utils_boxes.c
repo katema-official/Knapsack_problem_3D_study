@@ -200,14 +200,14 @@ void get_neighbour(box** boxes_neighbour, int n_boxes, int** current_a, int** cu
     int rotation_chosen = rand() % 4;
     switch(rotation_chosen){
         case 1:
-            permute_box_dimensions(&(*boxes_neighbour)[i], -1);
+            permute_box_dimensions(&((*boxes_neighbour)[i-1]), -1);
         break;
         case 2:
-            permute_box_dimensions(&(*boxes_neighbour)[j], -1);
+            permute_box_dimensions(&((*boxes_neighbour)[j-1]), -1);
         break;
         case 3:
-            permute_box_dimensions(&(*boxes_neighbour)[i], -1);
-            permute_box_dimensions(&(*boxes_neighbour)[j], -1);
+            permute_box_dimensions(&((*boxes_neighbour)[i-1]), -1);
+            permute_box_dimensions(&((*boxes_neighbour)[j-1]), -1);
         break;
         default:
         break;
@@ -458,6 +458,7 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
     switch(mode){
         case 0:
             for(int i = 0; i < max_number_of_iterations; i++){
+                printf("------------\n");
                 sa_make_a_step(&boxes, n_boxes, &temperature, alpha, beta, &current_a, &current_b, &current_c, 
                                 &best_a, &best_b, &best_c, &best_volume, &boxes_neighbour, cont_x, cont_y, cont_z);
             }
@@ -475,15 +476,11 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
                 clock_t end = clock();
                 seconds = (float)(end - start) / CLOCKS_PER_SEC;
             }
-            
-            
         break;
         default:
         break;
     }
-
-
-    return NULL;
+    return boxes;
 }
 
 int volume_occupied(box* boxes, int n_boxes, int cont_x, int cont_y, int cont_z, int mode){
