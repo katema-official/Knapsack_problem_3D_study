@@ -215,6 +215,173 @@ void get_neighbour(box** boxes_neighbour, int n_boxes, int** current_a, int** cu
 
 }
 
+//function that, given a sequence (A, B or C), returns:
+//1: if i is before j in seq
+//0: if i is after j in seq
+//Note that i, j are to considered boxes: So, if we have our array of boxes, built 
+//at the beginning of the problem, in which the boxes have a fixed position, this 
+//means that they have a fixed and unique identifier, that is the index of the array 
+//that contains them (box 1 is the first in this fixed array, box 2 is the second 
+//in this fixed array...)
+int give_X_ij(int* seq, int len, int i, int j){
+    if(i == j){exit(-1);} //can't happen
+    int index_i = 0;
+    int index_j = 0;
+    for(int k = 0; k < len; k++){
+        if(seq[k] == i){
+            index_i = k;
+        }else if(seq[k] == j){
+            index_j = k;
+        }
+    }
+    if(index_i<index_j){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
+int enforce_vertical_stability(int x_i, int y_i, int z_i, int xlen, int ylen, int zlen, int* P_y, int P_y_len, box* boxes, int n_boxes){
+    int max_h = 0;
+    int k;
+    for(int i = 0; i < P_y_len; i++){
+        k = P_y[i];
+        int k_x0 = boxes[k].x0;
+        int k_z0 = boxes[k].z0;
+        int k_x1 = boxes[k].x0 + boxes[k].xlen;
+        int k_z1 = boxes[k].z0 + boxes[k].zlen;
+        //the box k is below the box we have to place if one of its four points
+        //falls under the lower surface of the box to be placed
+        if ((k_x0 >= x_i && k_x0 < x_i + xlen && k_z0 >= z_i && k_z0 < z_i + zlen) ||
+            (k_x1 > x_i && k_x1 <= x_i + xlen && k_z0 >= z_i && k_z0 < z_i + zlen) ||
+            (k_x0 >= x_i && k_x0 < x_i + xlen && k_z1 > z_i && k_z1 <= z_i + zlen) ||
+            (k_x1 > x_i && k_x1 <= x_i + xlen && k_z1 > z_i && k_z1 <= z_i + zlen)){
+                if(boxes[k].y0 + boxes[k].ylen > max_h){
+                    max_h = boxes[k].y0 + boxes[k].ylen;
+                }
+        }else{
+            //at the same time, the box k is below the box we have to place if one of the
+            //four points of the box we have to place falls above the box k
+            int btp_x0 = x_i;    //btp = box to place
+            int btp_z0 = z_i;
+            int btp_x1 = x_i + xlen;
+            int btp_z1 = z_i + zlen;
+            if((btp_x0 >= k_x0 && btp_x0 < k_x1 && btp_z0 >= k_z0 && btp_z0 < k_z1) ||
+                    (btp_x1 > k_x0 && btp_x1 <= k_x1 && btp_z0 >= k_z0 && btp_z0 < k_z1) ||
+                    (btp_x0 >= k_x0 && btp_x0 < k_x1 && btp_z1 > k_z0 && btp_z1 <= k_z1) ||
+                    (btp_x1 > k_x0 && btp_x1 <= k_x1 && btp_z1 > k_z0 && btp_z1 <= k_z1)){
+                        if(boxes[k].y0 + boxes[k].ylen > max_h){
+                            max_h = boxes[k].y0 + boxes[k].ylen;
+                        }
+            }
+        }
+    }
+
+    return max_h;
+
+}
+
+//function that places the boxes according to the three sequences
+void place_boxes_sequence_triples(int* a, int* b, int* c, box** boxes, int n_boxes){
+    int first = b[0];
+    (*boxes)[first].x0 = 0;
+    (*boxes)[first].y0 = 0;
+    (*boxes)[first].z0 = 0;
+
+    //array for remembering the boxes already placed (that is, the boxes for which we
+    //have chosen x0, y0 and z0)
+    int* placed_boxes = malloc(n_boxes*sizeof(int));
+    int counted_boxes = 1;  //effective length of "placed_boxes". Useful also for P_x,y,z
+    /*for(int i = 0; i < n_boxes; i++){
+        placed_boxes[i] = -1;
+    }*/
+    placed_boxes[0] = first;
+
+    int* P_x = malloc(n_boxes*sizeof(int));
+    int* P_y = malloc(n_boxes*sizeof(int));
+    int* P_z = malloc(n_boxes*sizeof(int));
+    int P_x_counter = 0;
+    int P_y_counter = 0;
+    int P_z_counter = 0;
+
+    for(int k = 1; k < n_boxes; k++){
+        int current = b[k]; //the box we want to place right now
+        for(int q = 0; q < counted_boxes; q++){
+            int old = placed_boxes[q];
+            //In P_x we put the boxes (already placed) that are to the left than the new one
+            if(give_X_ij(a, n_boxes, old, current) && 
+                give_X_ij(b, n_boxes, old, current) && 
+                !give_X_ij(c, n_boxes, old, current)){
+                    P_x[P_x_counter] = old;
+                    P_x_counter++;
+            }
+            //In P_y we put the boxes (already placed) that are below the new one
+            if(!give_X_ij(a, n_boxes, old, current) && 
+                give_X_ij(b, n_boxes, old, current) && 
+                give_X_ij(c, n_boxes, old, current)){
+                    P_y[P_y_counter] = old;
+                    P_y_counter++;
+            }
+            //In P_z we put the boxes (already placed) that are behind the new one
+            if((!give_X_ij(a, n_boxes, old, current) && 
+                give_X_ij(b, n_boxes, old, current) && 
+                !give_X_ij(c, n_boxes, old, current)) || 
+                (give_X_ij(a, n_boxes, old, current) && 
+                give_X_ij(b, n_boxes, old, current) && 
+                give_X_ij(c, n_boxes, old, current))){
+                    P_z[P_z_counter] = old;
+                    P_z_counter++;
+            }
+        }
+
+        int x_i = 0;
+        int y_i = 0;
+        int z_i = 0;
+
+        for(int kk = 0; kk < P_x_counter; kk++){
+            int index_of_box = P_x[kk];
+            box actual_box = (*boxes)[index_of_box];
+            if(actual_box.x0 + actual_box.xlen > x_i){
+                x_i = actual_box.x0 + actual_box.xlen;
+            }
+        }
+        for(int kk = 0; kk < P_y_counter; kk++){
+            int index_of_box = P_y[kk];
+            box actual_box = (*boxes)[index_of_box];
+            if(actual_box.y0 + actual_box.ylen > y_i){
+                y_i = actual_box.y0 + actual_box.ylen;
+            }
+        }
+        for(int kk = 0; kk < P_z_counter; kk++){
+            int index_of_box = P_z[kk];
+            box actual_box = (*boxes)[index_of_box];
+            if(actual_box.z0 + actual_box.zlen > z_i){
+                z_i = actual_box.z0 + actual_box.zlen;
+            }
+        }
+
+        (*boxes)[current].x0 = x_i;
+        (*boxes)[current].z0 = z_i;
+
+        //now for the vertical stability: let's "push" the boxes below as possible as we can
+        y_i = enforce_vertical_stability(x_i, y_i, z_i,
+                                         (*boxes)[current].xlen, (*boxes)[current].ylen, (*boxes)[current].zlen, 
+                                         P_y, P_y_counter, *boxes, n_boxes);
+
+        (*boxes)[current].y0 = y_i;
+
+        P_x_counter = 0;
+        P_y_counter = 0;
+        P_z_counter = 0;
+
+        placed_boxes[counted_boxes] = current;
+        counted_boxes++;
+
+    }
+
+
+}
+
 void sa_make_a_step(box** boxes, int n_boxes, int* temperature, int alpha, int beta, 
                     int** current_a, int** current_b, int** current_c, 
                     int** best_a, int** best_b, int** best_c, int* best_volume, box** boxes_neighbour){
@@ -228,6 +395,10 @@ void sa_make_a_step(box** boxes, int n_boxes, int* temperature, int alpha, int b
     //simply copies of boxes, best_a, best_b and best_c. It it this function that will change them to produce
     //a true neighbour.
     get_neighbour(boxes_neighbour, n_boxes, current_a, current_b, current_c);
+
+    place_boxes_sequence_triples(*current_a, *current_b, *current_c, &(*boxes_neighbour), n_boxes);
+    
+
 }
 
 box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, int n_boxes, int md, int secs){
