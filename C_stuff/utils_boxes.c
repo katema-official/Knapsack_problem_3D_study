@@ -197,15 +197,17 @@ void get_neighbour(box** boxes_neighbour, int n_boxes, int** current_a, int** cu
     //let's also consider that some boxes might rotate. In this implementation, only the two boxes chosen
     //before CAN rotate, and:
     //none of them rotates OR one of the two rotates OR bot of them rotate
-    int rotation_chosen = rand() % 4;
+    int rotation_chosen = rand() % 3;
     switch(rotation_chosen){
         case 1:
-            permute_box_dimensions(&((*boxes_neighbour)[i-1]), -1);
+            int r = rand() % 2;
+            if(r==0){
+                permute_box_dimensions(&((*boxes_neighbour)[i-1]), -1);
+            }else{
+                permute_box_dimensions(&((*boxes_neighbour)[j-1]), -1);
+            }
         break;
         case 2:
-            permute_box_dimensions(&((*boxes_neighbour)[j-1]), -1);
-        break;
-        case 3:
             permute_box_dimensions(&((*boxes_neighbour)[i-1]), -1);
             permute_box_dimensions(&((*boxes_neighbour)[j-1]), -1);
         break;
