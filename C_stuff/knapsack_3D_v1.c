@@ -8,10 +8,14 @@
 int main(){
     srand(time(NULL));
 
+    //cleanup of a utility file
+    FILE* p = fopen("./progresses.txt", "w");
+    fclose(p);
+
     //define container dimensions
     int cont_x = 100;
-    int cont_y = 90;
-    int cont_z = 80;
+    int cont_y = 100;
+    int cont_z = 100;
 
     int n_boxes = 0;
     box* boxes;
@@ -40,8 +44,6 @@ int main(){
         char delim[] = "|";
         int box_index = 0;
         while ((read = getline(&line, &len, f)) != -1) {
-            printf("Retrieved line of length %zu:\n", read);
-            printf("%s", line);
             //protocol of a line: xlen|ylen|zlen|name\n
             char** info_of_a_box = (char**) malloc(4*sizeof(char*));
             line[read-1] = delim[0];

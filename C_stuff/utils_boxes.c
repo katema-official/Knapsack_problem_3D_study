@@ -8,6 +8,29 @@
 
 double get_random() { return (double)rand() / (double)RAND_MAX; }
 
+void progression_print(int n_boxes, box* boxes, int* a, int* b, int*c){
+    FILE* f = fopen("./progresses.txt", "a");
+    fprintf(f, "%d\n", n_boxes);
+    for(int i = 0; i < n_boxes; i++){
+        fprintf(f, "%d %d %d %d %d %d\n", boxes[i].xlen, boxes[i].ylen, boxes[i].zlen,
+                boxes[i].x0, boxes[i].y0, boxes[i].z0);
+    }
+    for(int i = 0; i < n_boxes; i++){
+        fprintf(f, "%d ", a[i]);
+    }
+    fprintf(f, "\n");
+    for(int i = 0; i < n_boxes; i++){
+        fprintf(f, "%d ", b[i]);
+    }
+    fprintf(f, "\n");
+    for(int i = 0; i < n_boxes; i++){
+        fprintf(f, "%d ", c[i]);
+    }
+    fprintf(f, "\n");
+    fclose(f);
+
+}
+
 void debug_print(int n_boxes, box* boxes, int* a, int* b, int* c){
     for(int i = 0; i < n_boxes; i++){
         printf("%d - %d - %d\n", boxes[i].xlen, boxes[i].ylen, boxes[i].zlen);
@@ -250,7 +273,7 @@ int enforce_vertical_stability(int x_i, int y_i, int z_i, int xlen, int ylen, in
     int max_h = 0;
     int k;
     for(int i = 0; i < P_y_len; i++){
-        k = P_y[i];
+        k = P_y[i] - 1;
         int k_x0 = boxes[k].x0;
         int k_z0 = boxes[k].z0;
         int k_x1 = boxes[k].x0 + boxes[k].xlen;
@@ -281,7 +304,7 @@ int enforce_vertical_stability(int x_i, int y_i, int z_i, int xlen, int ylen, in
             }
         }
     }
-
+    printf("max_h: %d\n", max_h);
     return max_h;
 
 }
@@ -289,9 +312,9 @@ int enforce_vertical_stability(int x_i, int y_i, int z_i, int xlen, int ylen, in
 //function that places the boxes according to the three sequences
 void place_boxes_sequence_triples(int* a, int* b, int* c, box** boxes, int n_boxes){
     int first = b[0];
-    (*boxes)[first].x0 = 0;
-    (*boxes)[first].y0 = 0;
-    (*boxes)[first].z0 = 0;
+    (*boxes)[first-1].x0 = 0;
+    (*boxes)[first-1].y0 = 0;
+    (*boxes)[first-1].z0 = 0;
 
     //array for remembering the boxes already placed (that is, the boxes for which we
     //have chosen x0, y0 and z0)
@@ -345,35 +368,35 @@ void place_boxes_sequence_triples(int* a, int* b, int* c, box** boxes, int n_box
 
         for(int kk = 0; kk < P_x_counter; kk++){
             int index_of_box = P_x[kk];
-            box actual_box = (*boxes)[index_of_box];
+            box actual_box = (*boxes)[index_of_box-1];
             if(actual_box.x0 + actual_box.xlen > x_i){
                 x_i = actual_box.x0 + actual_box.xlen;
             }
         }
         for(int kk = 0; kk < P_y_counter; kk++){
             int index_of_box = P_y[kk];
-            box actual_box = (*boxes)[index_of_box];
+            box actual_box = (*boxes)[index_of_box-1];
             if(actual_box.y0 + actual_box.ylen > y_i){
                 y_i = actual_box.y0 + actual_box.ylen;
             }
         }
         for(int kk = 0; kk < P_z_counter; kk++){
             int index_of_box = P_z[kk];
-            box actual_box = (*boxes)[index_of_box];
+            box actual_box = (*boxes)[index_of_box-1];
             if(actual_box.z0 + actual_box.zlen > z_i){
                 z_i = actual_box.z0 + actual_box.zlen;
             }
         }
 
-        (*boxes)[current].x0 = x_i;
-        (*boxes)[current].z0 = z_i;
+        (*boxes)[current-1].x0 = x_i;
+        (*boxes)[current-1].z0 = z_i;
 
         //now for the vertical stability: let's "push" the boxes below as possible as we can
         y_i = enforce_vertical_stability(x_i, y_i, z_i,
-                                         (*boxes)[current].xlen, (*boxes)[current].ylen, (*boxes)[current].zlen, 
+                                         (*boxes)[current-1].xlen, (*boxes)[current-1].ylen, (*boxes)[current-1].zlen, 
                                          P_y, P_y_counter, *boxes, n_boxes);
 
-        (*boxes)[current].y0 = y_i;
+        (*boxes)[current-1].y0 = y_i;
 
         P_x_counter = 0;
         P_y_counter = 0;
@@ -387,7 +410,7 @@ void place_boxes_sequence_triples(int* a, int* b, int* c, box** boxes, int n_box
 
 }
 
-void sa_make_a_step(box** boxes, int n_boxes, int* temperature, int alpha, int beta, 
+void sa_make_a_step(box** boxes, int n_boxes, float* temperature, float alpha, float beta, 
                     int** current_a, int** current_b, int** current_c, 
                     int** best_a, int** best_b, int** best_c, int* best_volume, box** boxes_neighbour,
                     int cont_x, int cont_y, int cont_z){
@@ -437,16 +460,16 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
     int* best_b = b;
     int* best_c = c;
     box* boxes = boxes_input;
-    int temperature = 0.2;
-    int beta = 0.2;
-    int alpha = 0.002;
+    float temperature = 0.2;
+    float beta = 0.2;
+    float alpha = 0.002;
     int best_volume = 0;
 
     //mode = 0: perform the simulated annealing for a max number of iterations
     //mode = 1: perform the simulated annealing for a certain amount of time (seconds)
     int mode = md;
 
-    int max_number_of_iterations = 1;
+    int max_number_of_iterations = 5;
     int current_iteration = 0;
 
     int seconds = secs;
@@ -463,6 +486,7 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
                 printf("------------\n");
                 sa_make_a_step(&boxes, n_boxes, &temperature, alpha, beta, &current_a, &current_b, &current_c, 
                                 &best_a, &best_b, &best_c, &best_volume, &boxes_neighbour, cont_x, cont_y, cont_z);
+                progression_print(n_boxes, boxes, best_a, best_b, best_c);
             }
         break;
         case 1:
