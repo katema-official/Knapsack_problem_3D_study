@@ -12,8 +12,6 @@ void copy_boxes_name(box** dst, box* src, int len){
     for(int i = 0; i < len; i++){
         (*dst)[i].name = malloc(strlen(src[i].name)*sizeof(char));
         strcpy((*dst)[i].name, src[i].name);
-        printf("dst = %s", (*dst)[i].name);
-        printf("src = %s", src[i].name);
     }
     
 }
@@ -443,10 +441,15 @@ void sa_make_a_step(box** boxes, int n_boxes, float* temperature, float alpha, f
                     int** best_a, int** best_b, int** best_c, int* best_volume, box** boxes_neighbour,
                     int cont_x, int cont_y, int cont_z){
     //make a copy of boxes, a, b and c
-    memcpy(&(*boxes_neighbour), &(*boxes), sizeof(*boxes));
+    copy_boxes(&(*boxes_neighbour), *boxes, n_boxes);
+    copy_sequence(&(*current_a), *best_a, n_boxes);
+    copy_sequence(&(*current_b), *best_b, n_boxes);
+    copy_sequence(&(*current_c), *best_c, n_boxes);
+
+    /*memcpy(&(*boxes_neighbour), &(*boxes), sizeof(*boxes));
     memcpy(&(*current_a), &(*best_a), sizeof(*best_a));
     memcpy(&(*current_b), &(*best_b), sizeof(*best_b));
-    memcpy(&(*current_c), &(*best_c), sizeof(*best_c));
+    memcpy(&(*current_c), &(*best_c), sizeof(*best_c));*/
 
     printf("------------");
     printf("before sa:\n");
@@ -481,11 +484,16 @@ void sa_make_a_step(box** boxes, int n_boxes, float* temperature, float alpha, f
     
     if(found_better){
         printf("found better\n");
-        memcpy(&(*best_a), &(*current_a), sizeof(*current_a));
+        copy_boxes(&(*boxes), *boxes_neighbour, n_boxes);
+        copy_sequence(&(*best_a), *current_a, n_boxes);
+        copy_sequence(&(*best_b), *current_b, n_boxes);
+        copy_sequence(&(*best_c), *current_c, n_boxes);
+        *best_volume = neighbour_volume;
+        /*memcpy(&(*best_a), &(*current_a), sizeof(*current_a));
         memcpy(&(*best_b), &(*current_b), sizeof(*current_b));
         memcpy(&(*best_c), &(*current_c), sizeof(*current_c));
-        *best_volume = neighbour_volume;
-        memcpy(&(*boxes), &(*boxes_neighbour), sizeof(*boxes_neighbour));
+        
+        memcpy(&(*boxes), &(*boxes_neighbour), sizeof(*boxes_neighbour));*/
     }
 
     printf("after sa:\n");
@@ -521,7 +529,6 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
     int* current_b = (int*) malloc(n_boxes*sizeof(int));
     int* current_c = (int*) malloc(n_boxes*sizeof(int));
     copy_boxes_name(&boxes_neighbour, boxes, n_boxes);
-    printf("aaa = %s", boxes[0].name);
     //now the code for a step of the simulated annealing
     switch(mode){
         case 0:
