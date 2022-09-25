@@ -140,7 +140,7 @@ int main(){
 
 
 
-    simulated_annealing_knapsack_3D(a, b, c, boxes, n_boxes, 0, 10, cont_x, cont_y, cont_z);
+    simulated_annealing_knapsack_3D(a, b, c, boxes, n_boxes, 0, 100, cont_x, cont_y, cont_z);
 
 
     return 0;

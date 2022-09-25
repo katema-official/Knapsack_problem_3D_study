@@ -415,7 +415,7 @@ if __name__ == "__main__":
     #for i in range(10):
     #    boxes.append(randomly_generate_box(50, 50, 50))
 
-    read_from_file =True
+    read_from_file = False
 
     if not read_from_file:
         boxes.append(Box("a", 10, 50, 50, rgb(255,0,0)))

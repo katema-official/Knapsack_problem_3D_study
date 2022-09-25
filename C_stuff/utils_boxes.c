@@ -132,9 +132,10 @@ void swap_in_array(int** sequence, int i, int j){
 
 void get_neighbour(box** boxes_neighbour, int n_boxes, int** current_a, int** current_b, int** current_c){
 
-    printf("before neighbour:\n");
-    debug_print(n_boxes, *boxes_neighbour, *current_a, *current_b, *current_c);
-
+    if(DEBUG_0){
+        printf("before neighbour:\n");
+        debug_print(n_boxes, *boxes_neighbour, *current_a, *current_b, *current_c);
+    }
 
     //there are several ways to generate neighbours for the current solution, but I'll try to stick
     //as much as possible to Hanan Mostaghimi Ghomi's article. Also, as I interpreted, the "dimensions swap"
@@ -238,9 +239,10 @@ void get_neighbour(box** boxes_neighbour, int n_boxes, int** current_a, int** cu
         break;
     }
 
-    printf("neighbour generated:\n");
-    debug_print(n_boxes, *boxes_neighbour, *current_a, *current_b, *current_c);
-
+    if(DEBUG_0){
+        printf("neighbour generated:\n");
+        debug_print(n_boxes, *boxes_neighbour, *current_a, *current_b, *current_c);
+    }
 }
 
 //function that, given a sequence (A, B or C), returns:
@@ -304,7 +306,6 @@ int enforce_vertical_stability(int x_i, int y_i, int z_i, int xlen, int ylen, in
             }
         }
     }
-    printf("max_h: %d\n", max_h);
     return max_h;
 
 }
@@ -419,6 +420,10 @@ void sa_make_a_step(box** boxes, int n_boxes, float* temperature, float alpha, f
     memcpy(&(*current_a), &(*best_a), sizeof(*best_a));
     memcpy(&(*current_b), &(*best_b), sizeof(*best_b));
     memcpy(&(*current_c), &(*best_c), sizeof(*best_c));
+
+    printf("------------");
+    printf("before sa:\n");
+    debug_print(n_boxes, *boxes, *best_a, *best_b, *best_c);
     
     //get a neighbour. When this function is called, boxes_neighbour, current_a, current_b and current_c are
     //simply copies of boxes, best_a, best_b and best_c. It it this function that will change them to produce
@@ -427,29 +432,38 @@ void sa_make_a_step(box** boxes, int n_boxes, float* temperature, float alpha, f
     place_boxes_sequence_triples(*current_a, *current_b, *current_c, &(*boxes_neighbour), n_boxes);
     int neighbour_volume = volume_occupied(*boxes_neighbour, n_boxes, cont_x, cont_y, cont_z, 1);
     int found_better = 0;
-    if(neighbour_volume >= *best_volume){
-        found_better = 1;
-    }else{
-        //We accept a worse solution at random, but the chance of doing so decreases with the temperature
-        *temperature = *temperature / (1 + beta * (*temperature));
-        int delta = (*best_volume - neighbour_volume) / *best_volume;
-        int i = get_random();
-        if(i < exp(-delta/(*temperature))){
+    if(neighbour_volume != *best_volume){
+        if(neighbour_volume > *best_volume){
             found_better = 1;
         }else{
-            //increase temperature
-            *temperature = *temperature / (1 - alpha * (*temperature));
+            //We accept a worse solution at random, but the chance of doing so decreases with the temperature
+            *temperature = *temperature / (1 + beta * (*temperature));
+            float delta = (float) ((*best_volume) - neighbour_volume) / (float) (*best_volume);
+            //printf("delta = %f, temperature = %f\n", delta, *temperature);
+            float i = get_random();
+            if(i < exp(-delta/ (float) (*temperature))){
+                printf("accepted with prob. = %lf\n", exp(-delta/ (float) (*temperature)));
+                found_better = 1;
+            }else{
+                //increase temperature
+                *temperature = *temperature / (1 - alpha * (*temperature));
+                printf("temperature increased\n");
+            }
         }
     }
     
     if(found_better){
+        printf("found better\n");
         memcpy(&(*best_a), &(*current_a), sizeof(*current_a));
         memcpy(&(*best_b), &(*current_b), sizeof(*current_b));
         memcpy(&(*best_c), &(*current_c), sizeof(*current_c));
         *best_volume = neighbour_volume;
         memcpy(&(*boxes), &(*boxes_neighbour), sizeof(*boxes_neighbour));
-
     }
+
+    printf("after sa:\n");
+    debug_print(n_boxes, *boxes, *best_a, *best_b, *best_c);
+    printf("------------");
 
 
 }
@@ -469,7 +483,7 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
     //mode = 1: perform the simulated annealing for a certain amount of time (seconds)
     int mode = md;
 
-    int max_number_of_iterations = 5;
+    int max_number_of_iterations = 100;
     int current_iteration = 0;
 
     int seconds = secs;
@@ -483,7 +497,6 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
     switch(mode){
         case 0:
             for(int i = 0; i < max_number_of_iterations; i++){
-                printf("------------\n");
                 sa_make_a_step(&boxes, n_boxes, &temperature, alpha, beta, &current_a, &current_b, &current_c, 
                                 &best_a, &best_b, &best_c, &best_volume, &boxes_neighbour, cont_x, cont_y, cont_z);
                 progression_print(n_boxes, boxes, best_a, best_b, best_c);
@@ -498,9 +511,10 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
                 for(int i = 0; i < 100; i ++){
                     sa_make_a_step(&boxes, n_boxes, &temperature, alpha, beta, &current_a, &current_b, &current_c, 
                                 &best_a, &best_b, &best_c, &best_volume, &boxes_neighbour, cont_x, cont_y, cont_z);
+                    progression_print(n_boxes, boxes, best_a, best_b, best_c);
                 }
                 clock_t end = clock();
-                seconds = (float)(end - start) / CLOCKS_PER_SEC;
+                seconds_elapsed = (float)(end - start) / CLOCKS_PER_SEC;
             }
         break;
         default:
@@ -522,16 +536,17 @@ int volume_occupied(box* boxes, int n_boxes, int cont_x, int cont_y, int cont_z,
                 x_in_bin = boxes[i].x0 + boxes[i].xlen <= cont_x ? boxes[i].xlen : 0;
                 y_in_bin = boxes[i].y0 + boxes[i].ylen <= cont_y ? boxes[i].ylen : 0;
                 z_in_bin = boxes[i].z0 + boxes[i].zlen <= cont_z ? boxes[i].zlen : 0;
+                volume_summed += x_in_bin*y_in_bin*z_in_bin;
             }
-            volume_summed += x_in_bin*y_in_bin*z_in_bin;
         break;
         case 1:
             for(int i = 0; i < n_boxes; i++){
                 x_in_bin = boxes[i].x0 + boxes[i].xlen <= cont_x ? boxes[i].xlen : max(cont_x - boxes[i].x0, 0);
                 y_in_bin = boxes[i].y0 + boxes[i].ylen <= cont_y ? boxes[i].ylen : max(cont_y - boxes[i].y0, 0);
                 z_in_bin = boxes[i].z0 + boxes[i].zlen <= cont_z ? boxes[i].zlen : max(cont_z - boxes[i].z0, 0);
+                volume_summed += x_in_bin*y_in_bin*z_in_bin;
             }
-            volume_summed += x_in_bin*y_in_bin*z_in_bin;
+            
         break;
         default:
         break;

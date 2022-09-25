@@ -1,4 +1,3 @@
-
 typedef struct {
 	char* name;
 	int xlen;
@@ -8,6 +7,8 @@ typedef struct {
     int y0;
     int z0;
 }box;
+
+#define DEBUG_0 0
 
 double get_random();
 void progression_print(int n_boxes, box* boxes, int* a, int* b, int*c);

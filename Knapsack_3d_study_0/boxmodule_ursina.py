@@ -116,14 +116,14 @@ def place_box(x0, y0, z0, x_len, y_len, z_len, color_box = None):
 
 #Class that represents a box to be packed.
 class Box:
-    def __init__(self, name, xlen, ylen, zlen, color=None):
+    def __init__(self, name, xlen, ylen, zlen, color=None, x0=None, y0=None, z0=None):
         self.name = name    #identifier of the box
         self.xlen = xlen    #its length along the x axis
         self.ylen = ylen    #its length along the y axis
         self.zlen = zlen    #its length along the z axis
-        self.x0 = None      #the x cordinate of its LBB point
-        self.y0 = None      #the y cordinate of its LBB point
-        self.z0 = None      #the z cordinate of its LBB point
+        self.x0 = x0        #the x cordinate of its LBB point
+        self.y0 = y0        #the y cordinate of its LBB point
+        self.z0 = z0        #the z cordinate of its LBB point
         self.entity = None  #The entity associated with this box. It's the actual box basically (of ursina)
         self.color = color   #color to be used for this boxed. If Node, will be chosen randomly
 
