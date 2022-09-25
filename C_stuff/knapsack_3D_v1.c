@@ -48,12 +48,13 @@ int main(){
             char** info_of_a_box = (char**) malloc(4*sizeof(char*));
             line[read-1] = delim[0];
             line[read-2] = delim[0];
+            printf("linee = %s\n", line);
             char* token = strtok(line, delim);
             int i = 0;
             while(token != NULL){
                 int len = strlen(token);
-                info_of_a_box[i] = (char*) malloc(len*sizeof(char));
                 info_of_a_box[i] = token;
+                printf("info = %s\n", info_of_a_box[i]);
                 i++;
                 token = strtok(NULL, delim);
             }
@@ -61,14 +62,25 @@ int main(){
             b.xlen = atoi(info_of_a_box[0]);
             b.ylen = atoi(info_of_a_box[1]);
             b.zlen = atoi(info_of_a_box[2]);
-            b.name = info_of_a_box[3];
+            b.name = (char*) malloc(strlen(info_of_a_box[3])*sizeof(char));
+            strcpy(b.name, info_of_a_box[3]);
             b.x0 = -1;
             b.y0 = -1;
             b.z0 = -1;
             boxes[box_index] = b;
+            printf("name = %s\n", boxes[box_index].name);
             box_index++;
-        }
+            free(info_of_a_box);
 
+            for(int j = 0; j < box_index; j++){
+                printf("previous name = %s\n", boxes[j].name);
+            }
+        }
+        printf("name = %s\n", boxes[0].name);
+        printf("name = %s\n", boxes[1].name);
+        printf("name = %s\n", boxes[2].name);
+        printf("name = %s\n", boxes[3].name);
+        printf("name = %s\n", boxes[4].name);
         fclose(f);
         if(line){free(line);}
 
@@ -80,7 +92,7 @@ int main(){
         boxes = (box*) malloc(n_boxes*sizeof(box));
         for(int i = 0; i < n_boxes; i++){
             box b;
-            b.name = "";
+            b.name = "pippo";
             b.xlen = rand()%50;
             b.ylen = rand()%50;
             b.zlen = rand()%50;
@@ -90,6 +102,8 @@ int main(){
             boxes[i] = b;
         }
     }
+
+    printf("name = %s\n", boxes[0].name);
 
     //generate the three lists a, b and c
     int* a = (int*) random_permutation_1_to_n(n_boxes);
@@ -134,13 +148,14 @@ int main(){
     //****a bunch of prints****
     //*************************
     debug_print(n_boxes, boxes, a, b, c);
+    printf("name = %s\n", boxes[0].name);
 
     printf("oooddoo\n");
 
 
 
 
-    simulated_annealing_knapsack_3D(a, b, c, boxes, n_boxes, 0, 100, cont_x, cont_y, cont_z);
+    simulated_annealing_knapsack_3D(a, b, c, boxes, n_boxes, 0, 2, cont_x, cont_y, cont_z);
 
 
     return 0;

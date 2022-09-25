@@ -8,6 +8,33 @@
 
 double get_random() { return (double)rand() / (double)RAND_MAX; }
 
+void copy_boxes_name(box** dst, box* src, int len){
+    for(int i = 0; i < len; i++){
+        (*dst)[i].name = malloc(strlen(src[i].name)*sizeof(char));
+        strcpy((*dst)[i].name, src[i].name);
+        printf("dst = %s", (*dst)[i].name);
+        printf("src = %s", src[i].name);
+    }
+    
+}
+
+void copy_boxes(box** dst, box* src, int len){
+    for(int i = 0; i < len; i++){
+        (*dst)[i].xlen = src[i].xlen;
+        (*dst)[i].ylen = src[i].ylen;
+        (*dst)[i].zlen = src[i].zlen;
+        (*dst)[i].x0 = src[i].x0;
+        (*dst)[i].y0 = src[i].y0;
+        (*dst)[i].z0 = src[i].z0;
+    }
+}
+
+void copy_sequence(int** dst, int* src, int len){
+    for(int i = 0; i < len; i++){
+        (*dst)[i] = src[i];
+    }
+}
+
 void progression_print(int n_boxes, box* boxes, int* a, int* b, int*c){
     FILE* f = fopen("./progresses.txt", "a");
     fprintf(f, "%d\n", n_boxes);
@@ -468,7 +495,7 @@ void sa_make_a_step(box** boxes, int n_boxes, float* temperature, float alpha, f
 
 }
 
-box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, int n_boxes, int md, int secs,
+box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, int n_boxes, int md, int gens_or_secs,
                                     int cont_x, int cont_y, int cont_z){
     int* best_a = a;
     int* best_b = b;
@@ -483,16 +510,18 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
     //mode = 1: perform the simulated annealing for a certain amount of time (seconds)
     int mode = md;
 
-    int max_number_of_iterations = 100;
+    int max_number_of_iterations = gens_or_secs;
     int current_iteration = 0;
 
-    int seconds = secs;
+    int seconds = gens_or_secs;
 
 
     box* boxes_neighbour = (box*) malloc(n_boxes*sizeof(box));
     int* current_a = (int*) malloc(n_boxes*sizeof(int));
     int* current_b = (int*) malloc(n_boxes*sizeof(int));
     int* current_c = (int*) malloc(n_boxes*sizeof(int));
+    copy_boxes_name(&boxes_neighbour, boxes, n_boxes);
+    printf("aaa = %s", boxes[0].name);
     //now the code for a step of the simulated annealing
     switch(mode){
         case 0:
