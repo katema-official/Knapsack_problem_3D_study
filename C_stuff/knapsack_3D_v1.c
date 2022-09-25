@@ -142,7 +142,7 @@ int main(){
     //****************************************************
     //**************WHERE THE MAGIC HAPPENS***************
     //****************************************************
-    simulated_annealing_knapsack_3D(a, b, c, boxes, n_boxes, 0, 200, cont_x, cont_y, cont_z);
+    simulated_annealing_knapsack_3D(a, b, c, boxes, n_boxes, 1, 600, cont_x, cont_y, cont_z);
 
 
     return 0;

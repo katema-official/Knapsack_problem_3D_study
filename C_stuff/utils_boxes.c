@@ -451,10 +451,11 @@ void sa_make_a_step(box** boxes, int n_boxes, float* temperature, float alpha, f
     memcpy(&(*current_b), &(*best_b), sizeof(*best_b));
     memcpy(&(*current_c), &(*best_c), sizeof(*best_c));*/
 
-    printf("------------");
-    printf("before sa:\n");
-    debug_print(n_boxes, *boxes, *best_a, *best_b, *best_c);
-    
+    if(DEBUG_0){
+        printf("------------");
+        printf("before sa:\n");
+        debug_print(n_boxes, *boxes, *best_a, *best_b, *best_c);
+    }
     //get a neighbour. When this function is called, boxes_neighbour, current_a, current_b and current_c are
     //simply copies of boxes, best_a, best_b and best_c. It it this function that will change them to produce
     //a true neighbour.
@@ -472,18 +473,18 @@ void sa_make_a_step(box** boxes, int n_boxes, float* temperature, float alpha, f
             //printf("delta = %f, temperature = %f\n", delta, *temperature);
             float i = get_random();
             if(i < exp(-delta/ (float) (*temperature))){
-                printf("accepted with prob. = %lf\n", exp(-delta/ (float) (*temperature)));
+                if(DEBUG_0)printf("accepted with prob. = %lf\n", exp(-delta/ (float) (*temperature)));
                 found_better = 1;
             }else{
                 //increase temperature
                 *temperature = *temperature / (1 - alpha * (*temperature));
-                printf("temperature increased\n");
+                if(DEBUG_0)printf("temperature increased\n");
             }
         }
     }
     
     if(found_better){
-        printf("found better\n");
+        if(DEBUG_0)printf("found better\n");
         copy_boxes(&(*boxes), *boxes_neighbour, n_boxes);
         copy_sequence(&(*best_a), *current_a, n_boxes);
         copy_sequence(&(*best_b), *current_b, n_boxes);
@@ -496,10 +497,11 @@ void sa_make_a_step(box** boxes, int n_boxes, float* temperature, float alpha, f
         memcpy(&(*boxes), &(*boxes_neighbour), sizeof(*boxes_neighbour));*/
     }
 
-    printf("after sa:\n");
-    debug_print(n_boxes, *boxes, *best_a, *best_b, *best_c);
-    printf("------------");
-
+    if(DEBUG_0){
+        printf("after sa:\n");
+        debug_print(n_boxes, *boxes, *best_a, *best_b, *best_c);
+        printf("------------");
+    }
 
 }
 
@@ -522,6 +524,7 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
     int current_iteration = 0;
 
     int seconds = gens_or_secs;
+    printf("seconds = %d", seconds);
 
 
     box* boxes_neighbour = (box*) malloc(n_boxes*sizeof(box));
@@ -540,17 +543,22 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
         break;
         case 1:
             float seconds_elapsed = 0;
-            clock_t start = clock();
+            time_t begin, end;
+            time(&begin);
+            //clock_t start = clock();
             while(seconds_elapsed < seconds){
                 //to avoid too much overhead in the ckeck of the time, we perform a step of the
                 //simulated annealing multiple times before checking the time.
-                for(int i = 0; i < 100; i ++){
+                for(int i = 0; i < 1000; i ++){
                     sa_make_a_step(&boxes, n_boxes, &temperature, alpha, beta, &current_a, &current_b, &current_c, 
                                 &best_a, &best_b, &best_c, &best_volume, &boxes_neighbour, cont_x, cont_y, cont_z);
                     progression_print(n_boxes, boxes, best_a, best_b, best_c);
                 }
-                clock_t end = clock();
-                seconds_elapsed = (float)(end - start) / CLOCKS_PER_SEC;
+                printf("elapsed seconds: %f\n", seconds_elapsed);
+                //clock_t end = clock();
+                //seconds_elapsed = (float)(end - start) / CLOCKS_PER_SEC;
+                time(&end);
+                seconds_elapsed = end - begin;
             }
         break;
         default:
