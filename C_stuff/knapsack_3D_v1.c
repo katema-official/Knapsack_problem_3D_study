@@ -90,7 +90,7 @@ int main(){
             boxes[i] = b;
         }
     }
-    
+
     //generate the three lists a, b and c
     int* a = (int*) random_permutation_1_to_n(n_boxes);
     int* b = (int*) random_permutation_1_to_n(n_boxes);
@@ -139,8 +139,10 @@ int main(){
 
 
 
-
-    simulated_annealing_knapsack_3D(a, b, c, boxes, n_boxes, 0, 2, cont_x, cont_y, cont_z);
+    //****************************************************
+    //**************WHERE THE MAGIC HAPPENS***************
+    //****************************************************
+    simulated_annealing_knapsack_3D(a, b, c, boxes, n_boxes, 0, 200, cont_x, cont_y, cont_z);
 
 
     return 0;
