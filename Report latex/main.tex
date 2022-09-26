@@ -1,0 +1,119 @@
+\documentclass[12pt]{extarticle}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{ragged2e}
+\usepackage{mathtools}
+\usepackage{comment}
+\usepackage{algorithm} 
+\usepackage{algpseudocode} 
+\usepackage{array}
+
+\usepackage{titling}
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip0.5em}%
+}
+
+
+
+
+
+\title{\centering{\huge{3D Knapsack Problem: a parallel approach}}}
+\subtitle{\centering{Project for the GPU Computing course held by Professor Giuliano Grossi}, \\ \centering{University of Milan, Month 2022}}
+\author{Alessio La Greca}
+\date{}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={160mm,250mm},
+ left=20mm,
+ top=20mm,
+ }
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The Knapsack Problem is a known combinatorial optimization problem. In the basic version of the problem, one is asked to fill a knapsack with as many items as possible in order to maximixe the profit of the contained items without ``breaking'' the knapsack. That is, given a knapsack whose maximum capaciti is $c$, and an array of items for which every $i$-th item has a weight $w_i$ and a profit $p_i$, we want to find maximize the quantity:
+\begin{equation*}
+    \sum_{i=1}^{n} p_i x_i
+\end{equation*}
+
+where $x_i$ = \{0,1\}, which tells us if the $i$-th item is packed or not, with the constraint:
+\begin{equation*}
+    \sum_{i=1}^{n} w_i x_i \leq c
+\end{equation*}
+The basic knapsack problem has been long studied, and even if its decision form is NP-complete, there exists a pseudo-polynomial time algorithm based on dynamic programming that can solve the optimization problem. A more complex version of the problem is its 3D variant: the 3D knapsack problem. It is more complex since some actual geometrical constraints are given, which must be taken into account in order to obtain a valuable solution for the problem. As of now, no algorithm is known for which, given an arbitrary instance of the problem, the optimal solution is found. However, different heuristics have been proposed, which can (more or less depending on the heuristic) be parallelized up to a certain degree. Our main goal in this study is to try to use the CUDA parallel capabilities in order to see if a good speedup can be obtained for running such algorithms, or (though this is very optimistic) if they can help us obtain better solutions.
+
+\end{abstract}
+
+{
+  \hypersetup{linkcolor=black}
+  \tableofcontents
+}
+
+
+\section{Introduction}
+\subsection{Problem formulation and simplifying assumptions}
+The 3D variant of the Knapsack Problem is more difficult than the ordinary one since, in this version, we are given some geometrical constraints. The main goal is filling a given \emph{container} with as many \emph{boxes} as possible from a given set of boxes, where:
+\begin{enumerate}
+    \item Two boxes should never compenetrate in the container.
+    \item Each box is either fully packed or not packed at all in the container.
+    \item The width, height and depth (measures of the boxes' length along the x, y and z axis) of the boxes must be taken into account to ensure the two preceding constraints are met.
+    \item To also be realistic, we should allow the boxes to freely rotate \emph{at least} in each of their six orthogonal configurations: WHD, WDH, HWD, HDW, DWH and DHW, where W, H and D represent respectively the initial width, height and depth of a box.
+\end{enumerate}
+We also do some realistic assumptions that can help us simplify \emph{just a little bit} the problem:
+\begin{enumerate}
+    \item The container is a parallelepiped.
+    \item The boxes can only be parallelepipeds.
+    \item The boxes cannot freely rotate in all the possible ways along every axis, but can only rotate orthogonally around the main x, y and z axis (so that each of their faces either touches a wall of the container, a face of another box or nothing at all).
+    \item The value of a box is its volume. This makes sense since, for example, in cargo shipping, one would like to fill a container with as many goods as possible in order to minimize the number of travels required.
+    \item All the boxes can be fully described, for what is of our concern, by their width, height, depth and their position inside of the container, which is described by their \emph{Left-Bottom-Behind} point (from now on simply \emph{LBB} point). This means that, given a box, the x coordinate of its right wall is given by LBB.x + width; the y coordinate of its upper wall is given by LBB.y + height; the z coordinate of its front wall is given by LBB.z + depth.
+\end{enumerate}
+\subsection{Exaustive search and its intractability}
+Since this is an optimization problem, literature teaches us that we have four main approaches with which we can tackle the problem\cite{ai:textbook}:
+\begin{itemize}
+    \item Analytical Solution.
+    \item Complete/Exhaustive Exploration
+    \item (Blind) Random Search
+    \item Guided (Random) Search
+\end{itemize}
+Unfortunately, no Analytical Solution is known for solving the 3D Knapsack Problem (\emph{otherwise we wouldn't be here}), so we have to exclude such approach.
+\newline One could think to tackle the problem with an Exhaustive Exploration then. After all, if we try all the possible configurations of the boxes and then we select the one with maximum occupancy of the container, we have found the optimal solution. Let's try to study the complexity of such an approach, with all the simplifying assumption made before.
+\newline Say we have $n$ boxes to store in a container, ordered as we prefer. What are all the possible positions the very first box can occupy? Only the LBB corner of the container, so 1. But in how many ways can it be placed? 6, since it can be rotated in six different ways.
+\newline Placed the first box, we are given the second. Where can we place it? Well, we can place it on the right of the previous one, on top of it or in front of it, in the points (box1.x + box1.W, box1.y, box1.z), (box1.x, box1.y + box1.H, box1.z) or (box1.x, box1.y, box1.z + box1.D). In total, we have 3 choices. As before, the box can be placed in 6 different ways given how we can rotate it.
+\newline For the third box, it can be placed in 5 different positions. In fact, by placing the second box in the container, we removed one of the three previous possible positions, but added three more: to the right, on top or in front of the second box. Of course, also this has 6 possible rotations.
+\newline One could argue that a box can be placed, theoretically, in every position inside the container (given that its faces are parallel the the container's walls). So why prefer only the LBB corner for the first box and the right, top and front of previously placed boxes for the following ones? For two reasons mainly:
+\begin{enumerate}
+    \item If we dropped this constraint, we'd have an intractable problem given just the very first box. In fact, an infinite number of points are possible given the floor of the container, so we'd never be able to fully explore the search space since, given only the first box, its possible positions are endless. Even if we decided to find a middle ground, saying for example that we discretize the points of the container in a finite set (for example by saying that all the possible points are given by starting with the LBB corner of the container and summing to it only multiples of a basic unit, for example 1 centimeter), we'd still have a very large search space, that grows bigger the finer is the unit of measurement we choose.
+    \item Thinking of how we humans would fill a container, this approach makes sense. If the container and the boxes are all parallelelipeds, we'd start by placing the first box in a corner, and then the following ones would always touch at least a face of another previously placed box. Intuitively, solutions built this way occupy less volume than those where we place a box in an arbitrary point of the container without considering the current configuration of the placed boxes. This way of filling a container is known in literature as a \emph{robot packable packing}, that tackles situations in which a robot with artificial hands packs the boxes into the bin\cite{hanan:2013}. 
+\end{enumerate}
+Given this, we can inductively say that, if we have $n$ boxes with a fixed order to place, the number of possible combinations is:
+\begin{equation*}
+    prendi gli appunti a milano
+\end{equation*}
+But that's not all: who said that the boxes should have a fixed order? Maybe, with another ordering, the volume occupied would be greater. In how many ways can $n$ boxes be ordered? n factorial, or $n!$. So, the total number of possible configurations of the boxes is:
+\begin{equation*}
+    n! * sopra
+\end{equation*}
+Let's be optimistic and assume that, in order to create a configuration (which means deciding the LBB coordinate for each box togheter with its rotation, and computing the volume occupied by the boxes fully contained in the container) we need $10^{-9}$ seconds, that is, one nanosecond. 
+
+
+\bibliographystyle{plain} % We choose the "plain" reference style
+\bibliography{refs}
+
+\end{document}
+
+
