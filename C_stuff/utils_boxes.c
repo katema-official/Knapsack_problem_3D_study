@@ -33,8 +33,8 @@ void copy_sequence(int** dst, int* src, int len){
     }
 }
 
-void progression_print(int n_boxes, box* boxes, int* a, int* b, int*c){
-    FILE* f = fopen("./progresses.txt", "a");
+void progression_print(int n_boxes, box* boxes, int* a, int* b, int*c, char* filename){
+    FILE* f = fopen(filename, "a");
     fprintf(f, "%d\n", n_boxes);
     for(int i = 0; i < n_boxes; i++){
         fprintf(f, "%d %d %d %d %d %d\n", boxes[i].xlen, boxes[i].ylen, boxes[i].zlen,
@@ -538,7 +538,7 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
             for(int i = 0; i < max_number_of_iterations; i++){
                 sa_make_a_step(&boxes, n_boxes, &temperature, alpha, beta, &current_a, &current_b, &current_c, 
                                 &best_a, &best_b, &best_c, &best_volume, &boxes_neighbour, cont_x, cont_y, cont_z);
-                progression_print(n_boxes, boxes, best_a, best_b, best_c);
+                //progression_print(n_boxes, boxes, best_a, best_b, best_c, "./progresses.txt");
             }
         break;
         case 1:
@@ -552,9 +552,9 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
                 for(int i = 0; i < 1000; i ++){
                     sa_make_a_step(&boxes, n_boxes, &temperature, alpha, beta, &current_a, &current_b, &current_c, 
                                 &best_a, &best_b, &best_c, &best_volume, &boxes_neighbour, cont_x, cont_y, cont_z);
-                    progression_print(n_boxes, boxes, best_a, best_b, best_c);
+                    //progression_print(n_boxes, boxes, best_a, best_b, best_c, "./progresses.txt");
                 }
-                printf("elapsed seconds: %f\n", seconds_elapsed);
+                //printf("elapsed seconds: %f\n", seconds_elapsed);
                 //clock_t end = clock();
                 //seconds_elapsed = (float)(end - start) / CLOCKS_PER_SEC;
                 time(&end);
@@ -564,6 +564,7 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
         default:
         break;
     }
+    progression_print(n_boxes, boxes, best_a, best_b, best_c, "./results.txt");
     return boxes;
 }
 

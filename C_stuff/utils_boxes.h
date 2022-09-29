@@ -13,7 +13,7 @@ typedef struct {
 double get_random();
 void copy_boxes(box** dst, box* src, int len);
 void copy_sequence(int** dst, int* src, int len);
-void progression_print(int n_boxes, box* boxes, int* a, int* b, int*c);
+void progression_print(int n_boxes, box* boxes, int* a, int* b, int*c, char* filename);
 void debug_print(int n_boxes, box* boxes, int* a, int* b, int* c);
 int* random_permutation_1_to_n(int n);
 int comparator_boxes_volume(const void* a, const void* b);
