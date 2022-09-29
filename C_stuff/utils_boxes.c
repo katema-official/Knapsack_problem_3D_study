@@ -524,7 +524,6 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
     int current_iteration = 0;
 
     int seconds = gens_or_secs;
-    printf("seconds = %d", seconds);
 
 
     box* boxes_neighbour = (box*) malloc(n_boxes*sizeof(box));
