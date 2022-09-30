@@ -4,12 +4,38 @@
 #include <time.h>
 #include "utils_boxes.h"
 
+//This main allows to run multiple times the simulated annealing algorithm starting
+//from the same set of boxes.
+
+void run_instance_of_simulated_annealing(int order, int n_boxes, box* boxes, 
+        int cont_x, int cont_y, int cont_z){
+    //generate the three lists a, b and c
+    int* a = (int*) random_permutation_1_to_n(n_boxes);
+    int* b = (int*) random_permutation_1_to_n(n_boxes);
+    int* c = (int*) random_permutation_1_to_n(n_boxes);
+
+    //one might want to order the boxes in descending volume value.
+    if(order){
+        for(int i = 0; i < n_boxes; i++){
+            b[i] = i+1;
+        }
+    }
+
+    box* copied_boxes = (box*) malloc(n_boxes*sizeof(box));
+    copy_boxes(&copied_boxes, boxes, n_boxes);
+    copy_boxes_name(&copied_boxes, boxes, n_boxes);
+
+    simulated_annealing_knapsack_3D(a, b, c, copied_boxes, n_boxes, 0, 10000, cont_x, cont_y, cont_z);
+
+    free(copied_boxes);
+
+}
 
 int main(){
     srand(time(NULL));
 
     //cleanup of a utility file
-    FILE* p = fopen("./results.txt", "w");
+    FILE* p = fopen("./results.txt", "a");
     fclose(p);
 
     //define container dimensions
@@ -91,33 +117,19 @@ int main(){
         }
     }
 
-    //generate the three lists a, b and c
-    int* a = (int*) random_permutation_1_to_n(n_boxes);
-    int* b = (int*) random_permutation_1_to_n(n_boxes);
-    int* c = (int*) random_permutation_1_to_n(n_boxes);
-
-    //one might want to order the boxes in descending volume value.
-    int boxes_ordered = 1;
-    if(boxes_ordered){
+    int order_boxes = 1;
+    if(order_boxes){
         qsort(boxes, n_boxes, sizeof(box), comparator_boxes_volume);
-        for(int i = 0; i < n_boxes; i++){
-            b[i] = i+1;
-        }
     }
 
-    //*************************
-    //****a bunch of prints****
-    //*************************
-    debug_print(n_boxes, boxes, a, b, c);
 
 
-
-
-    //****************************************************
-    //**************WHERE THE MAGIC HAPPENS***************
-    //****************************************************
-    simulated_annealing_knapsack_3D(a, b, c, boxes, n_boxes, 0, 600, cont_x, cont_y, cont_z);
-
+    for(int i = 0; i < 100; i++){
+        //****************************************************
+        //**************WHERE THE MAGIC HAPPENS***************
+        //****************************************************
+        run_instance_of_simulated_annealing(order_boxes, n_boxes, boxes, cont_x, cont_y, cont_z);
+    }
 
     return 0;
 }

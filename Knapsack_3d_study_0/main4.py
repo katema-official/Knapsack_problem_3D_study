@@ -4,7 +4,7 @@ import math
 import ursina
 from boxmodule_ursina import *
 
-file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\progresses.txt", "r")
+file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\results.txt", "r")
 
 class MyBoxes:
     boxes_new = []

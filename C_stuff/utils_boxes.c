@@ -510,6 +510,7 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
     int* best_a = a;
     int* best_b = b;
     int* best_c = c;
+    //debug_print(n_boxes, boxes_input, a, b, c);
     box* boxes = boxes_input;
     float temperature = 0.2;
     float beta = 0.2;
@@ -525,11 +526,12 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
 
     int seconds = gens_or_secs;
 
-
     box* boxes_neighbour = (box*) malloc(n_boxes*sizeof(box));
     int* current_a = (int*) malloc(n_boxes*sizeof(int));
     int* current_b = (int*) malloc(n_boxes*sizeof(int));
     int* current_c = (int*) malloc(n_boxes*sizeof(int));
+        
+
     copy_boxes_name(&boxes_neighbour, boxes, n_boxes);
     //now the code for a step of the simulated annealing
     switch(mode){

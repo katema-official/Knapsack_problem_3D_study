@@ -1,5 +1,5 @@
-40|50|20|Alice
-20|70|10|Bob
-30|50|60|Carlo
-10|10|30|Davide
-40|80|20|Enrico
+60|40|80|Alice
+100|100|20|Bob
+40|70|80|Carlo
+60|30|80|Davide
+100|30|80|Enrico

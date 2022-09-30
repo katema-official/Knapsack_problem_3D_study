@@ -11,6 +11,7 @@ typedef struct {
 #define DEBUG_0 0
 
 double get_random();
+void copy_boxes_name(box** dst, box* src, int len);
 void copy_boxes(box** dst, box* src, int len);
 void copy_sequence(int** dst, int* src, int len);
 void progression_print(int n_boxes, box* boxes, int* a, int* b, int*c, char* filename);
