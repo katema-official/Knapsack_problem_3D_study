@@ -8,6 +8,7 @@ typedef struct {
     int z0;
 }box;
 
+
 #define DEBUG_0 0
 
 double get_random();

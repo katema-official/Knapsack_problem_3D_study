@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include "utils_boxes.h"
+#include "sa_performance_stuff.h"
+#include "local_optimum_utils.h"
 
 //This main allows to run multiple times the simulated annealing algorithm starting
 //from the same set of boxes.
@@ -25,7 +27,7 @@ void run_instance_of_simulated_annealing(int order, int n_boxes, box* boxes,
     copy_boxes(&copied_boxes, boxes, n_boxes);
     copy_boxes_name(&copied_boxes, boxes, n_boxes);
 
-    simulated_annealing_knapsack_3D(a, b, c, copied_boxes, n_boxes, 0, 10000, cont_x, cont_y, cont_z);
+    simulated_annealing_knapsack_3D(a, b, c, copied_boxes, n_boxes, 1, 600, cont_x, cont_y, cont_z);
 
     free(copied_boxes);
 
@@ -39,9 +41,9 @@ int main(){
     fclose(p);
 
     //define container dimensions
-    int cont_x = 100;
-    int cont_y = 100;
-    int cont_z = 100;
+    int cont_x = 800;
+    int cont_y = 700;
+    int cont_z = 1000;
 
     int n_boxes = 0;
     box* boxes;
@@ -49,7 +51,7 @@ int main(){
     int read_from_file = 1;
     if(read_from_file){
         //adapter from https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
-        FILE* f = fopen("./input.txt", "r");
+        FILE* f = fopen("./input2.txt", "r");
         if (f == NULL){exit(EXIT_FAILURE);}
 
         //how many boxes are there?
@@ -86,7 +88,7 @@ int main(){
             b.xlen = atoi(info_of_a_box[0]);
             b.ylen = atoi(info_of_a_box[1]);
             b.zlen = atoi(info_of_a_box[2]);
-            b.name = (char*) malloc(strlen(info_of_a_box[3])*sizeof(char));
+            b.name = (char*) malloc((strlen(info_of_a_box[3])+1)*sizeof(char));
             strcpy(b.name, info_of_a_box[3]);
             b.x0 = -1;
             b.y0 = -1;
@@ -123,13 +125,17 @@ int main(){
     }
 
 
-
-    for(int i = 0; i < 100; i++){
+    if(DEBUG_1)clear_generation_performance_file();
+    initialize_array_local_optimum();
+    for(int i = 0; i < 1; i++){
         //****************************************************
         //**************WHERE THE MAGIC HAPPENS***************
         //****************************************************
+        if(DEBUG_1)initialize();
         run_instance_of_simulated_annealing(order_boxes, n_boxes, boxes, cont_x, cont_y, cont_z);
+        reset_array_local_optimum();
     }
+    free_array_local_optimum();
 
     return 0;
 }

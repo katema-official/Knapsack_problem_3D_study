@@ -13,6 +13,7 @@ int main(){
     printf("a[0] = %d\n", a[0]);  //gives 4, [$#17]
     a[0] = 5;
     printf("a[0] = %d\n", b[0]);
+    free(a);
 
     char** strings = malloc(3*sizeof(char*));
     strings[0] = malloc(9*sizeof(char));
@@ -38,5 +39,17 @@ int main(){
     for(int i = 0; i < 3; i++){
         printf("string = %s, len = %ld\n", strings[i], strlen(strings[i]));
     }
+    free(strings);
+
+    printf("QUI C'E' L'ERRORE\n");
+
+    char* word1 = "Alessio";
+    char* word2 = malloc((strlen(word1)+1)*sizeof(char));
+    strcpy(word2, word1);
+    printf("word2 = %s\n", word2);
+    word1 = "aaa";
+    printf("word2 = %s\n", word2);
+    
+    free(word2);
 
 }
