@@ -27,8 +27,14 @@ void run_instance_of_simulated_annealing(int order, int n_boxes, box* boxes,
     copy_boxes(&copied_boxes, boxes, n_boxes);
     copy_boxes_name(&copied_boxes, boxes, n_boxes);
 
-    simulated_annealing_knapsack_3D(a, b, c, copied_boxes, n_boxes, 1, 600, cont_x, cont_y, cont_z);
+    simulated_annealing_knapsack_3D(a, b, c, copied_boxes, n_boxes, 1, 60, cont_x, cont_y, cont_z);
 
+    free(a);
+    free(b);
+    free(c);
+    for(int i = 0; i < n_boxes; i++){
+        free(copied_boxes[i].name);
+    }
     free(copied_boxes);
 
 }
@@ -136,6 +142,11 @@ int main(){
         reset_array_local_optimum();
     }
     free_array_local_optimum();
+
+    for(int i = 0; i < n_boxes; i++){
+        free(boxes[i].name);
+    }
+    free(boxes);
 
     return 0;
 }

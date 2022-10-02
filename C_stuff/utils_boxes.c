@@ -171,10 +171,11 @@ void get_neighbour(box** boxes_neighbour, int n_boxes, int** current_a, int** cu
     //The chosen boxes are the i-th and the j-th that we'll randomly generate. 
     //in order to generate them, I'll use a procedure that is a bit more costly but for which I'm sure
     //that always a fixed number of steps are necessary to generate i and j (I'm already thinking to
-    //possible divergence in CUDA)
+    //possible divergence in CUDA I think lol)
     int* perm = random_permutation_1_to_n(n_boxes);
     int i = perm[0];
     int j = perm[1];
+    free(perm); //free memory allocated by random_permutation_1_to_n
 
     int index_i_a;
     int index_j_a;
@@ -436,6 +437,11 @@ void place_boxes_sequence_triples(int* a, int* b, int* c, box** boxes, int n_box
 
     }
 
+    free(placed_boxes);
+    free(P_x);
+    free(P_y);
+    free(P_z);
+
 
 }
 
@@ -543,7 +549,7 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
     int* current_b = (int*) malloc(n_boxes*sizeof(int));
     int* current_c = (int*) malloc(n_boxes*sizeof(int));
         
-    copy_boxes_name(&boxes_neighbour, boxes, n_boxes);
+    //copy_boxes_name(&boxes_neighbour, boxes, n_boxes);
 
     //now the code for a step of the simulated annealing
     switch(mode){
@@ -579,6 +585,10 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
     }
     //progression_print(n_boxes, boxes, best_a, best_b, best_c, "./results.txt");
     result_print_local_optimum_found(n_boxes);
+    free(boxes_neighbour);
+    free(current_a);
+    free(current_b);
+    free(current_c);
 
     return boxes;
 }

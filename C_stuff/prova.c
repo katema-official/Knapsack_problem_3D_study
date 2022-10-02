@@ -52,4 +52,15 @@ int main(){
     
     free(word2);
 
+
+    int array_1[10];
+    for(int i = 0; i < 10; i++){
+        array_1[i] = i;
+    }
+
+    int* array_2 = malloc(10*sizeof(int));
+    for(int i = 0; i < 10; i++){
+        array_2[i] = 3*i;
+    }
+    free(array_2);
 }

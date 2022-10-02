@@ -49,6 +49,7 @@ void free_array_local_optimum(){
 //soft reset of the data
 void reset_array_local_optimum(){
     for(int i = 0; i < array_of_local_optimum_index; i++){
+        free(array_of_local_optimum_boxes[i]->name);
         free(array_of_local_optimum_boxes[i]);
         free(array_of_local_optimum_a[i]);
         free(array_of_local_optimum_b[i]);
