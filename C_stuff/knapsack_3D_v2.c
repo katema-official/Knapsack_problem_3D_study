@@ -27,7 +27,7 @@ void run_instance_of_simulated_annealing(int order, int n_boxes, box* boxes,
     copy_boxes(&copied_boxes, boxes, n_boxes);
     copy_boxes_name(&copied_boxes, boxes, n_boxes);
 
-    simulated_annealing_knapsack_3D(a, b, c, copied_boxes, n_boxes, 1, 60, cont_x, cont_y, cont_z);
+    simulated_annealing_knapsack_3D(a, b, c, copied_boxes, n_boxes, 1, 300, cont_x, cont_y, cont_z);
 
     free(a);
     free(b);

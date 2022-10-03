@@ -81,30 +81,20 @@ void save_local_optimum(box* boxes, int* a, int* b, int* c, int n_boxes, int app
 
     if(append_or_overwrite == 0 && array_of_local_optimum_index == array_of_local_optimum_dim) return;
 
-    printf("_A\n");
     box* local_optimum_boxes = (box*) malloc(n_boxes*sizeof(box));
-    printf("_B\n");
     int* local_optimum_a = (int*) malloc(n_boxes*sizeof(int));
-    printf("_C\n");
     int* local_optimum_b = (int*) malloc(n_boxes*sizeof(int));
-    printf("_D\n");
     int* local_optimum_c = (int*) malloc(n_boxes*sizeof(int));
 
     //copy of the local optimum found
-    printf("_E\n");
     copy_boxes(&local_optimum_boxes, boxes, n_boxes);
-    printf("_F\n");
     copy_sequence(&local_optimum_a, a, n_boxes);
-    printf("_G\n");
     copy_sequence(&local_optimum_b, b, n_boxes);
-    printf("_H\n");
     copy_sequence(&local_optimum_c, c, n_boxes);
-    printf("_I, append_or_owerwrite = %d\n", append_or_overwrite);
 
     if(append_or_overwrite == 0){
         //append
         array_of_local_optimum_boxes[array_of_local_optimum_index] = local_optimum_boxes;
-        printf("ok so the local_optimum_a is: ");
         for(int kk = 0; kk < n_boxes; kk++){
             printf("%d ", local_optimum_a[kk]);
         }
@@ -114,21 +104,12 @@ void save_local_optimum(box* boxes, int* a, int* b, int* c, int n_boxes, int app
         array_of_local_optimum_index++;
     }else if(append_or_overwrite == 1){ //could be done better initializing array to null and freeing it all
         //better local optimum found, discard preceeding solutions
-        printf("_J\n");
         for(int i = 0; i < array_of_local_optimum_index; i++){
-            if(i == array_of_local_optimum_dim/2){
-                printf("Qui c'è un problema for reasons. Stampo un po' di roba.\n");
-                printf("x0: %d", array_of_local_optimum_boxes[i][0].x0);
-                printf("xlen: %d", array_of_local_optimum_boxes[i][0].xlen);
-                //printf("x0: %s", array_of_local_optimum_boxes[i][0].name);
-            }
             free(array_of_local_optimum_boxes[i]);
             free(array_of_local_optimum_a[i]);
             free(array_of_local_optimum_b[i]);
             free(array_of_local_optimum_c[i]);
-            printf("_K, i = %d\n", i);
         }
-        printf("_L\n");
         array_of_local_optimum_index = 0;
 
         //now save the new best solution found so far
@@ -139,9 +120,6 @@ void save_local_optimum(box* boxes, int* a, int* b, int* c, int n_boxes, int app
         array_of_local_optimum_index++;
         
     }
-
-    printf("index = %d\n", array_of_local_optimum_index);
-
 }
 
 void result_print_local_optimum_found(int n_boxes){
