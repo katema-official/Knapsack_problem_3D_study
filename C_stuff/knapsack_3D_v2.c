@@ -10,7 +10,7 @@
 //from the same set of boxes.
 
 void run_instance_of_simulated_annealing(int order, int n_boxes, box* boxes, 
-        int cont_x, int cont_y, int cont_z){
+        int cont_x, int cont_y, int cont_z, char** names){
     //generate the three lists a, b and c
     int* a = (int*) random_permutation_1_to_n(n_boxes);
     int* b = (int*) random_permutation_1_to_n(n_boxes);
@@ -25,16 +25,12 @@ void run_instance_of_simulated_annealing(int order, int n_boxes, box* boxes,
 
     box* copied_boxes = (box*) malloc(n_boxes*sizeof(box));
     copy_boxes(&copied_boxes, boxes, n_boxes);
-    copy_boxes_name(&copied_boxes, boxes, n_boxes);
 
-    simulated_annealing_knapsack_3D(a, b, c, copied_boxes, n_boxes, 1, 300, cont_x, cont_y, cont_z);
+    simulated_annealing_knapsack_3D(a, b, c, copied_boxes, n_boxes, 1, 600, cont_x, cont_y, cont_z, names);
 
     free(a);
     free(b);
     free(c);
-    for(int i = 0; i < n_boxes; i++){
-        free(copied_boxes[i].name);
-    }
     free(copied_boxes);
 
 }
@@ -53,6 +49,7 @@ int main(){
 
     int n_boxes = 0;
     box* boxes;
+    char** boxes_names; //I keep the name of the boxes in a separate array.
 
     int read_from_file = 1;
     if(read_from_file){
@@ -69,6 +66,7 @@ int main(){
             }
         }
         boxes = (box*) malloc(n_boxes*sizeof(box));
+        boxes_names = (char**) malloc(n_boxes*sizeof(char*));
         rewind(f);
 
         //let's see the actual informations about those boxes.
@@ -94,8 +92,10 @@ int main(){
             b.xlen = atoi(info_of_a_box[0]);
             b.ylen = atoi(info_of_a_box[1]);
             b.zlen = atoi(info_of_a_box[2]);
-            b.name = (char*) malloc((strlen(info_of_a_box[3])+1)*sizeof(char));
-            strcpy(b.name, info_of_a_box[3]);
+            //b.name = (char*) malloc((strlen(info_of_a_box[3])+1)*sizeof(char));
+            //strcpy(b.name, info_of_a_box[3]);
+            boxes_names[box_index] = (char*) malloc((strlen(info_of_a_box[3])+1)*sizeof(char));
+            strcpy(boxes_names[box_index], info_of_a_box[3]);
             b.x0 = -1;
             b.y0 = -1;
             b.z0 = -1;
@@ -114,7 +114,7 @@ int main(){
         boxes = (box*) malloc(n_boxes*sizeof(box));
         for(int i = 0; i < n_boxes; i++){
             box b;
-            b.name = "pippo";
+            boxes_names[i] = "foobar";
             b.xlen = rand()%50;
             b.ylen = rand()%50;
             b.zlen = rand()%50;
@@ -133,20 +133,21 @@ int main(){
 
     if(DEBUG_1)clear_generation_performance_file();
     initialize_array_local_optimum();
-    for(int i = 0; i < 1; i++){
+    for(int i = 0; i < 13; i++){
         //****************************************************
         //**************WHERE THE MAGIC HAPPENS***************
         //****************************************************
         if(DEBUG_1)initialize();
-        run_instance_of_simulated_annealing(order_boxes, n_boxes, boxes, cont_x, cont_y, cont_z);
+        run_instance_of_simulated_annealing(order_boxes, n_boxes, boxes, cont_x, cont_y, cont_z, boxes_names);
         reset_array_local_optimum();
     }
     free_array_local_optimum();
 
-    for(int i = 0; i < n_boxes; i++){
-        free(boxes[i].name);
-    }
     free(boxes);
+    for(int i = 0; i < n_boxes; i++){
+        free(boxes_names[i]);
+    }
+    free(boxes_names);
 
     return 0;
 }

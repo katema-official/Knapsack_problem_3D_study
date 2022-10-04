@@ -1,5 +1,5 @@
 typedef struct {
-	char* name;
+	//char* name;
 	int xlen;
     int ylen;
     int zlen;
@@ -12,7 +12,6 @@ typedef struct {
 #define DEBUG_0 0
 
 double get_random();
-void copy_boxes_name(box** dst, box* src, int len);
 void copy_boxes(box** dst, box* src, int len);
 void copy_sequence(int** dst, int* src, int len);
 void progression_print(int n_boxes, box* boxes, int* a, int* b, int*c, char* filename);
@@ -30,5 +29,5 @@ void sa_make_a_step(box** boxes, int n_boxes, float* temperature, float alpha, f
                     int** best_a, int** best_b, int** best_c, int* best_volume, box** boxes_neighbour,
                     int cont_x, int cont_y, int cont_z);
 box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, int n_boxes, 
-                                    int md, int secs,int cont_x, int cont_y, int cont_z);
+                                    int md, int secs,int cont_x, int cont_y, int cont_z, char** boxes_names);
 int volume_occupied(box* boxes, int n_boxes, int cont_x, int cont_y, int cont_z, int mode);

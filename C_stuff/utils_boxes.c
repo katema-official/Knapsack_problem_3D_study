@@ -11,14 +11,6 @@
 
 double get_random() { return (double)rand() / (double)RAND_MAX; }
 
-void copy_boxes_name(box** dst, box* src, int len){
-    for(int i = 0; i < len; i++){
-        (*dst)[i].name = malloc((strlen(src[i].name)+1)*sizeof(char));
-        strcpy((*dst)[i].name, src[i].name);
-    }
-    
-}
-
 void copy_boxes(box** dst, box* src, int len){
     for(int i = 0; i < len; i++){
         (*dst)[i].xlen = src[i].xlen;
@@ -470,12 +462,13 @@ void sa_make_a_step(box** boxes, int n_boxes, float* temperature, float alpha, f
     //a true neighbour.
     get_neighbour(boxes_neighbour, n_boxes, current_a, current_b, current_c);
     place_boxes_sequence_triples(*current_a, *current_b, *current_c, &(*boxes_neighbour), n_boxes);
-    int neighbour_volume = volume_occupied(*boxes_neighbour, n_boxes, cont_x, cont_y, cont_z, 1);
+    int neighbour_volume = volume_occupied(*boxes_neighbour, n_boxes, cont_x, cont_y, cont_z, 0);   //0 judges more hard the solution
     int found_better = 0;
 
     //*************************************************
     //*********SAVING A POSSIBLE LOCAL OPTIMUM*********
     evaluate_new_solution(neighbour_volume, *boxes_neighbour, *current_a, *current_b, *current_c, n_boxes);
+    //*************************************************
     //*************************************************
 
     if(neighbour_volume != *best_volume){
@@ -524,7 +517,7 @@ void sa_make_a_step(box** boxes, int n_boxes, float* temperature, float alpha, f
 }
 
 box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, int n_boxes, int md, int gens_or_secs,
-                                    int cont_x, int cont_y, int cont_z){
+                                    int cont_x, int cont_y, int cont_z, char** boxes_names){
     int* best_a = a;
     int* best_b = b;
     int* best_c = c;
@@ -548,8 +541,6 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
     int* current_a = (int*) malloc(n_boxes*sizeof(int));
     int* current_b = (int*) malloc(n_boxes*sizeof(int));
     int* current_c = (int*) malloc(n_boxes*sizeof(int));
-        
-    //copy_boxes_name(&boxes_neighbour, boxes, n_boxes);
 
     //now the code for a step of the simulated annealing
     switch(mode){
@@ -583,8 +574,8 @@ box* simulated_annealing_knapsack_3D(int* a, int* b, int* c, box* boxes_input, i
         default:
         break;
     }
-    //progression_print(n_boxes, boxes, best_a, best_b, best_c, "./results.txt");
-    result_print_local_optimum_found(n_boxes);
+    print_occupancy(cont_x, cont_y, cont_z);
+    result_print_local_optimum_found(n_boxes, boxes_names);
     free(boxes_neighbour);
     free(current_a);
     free(current_b);

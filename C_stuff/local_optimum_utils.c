@@ -24,7 +24,7 @@ int best_volume_local_optimum; //volume of the best solution found in this run.
 //useful to understand if a better local optimum has been found.
 
 void initialize_array_local_optimum(){
-    array_of_local_optimum_dim = 20;
+    array_of_local_optimum_dim = 50;
     array_of_local_optimum_index = 0;
     best_volume_local_optimum = 0;
 
@@ -49,7 +49,6 @@ void free_array_local_optimum(){
 //soft reset of the data
 void reset_array_local_optimum(){
     for(int i = 0; i < array_of_local_optimum_index; i++){
-        free(array_of_local_optimum_boxes[i]->name);
         free(array_of_local_optimum_boxes[i]);
         free(array_of_local_optimum_a[i]);
         free(array_of_local_optimum_b[i]);
@@ -65,11 +64,9 @@ void evaluate_new_solution(int volume_of_this_solution, box* boxes, int* a, int*
     if(volume_of_this_solution == best_volume_local_optimum){
         //append the solution to the array
         save_local_optimum(boxes, a, b, c, n_boxes, 0);
-        printf("Appended. Best volume = %d\n", volume_of_this_solution);
     }else if (volume_of_this_solution > best_volume_local_optimum){
         best_volume_local_optimum = volume_of_this_solution;
         save_local_optimum(boxes, a, b, c, n_boxes, 1);
-        printf("Updated best. Volume = %d\n", best_volume_local_optimum);
     }
 }
 
@@ -95,9 +92,6 @@ void save_local_optimum(box* boxes, int* a, int* b, int* c, int n_boxes, int app
     if(append_or_overwrite == 0){
         //append
         array_of_local_optimum_boxes[array_of_local_optimum_index] = local_optimum_boxes;
-        for(int kk = 0; kk < n_boxes; kk++){
-            printf("%d ", local_optimum_a[kk]);
-        }
         array_of_local_optimum_a[array_of_local_optimum_index] = local_optimum_a;
         array_of_local_optimum_b[array_of_local_optimum_index] = local_optimum_b;
         array_of_local_optimum_c[array_of_local_optimum_index] = local_optimum_c;
@@ -122,14 +116,14 @@ void save_local_optimum(box* boxes, int* a, int* b, int* c, int n_boxes, int app
     }
 }
 
-void result_print_local_optimum_found(int n_boxes){
+void result_print_local_optimum_found(int n_boxes, char** boxes_names){
     FILE* f = fopen("final_results.txt", "a");
     for(int k = 0; k < array_of_local_optimum_index; k++){
         box* boxes = array_of_local_optimum_boxes[k];
         fprintf(f, "%d\n", n_boxes);
         for(int i = 0; i < n_boxes; i++){
-            fprintf(f, "%d %d %d %d %d %d\n", boxes[i].xlen, boxes[i].ylen, boxes[i].zlen,
-                    boxes[i].x0, boxes[i].y0, boxes[i].z0);
+            fprintf(f, "%d %d %d %d %d %d %s\n", boxes[i].xlen, boxes[i].ylen, boxes[i].zlen,
+                    boxes[i].x0, boxes[i].y0, boxes[i].z0, boxes_names[i]);
         }
         int* a = array_of_local_optimum_a[k];
         for(int i = 0; i < n_boxes; i++){
@@ -148,4 +142,9 @@ void result_print_local_optimum_found(int n_boxes){
         fprintf(f, "\n");
     }
     fclose(f);
+}
+
+void print_occupancy(int cont_x, int cont_y, int cont_z){
+    printf("The occupancy of the solution(s) found is %lf. Volume occupied is %d, while total volume is %d.\n", 
+        (double) best_volume_local_optimum/ (double) (cont_x*cont_y*cont_z), best_volume_local_optimum, cont_x*cont_y*cont_z);
 }
