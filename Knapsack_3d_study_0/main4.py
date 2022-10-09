@@ -5,7 +5,8 @@ import ursina
 from boxmodule_ursina import *
 from boxmodule_misc import *
 
-file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\Interesting_data\\final_results_strict.txt", "r")
+file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\hmg_based_implementation_v2\\" +
+            "Interesting_data\\final_results_swap_box_completely_inside.txt", "r")
 
 def isOverlapping1D(box1,box2):
     return box1[1] > box2[0] and box2[1] > box1[0]
@@ -89,15 +90,18 @@ def input(key):
 
 def place_boxes_in_space(boxes, all=False):
     boxes_effectively_placed = []
-
+    volume_covered = 0
     for box in boxes:
         if all == True:
             box.entity = place_box(box.x0, box.y0, box.z0, box.xlen, box.ylen, box.zlen, box.color)
             boxes_effectively_placed.append(box)
+            volume_covered += box.xlen * box.ylen * box.zlen
         else:
             if(box.x0 + box.xlen <= cont_x and box.y0 + box.ylen <= cont_y and box.z0 + box.zlen <= cont_z):
                 box.entity = place_box(box.x0, box.y0, box.z0, box.xlen, box.ylen, box.zlen, box.color)
                 boxes_effectively_placed.append(box)
+                volume_covered += box.xlen * box.ylen * box.zlen
+    print(volume_covered/(cont_x*cont_y*cont_z))
 
     if check_if_boxes_overlap_2(boxes_effectively_placed): print("Si sovrappongono")
 
