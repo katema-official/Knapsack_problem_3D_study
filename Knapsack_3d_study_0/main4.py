@@ -5,8 +5,8 @@ import ursina
 from boxmodule_ursina import *
 from boxmodule_misc import *
 
-file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\hmg_based_implementation_v2\\" +
-            "Interesting_data\\final_results_swap_box_completely_inside.txt", "r")
+file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\hmg_based_implementation_v1\\" +
+            "Interesting_data\\final_results_relaxed.txt", "r")
 
 def isOverlapping1D(box1,box2):
     return box1[1] > box2[0] and box2[1] > box1[0]
