@@ -2,11 +2,15 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#include "structs.h"
 #include "utils.h"
 #include "boxes.h"
 #include "extreme_points.h"
 
-int upper_bound = 0;
+//#ifndef GLOBALS
+//#define GLOBALS
+
+int primal_bound = 0;
 //define container dimensions
 int cont_x = 800;
 int cont_y = 700;
@@ -14,8 +18,10 @@ int cont_z = 1000;
 
 node* head;
 
+//#endif
+
 int main(){
-srand(time(NULL));
+    srand(time(NULL));
 
     //cleanup of a utility file
     FILE* p = fopen("./results.txt", "a");
@@ -115,31 +121,106 @@ srand(time(NULL));
     //when a node is detected to be infeasible or its dual bound is lower
     //than the actual primal bound (the super-optimal solution of the subproblem
     //is worse than the best known feasible solution), the node is closed
-    int max_number_of_boxes_to_place = 0;
+    int max_number_of_boxes_placeable = 0;
     if(order_boxes){
         int total_volume = cont_x*cont_y*cont_z;
         for(int i = n_boxes - 1; i >= 0; i++){
             int volume_of_this_box = boxes[i].xlen * boxes[i].ylen *boxes[i].zlen;
             if(volume_of_this_box <= total_volume){
                 total_volume -= volume_of_this_box;
-                max_number_of_boxes_to_place++;
+                max_number_of_boxes_placeable++;
             }else{
                 break;
             }
         }
     }else{
-        int max_number_of_boxes_to_place = n_boxes;
+        int max_number_of_boxes_placeable = n_boxes;
     }
 
-    box** boxes_to_place = boxes;
-    box** boxes_placed = (box*) malloc(max_number_of_boxes_to_place * sizeof(box*));
+    box* boxes_to_place = boxes;
     //there is also a maximum number of extreme points that there can be in a subproblem
-    int max_extreme_points = (max_number_of_boxes_to_place - 1) * 2 + 3;
+    int max_extreme_points = (max_number_of_boxes_placeable - 1) * 2 + 3;
 
     node* first = (node*) malloc(sizeof(node));
     first->extreme_points = (point*) malloc(max_extreme_points * sizeof(point));
+    first->boxes_to_place = (box*) malloc(n_boxes*sizeof(box));
+    first->boxes_placed = (box*) malloc(max_number_of_boxes_placeable*sizeof(box));
+
+    //initialize the first node
+    point initial_point;
+
+    first->extreme_points[0].x = 0;
+    first->extreme_points[0].y = 0;
+    first->extreme_points[0].z = 0;
+    first->extreme_points[0].width = cont_x;
+    first->extreme_points[0].height = cont_y;
+    first->extreme_points[0].depth = cont_z;
+    first->ep_len = 1;
+    copy_boxes(&(first->boxes_to_place), boxes_to_place, n_boxes);
+    first->btp_len = n_boxes;
+    first->bp_len = 0;
+    first->succ = NULL;
+
+    head = first;
+
+    //exhaustive B&B exploration begins: all nodes in the list represent open nodes
+    //of the tree, that therfore must be explored.
+    while(head != NULL){
+        int ep_len = head->ep_len;
+        int btp_len = head->btp_len;
+        int bp_len = head->bp_len;
+        for(int i = 0; i < btp_len; i++){
+            //i take the boxes to place one at a time
+            box new_box = head->boxes_to_place[i];
+            int** rotations = rotations_of_box(new_box);
+
+            for(int j = 0; j < 6; j++){
+                //i consider the 6 ritations the box can take one at a time
+                int* current_rotation = rotations[j];
+                box new_box_copy = malloc(sizeof(box));
+                copy_box(&new_box_copy, new_box);
+                new_box_copy.xlen = current_rotation[0];
+                new_box_copy.ylen = current_rotation[1];
+                new_box_copy.zlen = current_rotation[2];
+
+                for(k = 0; k < ep_len; k++){
+                    //i consider one at a time all the possible points in which the box can be put
+                    point p = head->extreme_points[k];
+                    new_box_copy.x0 = p.x;
+                    new_box_copy.y0 = p.y;
+                    new_box_copy.z0 = p.z;
+
+                    //we generate the new node only if this box, with this rotation, in that point,
+                    //doesn't collide with another box AND gets outside of the container
+                    if(!is_box_outside_container(new_box_copy)){
+                        for(kk = 0; kk < bp_len; kk++){
+                            box placed_box = head->placed_boxes[kk];
+                            if(!do_boxes_overlap(new_box_copy, placed_box)){
+                                //we can explore the node
+                            }
+
+                        }
+                    }
 
 
+                    free(new_box_copy);
+
+
+                }
+
+                
+
+
+                //freeing
+                for(int i=0; i < 6; i++){
+                    free(rotations[i]);
+                }
+                free(rotations)
+            }
+
+
+        }
+    }
 
 
 

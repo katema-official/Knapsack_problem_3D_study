@@ -1,5 +1,13 @@
 #include "boxes.h"
-#include "main.c"
+#include "structs.h"
+
+#include <stdlib.h>
+
+extern int primal_bound;
+extern int cont_x;
+extern int cont_y;
+extern int cont_z;
+extern node* head;
 
 
 int is_overlapping_1D(int min1, int max1, int min2, int max2){
@@ -32,6 +40,15 @@ int comparator_boxes_volume(const void* a, const void* b){
     return 0;
 }
 
+void copy_box(box* dst, box src){
+    (*dst).xlen = src.xlen;
+    (*dst).ylen = src.ylen;
+    (*dst).zlen = src.zlen;
+    (*dst).x0 = src.x0;
+    (*dst).y0 = src.y0;
+    (*dst).z0 = src.z0;
+}
+
 void copy_boxes(box** dst, box* src, int len){
     for(int i = 0; i < len; i++){
         (*dst)[i].xlen = src[i].xlen;
@@ -41,6 +58,45 @@ void copy_boxes(box** dst, box* src, int len){
         (*dst)[i].y0 = src[i].y0;
         (*dst)[i].z0 = src[i].z0;
     }
+}
+
+int** rotations_of_box(box b){
+    int** rots = malloc(6*sizeof(int*));
+
+    for(int i=0; i < 6; i++){
+        rots[i] = malloc(3*sizeof(int));
+    }
+
+    int xlen = b.xlen;
+    int ylen = b.ylen;
+    int zlen = b.zlen;
+
+    rots[0][0] = xlen;
+    rots[0][1] = ylen;
+    rots[0][2] = xlen;
+
+    rots[1][0] = xlen;
+    rots[1][1] = zlen;
+    rots[1][2] = ylen;
+
+    rots[2][0] = ylen;
+    rots[2][1] = xlen;
+    rots[2][2] = zlen;
+
+    rots[3][0] = ylen;
+    rots[3][1] = zlen;
+    rots[3][2] = xlen;
+
+    rots[4][0] = zlen;
+    rots[4][1] = xlen;
+    rots[4][2] = ylen;
+
+    rots[5][0] = zlen;
+    rots[5][1] = ylen;
+    rots[5][2] = xlen;
+
+    return rots;
+
 }
 
 

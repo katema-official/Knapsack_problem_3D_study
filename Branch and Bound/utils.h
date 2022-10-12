@@ -1,12 +1,7 @@
-#include "boxes.h"
-#include "extreme_points.h"
+#ifndef UTILS
+#define UTILS
 
-typedef struct{
-    point* extreme_points;
-    box* boxes_to_place;
-    box* boxes_placed;
-    node* succ;
-}node;
+#include "structs.h"
 
 #define max(a,b) (((a) > (b)) ? (a) : (b))
 #define min(a,b) (((a) < (b)) ? (a) : (b))
@@ -17,6 +12,6 @@ double get_random();
 void copy_boxes(box** dst, box* src, int len);
 
 
-
+#endif
 
 

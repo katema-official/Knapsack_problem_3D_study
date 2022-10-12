@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <time.h>
 #define n 3
+#include "structs.h"
+#include "extreme_points.h"
+#include "boxes.h"
+#include "utils.h"
 
 int function_1(int* a){
     a[0] = 3;
@@ -21,6 +25,15 @@ int main(){
     for(int i = 0; i < n; i++){
         printf("%d ", a[i]);
     }
+    free(a);
+
+    point* points = malloc(n*sizeof(point));
+
+    points[0].x = 1;
+    printf("points[0] = %d\n", points[0].x);
+
+    free(points);
+    box* boxes;
 
 
 }
