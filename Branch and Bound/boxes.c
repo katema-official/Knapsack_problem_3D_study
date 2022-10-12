@@ -101,5 +101,29 @@ int** rotations_of_box(box b){
 
 
 
+box* get_copy_boxes_except_one(box* src, int n, int i){
+    box* dst = malloc((n-1)*sizeof(box));
+    for(int j = 0; j < n; j++){
+        if(j < i){
+            dst[j].x0 = src[j].x0;
+            dst[j].y0 = src[j].y0;
+            dst[j].z0 = src[j].z0;
+            dst[j].xlen = src[j].xlen;
+            dst[j].ylen = src[j].ylen;
+            dst[j].zlen = src[j].zlen;
+        }
+
+        if(j > i){
+            dst[j-1].x0 = src[j].x0;
+            dst[j-1].y0 = src[j].y0;
+            dst[j-1].z0 = src[j].z0;
+            dst[j-1].xlen = src[j].xlen;
+            dst[j-1].ylen = src[j].ylen;
+            dst[j-1].zlen = src[j].zlen;
+        }
+    }
+    return dst;
+}
+
 
 

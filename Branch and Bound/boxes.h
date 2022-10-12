@@ -10,7 +10,7 @@ int comparator_boxes_volume(const void* a, const void* b);
 void copy_box(box* dst, box src);
 void copy_boxes(box** dst, box* src, int len);
 int** rotations_of_box(box b);
-
+box* get_copy_boxes_except_one(box* src, int n, int i);
 
 #endif
 

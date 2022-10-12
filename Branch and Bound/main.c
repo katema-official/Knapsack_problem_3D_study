@@ -142,9 +142,9 @@ int main(){
     int max_extreme_points = (max_number_of_boxes_placeable - 1) * 2 + 3;
 
     node* first = (node*) malloc(sizeof(node));
-    first->extreme_points = (point*) malloc(max_extreme_points * sizeof(point));
+    first->extreme_points = (point*) malloc(1 * sizeof(point)); //at first, there is only 1 extreme point
     first->boxes_to_place = (box*) malloc(n_boxes*sizeof(box));
-    first->boxes_placed = (box*) malloc(max_number_of_boxes_placeable*sizeof(box));
+    first->boxes_placed = NULL;//(box*) malloc(max_number_of_boxes_placeable*sizeof(box));
 
     //initialize the first node
     point initial_point;
@@ -177,15 +177,15 @@ int main(){
             for(int j = 0; j < 6; j++){
                 //i consider the 6 ritations the box can take one at a time
                 int* current_rotation = rotations[j];
-                box new_box_copy = malloc(sizeof(box));
-                copy_box(&new_box_copy, new_box);
-                new_box_copy.xlen = current_rotation[0];
-                new_box_copy.ylen = current_rotation[1];
-                new_box_copy.zlen = current_rotation[2];
 
                 for(k = 0; k < ep_len; k++){
                     //i consider one at a time all the possible points in which the box can be put
                     point p = head->extreme_points[k];
+                    box new_box_copy = malloc(sizeof(box));
+                    copy_box(&new_box_copy, new_box);
+                    new_box_copy.xlen = current_rotation[0];
+                    new_box_copy.ylen = current_rotation[1];
+                    new_box_copy.zlen = current_rotation[2];
                     new_box_copy.x0 = p.x;
                     new_box_copy.y0 = p.y;
                     new_box_copy.z0 = p.z;
@@ -197,6 +197,7 @@ int main(){
                             box placed_box = head->placed_boxes[kk];
                             if(!do_boxes_overlap(new_box_copy, placed_box)){
                                 //we can explore the node
+                                generate_new_node(new_box_copy, ), 
                             }
 
                         }
@@ -222,12 +223,47 @@ int main(){
         }
     }
 
+}
 
+//i_ep = the index in extreme_points of the point used just now to place the box
+//i_btp = index in boxes_to_place of the box just placed
+void generate_new_node(point* extreme_points, int n_extreme_points, 
+                        box* boxes_placed, int n_boxes_placed, 
+                        box* boxes_to_place, int n_boxes_to_place,
+                        box new_box, int i_ep, int i_btp){
+
+    //copy the boxes placed, adding the new box placed
+    box* new_boxes_placed = malloc((n_boxes_placed+1) * sizeof(box));
+    void copy_boxes(&new_boxes_placed, boxes_placed, n_boxes_placed);
+    new_boxes_placed[n_boxes_placed] = new_box;
+    
+    //copy the extreme points by removing the point in which the box has been placed, then add the three new points
+    point* new_extreme_points = get_copy_points_except_one(extreme_points, int n_extreme_points, int i_ep);
+    point p1;
+    point p2;
+    point p3;
+    p1.x = new_box.x0 + new_box.xlen;
+    p1.y = 0;
+    p1.z = 0;
+
+    p2.x = 0;
+    p2.y = new_box.y0 + new_box.ylen;
+    p2.z = 0;
+
+    p3.x = 0;
+    p3.y = 0;
+    p3.z = new_box.z0 + new_box.zlen;
+    update_point_dimensions(&p1, new_boxes_placed, n_boxes_placed+1);
+    update_point_dimensions(&p2, new_boxes_placed, n_boxes_placed+1);
+    update_point_dimensions(&p3, new_boxes_placed, n_boxes_placed+1);
+
+    //copy the boxes to place removing the box placed right now
+    box* new_boxes_to_place = get_copy_boxes_except_one(boxes_to_place, n_boxes_to_place, int i);
+
+    //now compute the dual bound, and if it is worse than primal bound, don't even open this node
 
 
 }
-
-
 
 
 
