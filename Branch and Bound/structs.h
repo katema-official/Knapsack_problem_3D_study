@@ -20,7 +20,7 @@ typedef struct{
     int depth;
 }point;
 
-typedef struct{
+typedef struct node{
     point* extreme_points;
     int ep_len;
     box* boxes_to_place;

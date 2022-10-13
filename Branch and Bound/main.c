@@ -7,9 +7,6 @@
 #include "boxes.h"
 #include "extreme_points.h"
 
-//#ifndef GLOBALS
-//#define GLOBALS
-
 int primal_bound = 0;
 //define container dimensions
 int cont_x = 800;
@@ -18,7 +15,12 @@ int cont_z = 1000;
 
 node* head;
 
-//#endif
+
+
+void generate_new_node(point* extreme_points, int n_extreme_points, 
+                        box* boxes_placed, int n_boxes_placed, 
+                        box* boxes_to_place, int n_boxes_to_place,
+                        box new_box, int i_ep, int i_btp);
 
 int main(){
     srand(time(NULL));
@@ -34,7 +36,7 @@ int main(){
     int read_from_file = 1;
     if(read_from_file){
         //adapter from https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
-        FILE* f = fopen("./input2.txt", "r");
+        FILE* f = fopen("./input.txt", "r");
         if (f == NULL){exit(EXIT_FAILURE);}
 
         //how many boxes are there?
@@ -124,7 +126,7 @@ int main(){
     int max_number_of_boxes_placeable = 0;
     if(order_boxes){
         int total_volume = cont_x*cont_y*cont_z;
-        for(int i = n_boxes - 1; i >= 0; i++){
+        for(int i = n_boxes - 1; i >= 0; i--){
             int volume_of_this_box = boxes[i].xlen * boxes[i].ylen *boxes[i].zlen;
             if(volume_of_this_box <= total_volume){
                 total_volume -= volume_of_this_box;
@@ -162,6 +164,7 @@ int main(){
     first->succ = NULL;
 
     head = first;
+    printf("ciao");
 
     //exhaustive B&B exploration begins: all nodes in the list represent open nodes
     //of the tree, that therfore must be explored.
@@ -178,10 +181,10 @@ int main(){
                 //i consider the 6 ritations the box can take one at a time
                 int* current_rotation = rotations[j];
 
-                for(k = 0; k < ep_len; k++){
+                for(int k = 0; k < ep_len; k++){
                     //i consider one at a time all the possible points in which the box can be put
                     point p = head->extreme_points[k];
-                    box new_box_copy = malloc(sizeof(box));
+                    box new_box_copy;
                     copy_box(&new_box_copy, new_box);
                     new_box_copy.xlen = current_rotation[0];
                     new_box_copy.ylen = current_rotation[1];
@@ -191,36 +194,42 @@ int main(){
                     new_box_copy.z0 = p.z;
 
                     //we generate the new node only if this box, with this rotation, in that point,
-                    //doesn't collide with another box AND gets outside of the container
+                    //doesn't collide with another box AND does not get outside of the container
                     if(!is_box_outside_container(new_box_copy)){
-                        for(kk = 0; kk < bp_len; kk++){
-                            box placed_box = head->placed_boxes[kk];
-                            if(!do_boxes_overlap(new_box_copy, placed_box)){
-                                //we can explore the node
-                                generate_new_node(new_box_copy, ), 
+                        int can_place = 1;
+                        for(int kk = 0; kk < bp_len; kk++){
+                            box placed_box = head->boxes_placed[kk];
+                            if(do_boxes_overlap(new_box_copy, placed_box)){
+                                can_place = 0;
                             }
-
+                        }
+                        if(can_place){
+                            //we can explore the node
+                            generate_new_node(first->extreme_points, first->ep_len,
+                                                first->boxes_placed, first->bp_len,
+                                                first->boxes_to_place, first->btp_len,
+                                                new_box_copy, k, i);
                         }
                     }
 
-
-                    free(new_box_copy);
-
-
                 }
+
 
                 
-
-
-                //freeing
-                for(int i=0; i < 6; i++){
-                    free(rotations[i]);
-                }
-                free(rotations)
             }
+
+            //freeing
+            for(int i=0; i < 6; i++){
+                free(rotations[i]);
+            }
+            free(rotations);
 
 
         }
+        node* tmp = head;
+        head = head->succ;
+        free(tmp);
+
     }
 
 }
@@ -234,11 +243,11 @@ void generate_new_node(point* extreme_points, int n_extreme_points,
 
     //copy the boxes placed, adding the new box placed
     box* new_boxes_placed = malloc((n_boxes_placed+1) * sizeof(box));
-    void copy_boxes(&new_boxes_placed, boxes_placed, n_boxes_placed);
+    copy_boxes(&new_boxes_placed, boxes_placed, n_boxes_placed);
     new_boxes_placed[n_boxes_placed] = new_box;
     
     //copy the extreme points by removing the point in which the box has been placed, then add the three new points
-    point* new_extreme_points = get_copy_points_except_one(extreme_points, int n_extreme_points, int i_ep);
+    point* new_extreme_points = get_copy_points_except_one(extreme_points, n_extreme_points, i_ep);
     point p1;
     point p2;
     point p3;
@@ -256,12 +265,15 @@ void generate_new_node(point* extreme_points, int n_extreme_points,
     update_point_dimensions(&p1, new_boxes_placed, n_boxes_placed+1);
     update_point_dimensions(&p2, new_boxes_placed, n_boxes_placed+1);
     update_point_dimensions(&p3, new_boxes_placed, n_boxes_placed+1);
+    new_extreme_points[n_extreme_points] = p1;
+    new_extreme_points[n_extreme_points] = p2;
+    new_extreme_points[n_extreme_points] = p3;
 
     //copy the boxes to place removing the box placed right now
-    box* new_boxes_to_place = get_copy_boxes_except_one(boxes_to_place, n_boxes_to_place, int i);
+    box* new_boxes_to_place = get_copy_boxes_except_one(boxes_to_place, n_boxes_to_place, i_btp);
 
     //now compute the dual bound, and if it is worse than primal bound, don't even open this node
-
+    printf("aaa\n");
 
 }
 

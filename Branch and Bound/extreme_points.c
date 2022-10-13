@@ -1,5 +1,5 @@
 #include "extreme_points.h"
-
+#include <stdlib.h>
 
 
 int is_box_right_of_point(box b, point p){
