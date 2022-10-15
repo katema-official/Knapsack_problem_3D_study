@@ -133,7 +133,7 @@ int main(){
 
     if(DEBUG_1)clear_generation_performance_file();
     initialize_array_local_optimum();
-    for(int i = 0; i < 13; i++){
+    for(int i = 0; i < 10; i++){
         //****************************************************
         //**************WHERE THE MAGIC HAPPENS***************
         //****************************************************

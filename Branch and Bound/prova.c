@@ -2,11 +2,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-#define n 3
 #include "structs.h"
 #include "extreme_points.h"
 #include "boxes.h"
+#include "knapsack_0_1_solver.h"
 #include "utils.h"
+
+#define n 3
 
 int function_1(int* a){
     a[0] = 3;
@@ -34,6 +36,9 @@ int main(){
 
     free(points);
     box* boxes;
+
+    int volumes[3] = {2,4,6};
+    solve_knapsack_0_1(volumes, 3, 8);
 
 
 }

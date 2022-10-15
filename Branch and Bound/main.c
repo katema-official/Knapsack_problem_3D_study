@@ -9,9 +9,9 @@
 
 int primal_bound = 0;
 //define container dimensions
-int cont_x = 800;
-int cont_y = 700;
-int cont_z = 1000;
+int cont_x = 100;//800;
+int cont_y = 100;//700;
+int cont_z = 100;//1000;
 
 node* head;
 
@@ -21,6 +21,11 @@ void generate_new_node(point* extreme_points, int n_extreme_points,
                         box* boxes_placed, int n_boxes_placed, 
                         box* boxes_to_place, int n_boxes_to_place,
                         box new_box, int i_ep, int i_btp);
+
+int comp1(const void * a, const void * b);
+
+int dual_bound_all_liquid(box* boxes_placed, int n_boxes_placed,
+                         box* boxes_to_place, int n_boxes_to_place);
 
 int main(){
     srand(time(NULL));
@@ -273,11 +278,50 @@ void generate_new_node(point* extreme_points, int n_extreme_points,
     box* new_boxes_to_place = get_copy_boxes_except_one(boxes_to_place, n_boxes_to_place, i_btp);
 
     //now compute the dual bound, and if it is worse than primal bound, don't even open this node
-    printf("aaa\n");
+    dual_bound_all_liquid(new_boxes_placed, n_boxes_placed+1,
+                            new_boxes_to_place, n_boxes_to_place-1);
+
+    
 
 }
 
 
+int dual_bound_all_liquid(box* boxes_placed, int n_boxes_placed,
+                         box* boxes_to_place, int n_boxes_to_place){
+    //in general, to compute this (weak) dual bound, we have to check
+    //the boxes_to_place, from the one with the most volume to the one with
+    //the least volume
+    int* boxes_to_place_volumes = malloc(n_boxes_to_place * sizeof(int));
+    for(int i = 0; i < n_boxes_to_place; i++){
+        boxes_to_place_volumes[i] = boxes_to_place[i].xlen * boxes_to_place[i].ylen * boxes_to_place[i].zlen;
+    }
+    qsort(boxes_to_place_volumes, n_boxes_to_place, sizeof(int), comp1);
+
+    int total_volume = cont_x*cont_y*cont_z;
+    //first, let's remove the volume of the boxes already placed.
+    for(int i = 0; i < n_boxes_placed; i++){
+        total_volume -= boxes_placed[i].xlen*boxes_placed[i].ylen*boxes_placed[i].zlen;
+    }
+    //then, the volume of the boxes to place
+    for(int i = 0; i < n_boxes_to_place; i++){
+        if(boxes_to_place_volumes[i] <= total_volume){
+            total_volume -= boxes_to_place_volumes[i];
+        }
+    }
+    printf("Total volume = %d\n", total_volume);
+    return total_volume;
 
 
+
+
+
+
+}
+
+
+int comp1(const void * a, const void * b){
+    int a1 = *(const int*) a;
+    int b1 = *(const int*) b;
+    return b1 - a1;
+}
 

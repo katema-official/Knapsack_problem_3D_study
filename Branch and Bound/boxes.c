@@ -73,7 +73,7 @@ int** rotations_of_box(box b){
 
     rots[0][0] = xlen;
     rots[0][1] = ylen;
-    rots[0][2] = xlen;
+    rots[0][2] = zlen;
 
     rots[1][0] = xlen;
     rots[1][1] = zlen;
