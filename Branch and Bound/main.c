@@ -6,6 +6,7 @@
 #include "utils.h"
 #include "boxes.h"
 #include "extreme_points.h"
+#include "knapsack_0_1_solver.h"
 
 int primal_bound = 0;
 //define container dimensions
@@ -15,6 +16,9 @@ int cont_z = 100;//1000;
 
 node* head;
 
+int* volumes;   //array that keeps the volumes of the boxes. If, in position i of the boxes array,
+//there is the i-th box, then in this array, in position i, there is its volume.
+int n_volumes;
 
 
 void generate_new_node(point* extreme_points, int n_extreme_points, 
@@ -169,7 +173,16 @@ int main(){
     first->succ = NULL;
 
     head = first;
-    printf("ciao");
+
+    //----------------------------------------------------------
+    //------------INITIALIZATION OF VOLUMES ARRAY---------------
+    volumes = (int*) malloc(n_boxes*sizeof(int));
+    for(int i = 0; i < n_boxes; i++){
+        volumes[i] = boxes_to_place[i].xlen * boxes_to_place[i].ylen * boxes_to_place[i].zlen;
+    }
+
+    n_volumes = n_boxes;
+    //----------------------------------------------------------
 
     //exhaustive B&B exploration begins: all nodes in the list represent open nodes
     //of the tree, that therfore must be explored.
@@ -237,6 +250,8 @@ int main(){
 
     }
 
+    free(volumes);
+
 }
 
 //i_ep = the index in extreme_points of the point used just now to place the box
@@ -245,6 +260,7 @@ void generate_new_node(point* extreme_points, int n_extreme_points,
                         box* boxes_placed, int n_boxes_placed, 
                         box* boxes_to_place, int n_boxes_to_place,
                         box new_box, int i_ep, int i_btp){
+
 
     //copy the boxes placed, adding the new box placed
     box* new_boxes_placed = malloc((n_boxes_placed+1) * sizeof(box));
@@ -278,14 +294,36 @@ void generate_new_node(point* extreme_points, int n_extreme_points,
     box* new_boxes_to_place = get_copy_boxes_except_one(boxes_to_place, n_boxes_to_place, i_btp);
 
     //now compute the dual bound, and if it is worse than primal bound, don't even open this node
-    dual_bound_all_liquid(new_boxes_placed, n_boxes_placed+1,
-                            new_boxes_to_place, n_boxes_to_place-1);
+    int volume_occupied = 0;
+    int* volumes_of_boxes_placed = malloc((n_boxes_placed+1)*sizeof(int));
+    for(int i = 0; i < n_boxes_placed+1; i++){
+        volumes_of_boxes_placed[i] = new_boxes_placed[i].xlen * 
+                                    new_boxes_placed[i].ylen * 
+                                    new_boxes_placed[i].zlen;
+        volume_occupied += volumes_of_boxes_placed[i];
+    }
+
+        printf("il volume della scatola messa è %d\n", volumes_of_boxes_placed[0]);
+
+
+    int dual_bound = get_dual_bound_using_kp_0_1(volumes_of_boxes_placed, n_boxes_placed+1,
+                                                (cont_x*cont_y*cont_z)-volume_occupied);
 
     
 
 }
 
 
+
+
+
+
+
+
+
+
+//NO
+/*
 int dual_bound_all_liquid(box* boxes_placed, int n_boxes_placed,
                          box* boxes_to_place, int n_boxes_to_place){
     //in general, to compute this (weak) dual bound, we have to check
@@ -324,4 +362,4 @@ int comp1(const void * a, const void * b){
     int b1 = *(const int*) b;
     return b1 - a1;
 }
-
+*/

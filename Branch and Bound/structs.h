@@ -30,6 +30,15 @@ typedef struct node{
     struct node* succ;
 }node;
 
+//struct that keeps the best solution of a knapsack problem.
+typedef struct kp_sol_node{
+    int* placed_boxes_volumes;  
+    int n_placed_boxes_volumes;
+    int max_capacity;
+    int best_solution;
+    struct kp_sol_node* succ;
+}kp_sol_node;
+
 
 
 #endif
