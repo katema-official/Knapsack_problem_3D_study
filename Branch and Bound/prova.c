@@ -4,9 +4,10 @@
 #include <time.h>
 #include "structs.h"
 #include "extreme_points.h"
-#include "boxes.h"
-#include "knapsack_0_1_solver.h"
+//#include "boxes.h"
+//#include "knapsack_0_1_solver.h"
 #include "utils.h"
+#include "knapsack_0_1_solver_2.h"
 
 #define n 3
 
@@ -35,10 +36,16 @@ int main(){
     printf("points[0] = %d\n", points[0].x);
 
     free(points);
-    box* boxes;
+    //box* boxes;
 
-    int volumes[3] = {2,4,6};
-    solve_knapsack_0_1(volumes, 3, 8);
+    //int volumes[3] = {2,4,6};
+    //solve_knapsack_0_1(volumes, 3, 8);
+
+    int volumes_2[4] = {1,3,2,4};
+    int sol = solve_knapsack_0_1_recursive(volumes_2, 4, 6, 0);
+    printf("SOL = %d\n", sol);
+
+
 
 
 }

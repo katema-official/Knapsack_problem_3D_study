@@ -11,8 +11,8 @@
 int primal_bound = 0;
 //define container dimensions
 int cont_x = 100;//800;
-int cont_y = 100;//700;
-int cont_z = 100;//1000;
+int cont_y = 1000;//700;
+int cont_z = 1000;//1000;
 
 node* head;
 
