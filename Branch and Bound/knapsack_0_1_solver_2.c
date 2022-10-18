@@ -9,7 +9,7 @@ int solve_knapsack_0_1_recursive_v1(int* volumes, int len, int max_capacity, int
     if(index >= len || current_volume_occupied == max_capacity){
         return current_volume_occupied;
     }
-    printf("index = %d, current_volume_occupied = %d\n", index, current_volume_occupied);
+    //printf("index = %d, current_volume_occupied = %d\n", index, current_volume_occupied);
 
     int current_volume = volumes[index];
 
@@ -48,8 +48,23 @@ int solve_knapsack_0_1_recursive_v2(int* volumes, int len, int max_capacity, int
     while(index < len){
         max_depth = min(max_depth, len - index);
         int nodes_at_last_level = pow(2, max_depth);
+
+
+        int* new_array = malloc(nodes_at_last_level * sizeof(int));
+        int partial_solutions_index_this_iteration = *partial_solutions_index;
+        for(int k = 0; k < partial_solutions_index_this_iteration; k++){
+            explore_subtree(new_array, 0, nodes_at_last_level,
+                    partial_solutions[k], volumes, index, index+max_depth, max_capacity, 0);
+
+            for(int j = 0; j < nodes_at_last_level; j++){
+                if(new_array[j] != -1){     //means that there is a feasible value that we could add to the partial_solutions
+                    add_new(partial_solutions, partial_solutions_index, new_array[j]);
+                }
+            }
+        }
+
         
-        int* new_array = malloc((*partial_solutions_index) * nodes_at_last_level * sizeof(int));
+        /*int* new_array = malloc((*partial_solutions_index) * nodes_at_last_level * sizeof(int));
         
         for(int i = 0; i < *partial_solutions_index; i++){
             explore_subtree(new_array, i*nodes_at_last_level, i*nodes_at_last_level + nodes_at_last_level,
@@ -61,7 +76,11 @@ int solve_knapsack_0_1_recursive_v2(int* volumes, int len, int max_capacity, int
             if(new_array[j] != -1){     //means that there is a feasible value that we could add to the partial_solutions
                 add_new(partial_solutions, partial_solutions_index, new_array[j]);
             }
-        }
+        }*/
+
+
+
+
 
         free(new_array);
         index += max_depth;
@@ -71,6 +90,7 @@ int solve_knapsack_0_1_recursive_v2(int* volumes, int len, int max_capacity, int
 
     int res = max_in_array(partial_solutions, *partial_solutions_index);
     free(partial_solutions);
+    return res;
 
 }
 
@@ -113,7 +133,6 @@ void add_new(int* partial_solutions, int* partial_solutions_index, int val){
     
     //if the algorithm arrive here, it means that "val" is not present in "partial_solutions",
     //therefore it must be added.
-    printf("number of elements in partial_solutions (-1) = %d\n", *partial_solutions_index - 1);
     partial_solutions[*partial_solutions_index] = val;
     *partial_solutions_index = *partial_solutions_index + 1;    //its length increases
     
@@ -124,11 +143,12 @@ void add_new(int* partial_solutions, int* partial_solutions_index, int val){
 int max_in_array(int* a, int len){
     int max = -1;
     for(int i = 0; i < len; i++){
-        //printf("%d ", a[i]);
+        //printf("%d\n ", a[i]);
         if(a[i] > max){
             max = a[i];
         }
     }
+    printf("Final len = %d\n", len);
     return max;
 }
 

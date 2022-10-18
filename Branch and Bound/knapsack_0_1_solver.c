@@ -59,6 +59,68 @@ int solve_knapsack_0_1(int* volumes, int n_items, int capacity){
     return res;
 }
 
+int solve_knapsack_0_1_v2(int* volumes, int n_items, int capacity){
+    int** B = (int**) malloc((2)*sizeof(int*));
+    for(int i = 0; i < 2; i++){
+        B[i] = (int*) malloc((capacity+1)*sizeof(int));
+    }
+    
+    //initialization: the subproblems without items or capacity have as best solution 0
+    for(int i = 0; i < 2; i++){
+        B[i][0] = 0;
+    }
+    for(int i = 0; i < capacity+1; i++){
+        B[0][i] = 0;
+    }
+
+    //now, the value of each cell of each row can be fully determined by the the previous row
+    for(int iteration = 0; iteration < n_items; iteration++){
+        int volume_row = volumes[iteration];
+        for(int col = 1; col < capacity + 1; col++){
+            if(volume_row <= col){  //this item could be part of the solution
+                B[1][col] = max(volume_row + B[0][col - volume_row], B[0][col]);
+                /*if((volume_row + B[0][col - volume_row]) > B[0][col]){
+                    B[1][col] = volume_row + B[0][col - volume_row];
+                }else{
+                    B[1][col] = B[0][col];
+                }*/
+            }else{
+                B[1][col] = B[0][col];  //the volume of this item is more than the current capacity
+            }
+        }
+
+        //now copy the new row in the old one
+        for(int col = 1; col < capacity + 1; col++){
+            B[0][col] = B[1][col];
+        }
+    }
+
+    for(int row = 0; row < n_items + 1; row++){
+        /*for(int col = 0; col < capacity + 1; col++){
+            printf("%d ", B[row][col]);
+        }*/
+        printf("%d", B[row][capacity]);
+        printf("\n");
+    }
+
+    printf("aaa = %d\n", B[1][capacity]);
+    int res = B[1][capacity];
+
+    for(int i = 0; i < 2; i++){
+        free(B[i]);
+    }
+    free(B);
+
+    return res;
+}
+
+
+
+
+
+
+
+
 
 
 //let's also define some functions that, given a subproblem with:
