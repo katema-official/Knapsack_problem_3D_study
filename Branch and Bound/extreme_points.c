@@ -60,3 +60,59 @@ point* get_copy_points_except_one(point* src, int n, int i){
     return dst;
 }
 
+//function that, given the extreme points and the boxes still to place, tells if some
+//points are such that NO box can be placed there (to be as general as possible, we
+//will return the indexes, of the extreme_points array passed, of those points that
+//CANNOT CONTAIN ANY BOX, of those to be placed)
+int* find_unavailable_points(point* points, int p_len, box* boxes_to_place, int btp_len){
+    int tot_unavailable = 0;
+    int* points_unavailable = malloc(p_len * sizeof(int));
+    for(int i = 0; i < p_len; i++){
+        point p = points[i];
+        int unavailable = 1;
+        for(int j = 0; j < btp_len; j++){
+            box b = boxes_to_place[j];
+            int min_box_dim = min(b.xlen, min(b.ylen, b.zlen));
+            int max_point_dim = max(p.width, max(p.height, p.depth));
+            //if the smallest dimension of a box is bigger than the greatest dimension
+            //of a point, that box can't fit in that point. Otherwise, we have to investigate
+            //further that box
+            if(min_box_dim <= max_point_dim){
+                int** rotations = rotations_of_box(b);
+                for(int k = 0; k < 6; k++){
+                    //let's see if this box, with this rotation, fits in that point.
+                    //if it does, the point is available (there is at least a box that can stay there)
+                    if(rotations[k][0] <= p.width && 
+                        rotations[k][1] <= p.height && 
+                        rotations[k][2] <= p.depth){
+                            unavailable = 0;
+                            break;
+                        }
+                }
+            }
+            if(!unavailable){
+                break;
+            }
+        }
+        if(unavailable){
+            points_unavailable[tot_unavailable] = i;
+            tot_unavailable += 1;
+        }
+    }
+
+    
+
+    int* ret = NULL;
+    if(tot_unavailable > 0){
+        ret = malloc(tot_unavailable * sizeof(int));
+        for(int i = 0; i < tot_unavailable; i++){
+            ret[i] = points_unavailable[i];
+        }
+        free(points_unavailable);
+    }
+
+    return ret;
+
+
+}
+

@@ -220,16 +220,24 @@ int main(){
 
 
     //TEST to see if it works up until now (it does)
-    while(head!=NULL){
+    /*while(head!=NULL){
         printf("this volume = %d\n", head->boxes_placed[0].xlen * 
                                     head->boxes_placed[0].ylen * 
                                     head->boxes_placed[0].zlen);
         head = head->succ;
-    }
+    }*/
     //----------------------------------------------------------
 
     //exhaustive B&B exploration begins: all nodes in the list represent open nodes
     //of the tree, that therfore must be explored.
+    while(head != NULL){
+        explore_node(head);
+    }
+
+
+
+
+
     while(head != NULL){
         int ep_len = head->ep_len;
         int btp_len = head->btp_len;
@@ -295,6 +303,69 @@ int main(){
     }
 
     free(volumes);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//what is a node? A node is a subproblem, that contains:
+//-the boxes placed in that subproblem
+//-the boxes that still need to be placed
+//-the extreme points given from the boxes already placed
+//now, this subproblem can generate new subproblems. However, since this is a B&B algorithm,
+//we can close a node when one of the two following situations occurs:
+//-the current subproblem has a dual bound worse (lower, in this case) than the primal bound
+//-the current subproblem is infeasible
+//now: for each node, we will test the first condition, and if dual_bound < upper_bound, we
+//close the node. Otherwise, we generate, from this subproblem, ALL its possible successors.
+//BUT! When generating the successors, we check if that successor is feasible. If it is,
+//we put it in the list. Otherwise, we discard it.
+//In a "pure" B&B algorithm, we should generate all subproblems, and in them check if they
+//are feasible. But, in this case, I think it would be more profitable to tentatively craete
+//a new subproblem given the current one. If the tentative subproblem is faesible, we add it
+//to the list. Otherwise, we discard it.
+void explore_node(node* node){
+    //1) COMPUTE DUAL BOUND
+
+    //1.1) create an array with the volumes of the boxes to place (and order them)
+    int* volumes = malloc(node->btp_len * sizeof(int));
+    for(int i = 0; i < node->btp_len; i++){
+        volumes[i] = node->boxes_to_place[i].xlen * 
+                    node->boxes_to_place[i].ylen * 
+                    node->boxes_to_place[i].zlen;
+    }
+    qsort(volumes, node->btp_len, sizeof(int), comp1);
+
+    //1.2) compute the capacity available
+    //1.2.1) compute the total volume of the container
+    int capacity = cont_x*cont_y*cont_z;
+    //1.2.2) remove the volume of the boxes already contained
+    capacity = capacity_minus_placed_boxes(capacity, node->boxes_placed, node->bp_len);
+    //1.2.3) remove also the volume of the points that cannot contain any box
+    int to_remove = find_unavailable_points(node->extreme_points, node->ep_len,
+                                            node->boxes_to_place, node->btp_len);
+    //---------------------------TODO------------------------------
+    //OOOOOOOOOOOOH MA DEVI TOGLIERE QUESTI PUNTI ANCHE DAL SOTTOPROBLEMA EH,
+    //NON SOLO CONSIDERARE IL LORO "VOLUME". POI SE TU FOSSI UN FIGO DOVRESTI METTERE IN
+    //QUELLO SPAZIO SUBITO L'UNICA SCATOLA CHE CI STA, SE CE N'E' UNA SOLA, MA CHISSENE,
+    //PRIMA O POI L'ALGORITMO CE LA METTERA' LUI
+
+
+    int dual_bound = solve_knapsack_0_1_v3(volumes, node->btp_len, capacity);
+
 
 }
 
