@@ -12,13 +12,13 @@ int main(){
     int sol = solve_knapsack_0_1_recursive_v1(volumes_2, 4, 6, 0, 0);
     printf("SOL = %d\n", sol);
 
-    int n = 15;
+    int n = 20;
     int* volumes_3 = malloc(n*sizeof(int));
     for(int i = 0; i < n; i++){
-        volumes_3[i] = rand()% 100000;//111111 * (i%5) + 1;
+        volumes_3[i] = 20000000 + rand()% 10000000;//111111 * (i%5) + 1;
         printf("%d \n", volumes_3[i]);
     }
-    int capacity = 100000000;
+    int capacity = (1000*1000*1000) / 3;// - 150*350*100;//100000000;
     printf("capacity = %d\n", capacity);
     //free(volumes_3);
     //sol = solve_knapsack_0_1_recursive_v1(volumes_3, n, capacity, 0, 0);
@@ -40,7 +40,7 @@ int main(){
     printf("SOL v1 = %d\n", sol);
 
 
-    sol = solve_knapsack_0_1_recursive_v2(volumes_3, n, capacity, 1);
+    //sol = solve_knapsack_0_1_recursive_v2(volumes_3, n, capacity, 5);
     printf("SOL v2 = %d\n", sol);
 
     

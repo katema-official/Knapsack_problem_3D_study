@@ -1,7 +1,9 @@
 #include "knapsack_0_1_solver.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include "structs.h"
+#include "utils.h"
 
 kp_sol_node* kp_sol_list_head;
 
@@ -60,10 +62,15 @@ int solve_knapsack_0_1(int* volumes, int n_items, int capacity){
 }
 
 int solve_knapsack_0_1_v2(int* volumes, int n_items, int capacity){
-    int** B = (int**) malloc((2)*sizeof(int*));
+    int** B = (int**) malloc(2*sizeof(int*));
+    printf("asdfasf");
     for(int i = 0; i < 2; i++){
         B[i] = (int*) malloc((capacity+1)*sizeof(int));
+        if(B[i] == NULL){
+            printf("allocazione fallita :(\n");
+        }
     }
+    printf("memory allocated: %d*4 byte", capacity+1);
     
     //initialization: the subproblems without items or capacity have as best solution 0
     for(int i = 0; i < 2; i++){
@@ -73,8 +80,14 @@ int solve_knapsack_0_1_v2(int* volumes, int n_items, int capacity){
         B[0][i] = 0;
     }
 
+    clock_t start, end;
+    double cpu_time_used;
+
     //now, the value of each cell of each row can be fully determined by the the previous row
     for(int iteration = 0; iteration < n_items; iteration++){
+
+        start = clock();
+
         int volume_row = volumes[iteration];
         for(int col = 1; col < capacity + 1; col++){
             if(volume_row <= col){  //this item could be part of the solution
@@ -89,21 +102,90 @@ int solve_knapsack_0_1_v2(int* volumes, int n_items, int capacity){
             }
         }
 
+        end = clock();
+        cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
+        printf("completed iteration %d in %f\n", iteration, cpu_time_used);
+        start = clock();
+
         //now copy the new row in the old one
         for(int col = 1; col < capacity + 1; col++){
             B[0][col] = B[1][col];
         }
-    }
 
-    for(int row = 0; row < n_items + 1; row++){
-        /*for(int col = 0; col < capacity + 1; col++){
-            printf("%d ", B[row][col]);
-        }*/
-        printf("%d", B[row][capacity]);
-        printf("\n");
+        end = clock();
+        cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
+        printf("copied iteration %d in %f\n", iteration, cpu_time_used);
     }
 
     printf("aaa = %d\n", B[1][capacity]);
+    int res = B[1][capacity];
+
+    for(int i = 0; i < 2; i++){
+        free(B[i]);
+    }
+    free(B);
+
+    return res;
+}
+
+
+
+
+
+//works only if the array of items is ordered from the one with the LEAST volume
+//to the one with the MOST volume. It basically removes an if (this code should
+//be the base for the parallel CUDA implementation)
+
+int solve_knapsack_0_1_v3(int* volumes, int n_items, int capacity){
+    int** B = (int**) malloc(2*sizeof(int*));
+    for(int i = 0; i < 2; i++){
+        B[i] = (int*) malloc((capacity+1)*sizeof(int));
+        if(B[i] == NULL){
+            printf("allocazione fallita :(\n");
+        }
+    }
+    printf("memory allocated: %d*4 byte", capacity+1);
+    
+    //initialization: the subproblems without items or capacity have as best solution 0
+    for(int i = 0; i < 2; i++){
+        B[i][0] = 0;
+    }
+    for(int i = 0; i < capacity+1; i++){
+        B[0][i] = 0;
+    }
+
+    clock_t start, end;
+    double cpu_time_used;
+
+    //now, the value of each cell of each row can be fully determined by the the previous row
+    for(int iteration = 0; iteration < n_items; iteration++){
+
+        start = clock();
+
+        int volume_row = volumes[iteration];
+        for(int col = 1; col < capacity + 1; col++){
+            if(col < volume_row){
+                B[1][col] = B[0][col];
+            }else{
+                B[1][col] = volume_row + B[0][col - volume_row];
+            }
+        }
+
+        end = clock();
+        cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
+        printf("completed iteration %d in %f\n", iteration, cpu_time_used);
+        start = clock();
+
+        //now copy the new row in the old one
+        for(int col = 1; col < capacity + 1; col++){
+            B[0][col] = B[1][col];
+        }
+
+        end = clock();
+        cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
+        printf("copied iteration %d in %f\n", iteration, cpu_time_used);
+    }
+
     int res = B[1][capacity];
 
     for(int i = 0; i < 2; i++){
