@@ -153,13 +153,16 @@ int main(){
     //each of them represents the fact that we are placing a box in the first
     //extreme point, in any of the 6 possible configurations
     for(int i = 0; i < n_boxes; i++){
-        box this_box;
-        copy_box(&this_box, boxes[i]);
-        int** rotations = rotations_of_box(this_box);
+        int** rotations = rotations_of_box(boxes[i]);
         for(int j = 0; j < 6; j++){
-            this_box.x0 = rotations[j][0];
-            this_box.y0 = rotations[j][1];
-            this_box.z0 = rotations[j][2];
+            box this_box;
+            copy_box(&this_box, boxes[i]);
+            this_box.x0 = 0;
+            this_box.y0 = 0;
+            this_box.z0 = 0;
+            this_box.xlen = rotations[j][0];
+            this_box.ylen = rotations[j][1];
+            this_box.zlen = rotations[j][2];
 
             node* this_node = malloc(sizeof(node));
 
@@ -188,7 +191,7 @@ int main(){
             this_node->extreme_points[1].y = this_box.y0 + this_box.ylen;
             this_node->extreme_points[1].z = 0;
             this_node->extreme_points[1].width = cont_x;
-            this_node->extreme_points[1].height = cont_y - this_node->extreme_points[0].y;
+            this_node->extreme_points[1].height = cont_y - this_node->extreme_points[1].y;
             this_node->extreme_points[1].depth = cont_z;
 
             this_node->extreme_points[2].x = 0;
@@ -196,7 +199,7 @@ int main(){
             this_node->extreme_points[2].z = this_box.z0 + this_box.zlen;
             this_node->extreme_points[2].width = cont_x;
             this_node->extreme_points[2].height = cont_y;
-            this_node->extreme_points[2].depth = cont_z - this_node->extreme_points[0].z;
+            this_node->extreme_points[2].depth = cont_z - this_node->extreme_points[2].z;
 
             //initialize the successor
             this_node->succ = head;
@@ -355,13 +358,33 @@ void explore_node(node* node){
     //1.2.2) remove the volume of the boxes already contained
     capacity = capacity_minus_placed_boxes(capacity, node->boxes_placed, node->bp_len);
     //1.2.3) remove also the volume of the points that cannot contain any box
-    int to_remove = find_unavailable_points(node->extreme_points, node->ep_len,
+    int* points_to_remove = find_unavailable_points(node->extreme_points, node->ep_len,
                                             node->boxes_to_place, node->btp_len);
-    //---------------------------TODO------------------------------
-    //OOOOOOOOOOOOH MA DEVI TOGLIERE QUESTI PUNTI ANCHE DAL SOTTOPROBLEMA EH,
-    //NON SOLO CONSIDERARE IL LORO "VOLUME". POI SE TU FOSSI UN FIGO DOVRESTI METTERE IN
-    //QUELLO SPAZIO SUBITO L'UNICA SCATOLA CHE CI STA, SE CE N'E' UNA SOLA, MA CHISSENE,
-    //PRIMA O POI L'ALGORITMO CE LA METTERA' LUI
+    if(points_to_remove != NULL){
+        int n = points_to_remove[0];
+        for(int i = 1; i < n+1; i++){
+            int index = points_to_remove[i];    //remember that points_to_remove contains INDEXES!
+            capacity -= node->extreme_points[index].width *
+                        node->extreme_points[index].height *
+                        node->extreme_points[index].depth;
+        }
+
+        //1.2.4) since we (maybe) found out some points that CAN'T be occupied by any box, we can
+        //remove them from the extreme_points of this subproblem, to make smaller subproblems.
+        int* tmp = malloc(points_to_remove[0] * sizeof(int));
+        for(int i = 0; i < points_to_remove[0]; i++){
+            tmp[i] = points_to_remove[i+1];
+        }
+        exclude_unavailable_points(&(node->extreme_points), node->ep_len,
+                            tmp, points_to_remove[0]);
+        node->ep_len = node->ep_len - points_to_remove[0];
+        free(points_to_remove);
+
+    }
+    
+
+
+    
 
 
     int dual_bound = solve_knapsack_0_1_v3(volumes, node->btp_len, capacity);

@@ -2,12 +2,20 @@
 #include <stdlib.h>
 #include "knapsack_0_1_solver_2.h"
 #include "knapsack_0_1_solver.h"
+#include "extreme_points.h"
+#include "boxes.h"
 
 
 int* volumes;
 int n_volumes;
 
+int cont_x;
+int cont_y;
+int cont_z;
+
 int main(){
+    /*
+    
     int volumes_2[4] = {1,3,2,4};
     int sol = solve_knapsack_0_1_recursive_v1(volumes_2, 4, 6, 0, 0);
     printf("SOL = %d\n", sol);
@@ -62,5 +70,23 @@ int main(){
 
     //Sì ma wtf quei risultati vengono dalla versione super esponenziale e da quella
     //delle somme corretta, lol what
+
+    */
+
+    point* points = malloc(3*sizeof(point));
+    for(int i = 0; i < 3; i++){
+        points[i].x = i;
+        points[i].y = i;
+        points[i].z = i;
+        points[i].width = i;
+        points[i].height = i;
+        points[i].depth = i;
+    }
+    int indexes[1] = {1};
+    exclude_unavailable_points(&points, 3, indexes, 1);
+    for(int i = 0; i < 3-1; i++){
+        printf("i = %d, %d %d %d %d %d %d\n", i, points[i].x, points[i].y, points[i].z,
+            points[i].width, points[i].height, points[i].depth);
+    }
 
 }

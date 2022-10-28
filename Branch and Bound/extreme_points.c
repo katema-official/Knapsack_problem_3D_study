@@ -1,6 +1,11 @@
 #include "extreme_points.h"
 #include <stdlib.h>
+#include "boxes.h"
+#include <stdio.h>
 
+extern int cont_x;
+extern int cont_y;
+extern int cont_z;
 
 int is_box_right_of_point(box b, point p){
     return b.x0 >= p.x;
@@ -12,6 +17,14 @@ int is_box_front_of_point(box b, point p){
     return b.z0 >= p.z;
 }
 
+//assuming that a reference to a point "p" is given, and that it has already defined
+//p.x, p.y and p.z, this function adds simply the initial width, height and depth to that point
+void create_point_dimensions(point* p){
+    (*p).width = cont_x - (*p).x;
+    (*p).height = cont_y - (*p).y;
+    (*p).depth = cont_z - (*p).z;
+
+}
 
 //function that, given the boxes already placed (boxes) and the extreme point p,
 //computes how much free space is there to the right, above and front of p
@@ -21,40 +34,46 @@ void update_point_dimensions(point* p, box* boxes, int n_boxes){
         
         if(is_box_right_of_point(b, *p) && b.y0 <= (*p).y && (*p).y < b.y0 + b.ylen && 
                                             b.z0 <= (*p).z && (*p).z < b.z0 + b.zlen){
-            p->width = min(p->width, b.x0);
+            p->width = min(p->width, b.x0 - p->x);
         }
 
         if(is_box_above_of_point(b, *p) && b.x0 <= (*p).x && (*p).x < b.x0 + b.xlen && 
                                             b.z0 <= (*p).z && (*p).z < b.z0 + b.zlen){
-            p->height = min(p->height, b.y0);
+            p->height = min(p->height, b.y0 - p->y);
         }
 
         if(is_box_front_of_point(b, *p) && b.y0 <= (*p).y && (*p).y < b.y0 + b.ylen && 
                                             b.x0 <= (*p).x && (*p).x < b.x0 + b.xlen){
-            p->depth = min(p->depth, b.z0);
+            p->depth = min(p->depth, b.z0 - p->z);
         }
     }
+}
+
+void copy_point(point* dst, point src){
+    (*dst).x = src.x;
+    (*dst).y = src.y;
+    (*dst).z = src.z;
+    (*dst).width = src.width;
+    (*dst).height = src.height;
+    (*dst).depth = src.depth;
+
+
 }
 
 point* get_copy_points_except_one(point* src, int n, int i){
     point* dst = malloc((n-1+2)*sizeof(point)); //remove a point, add two more. This happens when a box is placed
     for(int j = 0; j < n; j++){
         if(j < i){
-            dst[j].x = src[j].x;
-            dst[j].y = src[j].y;
-            dst[j].z = src[j].z;
-            dst[j].width = src[j].width;
-            dst[j].height = src[j].height;
-            dst[j].depth = src[j].depth;
+            copy_point(&dst[j], src[j]);
         }
-
         if(j > i){
-            dst[j-1].x = src[j].x;
+            copy_point(&dst[j-1], src[j]);
+            /*dst[j-1].x = src[j].x;
             dst[j-1].y = src[j].y;
             dst[j-1].z = src[j].z;
             dst[j-1].width = src[j].width;
             dst[j-1].height = src[j].height;
-            dst[j-1].depth = src[j].depth;
+            dst[j-1].depth = src[j].depth;*/
         }
     }
     return dst;
@@ -64,6 +83,10 @@ point* get_copy_points_except_one(point* src, int n, int i){
 //points are such that NO box can be placed there (to be as general as possible, we
 //will return the indexes, of the extreme_points array passed, of those points that
 //CANNOT CONTAIN ANY BOX, of those to be placed)
+//returns NULL if there is no point that is unavailable. Otherwise, returns an integer
+//array with:
+//-in the first position, the length of this array -1 (the effective number of unavailable points)
+//-the indexes, on "points", of the points unavailable.
 int* find_unavailable_points(point* points, int p_len, box* boxes_to_place, int btp_len){
     int tot_unavailable = 0;
     int* points_unavailable = malloc(p_len * sizeof(int));
@@ -91,6 +114,7 @@ int* find_unavailable_points(point* points, int p_len, box* boxes_to_place, int 
                 }
             }
             if(!unavailable){
+                //no need to check other boxes: at least one of them can stay in this point
                 break;
             }
         }
@@ -104,9 +128,10 @@ int* find_unavailable_points(point* points, int p_len, box* boxes_to_place, int 
 
     int* ret = NULL;
     if(tot_unavailable > 0){
-        ret = malloc(tot_unavailable * sizeof(int));
-        for(int i = 0; i < tot_unavailable; i++){
-            ret[i] = points_unavailable[i];
+        ret = malloc((tot_unavailable+1) * sizeof(int));
+        points_unavailable[0] = tot_unavailable;
+        for(int i = 1; i < tot_unavailable + 1; i++){
+            ret[i] = points_unavailable[i-1];
         }
         free(points_unavailable);
     }
@@ -115,4 +140,44 @@ int* find_unavailable_points(point* points, int p_len, box* boxes_to_place, int 
 
 
 }
+
+//assumes that "indexes_to_exclude" contains values ordered from smallest to biggest
+void exclude_unavailable_points(point** all_points, int all_points_len, 
+                                int* indexes_to_exclude, int indexes_to_exclude_len){
+    point* new_set_of_points = malloc((all_points_len - indexes_to_exclude_len) * sizeof(point));
+    int a = 0;
+    int b = 0;
+    int c = 0;
+    //I check all points in "all_points".
+    //If the current point must not be removed, I add it to "new_set_of_points".
+    //Otherwise, i don't add it and increment the index "b" relative to "indexes_to_exclude"
+    for(a = 0; a < all_points_len; a++){
+        printf("a = %d, b = %d, indexes_to_exclude[b] = %d\n", a, b, indexes_to_exclude[b]);
+        if(b < indexes_to_exclude_len){
+            if(a < indexes_to_exclude[b]){
+                copy_point(&new_set_of_points[c], (*all_points)[a]);
+                c++;
+            }else{
+                b++;
+            }
+        }else{
+            copy_point(&new_set_of_points[c], (*all_points)[a]);
+            printf("all_points[a].x = %d\n", (*all_points)[a].x);
+            c++;
+        }
+    }
+
+    free(*all_points);
+    *all_points = new_set_of_points;
+
+    for(int i = 0; i < all_points_len - indexes_to_exclude_len; i++){
+        printf("i = %d, %d %d %d %d %d %d\n", i, (*all_points)[i].x, (*all_points)[i].y, (*all_points)[i].z,
+            (*all_points)[i].width, (*all_points)[i].height, (*all_points)[i].depth);
+    }
+
+
+
+}
+
+
 
