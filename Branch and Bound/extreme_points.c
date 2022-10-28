@@ -152,7 +152,7 @@ void exclude_unavailable_points(point** all_points, int all_points_len,
     //If the current point must not be removed, I add it to "new_set_of_points".
     //Otherwise, i don't add it and increment the index "b" relative to "indexes_to_exclude"
     for(a = 0; a < all_points_len; a++){
-        printf("a = %d, b = %d, indexes_to_exclude[b] = %d\n", a, b, indexes_to_exclude[b]);
+        //printf("a = %d, b = %d, indexes_to_exclude[b] = %d\n", a, b, indexes_to_exclude[b]);
         if(b < indexes_to_exclude_len){
             if(a < indexes_to_exclude[b]){
                 copy_point(&new_set_of_points[c], (*all_points)[a]);
@@ -162,7 +162,7 @@ void exclude_unavailable_points(point** all_points, int all_points_len,
             }
         }else{
             copy_point(&new_set_of_points[c], (*all_points)[a]);
-            printf("all_points[a].x = %d\n", (*all_points)[a].x);
+            //printf("all_points[a].x = %d\n", (*all_points)[a].x);
             c++;
         }
     }
@@ -170,10 +170,10 @@ void exclude_unavailable_points(point** all_points, int all_points_len,
     free(*all_points);
     *all_points = new_set_of_points;
 
-    for(int i = 0; i < all_points_len - indexes_to_exclude_len; i++){
+    /*for(int i = 0; i < all_points_len - indexes_to_exclude_len; i++){
         printf("i = %d, %d %d %d %d %d %d\n", i, (*all_points)[i].x, (*all_points)[i].y, (*all_points)[i].z,
             (*all_points)[i].width, (*all_points)[i].height, (*all_points)[i].depth);
-    }
+    }*/
 
 
 

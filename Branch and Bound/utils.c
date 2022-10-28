@@ -11,4 +11,5 @@ int capacity_minus_placed_boxes(int capacity, box* boxes_placed, int bp_len){
     for(int i = 0; i < bp_len; i++){
         capacity -= boxes_placed[i].xlen * boxes_placed[i].ylen * boxes_placed[i].zlen;
     }
+    return capacity;
 }

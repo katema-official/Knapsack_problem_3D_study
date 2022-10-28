@@ -73,8 +73,8 @@ int main(){
 
     */
 
-    point* points = malloc(3*sizeof(point));
-    for(int i = 0; i < 3; i++){
+    point* points = malloc(7*sizeof(point));
+    for(int i = 0; i < 7; i++){
         points[i].x = i;
         points[i].y = i;
         points[i].z = i;
@@ -82,9 +82,9 @@ int main(){
         points[i].height = i;
         points[i].depth = i;
     }
-    int indexes[1] = {1};
-    exclude_unavailable_points(&points, 3, indexes, 1);
-    for(int i = 0; i < 3-1; i++){
+    int indexes[3] = {1, 3, 5};
+    exclude_unavailable_points(&points, 7, indexes, 3);
+    for(int i = 0; i < 7-3; i++){
         printf("i = %d, %d %d %d %d %d %d\n", i, points[i].x, points[i].y, points[i].z,
             points[i].width, points[i].height, points[i].depth);
     }

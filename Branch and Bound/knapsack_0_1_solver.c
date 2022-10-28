@@ -145,6 +145,11 @@ int solve_knapsack_0_1_v3(int* volumes, int n_items, int capacity){
         }
     }
     printf("memory allocated: %d*4 byte", capacity+1);
+
+    for(int i = 0; i < n_items; i++){
+        printf("%d ", volumes[i]);
+    }
+    printf(" | %d\n", capacity);
     
     //initialization: the subproblems without items or capacity have as best solution 0
     for(int i = 0; i < 2; i++){
@@ -193,6 +198,7 @@ int solve_knapsack_0_1_v3(int* volumes, int n_items, int capacity){
     }
     free(B);
 
+    printf("res = %d", res);
     return res;
 }
 
@@ -375,3 +381,135 @@ kp_sol_node* create_new_kp_sol_node(int max_capacity, int n_boxes_placed, int* v
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+//*****************************************************************************************
+//***********THIS IMPLEMENTATION IS FOR THE BFS, SO IT WILL BE SLIGHTLY DIFFERENT**********
+//*****************************************************************************************
+
+//let's also define some functions that, given a subproblem with:
+//-a given set of boxes already placed (that tells us how many and which boxes still need to be placed)
+//-a given maximum capacity
+//tells us, looking at a data structure, if that solution has already been found
+int get_dual_bound_using_kp_0_1_bfs(int* volumes_of_boxes_placed, int n_boxes_placed, int max_capacity,
+                    box* boxes_to_place, int n_boxes_to_place){
+    
+    //first, let's check if there is a kp_sol_node, in our list of saved solutions, that
+    //has the same capacity and the same boxes. Since we want to keep this list ordered,
+    //our search can stop as soon as we exceed the max_capacity.
+    int found = 0;
+    kp_sol_node* tmp_front;
+    kp_sol_node* tmp_back;
+
+    if(kp_sol_list_head == NULL){
+        //The very first node. It must be created.
+        kp_sol_node* new = create_new_kp_sol_node_bfs(max_capacity, n_boxes_placed, volumes_of_boxes_placed,
+                                    n_boxes_to_place, boxes_to_place);
+        new->succ = NULL;
+        kp_sol_list_head = new;
+        printf("1 - Computed solution of new problem: %d\n", new->best_solution);
+        return new->best_solution;
+    }
+
+    tmp_back = kp_sol_list_head;
+    tmp_front = tmp_back->succ;
+
+    //if the capacity is the lowest one (lower than the one on the head of the list)
+    //we have to update the head of the list
+    if(max_capacity < kp_sol_list_head->max_capacity){
+        kp_sol_node* new = create_new_kp_sol_node_bfs(max_capacity, n_boxes_placed, volumes_of_boxes_placed,
+                                    n_boxes_to_place, boxes_to_place);
+        new->succ = kp_sol_list_head;
+        kp_sol_list_head = new;
+        printf("2 - Computed solution of new problem: %d\n", new->best_solution);
+        return new->best_solution;
+    }
+
+    //we can trash all the solutions with lower capacity than the one of this subproblem
+    while(tmp_front != NULL && tmp_back->max_capacity < max_capacity){
+        tmp_back = tmp_back->succ;
+        tmp_front = tmp_back->succ;
+    }
+
+    //we now have to examine all the solutions with the same capacity of our subproblem
+    while(tmp_front != NULL && tmp_back->max_capacity == max_capacity && 
+            tmp_front->max_capacity <= max_capacity){
+        //We have to check if the current node is the one we're looking for.
+        //The node is the one we are looking for if the capacity is the same and the placed
+        //boxes are the same.
+        if(tmp_back->n_placed_boxes_volumes == n_boxes_placed){
+            int equal = are_array_contents_the_same(tmp_back->placed_boxes_volumes,
+                                        volumes_of_boxes_placed, n_boxes_placed);
+            if(equal == 1){
+                //ok, they are really the same: return this solution
+                printf("found solution of already solved problem: %d\n", tmp_back->best_solution);
+                return tmp_back->best_solution;
+            }
+        }
+    }
+
+    //if we have arrived here, it's because we reached the last node in the list.
+    //If it has the same capacity of our subproblem, we have to check if this last
+    //node is the one with the solution we are looking for. 
+    if(tmp_back->max_capacity == max_capacity && tmp_back->n_placed_boxes_volumes == n_boxes_placed){
+        int equal = are_array_contents_the_same(tmp_back->placed_boxes_volumes,
+                                    volumes_of_boxes_placed, n_boxes_placed);
+        if(equal == 1){
+            printf("found solution of already solved problem: %d\n", tmp_back->best_solution);
+            return tmp_back->best_solution;
+        }
+    }
+
+    //If it is not, we have to solve the subproblem ourselves.
+    kp_sol_node* new = create_new_kp_sol_node_bfs(max_capacity, n_boxes_placed, volumes_of_boxes_placed,
+                                    n_boxes_to_place, boxes_to_place);
+    //set the successor
+    new->succ = tmp_front;
+    //link it to the list
+    tmp_back->succ = new;
+    printf("3 - Computed solution of new problem: %d\n", new->best_solution);
+    return new->best_solution;
+}
+
+
+kp_sol_node* create_new_kp_sol_node_bfs(int max_capacity, 
+                    int n_boxes_placed, int* volumes_of_boxes_placed, 
+                    int n_boxes_to_place, box* boxes_to_place){
+    kp_sol_node* new = malloc(sizeof(kp_sol_node));
+
+    //set its max capacity
+    new->max_capacity = max_capacity;
+
+    //set the array of the volumes of the boxes already placed
+    new->n_placed_boxes_volumes = n_boxes_placed;
+    new->placed_boxes_volumes = volumes_of_boxes_placed;
+
+    //-----compute the solution for this subproblem (the dual bound)-----
+
+    //now, compute the dual bound and save it
+    int* volumes_not_placed = malloc(n_boxes_to_place * sizeof(int));
+    for(int i = 0; i < n_boxes_to_place; i++){
+        volumes_not_placed[i] = boxes_to_place[i].xlen *
+                                boxes_to_place[i].ylen *
+                                boxes_to_place[i].zlen;
+    }
+    int dual_bound = solve_knapsack_0_1_v3(volumes_not_placed, n_boxes_to_place, max_capacity);
+    for(int i = 0; i < n_boxes_placed; i++){
+        dual_bound += volumes_of_boxes_placed[i];
+    }
+    
+    new->best_solution = dual_bound;
+
+    //--------------------------------------------------------------------
+
+    return new;
+}
