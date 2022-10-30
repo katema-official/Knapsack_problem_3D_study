@@ -5,8 +5,9 @@ import ursina
 from boxmodule_ursina import *
 from boxmodule_misc import *
 
-file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\hmg_based_implementation_v1\\" +
-            "Interesting_data\\final_results_relaxed.txt", "r")
+file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\Branch and Bound\\results\\result.txt", "r")
+#file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\hmg_based_implementation_v1\\" +
+#            "Interesting_data\\final_results_relaxed.txt", "r")
 
 def isOverlapping1D(box1,box2):
     return box1[1] > box2[0] and box2[1] > box1[0]
@@ -70,9 +71,9 @@ def make_a_step():
         MyBoxes.boxes_new.append(Box("a", xlen, ylen, zlen,
                                      rgb(math.e ** (i + 5) * 10 % 255, math.e ** (i + 10) * 10 % 255,
                                          math.e ** (i + 15) * 10 % 255), x0, y0, z0))
-    a = [int(elem) for elem in file.readline()[:-1].split(" ")[:-1]]
-    b = [int(elem) for elem in file.readline()[:-1].split(" ")[:-1]]
-    c = [int(elem) for elem in file.readline()[:-1].split(" ")[:-1]]
+    #a = [int(elem) for elem in file.readline()[:-1].split(" ")[:-1]]
+    #b = [int(elem) for elem in file.readline()[:-1].split(" ")[:-1]]
+    #c = [int(elem) for elem in file.readline()[:-1].split(" ")[:-1]]
 
     place_boxes_in_space(MyBoxes.boxes_new, False)
     # print("best_volume = " + str(SimulatedAnnealing.best_volume / (cont_x * cont_y * cont_z)))

@@ -15,6 +15,6 @@ int get_dual_bound_using_kp_0_1_bfs(int* volumes_of_boxes_placed, int n_boxes_pl
 kp_sol_node* create_new_kp_sol_node_bfs(int max_capacity, 
                     int n_boxes_placed, int* volumes_of_boxes_placed, 
                     int n_boxes_to_place, box* boxes_to_place);
-
+void free_kp_sol_node_list();
 
 #endif

@@ -61,7 +61,7 @@ void copy_point(point* dst, point src){
 }
 
 point* get_copy_points_except_one(point* src, int n, int i){
-    point* dst = malloc((n-1+2)*sizeof(point)); //remove a point, add two more. This happens when a box is placed
+    point* dst = malloc((n-1+3)*sizeof(point)); //remove a point, add three more. This happens when a box is placed
     for(int j = 0; j < n; j++){
         if(j < i){
             copy_point(&dst[j], src[j]);
@@ -112,6 +112,10 @@ int* find_unavailable_points(point* points, int p_len, box* boxes_to_place, int 
                             break;
                         }
                 }
+                for(int i = 0; i < 6; i++){
+                    free(rotations[i]);
+                }
+                free(rotations);
             }
             if(!unavailable){
                 //no need to check other boxes: at least one of them can stay in this point
@@ -128,14 +132,14 @@ int* find_unavailable_points(point* points, int p_len, box* boxes_to_place, int 
 
     int* ret = NULL;
     if(tot_unavailable > 0){
+        printf("tot_unavailable = %d\n", tot_unavailable);
         ret = malloc((tot_unavailable+1) * sizeof(int));
-        points_unavailable[0] = tot_unavailable;
+        ret[0] = tot_unavailable;
         for(int i = 1; i < tot_unavailable + 1; i++){
             ret[i] = points_unavailable[i-1];
         }
-        free(points_unavailable);
     }
-
+    free(points_unavailable);
     return ret;
 
 
@@ -144,6 +148,14 @@ int* find_unavailable_points(point* points, int p_len, box* boxes_to_place, int 
 //assumes that "indexes_to_exclude" contains values ordered from smallest to biggest
 void exclude_unavailable_points(point** all_points, int all_points_len, 
                                 int* indexes_to_exclude, int indexes_to_exclude_len){
+    if(all_points_len - indexes_to_exclude_len == 0){
+        //all points must be removed
+        if(*all_points) free(*all_points);
+        *all_points = NULL;
+        return;
+    }
+
+    printf("all_points_len = %d, indexes_to_exclude_len = %d\n", all_points_len, indexes_to_exclude_len);
     point* new_set_of_points = malloc((all_points_len - indexes_to_exclude_len) * sizeof(point));
     int a = 0;
     int b = 0;
@@ -152,7 +164,6 @@ void exclude_unavailable_points(point** all_points, int all_points_len,
     //If the current point must not be removed, I add it to "new_set_of_points".
     //Otherwise, i don't add it and increment the index "b" relative to "indexes_to_exclude"
     for(a = 0; a < all_points_len; a++){
-        //printf("a = %d, b = %d, indexes_to_exclude[b] = %d\n", a, b, indexes_to_exclude[b]);
         if(b < indexes_to_exclude_len){
             if(a < indexes_to_exclude[b]){
                 copy_point(&new_set_of_points[c], (*all_points)[a]);
@@ -162,12 +173,11 @@ void exclude_unavailable_points(point** all_points, int all_points_len,
             }
         }else{
             copy_point(&new_set_of_points[c], (*all_points)[a]);
-            //printf("all_points[a].x = %d\n", (*all_points)[a].x);
             c++;
         }
     }
 
-    free(*all_points);
+    if(*all_points) free(*all_points);
     *all_points = new_set_of_points;
 
     /*for(int i = 0; i < all_points_len - indexes_to_exclude_len; i++){
@@ -175,7 +185,7 @@ void exclude_unavailable_points(point** all_points, int all_points_len,
             (*all_points)[i].width, (*all_points)[i].height, (*all_points)[i].depth);
     }*/
 
-
+    printf("points updated\n");
 
 }
 

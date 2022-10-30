@@ -14,7 +14,7 @@ int cont_x = 100;//800;
 int cont_y = 100;//700;
 int cont_z = 100;//1000;
 
-node* head;
+node* head = NULL;
 
 int* volumes;   //array that keeps the volumes of the boxes. If, in position i of the boxes array,
 //there is the i-th box, then in this array, in position i, there is its volume.
@@ -26,16 +26,18 @@ int primal_bound = 0;   //volume occupied by the best solution found so far
 box* optimal_feasible_solution_found;    //the optimal solution found so far. It's an array of boxes
 //placed fully inside the container (the primal_bound above is the total volume occupied by
 //these boxes)
+int n_optimal_feasible_solution_found = 0;
 
+void print_results();
 
-node generate_new_node(point* extreme_points, int n_extreme_points, 
+node* generate_new_node(point* extreme_points, int n_extreme_points, 
                         box* boxes_placed, int n_boxes_placed, 
                         box* boxes_to_place, int n_boxes_to_place,
                         box new_box, int i_ep, int i_btp);
 
 void check_then_update_primal_bound(box* boxes, int n, int total_volume_of_boxes);
 
-void explore_node(node* current_node);
+void explore_node();
 
 int comp1(const void * a, const void * b);
 
@@ -54,7 +56,7 @@ int main(){
     int read_from_file = 1;
     if(read_from_file){
         //adapter from https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
-        FILE* f = fopen("./input2.txt", "r");
+        FILE* f = fopen("./input.txt", "r");
         if (f == NULL){exit(EXIT_FAILURE);}
 
         //how many boxes are there?
@@ -184,7 +186,6 @@ int main(){
 
             //initialize boxes to place given that we already placed a box
             this_node->btp_len = n_boxes-1;
-            this_node->boxes_to_place = (box*) malloc(this_node->btp_len * sizeof(box));
             this_node->boxes_to_place = get_copy_boxes_except_one(boxes, n_boxes, i);
 
             //initialize extreme points given the placed box
@@ -219,6 +220,10 @@ int main(){
             head = this_node;
 
         }
+        for(int i = 0; i < 6; i++){
+            free(rotations[i]);
+        }
+        free(rotations);
     }
 
     
@@ -245,18 +250,38 @@ int main(){
     //exhaustive B&B exploration begins: all nodes in the list represent open nodes
     //of the tree, that therfore must be explored.
     while(head != NULL){
-        explore_node(head);
+        explore_node();
     }
 
+    printf("buah\n");
 
+    print_results();
 
 
     free(volumes);
+    free_kp_sol_node_list();
+    for(int i = 0; i < n_boxes; i++){
+        free(boxes_names[i]);
+    }
+    free(boxes_names);
+    free(boxes);
+    free(optimal_feasible_solution_found);
 
 }
 
 
-
+void print_results(){
+    printf("%d\n", n_optimal_feasible_solution_found);
+    for(int i = 0; i < n_optimal_feasible_solution_found; i++){
+        printf("%d %d %d %d %d %d %s\n", optimal_feasible_solution_found[i].xlen,
+                                        optimal_feasible_solution_found[i].ylen,
+                                        optimal_feasible_solution_found[i].zlen,
+                                        optimal_feasible_solution_found[i].x0,
+                                        optimal_feasible_solution_found[i].y0,
+                                        optimal_feasible_solution_found[i].z0,
+                                        "aaa");
+    }
+}
 
 
 
@@ -286,15 +311,12 @@ int main(){
 //are feasible. But, in this case, I think it would be more profitable to tentatively craete
 //a new subproblem given the current one. If the tentative subproblem is faesible, we add it
 //to the list. Otherwise, we discard it.
-void explore_node(node* current_node){
-    printf("POINTER: %p\n", current_node);
+void explore_node(){
 
     //head is pointing to this node right now, wich will be freed after this function.
     //So, let's move head ahead (we will if necessary move it if new subproblems will
     //be generated)
-    printf("first_box_placed: %d %d %d\n", head->boxes_placed[0].xlen,
-                                            head->boxes_placed[0].ylen,
-                                            head->boxes_placed[0].zlen);
+    node* current_node = head;
     head = head->succ;
 
     //0) update, if possible, the primal bound
@@ -311,22 +333,12 @@ void explore_node(node* current_node){
     //---------------------------------------------------------------------------------
     //1) COMPUTE DUAL BOUND
     int dual_bound = 0;
-    node* ref = current_node;
-    //1.1) create an array with the volumes of the boxes to place (and order them)
-    int* volumes = malloc(current_node->btp_len * sizeof(int));
-    for(int i = 0; i < current_node->btp_len; i++){
-        volumes[i] = current_node->boxes_to_place[i].xlen * 
-                    current_node->boxes_to_place[i].ylen * 
-                    current_node->boxes_to_place[i].zlen;
-    }
-    qsort(volumes, current_node->btp_len, sizeof(int), comp1);
-
-    //1.2) compute the capacity available
-    //1.2.1) compute the total volume of the container
+    //1.1) compute the capacity available
+    //1.1.1) compute the total volume of the container
     int capacity = cont_x*cont_y*cont_z;
-    //1.2.2) remove the volume of the boxes already contained
+    //1.1.2) remove the volume of the boxes already contained
     capacity = capacity_minus_placed_boxes(capacity, current_node->boxes_placed, current_node->bp_len);
-    //1.2.3) remove also the volume of the points that cannot contain any box
+    //1.1.3) remove also the volume of the points that cannot contain any box
     int* points_to_remove = find_unavailable_points(current_node->extreme_points, current_node->ep_len,
                                             current_node->boxes_to_place, current_node->btp_len);
     if(points_to_remove != NULL){
@@ -338,22 +350,24 @@ void explore_node(node* current_node){
                         current_node->extreme_points[index].depth;
         }
 
-
-        //1.2.4) since we (maybe) found out some points that CAN'T be occupied by any box, we can
+        //1.1.4) since we (maybe) found out some points that CAN'T be occupied by any box, we can
         //remove them from the extreme_points of this subproblem, to make smaller subproblems.
-        int* tmp = malloc(points_to_remove[0] * sizeof(int));
-        for(int i = 0; i < points_to_remove[0]; i++){
+        int* tmp = malloc(n * sizeof(int));
+        for(int i = 0; i < n; i++){
             tmp[i] = points_to_remove[i+1];
         }
         exclude_unavailable_points(&(current_node->extreme_points), current_node->ep_len,
-                            tmp, points_to_remove[0]);
+                            tmp, n);
         current_node->ep_len = current_node->ep_len - points_to_remove[0];
         free(points_to_remove);
         free(tmp);
     }
+    if(capacity < 0){
+        capacity = 0;
+    }
     
 
-    //1.3) solve the knapsack problem
+    //1.2) solve the knapsack problem
     int* volumes_of_placed_boxes = malloc(current_node->bp_len * sizeof(int));
     for(int i = 0; i < current_node->bp_len; i++){
         volumes_of_placed_boxes[i] = current_node->boxes_placed[i].xlen *
@@ -361,11 +375,12 @@ void explore_node(node* current_node){
                                     current_node->boxes_placed[i].zlen;
     }
     qsort(volumes_of_placed_boxes, current_node->bp_len, sizeof(int), comp1);
+    printf("sono arrivato fino a qui...\n");
     dual_bound = get_dual_bound_using_kp_0_1_bfs(volumes_of_placed_boxes, current_node->bp_len,
                             capacity, current_node->boxes_to_place, current_node->btp_len);
-    //dual_bound = solve_knapsack_0_1_v3(volumes, current_node->btp_len, capacity);
     printf("dual bound here = %d, primal bound = %d\n", dual_bound, primal_bound);
-
+    free(volumes_of_placed_boxes);
+    printf("NON sono arrivato fino a qui...\n");
     //---------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------
@@ -404,23 +419,31 @@ void explore_node(node* current_node){
 
                     //first check: does the box go outside of the container?
                     int not_ok = 0;
+                    //printf("the next box I'd like to put? It's:");
+                    //printf("%d %d %d %d %d %d\n", b_copy.xlen, b_copy.ylen, b_copy.zlen,
+                    //        b_copy.x0, b_copy.y0, b_copy.z0);
                     if(!is_box_outside_container(b_copy)){
+                        //printf("...and it's not outside container!\n");
                         //if not: does it collide with any other previously placed box?
                         for(int i = 0; i < current_node->bp_len; i++){
                             not_ok += do_boxes_overlap(b_copy, current_node->boxes_placed[i]);
                         }
                         if(not_ok == 0){
                             //the box can be placed
-                            node new_node = generate_new_node(current_node->extreme_points, current_node->ep_len,
+                            node* new_node = generate_new_node(current_node->extreme_points, current_node->ep_len,
                                             current_node->boxes_placed, current_node->bp_len,
                                             current_node->boxes_to_place, current_node->btp_len,
                                             b_copy, p_index, b_index);
                             //append new sub-problem to the list of sub-problems to explore
-                            new_node.succ = head;
-                            head = &new_node;
+                            new_node->succ = head;
+                            head = new_node;
                         }
                     }
                 }
+                for(int i = 0; i < 6; i++){
+                    free(rots[i]);
+                }
+                free(rots);
                 
             }
         }
@@ -434,14 +457,16 @@ void explore_node(node* current_node){
         //this node can be closed
         printf("close!\n");
     }
-
+    free(current_node->boxes_placed);
+    free(current_node->boxes_to_place);
+    free(current_node->extreme_points);
     free(current_node);
 
 }
 
 //i_ep = the index in extreme_points of the point used just now to place the box
 //i_btp = index in boxes_to_place of the box just placed
-node generate_new_node(point* extreme_points, int n_extreme_points, 
+node* generate_new_node(point* extreme_points, int n_extreme_points, 
                         box* boxes_placed, int n_boxes_placed, 
                         box* boxes_to_place, int n_boxes_to_place,
                         box new_box, int i_ep, int i_btp){
@@ -451,11 +476,6 @@ node generate_new_node(point* extreme_points, int n_extreme_points,
     box* new_boxes_placed = malloc((n_boxes_placed+1) * sizeof(box));
     copy_boxes(&new_boxes_placed, boxes_placed, n_boxes_placed);
     new_boxes_placed[n_boxes_placed] = new_box;
-
-    printf("NEW BOX = %d %d %d\n", new_box.xlen, new_box.ylen, new_box.zlen);
-    
-    printf("n_extreme_points = %d, + 2 = %d\n", n_extreme_points, n_extreme_points+2);
-
     //copy the extreme points by removing the point in which the box has been placed, then add the three new points
     point* new_extreme_points = get_copy_points_except_one(extreme_points, n_extreme_points, i_ep);
     point p1;
@@ -491,20 +511,17 @@ node generate_new_node(point* extreme_points, int n_extreme_points,
 
     //copy the boxes to place removing the box placed right now
     box* new_boxes_to_place = get_copy_boxes_except_one(boxes_to_place, n_boxes_to_place, i_btp);
-    /*for(int i = 0; i < n_boxes_to_place-1; i++){
-        printf("boh: %d\n", new_boxes_to_place[i].xlen);
-    }*/
+    //if(new_boxes_to_place == NULL) printf("consistent? NULL & %d\n", n_boxes_to_place-1);
+    //else printf("consistent? Not NULL & %d\n", n_boxes_to_place-1);
 
-    //int dual_bound = get_dual_bound_using_kp_0_1(volumes_of_boxes_placed, n_boxes_placed+1,
-    //                                            (cont_x*cont_y*cont_z)-volume_occupied);
-
-    node new_node;
-    new_node.boxes_placed = new_boxes_placed;
-    new_node.bp_len = n_boxes_placed+1;
-    new_node.boxes_to_place = new_boxes_to_place;
-    new_node.btp_len = n_boxes_to_place-1;
-    new_node.extreme_points = new_extreme_points;
-    new_node.ep_len = n_extreme_points+2;
+    node* new_node = malloc(sizeof(node));
+    new_node->bp_len = n_boxes_placed+1;
+    new_node->boxes_placed = new_boxes_placed;
+    new_node->btp_len = n_boxes_to_place-1;
+    new_node->boxes_to_place = new_boxes_to_place;
+    new_node->ep_len = n_extreme_points+2;
+    new_node->extreme_points = new_extreme_points;
+    
     return new_node;
 
 }
@@ -521,6 +538,9 @@ void check_then_update_primal_bound(box* boxes, int n, int total_volume_of_boxes
         optimal_feasible_solution_found = malloc(n*sizeof(box));
         copy_boxes(&optimal_feasible_solution_found, boxes, n);
         primal_bound = total_volume_of_boxes;
+        n_optimal_feasible_solution_found = n;
+        printf("new partial optimal solution! It's:\n");
+        print_results();
     }
 }
 

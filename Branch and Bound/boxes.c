@@ -2,6 +2,7 @@
 #include "structs.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 
 extern int primal_bound;
 extern int cont_x;
@@ -21,7 +22,7 @@ int do_boxes_overlap(box b1, box b2){
 }
 
 int is_box_outside_container(box b){
-    if(b.x0 + b.xlen > cont_x && b.y0 + b.ylen > cont_y && b.z0 + b.zlen > cont_z){
+    if(b.x0 + b.xlen > cont_x || b.y0 + b.ylen > cont_y || b.z0 + b.zlen > cont_z){
         return 1;
     }
     return 0;
@@ -102,24 +103,23 @@ int** rotations_of_box(box b){
 
 
 box* get_copy_boxes_except_one(box* src, int n, int i){
-    box* dst = malloc((n-1)*sizeof(box));
+    if(n == 0 || (n == 1 && i == n-1)){
+        return NULL;
+    }
+    box* dst = malloc((n-1) * sizeof(box));
     for(int j = 0; j < n; j++){
         if(j < i){
-            dst[j].x0 = src[j].x0;
-            dst[j].y0 = src[j].y0;
-            dst[j].z0 = src[j].z0;
-            dst[j].xlen = src[j].xlen;
-            dst[j].ylen = src[j].ylen;
-            dst[j].zlen = src[j].zlen;
+            copy_box(&(dst[j]), src[j]);
         }
 
         if(j > i){
-            dst[j-1].x0 = src[j].x0;
+            copy_box(&(dst[j-1]), src[j]);
+            /*dst[j-1].x0 = src[j].x0;
             dst[j-1].y0 = src[j].y0;
             dst[j-1].z0 = src[j].z0;
             dst[j-1].xlen = src[j].xlen;
             dst[j-1].ylen = src[j].ylen;
-            dst[j-1].zlen = src[j].zlen;
+            dst[j-1].zlen = src[j].zlen;*/
         }
     }
     return dst;
