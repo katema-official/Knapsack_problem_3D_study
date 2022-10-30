@@ -145,6 +145,7 @@ int* find_unavailable_points(point* points, int p_len, box* boxes_to_place, int 
 
 }
 
+
 //assumes that "indexes_to_exclude" contains values ordered from smallest to biggest
 void exclude_unavailable_points(point** all_points, int all_points_len, 
                                 int* indexes_to_exclude, int indexes_to_exclude_len){

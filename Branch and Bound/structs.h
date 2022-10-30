@@ -1,7 +1,6 @@
 #ifndef STRUCTS
 #define STRUCTS
 
-
 typedef struct {
 	int xlen;
     int ylen;
@@ -11,6 +10,12 @@ typedef struct {
     int z0;
 }box;
 
+typedef enum{
+    right_of_box,
+    top_of_box,
+    front_of_box
+}point_spawnpoint;
+
 typedef struct{
     int x;
     int y;
@@ -18,6 +23,7 @@ typedef struct{
     int width;
     int height;
     int depth;
+    point_spawnpoint spawnpoint;
 }point;
 
 typedef struct node{

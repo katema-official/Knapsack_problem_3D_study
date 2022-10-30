@@ -7,6 +7,7 @@
 #include "boxes.h"
 #include "extreme_points.h"
 #include "knapsack_0_1_solver.h"
+#include "advanced_extreme_points.h"
 
 
 //define container dimensions
@@ -198,6 +199,7 @@ int main(){
             this_node->extreme_points[0].width = cont_x - this_node->extreme_points[0].x;
             this_node->extreme_points[0].height = cont_y;
             this_node->extreme_points[0].depth = cont_z;
+            this_node->extreme_points[0].spawnpoint = right_of_box;
 
             this_node->extreme_points[1].x = 0;
             this_node->extreme_points[1].y = this_box.y0 + this_box.ylen;
@@ -205,6 +207,7 @@ int main(){
             this_node->extreme_points[1].width = cont_x;
             this_node->extreme_points[1].height = cont_y - this_node->extreme_points[1].y;
             this_node->extreme_points[1].depth = cont_z;
+            this_node->extreme_points[1].spawnpoint = top_of_box;
 
             this_node->extreme_points[2].x = 0;
             this_node->extreme_points[2].y = 0;
@@ -212,6 +215,7 @@ int main(){
             this_node->extreme_points[2].width = cont_x;
             this_node->extreme_points[2].height = cont_y;
             this_node->extreme_points[2].depth = cont_z - this_node->extreme_points[2].z;
+            this_node->extreme_points[2].spawnpoint = front_of_box;
 
             //initialize the successor
             this_node->succ = head;
@@ -343,12 +347,15 @@ void explore_node(){
                                             current_node->boxes_to_place, current_node->btp_len);
     if(points_to_remove != NULL){
         int n = points_to_remove[0];
+        point* pts_tmp = malloc(n*sizeof(point));
         for(int i = 1; i < n+1; i++){
             int index = points_to_remove[i];    //remember that points_to_remove contains INDEXES!
-            capacity -= current_node->extreme_points[index].width *
-                        current_node->extreme_points[index].height *
-                        current_node->extreme_points[index].depth;
+            pts_tmp[i] = current_node->extreme_points[index];
         }
+        capacity = capacity_minus_unavailable_points_volume(capacity, current_node->boxes_placed,
+                                            current_node->bp_len, pts_tmp, n);
+        free(pts_tmp);
+
 
         //1.1.4) since we (maybe) found out some points that CAN'T be occupied by any box, we can
         //remove them from the extreme_points of this subproblem, to make smaller subproblems.
@@ -449,10 +456,6 @@ void explore_node(){
         }
 
 
-
-
-
-
     }else{
         //this node can be closed
         printf("close!\n");
@@ -487,6 +490,7 @@ node* generate_new_node(point* extreme_points, int n_extreme_points,
     p1.width = cont_x - p1.x;
     p1.height = cont_y - p1.y;
     p1.depth = cont_z - p1.z;
+    p1.spawnpoint = right_of_box;
 
     p2.x = new_box.x0;
     p2.y = new_box.y0 + new_box.ylen;
@@ -494,6 +498,7 @@ node* generate_new_node(point* extreme_points, int n_extreme_points,
     p2.width = cont_x - p2.x;
     p2.height = cont_y - p2.y;
     p2.depth = cont_z - p2.z;
+    p2.spawnpoint = top_of_box;
 
     p3.x = new_box.x0;
     p3.y = new_box.y0;
@@ -501,12 +506,14 @@ node* generate_new_node(point* extreme_points, int n_extreme_points,
     p3.width = cont_x - p3.x;
     p3.height = cont_y - p3.y;
     p3.depth = cont_z - p3.z;
-    update_point_dimensions(&p1, new_boxes_placed, n_boxes_placed+1);
-    update_point_dimensions(&p2, new_boxes_placed, n_boxes_placed+1);
-    update_point_dimensions(&p3, new_boxes_placed, n_boxes_placed+1);
+    p3.spawnpoint = front_of_box;
     new_extreme_points[n_extreme_points-1] = p1;
     new_extreme_points[n_extreme_points] = p2;
     new_extreme_points[n_extreme_points+1] = p3;
+    project_point_down(&p1, new_boxes_placed, n_boxes_placed+1);
+    for(int i = 0; i < n_extreme_points + 2; i++){
+        update_point_dimensions(&new_extreme_points[i], new_boxes_placed, n_boxes_placed+1);
+    }
     
 
     //copy the boxes to place removing the box placed right now
