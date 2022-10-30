@@ -165,7 +165,7 @@ int main(){
     //we have to initialize the list of subproblems by creating 6*n_boxes problems:
     //each of them represents the fact that we are placing a box in the first
     //extreme point, in any of the 6 possible configurations
-    for(int i = 0; i < n_boxes; i++){
+    for(int i = n_boxes-1; i >= 0; i--){    //BEFORE THE ORDER WAS REVERSED AND IT REQUIRED A LOT MORE TIME!!! (of course but still cool)
         int** rotations = rotations_of_box(boxes[i]);
         for(int j = 0; j < 6; j++){
             box this_box;
