@@ -36,7 +36,35 @@ int comp_left(const void * a, const void * b){
     return a1.z0 - a1.z0; 
 }
 
-box* find_boxes_touching_point_left(point p, box* boxes_placed, int n_boxes_placed){
+//despite the name, it returns the (minimum, certain) volume that can't be occupied in that point
+int find_box_touching_point_left(point p, box* boxes_placed, int n_boxes_placed){
+    box minimum_box_on_the_left_but_above;
+    minimum_box_on_the_left_but_above.y0 = -1;
+    
+    for(int i = 0; i < n_boxes_placed; i++){
+        box b = boxes_placed[i];
+        if(b.x0 + b.xlen == p.x && b.z0 == p.z && b.y0 == p.y){
+            return b.ylen * b.zlen * p.width;
+        }
+        if(b.x0 + b.xlen == p.x && b.z0 == p.z && b.y0 > p.y){
+            if(minimum_box_on_the_left_but_above.y0 == -1){
+                minimum_box_on_the_left_but_above = b;
+            }else{
+                if(b.y0 < minimum_box_on_the_left_but_above.y0){
+                    minimum_box_on_the_left_but_above = b;
+                }
+            }
+        }
+    }
+
+    //no point might be found, if the point is the result of a projection. In that case,
+    //let's do something simple: among all the boxes that are touching on the left with respect
+    //to the point, let's take the one with minimum height.
+    return (minimum_box_on_the_left_but_above.y0 + minimum_box_on_the_left_but_above.ylen - p.y)*
+            minimum_box_on_the_left_but_above.zlen * p.width;
+
+    /*
+
     //first: find all the boxes that are exactly confining, on the left, with this point
     //second: consider only the ones in front of the point
     //(actually, we are doing the two things at the same time)
@@ -53,6 +81,7 @@ box* find_boxes_touching_point_left(point p, box* boxes_placed, int n_boxes_plac
     //third: among these, consider only:
     //1) the box that is exactly on the left with respect to "p" (of course)
     //2) all the following boxes that touch the face of the preceeding one (along the z axis)
+    //2.1) but only if their height is greater than the one of the first box
     box* boxes_important = malloc(count_1*sizeof(box));
     for(int i = 0; i < count_1; i++){
         boxes_important[i] = boxes_placed[indexes[i]];
@@ -83,29 +112,59 @@ box* find_boxes_touching_point_left(point p, box* boxes_placed, int n_boxes_plac
     }
     free(boxes_important);
     return ret;
-
+    */
 
 }
 
-box* find_boxes_touching_point_below(point p, box* boxes_placed, int n_boxes_placed){
+int find_box_touching_point_below(point p, box* boxes_placed, int n_boxes_placed){
+    //here it's even easier: "p" is for sure a point above a box, so let's find that box!
     for(int i = 0; i < n_boxes_placed; i++){
-        
-
-
-
-
+        box b = boxes_placed[i];
+        if(b.y0 + b.ylen == p.y && b.x0 == p.x && b.z0 == p.z){
+            return b.xlen * b.zlen * p.height;
+        }
     }
 }
 
-box* find_boxes_touching_point_behind(point p, box* boxes_placed, int n_boxes_placed){
+int find_box_touching_point_behind(point p, box* boxes_placed, int n_boxes_placed){
+    box minimum_box_behind_but_above;
+    minimum_box_behind_but_above.y0 = -1;
+    
     for(int i = 0; i < n_boxes_placed; i++){
-        
-
-
-
-
+        box b = boxes_placed[i];
+        if(b.z0 + b.zlen == p.z && b.x0 == p.x && b.y0 == p.y){
+            return b.ylen * b.xlen * p.depth;
+        }
+        if(b.z0 + b.zlen == p.z && b.x0 == p.x && b.y0 > p.y){
+            if(minimum_box_behind_but_above.y0 == -1){
+                minimum_box_behind_but_above = b;
+            }else{
+                if(b.y0 < minimum_box_behind_but_above.y0){
+                    minimum_box_behind_but_above = b;
+                }
+            }
+        }
     }
+
+    //no point might be found, if the point is the result of a projection. In that case,
+    //let's do something simple: among all the boxes that are touching on the back with respect
+    //to the point, let's take the one with minimum height.
+    return (minimum_box_behind_but_above.y0 + minimum_box_behind_but_above.ylen - p.y)*
+            minimum_box_behind_but_above.xlen * p.depth;
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 //function that, given the current (free) capacity of the container and the points
 //that have to be excluded, computes the new capacity. The points to be excluded
@@ -118,38 +177,32 @@ int capacity_minus_unavailable_points_volume(int capacity, box* boxes_placed, in
                     point* points_to_exclude, int n_points_to_exclude){
     for(int i = 0; i < n_points_to_exclude; i++){
         point p = points_to_exclude[i];
-        box* boxes_to_investigate;
+        printf("p to remove from capacity = %d %d %d - %d\n", p.x, p.y, p.z, p.spawnpoint);
         switch(p.spawnpoint){
             case right_of_box:
-                boxes_to_investigate = find_boxes_touching_point_left(p, boxes_placed, n_boxes_placed);
-                int len = boxes_to_investigate[0].x0;
-                int _y = boxes_to_investigate[1].ylen;
-                int _z = 0;
-                for(int i = 1; i < len+1; i++){
-                    _z += boxes_to_investigate[i].zlen;
-                }
-                int _x = p.width;
-                capacity -= _x*_y*_z;
+                capacity -= find_box_touching_point_left(p, boxes_placed, n_boxes_placed);
             break;
             case top_of_box:
-
-
+                capacity -= find_box_touching_point_below(p, boxes_placed, n_boxes_placed);
             break;
             case front_of_box:
-
+                capacity -= find_box_touching_point_behind(p, boxes_placed, n_boxes_placed);
             break;
             default:
             break;
         }
-        free(boxes_to_investigate);
     }
-
-
-
-
-
     return capacity;
 }
 
 
+//function to check if a point we'd like to add to a list of points is already present
+int is_point_not_redundant(point new_p, point* points, int n_points){
+    for(int i = 0; i < n_points; i++){
+        if(new_p.x == points[i].x && new_p.y == points[i].y && new_p.z == points[i].z){
+            return 0;
+        }
+    }
+    return 1;
+}
 

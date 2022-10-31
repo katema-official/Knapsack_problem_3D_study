@@ -5,7 +5,7 @@ import ursina
 from boxmodule_ursina import *
 from boxmodule_misc import *
 
-file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\Branch and Bound\\results\\result.txt", "r")
+file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\Branch and Bound\\results\\progresses.txt", "r")
 #file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\hmg_based_implementation_v1\\" +
 #            "Interesting_data\\final_results_relaxed.txt", "r")
 

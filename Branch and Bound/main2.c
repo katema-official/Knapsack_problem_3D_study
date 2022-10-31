@@ -29,7 +29,7 @@ box* optimal_feasible_solution_found;    //the optimal solution found so far. It
 //these boxes)
 int n_optimal_feasible_solution_found = 0;
 
-void print_results();
+void print_results(box* all_boxes, int n_boxes, char** boxes_names);
 
 node* generate_new_node(point* extreme_points, int n_extreme_points, 
                         box* boxes_placed, int n_boxes_placed, 
@@ -45,6 +45,8 @@ int comp1(const void * a, const void * b);
 
 int main(){
     srand(time(NULL));
+
+    if(DEBUG_PROGRESS) reset_progress_file();
 
     //cleanup of a utility file
     FILE* p = fopen("./results.txt", "a");
@@ -129,10 +131,35 @@ int main(){
     }
 
     int order_boxes = 1;
+    box* original_boxes_copy = malloc(n_boxes*sizeof(box));
+    copy_boxes(&original_boxes_copy, boxes, n_boxes);
     if(order_boxes){
         qsort(boxes, n_boxes, sizeof(box), comparator_boxes_volume);
     }
 
+    char** ordered_boxes_names = (char**) malloc(n_boxes*sizeof(char*));
+    for(int i = 0; i < n_boxes; i++){
+        int index = -1;
+        box b_ordered = boxes[i];
+        for(int j = 0; j < n_boxes; j++){
+            if(b_ordered.xlen == original_boxes_copy[j].xlen && 
+                b_ordered.ylen == original_boxes_copy[j].ylen &&
+                b_ordered.zlen == original_boxes_copy[j].zlen){
+                    index = j;
+                    original_boxes_copy[j].xlen = -1;
+                    original_boxes_copy[j].ylen = -1;
+                    original_boxes_copy[j].zlen = -1;
+                    break;
+            }
+        }
+        int x = strlen(boxes_names[index]) + 1;
+        ordered_boxes_names[i] = malloc(x * sizeof(char));
+        strcpy(ordered_boxes_names[i], boxes_names[index]);
+        free(boxes_names[index]);
+    }
+    free(boxes_names);
+    boxes_names = ordered_boxes_names;
+    free(original_boxes_copy);
 
 
 
@@ -259,7 +286,7 @@ int main(){
 
     printf("buah\n");
 
-    print_results();
+    print_results(boxes, n_boxes, boxes_names);
 
 
     free(volumes);
@@ -267,6 +294,8 @@ int main(){
     for(int i = 0; i < n_boxes; i++){
         free(boxes_names[i]);
     }
+
+
     free(boxes_names);
     free(boxes);
     free(optimal_feasible_solution_found);
@@ -274,16 +303,45 @@ int main(){
 }
 
 
-void print_results(){
+void print_results(box* all_boxes, int n_boxes, char** boxes_names){
+    printf("aaa: %s\n", boxes_names[2]);
     printf("%d\n", n_optimal_feasible_solution_found);
     for(int i = 0; i < n_optimal_feasible_solution_found; i++){
+        int index_name = -1;
+        //I want to find the name of the boxes of the optimal solution
+        for(int j = 0; j < n_boxes; j++){
+            box b = all_boxes[j];
+            int** rots = rotations_of_box(b);
+            for(int k = 0; k < 6; k++){
+                if(rots[k][0] == optimal_feasible_solution_found[i].xlen &&
+                    rots[k][1] == optimal_feasible_solution_found[i].ylen &&
+                    rots[k][2] == optimal_feasible_solution_found[i].zlen){
+                        //the box is the same
+                        index_name = j;
+                        printf("index name: %d\n", index_name);
+                        b.xlen = -1;
+                        b.ylen = -1;
+                        b.zlen = -1;
+                        break;
+                }
+            }
+            for(int k = 0; k < 6; k++){
+                free(rots[k]);
+            }
+            free(rots);
+            if(index_name != -1){
+                break;
+            }
+        }
+
+
         printf("%d %d %d %d %d %d %s\n", optimal_feasible_solution_found[i].xlen,
                                         optimal_feasible_solution_found[i].ylen,
                                         optimal_feasible_solution_found[i].zlen,
                                         optimal_feasible_solution_found[i].x0,
                                         optimal_feasible_solution_found[i].y0,
                                         optimal_feasible_solution_found[i].z0,
-                                        "aaa");
+                                        boxes_names[index_name]);
     }
 }
 
@@ -323,6 +381,8 @@ void explore_node(){
     node* current_node = head;
     head = head->succ;
 
+    if(DEBUG_PROGRESS) append_progress_file(current_node->boxes_placed, current_node->bp_len);
+
     //0) update, if possible, the primal bound
     int v = 0;
     for(int i = 0; i < current_node->bp_len; i++){
@@ -350,11 +410,11 @@ void explore_node(){
         point* pts_tmp = malloc(n*sizeof(point));
         for(int i = 1; i < n+1; i++){
             int index = points_to_remove[i];    //remember that points_to_remove contains INDEXES!
-            pts_tmp[i] = current_node->extreme_points[index];
+            pts_tmp[i-1] = current_node->extreme_points[index];
         }
         capacity = capacity_minus_unavailable_points_volume(capacity, current_node->boxes_placed,
                                             current_node->bp_len, pts_tmp, n);
-        free(pts_tmp);
+        free(pts_tmp);    //TODO
 
 
         //1.1.4) since we (maybe) found out some points that CAN'T be occupied by any box, we can
@@ -479,8 +539,8 @@ node* generate_new_node(point* extreme_points, int n_extreme_points,
     box* new_boxes_placed = malloc((n_boxes_placed+1) * sizeof(box));
     copy_boxes(&new_boxes_placed, boxes_placed, n_boxes_placed);
     new_boxes_placed[n_boxes_placed] = new_box;
-    //copy the extreme points by removing the point in which the box has been placed, then add the three new points
-    point* new_extreme_points = get_copy_points_except_one(extreme_points, n_extreme_points, i_ep);
+
+    //create the three new points, but check if some of them are redundant
     point p1;
     point p2;
     point p3;
@@ -507,14 +567,40 @@ node* generate_new_node(point* extreme_points, int n_extreme_points,
     p3.height = cont_y - p3.y;
     p3.depth = cont_z - p3.z;
     p3.spawnpoint = front_of_box;
-    new_extreme_points[n_extreme_points-1] = p1;
-    new_extreme_points[n_extreme_points] = p2;
-    new_extreme_points[n_extreme_points+1] = p3;
     project_point_down(&p1, new_boxes_placed, n_boxes_placed+1);
-    for(int i = 0; i < n_extreme_points + 2; i++){
+    //we don't need to project p2 down: it's by definition on top of a box
+    project_point_down(&p3, new_boxes_placed, n_boxes_placed+1);
+
+    int p1_valid = is_point_not_redundant(p1, extreme_points, n_extreme_points);
+    int p3_valid = is_point_not_redundant(p3, extreme_points, n_extreme_points);
+
+
+    //copy the extreme points by removing the point in which the box has been placed, 
+    //then add (up to) three new points
+    point* new_extreme_points = get_copy_points_except_one(extreme_points, n_extreme_points, i_ep, 
+                                        1+p1_valid+p3_valid);   //1 because the top point is always added
+    
+    new_extreme_points[n_extreme_points-1] = p2;
+    if(p1_valid && p3_valid){
+        new_extreme_points[n_extreme_points] = p1;
+        new_extreme_points[n_extreme_points+1] = p3;
+        update_point_dimensions(&new_extreme_points[n_extreme_points], new_boxes_placed, n_boxes_placed+1);
+        update_point_dimensions(&new_extreme_points[n_extreme_points+1], new_boxes_placed, n_boxes_placed+1);
+    }
+    if(p1_valid && !p3_valid){
+        new_extreme_points[n_extreme_points] = p1;
+        update_point_dimensions(&new_extreme_points[n_extreme_points], new_boxes_placed, n_boxes_placed+1);
+    }
+    if(!p1_valid && p3_valid){
+        new_extreme_points[n_extreme_points] = p3;
+        update_point_dimensions(&new_extreme_points[n_extreme_points], new_boxes_placed, n_boxes_placed+1);
+    }
+
+    for(int i = 0; i < n_extreme_points; i++){
         update_point_dimensions(&new_extreme_points[i], new_boxes_placed, n_boxes_placed+1);
     }
-    
+
+
 
     //copy the boxes to place removing the box placed right now
     box* new_boxes_to_place = get_copy_boxes_except_one(boxes_to_place, n_boxes_to_place, i_btp);
@@ -526,7 +612,7 @@ node* generate_new_node(point* extreme_points, int n_extreme_points,
     new_node->boxes_placed = new_boxes_placed;
     new_node->btp_len = n_boxes_to_place-1;
     new_node->boxes_to_place = new_boxes_to_place;
-    new_node->ep_len = n_extreme_points+2;
+    new_node->ep_len = n_extreme_points + p1_valid + p3_valid;
     new_node->extreme_points = new_extreme_points;
     
     return new_node;
@@ -547,7 +633,7 @@ void check_then_update_primal_bound(box* boxes, int n, int total_volume_of_boxes
         primal_bound = total_volume_of_boxes;
         n_optimal_feasible_solution_found = n;
         printf("new partial optimal solution! It's:\n");
-        print_results();
+        //print_results();
     }
 }
 

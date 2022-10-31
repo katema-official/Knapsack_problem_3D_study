@@ -56,24 +56,18 @@ void copy_point(point* dst, point src){
     (*dst).width = src.width;
     (*dst).height = src.height;
     (*dst).depth = src.depth;
-
-
+    (*dst).spawnpoint = src.spawnpoint;
 }
 
-point* get_copy_points_except_one(point* src, int n, int i){
-    point* dst = malloc((n-1+3)*sizeof(point)); //remove a point, add three more. This happens when a box is placed
+point* get_copy_points_except_one(point* src, int n, int i, int n_new_points){
+    point* dst = malloc((n-1+n_new_points)*sizeof(point)); //remove a point, add (up to) three more. 
+    //This happens when a box is placed
     for(int j = 0; j < n; j++){
         if(j < i){
             copy_point(&dst[j], src[j]);
         }
         if(j > i){
             copy_point(&dst[j-1], src[j]);
-            /*dst[j-1].x = src[j].x;
-            dst[j-1].y = src[j].y;
-            dst[j-1].z = src[j].z;
-            dst[j-1].width = src[j].width;
-            dst[j-1].height = src[j].height;
-            dst[j-1].depth = src[j].depth;*/
         }
     }
     return dst;

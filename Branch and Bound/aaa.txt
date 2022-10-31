@@ -1,21 +1,976 @@
-==286== Memcheck, a memory error detector
-==286== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==286== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==286== Command: ./main2.out
-==286== Parent PID: 9
-==286== 
-==286== 
-==286== HEAP SUMMARY:
-==286==     in use at exit: 8,102 bytes in 486 blocks
-==286==   total heap usage: 676 allocs, 190 frees, 44,884,398 bytes allocated
-==286== 
-==286== LEAK SUMMARY:
-==286==    definitely lost: 4,600 bytes in 211 blocks
-==286==    indirectly lost: 2,962 bytes in 248 blocks
-==286==      possibly lost: 0 bytes in 0 blocks
-==286==    still reachable: 540 bytes in 27 blocks
-==286==         suppressed: 0 bytes in 0 blocks
-==286== Rerun with --leak-check=full to see details of leaked memory
-==286== 
-==286== For lists of detected and suppressed errors, rerun with: -s
-==286== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+new partial optimal solution! It's:
+1
+80 30 100 0 0 0 aaa
+tot_unavailable = 1
+p to remove from capacity = 0 0 100 - 2
+all_points_len = 3, indexes_to_exclude_len = 1
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+240000  | 760000 - 5
+224000 200000 192000 144000 125000 | 760000
+completed iteration 0 in 0.045850
+copied iteration 0 in 0.032144
+completed iteration 1 in 0.045171
+copied iteration 1 in 0.031947
+completed iteration 2 in 0.045126
+copied iteration 2 in 0.034811
+completed iteration 3 in 0.044617
+copied iteration 3 in 0.032709
+completed iteration 4 in 0.045240
+copied iteration 4 in 0.033076
+res = 661000
+CREATED new node for a solution.
+240000  - 760000 - 1 --- 901000
+1 - Computed solution of new problem: 901000
+dual bound here = 901000, primal bound = 240000
+NON sono arrivato fino a qui...
+ok, explore
+new partial optimal solution! It's:
+2
+80 30 100 0 0 0 aaa
+50 50 50 0 30 0 aaa
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 240000  | 635000 - 4
+224000 200000 192000 144000 | 635000
+completed iteration 0 in 0.039226
+copied iteration 0 in 0.026622
+completed iteration 1 in 0.036360
+copied iteration 1 in 0.026619
+completed iteration 2 in 0.034917
+copied iteration 2 in 0.026539
+completed iteration 3 in 0.036991
+copied iteration 3 in 0.026672
+res = 536000
+CREATED new node for a solution.
+125000 240000  - 635000 - 2 --- 901000
+2 - Computed solution of new problem: 901000
+dual bound here = 901000, primal bound = 365000
+NON sono arrivato fino a qui...
+ok, explore
+new partial optimal solution! It's:
+3
+80 30 100 0 0 0 aaa
+50 50 50 0 30 0 aaa
+80 60 30 0 30 50 aaa
+tot_unavailable = 5
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 90 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 80 - 2
+all_points_len = 6, indexes_to_exclude_len = 5
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 144000 240000  | 142000 - 3
+224000 200000 192000 | 142000
+completed iteration 0 in 0.007000
+copied iteration 0 in 0.005921
+completed iteration 1 in 0.006952
+copied iteration 1 in 0.005984
+completed iteration 2 in 0.007030
+copied iteration 2 in 0.005936
+res = 0
+CREATED new node for a solution.
+125000 144000 240000  - 142000 - 3 --- 509000
+2 - Computed solution of new problem: 509000
+dual bound here = 509000, primal bound = 509000
+NON sono arrivato fino a qui...
+close!
+new partial optimal solution! It's:
+3
+80 30 100 0 0 0 aaa
+50 50 50 0 30 0 aaa
+80 60 40 0 30 50 aaa
+tot_unavailable = 5
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 90 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 90 - 2
+all_points_len = 6, indexes_to_exclude_len = 5
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 192000 240000  | 116000 - 3
+224000 200000 144000 | 116000
+completed iteration 0 in 0.006047
+copied iteration 0 in 0.004845
+completed iteration 1 in 0.005648
+copied iteration 1 in 0.004911
+completed iteration 2 in 0.005611
+copied iteration 2 in 0.004887
+res = 0
+CREATED new node for a solution.
+125000 192000 240000  - 116000 - 3 --- 557000
+2 - Computed solution of new problem: 557000
+dual bound here = 557000, primal bound = 557000
+NON sono arrivato fino a qui...
+close!
+new partial optimal solution! It's:
+3
+80 30 100 0 0 0 aaa
+50 50 50 0 30 0 aaa
+80 70 40 0 30 50 aaa
+tot_unavailable = 5
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 100 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 90 - 2
+all_points_len = 6, indexes_to_exclude_len = 5
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 224000 240000  | 100000 - 3
+200000 192000 144000 | 100000
+completed iteration 0 in 0.005003
+copied iteration 0 in 0.004183
+completed iteration 1 in 0.004887
+copied iteration 1 in 0.004172
+completed iteration 2 in 0.004855
+copied iteration 2 in 0.004212
+res = 0
+CREATED new node for a solution.
+125000 224000 240000  - 100000 - 3 --- 589000
+2 - Computed solution of new problem: 589000
+dual bound here = 589000, primal bound = 589000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 50 90 0 - 1
+p to remove from capacity = 50 30 80 - 2
+all_points_len = 5, indexes_to_exclude_len = 4
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 144000 240000  | 256000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 200000 192000 | 256000
+completed iteration 0 in 0.014047
+copied iteration 0 in 0.010782
+completed iteration 1 in 0.013076
+copied iteration 1 in 0.010769
+completed iteration 2 in 0.013237
+copied iteration 2 in 0.010609
+res = 192000
+CREATED new node for a solution.
+125000 144000 240000  - 256000 - 3 --- 701000
+3 - Computed solution of new problem: 701000
+dual bound here = 701000, primal bound = 589000
+NON sono arrivato fino a qui...
+ok, explore
+new partial optimal solution! It's:
+4
+80 30 100 0 0 0 aaa
+50 50 50 0 30 0 aaa
+30 60 80 50 30 0 aaa
+20 100 100 80 0 0 aaa
+tot_unavailable = 3
+p to remove from capacity = 80 100 0 - 1
+p to remove from capacity = 100 0 0 - 0
+p to remove from capacity = 80 0 100 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 144000 200000 240000  | 291000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 | 291000
+completed iteration 0 in 0.017441
+copied iteration 0 in 0.012215
+completed iteration 1 in 0.015328
+copied iteration 1 in 0.012590
+res = 192000
+CREATED new node for a solution.
+125000 144000 200000 240000  - 291000 - 4 --- 901000
+3 - Computed solution of new problem: 901000
+dual bound here = 901000, primal bound = 709000
+NON sono arrivato fino a qui...
+ok, explore
+tot_unavailable = 3
+p to remove from capacity = 80 100 0 - 1
+p to remove from capacity = 100 0 0 - 0
+p to remove from capacity = 80 0 100 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 144000 200000 240000  | 291000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 | 291000
+completed iteration 0 in 0.016480
+copied iteration 0 in 0.012221
+completed iteration 1 in 0.018768
+copied iteration 1 in 0.017993
+res = 192000
+CREATED new node for a solution.
+125000 144000 200000 240000  - 291000 - 4 --- 901000
+3 - Computed solution of new problem: 901000
+dual bound here = 901000, primal bound = 709000
+NON sono arrivato fino a qui...
+ok, explore
+tot_unavailable = 6
+p to remove from capacity = 80 0 0 - 0
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 50 90 0 - 1
+p to remove from capacity = 90 0 0 - 0
+p to remove from capacity = 50 30 80 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 192000 240000  | 56000 - 3
+224000 200000 144000 | 56000
+completed iteration 0 in 0.002759
+copied iteration 0 in 0.002314
+completed iteration 1 in 0.003017
+copied iteration 1 in 0.002592
+completed iteration 2 in 0.002727
+copied iteration 2 in 0.002373
+res = 0
+CREATED new node for a solution.
+125000 192000 240000  - 56000 - 3 --- 557000
+2 - Computed solution of new problem: 557000
+dual bound here = 557000, primal bound = 709000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 6
+p to remove from capacity = 80 0 0 - 0
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 50 100 0 - 1
+p to remove from capacity = 90 0 0 - 0
+p to remove from capacity = 50 30 80 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 224000 240000  | 40000 - 3
+200000 192000 144000 | 40000
+completed iteration 0 in 0.001991
+copied iteration 0 in 0.001755
+completed iteration 1 in 0.001945
+copied iteration 1 in 0.001668
+completed iteration 2 in 0.001945
+copied iteration 2 in 0.001671
+res = 0
+CREATED new node for a solution.
+125000 224000 240000  - 40000 - 3 --- 589000
+2 - Computed solution of new problem: 589000
+dual bound here = 589000, primal bound = 709000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 6
+p to remove from capacity = 80 0 0 - 0
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 0 100 0 - 1
+p to remove from capacity = 100 0 0 - 0
+p to remove from capacity = 0 0 100 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 200000 240000  | 125000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 144000 | 125000
+completed iteration 0 in 0.006169
+copied iteration 0 in 0.005274
+completed iteration 1 in 0.006169
+copied iteration 1 in 0.005259
+completed iteration 2 in 0.006150
+copied iteration 2 in 0.005350
+res = 0
+CREATED new node for a solution.
+125000 200000 240000  - 125000 - 3 --- 565000
+3 - Computed solution of new problem: 565000
+dual bound here = 565000, primal bound = 709000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 6
+p to remove from capacity = 80 0 0 - 0
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 0 100 0 - 1
+p to remove from capacity = 100 0 0 - 0
+p to remove from capacity = 0 0 100 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 200000 240000  | 125000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 144000 | 125000
+completed iteration 0 in 0.007392
+copied iteration 0 in 0.007022
+completed iteration 1 in 0.007946
+copied iteration 1 in 0.006853
+completed iteration 2 in 0.008338
+copied iteration 2 in 0.006655
+res = 0
+CREATED new node for a solution.
+125000 200000 240000  - 125000 - 3 --- 565000
+3 - Computed solution of new problem: 565000
+dual bound here = 565000, primal bound = 709000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 80 100 0 - 1
+p to remove from capacity = 100 0 0 - 0
+p to remove from capacity = 80 0 100 - 2
+all_points_len = 6, indexes_to_exclude_len = 4
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 200000 240000  | 385000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 144000 | 385000
+completed iteration 0 in 0.029656
+copied iteration 0 in 0.021001
+completed iteration 1 in 0.028729
+copied iteration 1 in 0.024441
+completed iteration 2 in 0.033045
+copied iteration 2 in 0.018854
+res = 336000
+CREATED new node for a solution.
+125000 200000 240000  - 385000 - 3 --- 901000
+3 - Computed solution of new problem: 901000
+dual bound here = 901000, primal bound = 709000
+NON sono arrivato fino a qui...
+ok, explore
+tot_unavailable = 4
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 90 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 80 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 144000 200000 240000  | 96000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 | 96000
+completed iteration 0 in 0.006164
+copied iteration 0 in 0.004446
+completed iteration 1 in 0.004970
+copied iteration 1 in 0.004711
+res = 0
+CREATED new node for a solution.
+125000 144000 200000 240000  - 96000 - 4 --- 709000
+3 - Computed solution of new problem: 709000
+dual bound here = 709000, primal bound = 709000
+NON sono arrivato fino a qui...
+close!
+new partial optimal solution! It's:
+4
+80 30 100 0 0 0 aaa
+50 50 50 0 30 0 aaa
+20 100 100 80 0 0 aaa
+80 60 40 0 30 50 aaa
+tot_unavailable = 4
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 90 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 90 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 192000 200000 240000  | 88000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 144000 | 88000
+completed iteration 0 in 0.004934
+copied iteration 0 in 0.003834
+completed iteration 1 in 0.004264
+copied iteration 1 in 0.003717
+res = 0
+CREATED new node for a solution.
+125000 192000 200000 240000  - 88000 - 4 --- 757000
+3 - Computed solution of new problem: 757000
+dual bound here = 757000, primal bound = 757000
+NON sono arrivato fino a qui...
+close!
+new partial optimal solution! It's:
+4
+80 30 100 0 0 0 aaa
+50 50 50 0 30 0 aaa
+20 100 100 80 0 0 aaa
+80 70 40 0 30 50 aaa
+tot_unavailable = 4
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 100 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 90 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 200000 224000 240000  | 80000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+192000 144000 | 80000
+completed iteration 0 in 0.004161
+copied iteration 0 in 0.003516
+completed iteration 1 in 0.003999
+copied iteration 1 in 0.003616
+res = 0
+CREATED new node for a solution.
+125000 200000 224000 240000  - 80000 - 4 --- 789000
+3 - Computed solution of new problem: 789000
+dual bound here = 789000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 50 90 0 - 1
+p to remove from capacity = 80 0 0 - 0
+p to remove from capacity = 50 30 80 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 144000 200000 240000  | 106000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 | 106000
+completed iteration 0 in 0.005473
+copied iteration 0 in 0.004636
+completed iteration 1 in 0.005600
+copied iteration 1 in 0.005888
+res = 0
+CREATED new node for a solution.
+125000 144000 200000 240000  - 106000 - 4 --- 709000
+3 - Computed solution of new problem: 709000
+dual bound here = 709000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 80 100 0 - 1
+p to remove from capacity = 100 0 0 - 0
+p to remove from capacity = 80 0 100 - 2
+all_points_len = 6, indexes_to_exclude_len = 4
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 200000 240000  | 385000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 144000 | 385000
+completed iteration 0 in 0.021550
+copied iteration 0 in 0.016210
+completed iteration 1 in 0.021504
+copied iteration 1 in 0.016269
+completed iteration 2 in 0.020968
+copied iteration 2 in 0.016065
+res = 336000
+CREATED new node for a solution.
+125000 200000 240000  - 385000 - 3 --- 901000
+3 - Computed solution of new problem: 901000
+dual bound here = 901000, primal bound = 789000
+NON sono arrivato fino a qui...
+ok, explore
+tot_unavailable = 4
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 90 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 80 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 144000 200000 240000  | 96000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 | 96000
+completed iteration 0 in 0.004823
+copied iteration 0 in 0.004024
+completed iteration 1 in 0.004681
+copied iteration 1 in 0.004087
+res = 0
+CREATED new node for a solution.
+125000 144000 200000 240000  - 96000 - 4 --- 709000
+3 - Computed solution of new problem: 709000
+dual bound here = 709000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 90 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 90 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 192000 200000 240000  | 88000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 144000 | 88000
+completed iteration 0 in 0.004389
+copied iteration 0 in 0.003657
+completed iteration 1 in 0.004291
+copied iteration 1 in 0.003664
+res = 0
+CREATED new node for a solution.
+125000 192000 200000 240000  - 88000 - 4 --- 757000
+3 - Computed solution of new problem: 757000
+dual bound here = 757000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 100 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 90 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 200000 224000 240000  | 80000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+192000 144000 | 80000
+completed iteration 0 in 0.004027
+copied iteration 0 in 0.003339
+completed iteration 1 in 0.004043
+copied iteration 1 in 0.003354
+res = 0
+CREATED new node for a solution.
+125000 200000 224000 240000  - 80000 - 4 --- 789000
+3 - Computed solution of new problem: 789000
+dual bound here = 789000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 50 90 0 - 1
+p to remove from capacity = 80 0 0 - 0
+p to remove from capacity = 50 30 80 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 144000 200000 240000  | 106000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 | 106000
+completed iteration 0 in 0.005513
+copied iteration 0 in 0.004719
+completed iteration 1 in 0.005569
+copied iteration 1 in 0.004777
+res = 0
+CREATED new node for a solution.
+125000 144000 200000 240000  - 106000 - 4 --- 709000
+3 - Computed solution of new problem: 709000
+dual bound here = 709000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 240000  | 635000 - 4
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+found solution of already solved problem: 901000
+dual bound here = 901000, primal bound = 789000
+NON sono arrivato fino a qui...
+ok, explore
+tot_unavailable = 5
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 90 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 80 - 2
+all_points_len = 6, indexes_to_exclude_len = 5
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 144000 240000  | 142000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+found solution of already solved problem: 509000
+dual bound here = 509000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 5
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 90 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 90 - 2
+all_points_len = 6, indexes_to_exclude_len = 5
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 192000 240000  | 116000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+found solution of already solved problem: 557000
+dual bound here = 557000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 5
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 100 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 90 - 2
+all_points_len = 6, indexes_to_exclude_len = 5
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 224000 240000  | 100000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+found solution of already solved problem: 589000
+dual bound here = 589000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 50 90 0 - 1
+p to remove from capacity = 50 30 80 - 2
+all_points_len = 5, indexes_to_exclude_len = 4
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 144000 240000  | 256000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 200000 192000 | 256000
+completed iteration 0 in 0.013508
+copied iteration 0 in 0.010993
+completed iteration 1 in 0.013954
+copied iteration 1 in 0.011054
+completed iteration 2 in 0.014014
+copied iteration 2 in 0.011956
+res = 192000
+CREATED new node for a solution.
+125000 144000 240000  - 256000 - 3 --- 701000
+3 - Computed solution of new problem: 701000
+dual bound here = 701000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 6
+p to remove from capacity = 80 0 0 - 0
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 50 90 0 - 1
+p to remove from capacity = 90 0 0 - 0
+p to remove from capacity = 50 30 80 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 192000 240000  | 56000 - 3
+skip 1: this solution has lower capacity
+found solution of already solved problem: 557000
+dual bound here = 557000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 6
+p to remove from capacity = 80 0 0 - 0
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 50 100 0 - 1
+p to remove from capacity = 90 0 0 - 0
+p to remove from capacity = 50 30 80 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 224000 240000  | 40000 - 3
+found solution of already solved problem: 589000
+dual bound here = 589000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 6
+p to remove from capacity = 80 0 0 - 0
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 0 100 0 - 1
+p to remove from capacity = 100 0 0 - 0
+p to remove from capacity = 0 0 100 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 200000 240000  | 125000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 144000 | 125000
+completed iteration 0 in 0.006544
+copied iteration 0 in 0.005390
+completed iteration 1 in 0.007215
+copied iteration 1 in 0.005230
+completed iteration 2 in 0.006138
+copied iteration 2 in 0.006964
+res = 0
+CREATED new node for a solution.
+125000 200000 240000  - 125000 - 3 --- 565000
+3 - Computed solution of new problem: 565000
+dual bound here = 565000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 6
+p to remove from capacity = 80 0 0 - 0
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 0 100 0 - 1
+p to remove from capacity = 100 0 0 - 0
+p to remove from capacity = 0 0 100 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 200000 240000  | 125000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 144000 | 125000
+completed iteration 0 in 0.006208
+copied iteration 0 in 0.005265
+completed iteration 1 in 0.006119
+copied iteration 1 in 0.005217
+completed iteration 2 in 0.006112
+copied iteration 2 in 0.005262
+res = 0
+CREATED new node for a solution.
+125000 200000 240000  - 125000 - 3 --- 565000
+3 - Computed solution of new problem: 565000
+dual bound here = 565000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 80 100 0 - 1
+p to remove from capacity = 100 0 0 - 0
+p to remove from capacity = 80 0 100 - 2
+all_points_len = 6, indexes_to_exclude_len = 4
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 200000 240000  | 385000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 144000 | 385000
+completed iteration 0 in 0.021415
+copied iteration 0 in 0.016058
+completed iteration 1 in 0.021039
+copied iteration 1 in 0.016132
+completed iteration 2 in 0.021635
+copied iteration 2 in 0.017675
+res = 336000
+CREATED new node for a solution.
+125000 200000 240000  - 385000 - 3 --- 901000
+3 - Computed solution of new problem: 901000
+dual bound here = 901000, primal bound = 789000
+NON sono arrivato fino a qui...
+ok, explore
+tot_unavailable = 4
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 90 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 80 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 144000 200000 240000  | 96000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 | 96000
+completed iteration 0 in 0.004870
+copied iteration 0 in 0.003982
+completed iteration 1 in 0.004621
+copied iteration 1 in 0.004127
+res = 0
+CREATED new node for a solution.
+125000 144000 200000 240000  - 96000 - 4 --- 709000
+3 - Computed solution of new problem: 709000
+dual bound here = 709000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 90 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 90 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 192000 200000 240000  | 88000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 144000 | 88000
+completed iteration 0 in 0.004423
+copied iteration 0 in 0.003672
+completed iteration 1 in 0.004364
+copied iteration 1 in 0.003727
+res = 0
+CREATED new node for a solution.
+125000 192000 200000 240000  - 88000 - 4 --- 757000
+3 - Computed solution of new problem: 757000
+dual bound here = 757000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 50 30 0 - 0
+p to remove from capacity = 0 100 50 - 1
+p to remove from capacity = 80 0 50 - 0
+p to remove from capacity = 0 30 90 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 200000 224000 240000  | 80000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+192000 144000 | 80000
+completed iteration 0 in 0.003989
+copied iteration 0 in 0.003478
+completed iteration 1 in 0.003885
+copied iteration 1 in 0.003436
+res = 0
+CREATED new node for a solution.
+125000 200000 224000 240000  - 80000 - 4 --- 789000
+3 - Computed solution of new problem: 789000
+dual bound here = 789000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 0 30 50 - 2
+p to remove from capacity = 50 90 0 - 1
+p to remove from capacity = 80 0 0 - 0
+p to remove from capacity = 50 30 80 - 2
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 144000 200000 240000  | 106000 - 2
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+224000 192000 | 106000
+completed iteration 0 in 0.005703
+copied iteration 0 in 0.004558
+completed iteration 1 in 0.005178
+copied iteration 1 in 0.005343
+res = 0
+CREATED new node for a solution.
+125000 144000 200000 240000  - 106000 - 4 --- 709000
+3 - Computed solution of new problem: 709000
+dual bound here = 709000, primal bound = 789000
+NON sono arrivato fino a qui...
+close!
+tot_unavailable = 4
+p to remove from capacity = 0 80 0 - 1
+p to remove from capacity = 80 100 0 - 1
+p to remove from capacity = 100 0 0 - 0
+p to remove from capacity = 80 0 100 - 2
+all_points_len = 6, indexes_to_exclude_len = 4
+points updated
+sono arrivato fino a qui...
+INSTANCE PROPOSED: 
+125000 200000 240000  | 385000 - 3
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lower capacity
+skip 1: this solution has lo
