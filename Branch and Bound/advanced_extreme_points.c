@@ -177,7 +177,7 @@ int capacity_minus_unavailable_points_volume(int capacity, box* boxes_placed, in
                     point* points_to_exclude, int n_points_to_exclude){
     for(int i = 0; i < n_points_to_exclude; i++){
         point p = points_to_exclude[i];
-        printf("p to remove from capacity = %d %d %d - %d\n", p.x, p.y, p.z, p.spawnpoint);
+        if(DEBUG_1) printf("p to remove from capacity = %d %d %d - %d\n", p.x, p.y, p.z, p.spawnpoint);
         switch(p.spawnpoint){
             case right_of_box:
                 capacity -= find_box_touching_point_left(p, boxes_placed, n_boxes_placed);

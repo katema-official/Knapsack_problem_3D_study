@@ -60,7 +60,7 @@ int solve_knapsack_0_1_v2(int* volumes, int n_items, int capacity){
             printf("allocazione fallita :(\n");
         }
     }
-    printf("memory allocated: %d*4 byte", capacity+1);
+    if(DEBUG_1) printf("memory allocated: %d*4 byte", capacity+1);
     
     //initialization: the subproblems without items or capacity have as best solution 0
     for(int i = 0; i < 2; i++){
@@ -94,7 +94,7 @@ int solve_knapsack_0_1_v2(int* volumes, int n_items, int capacity){
 
         end = clock();
         cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
-        printf("completed iteration %d in %f\n", iteration, cpu_time_used);
+        if(DEBUG_1) printf("completed iteration %d in %f\n", iteration, cpu_time_used);
         start = clock();
 
         //now copy the new row in the old one
@@ -104,7 +104,7 @@ int solve_knapsack_0_1_v2(int* volumes, int n_items, int capacity){
 
         end = clock();
         cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
-        printf("copied iteration %d in %f\n", iteration, cpu_time_used);
+        if(DEBUG_1) printf("copied iteration %d in %f\n", iteration, cpu_time_used);
     }
 
     int res = B[1][capacity];
@@ -124,8 +124,10 @@ int solve_knapsack_0_1_v2(int* volumes, int n_items, int capacity){
 //works only if the array of items is ordered from the one with the LEAST volume
 //to the one with the MOST volume. It basically removes an if (this code should
 //be the base for the parallel CUDA implementation)
-
+//actually no, it doesn't work all the times. BUT: it gave me the idea for another version
+//that still is better both in terms of memory and time: go check v4 for this :)
 int solve_knapsack_0_1_v3(int* volumes, int n_items, int capacity){
+    qsort(volumes, n_items, sizeof(int), cmpfunc);
     //printf("capacity = %d, n_items = %d, first item = %d\n", capacity, n_items, volumes[0]);
     if(capacity == 0 || n_items == 0){
         return 0;
@@ -137,13 +139,19 @@ int solve_knapsack_0_1_v3(int* volumes, int n_items, int capacity){
             printf("allocazione fallita :(\n");
         }
     }
-    //printf("memory allocated: %d*4 byte\n", capacity+1);
+    if(DEBUG_2){
+        float gb = (float) (capacity+1)*4;
+        gb = gb / (float) (1024*1024*1024);
+        printf("memory allocated: %f GB\n", gb);
+    } 
 
-    for(int i = 0; i < n_items; i++){
-        printf("%d ", volumes[i]);
+    if(DEBUG_1){
+        for(int i = 0; i < n_items; i++){
+            printf("%d ", volumes[i]);
+        }
+        printf("| %d\n", capacity);
     }
-    printf("| %d\n", capacity);
-    
+
     //initialization: the subproblems without items or capacity have as best solution 0
     for(int i = 0; i < 2; i++){
         B[i][0] = 0;
@@ -171,7 +179,7 @@ int solve_knapsack_0_1_v3(int* volumes, int n_items, int capacity){
 
         end = clock();
         cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
-        printf("completed iteration %d in %f\n", iteration, cpu_time_used);
+        if(DEBUG_2) printf("completed iteration %d in %f\n", iteration, cpu_time_used);
         start = clock();
 
         //now copy the new row in the old one
@@ -181,7 +189,7 @@ int solve_knapsack_0_1_v3(int* volumes, int n_items, int capacity){
 
         end = clock();
         cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
-        printf("copied iteration %d in %f\n", iteration, cpu_time_used);
+        if(DEBUG_2) printf("copied iteration %d in %f\n", iteration, cpu_time_used);
     }
 
     int res = B[1][capacity];
@@ -191,10 +199,135 @@ int solve_knapsack_0_1_v3(int* volumes, int n_items, int capacity){
     }
     free(B);
 
-    printf("res = %d\n", res);
+    if(DEBUG_1) printf("res = %d\n", res);
     return res;
 }
 
+//the final version. Might work faster if the items are already ordered (thinking in terms
+//of CUDA divergence) from the one with the least volume to the one with the most, but I have
+//to test this to be sure
+int solve_knapsack_0_1_v4(int* volumes, int n_items, int capacity){
+    qsort(volumes, n_items, sizeof(int), cmpfunc);  //gives better performace? In C and CUDA?
+    if(capacity == 0 || n_items == 0){
+        return 0;
+    }
+    int* B = (int*) malloc((capacity+1)*sizeof(int));
+    for(int i = capacity; i >= volumes[0]; i--){
+        B[i] = volumes[0];
+    }
+    for(int i = volumes[0]-1; i >= 0; i--){
+        B[i] = 0;
+    }
+    if(DEBUG_2){
+        float gb = (float) (capacity+1)*4;
+        gb = gb / (float) (1024*1024*1024);
+        printf("memory allocated: %f GB\n", gb);
+    } 
+
+    if(DEBUG_1){
+        for(int i = 0; i < n_items; i++){
+            printf("%d ", volumes[i]);
+        }
+        printf("| %d\n", capacity);
+    }
+
+    clock_t start, end;
+    double cpu_time_used;
+
+    //now, the value of each cell of each row can be fully determined by the the previous row,
+    //that is actually the same row
+    for(int iteration = 1; iteration < n_items; iteration++){
+        
+        if(DEBUG_2) start = clock();
+        
+        int volume_row = volumes[iteration];
+        for(int col = capacity; col >=0; col--){
+            if(col >= volume_row){
+                B[col] = max(volume_row + B[col - volume_row], B[col]);
+            }//else don't do anything, no need to update.
+        }
+
+        if(DEBUG_2){
+            end = clock();
+            cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
+            printf("completed iteration %d in %f\n", iteration, cpu_time_used);
+        }
+    }
+
+    int res = B[capacity];
+    free(B);
+    if(DEBUG_1) printf("res = %d\n", res);
+    return res;
+}
+
+//you can bet I had fun optimizing this. One more version, even better! Less calculations in later items!
+int solve_knapsack_0_1_v5(int* volumes, int n_items, int capacity){
+    qsort(volumes, n_items, sizeof(int), cmpfunc);  //gives better performace? In C and CUDA? hell if I know lmao
+    if(capacity == 0 || n_items == 0){
+        return 0;
+    }
+    int* B = (int*) malloc((capacity+1)*sizeof(int));
+    for(int i = capacity; i >= volumes[0]; i--){
+        B[i] = volumes[0];
+    }
+    for(int i = volumes[0]-1; i >= 0; i--){
+        B[i] = 0;
+    }
+    if(DEBUG_2){
+        float gb = (float) (capacity+1)*4;
+        gb = gb / (float) (1024*1024*1024);
+        printf("memory allocated: %f GB\n", gb);
+    } 
+
+    if(DEBUG_1){
+        for(int i = 0; i < n_items; i++){
+            printf("%d ", volumes[i]);
+        }
+        printf("| %d\n", capacity);
+    }
+
+    clock_t start, end;
+    double cpu_time_used;
+
+    //now, the value of each cell of each row can be fully determined by the the previous row,
+    //that is actually the same row
+    for(int iteration = 1; iteration < n_items; iteration++){
+        
+        if(DEBUG_2) start = clock();
+
+        int capacity_copy = capacity;
+        int min_index = 0;
+        for(int i = iteration+1; i < n_items; i++){
+            capacity_copy -= volumes[i];
+        }
+
+        if(capacity_copy <= 0){
+            min_index = 0;
+        }else{
+            min_index = capacity_copy;
+        }
+
+        if(DEBUG_2) printf("min_index = %d because of capacity_copy: %d\n", min_index, capacity_copy);
+
+        int volume_row = volumes[iteration];
+        for(int col = capacity; col >=min_index; col--){
+            if(col >= volume_row){
+                B[col] = max(volume_row + B[col - volume_row], B[col]);
+            }//else don't do anything, no need to update.
+        }
+
+        if(DEBUG_2){
+            end = clock();
+            cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
+            printf("completed iteration %d in %f\n", iteration, cpu_time_used);
+        }
+    }
+
+    int res = B[capacity];
+    free(B);
+    if(DEBUG_1) printf("res = %d\n", res);
+    return res;
+}
 
 
 
@@ -254,7 +387,7 @@ int get_dual_bound_using_kp_0_1(int* volumes_of_boxes_placed, int n_boxes_placed
                                         volumes_of_boxes_placed, n_boxes_placed);
             if(equal == 1){
                 //ok, they are really the same: return this solution
-                printf("found solution of already sovled problem: %d\n", tmp_back->best_solution);
+                if(DEBUG_2) printf("found solution of already sovled problem: %d\n", tmp_back->best_solution);
                 return tmp_back->best_solution;
             }
         }
@@ -267,7 +400,7 @@ int get_dual_bound_using_kp_0_1(int* volumes_of_boxes_placed, int n_boxes_placed
         int equal = are_array_contents_the_same(tmp_back->placed_boxes_volumes,
                                     volumes_of_boxes_placed, n_boxes_placed);
         if(equal == 1){
-            printf("found solution of already sovled problem: %d\n", tmp_back->best_solution);
+            if(DEBUG_2) printf("found solution of already sovled problem: %d\n", tmp_back->best_solution);
             return tmp_back->best_solution;
         }
     }
@@ -278,7 +411,7 @@ int get_dual_bound_using_kp_0_1(int* volumes_of_boxes_placed, int n_boxes_placed
     new->succ = tmp_front;
     //link it to the list
     tmp_back->succ = new;
-    printf("Computed solution of new problem: %d\n", new->best_solution);
+    if(DEBUG_2) printf("Computed solution of new problem: %d\n", new->best_solution);
     return new->best_solution;
 
 
@@ -396,12 +529,14 @@ kp_sol_node* create_new_kp_sol_node(int max_capacity, int n_boxes_placed, int* v
 int get_dual_bound_using_kp_0_1_bfs(int* volumes_of_boxes_placed, int n_boxes_placed, int max_capacity,
                     box* boxes_to_place, int n_boxes_to_place){
 
-    printf("INSTANCE PROPOSED: \n");
-    for(int i = 0; i < n_boxes_placed; i++){
-        printf("%d ", volumes_of_boxes_placed[i]);
+    if(DEBUG_1){
+        printf("INSTANCE PROPOSED: \n");
+        for(int i = 0; i < n_boxes_placed; i++){
+            printf("%d ", volumes_of_boxes_placed[i]);
+        }
+        printf(" | %d", max_capacity);
+        printf(" - %d\n", n_boxes_to_place);
     }
-    printf(" | %d", max_capacity);
-    printf(" - %d\n", n_boxes_to_place);
     
     //first, let's check if there is a kp_sol_node, in our list of saved solutions, that
     //has the same capacity and the same boxes. Since we want to keep this list ordered,
@@ -416,7 +551,7 @@ int get_dual_bound_using_kp_0_1_bfs(int* volumes_of_boxes_placed, int n_boxes_pl
                                     n_boxes_to_place, boxes_to_place);
         new->succ = NULL;
         kp_sol_list_head = new;
-        printf("1 - Computed solution of new problem: %d\n", new->best_solution);
+        if(DEBUG_2) printf("1 - Computed solution of new problem: %d\n", new->best_solution);
         return new->best_solution;
     }
 
@@ -430,13 +565,13 @@ int get_dual_bound_using_kp_0_1_bfs(int* volumes_of_boxes_placed, int n_boxes_pl
                                     n_boxes_to_place, boxes_to_place);
         new->succ = kp_sol_list_head;
         kp_sol_list_head = new;
-        printf("2 - Computed solution of new problem: %d\n", new->best_solution);
+        if(DEBUG_2) printf("2 - Computed solution of new problem: %d\n", new->best_solution);
         return new->best_solution;
     }
 
     //we can trash all the solutions with lower capacity than the one of this subproblem
     while(tmp_front != NULL && tmp_back->max_capacity < max_capacity){
-        printf("skip 1: this solution has lower capacity\n");
+        if(DEBUG_2) printf("skip 1: this solution has lower capacity\n");
         tmp_back = tmp_back->succ;
         tmp_front = tmp_back->succ;
     }
@@ -452,13 +587,13 @@ int get_dual_bound_using_kp_0_1_bfs(int* volumes_of_boxes_placed, int n_boxes_pl
                                         volumes_of_boxes_placed, n_boxes_placed);
             if(equal == 1){
                 //ok, they are really the same: return this solution
-                printf("found solution of already solved problem: %d\n", tmp_back->best_solution);
+                if(DEBUG_2) printf("found solution of already solved problem: %d\n", tmp_back->best_solution);
                 return tmp_back->best_solution;
             }
         }
         tmp_back = tmp_back->succ;
         tmp_front = tmp_back->succ;
-        printf("skip 2: solution has same capacity, but different number and kind of boxes\n");
+        if(DEBUG_2) printf("skip 2: solution has same capacity, but different number and kind of boxes\n");
     }
 
     //if we have arrived here, it's because we reached the last node in the list.
@@ -468,10 +603,10 @@ int get_dual_bound_using_kp_0_1_bfs(int* volumes_of_boxes_placed, int n_boxes_pl
         int equal = are_array_contents_the_same(tmp_back->placed_boxes_volumes,
                                     volumes_of_boxes_placed, n_boxes_placed);
         if(equal == 1){
-            printf("found solution of already solved problem: %d\n", tmp_back->best_solution);
+            if(DEBUG_2) printf("found solution of already solved problem: %d\n", tmp_back->best_solution);
             return tmp_back->best_solution;
         }
-        printf("skip 3: same capacity, same number of placed boxes, different boxes\n");
+        if(DEBUG_2) printf("skip 3: same capacity, same number of placed boxes, different boxes\n");
     }
 
     //If it is not, we have to solve the subproblem ourselves.
@@ -481,7 +616,7 @@ int get_dual_bound_using_kp_0_1_bfs(int* volumes_of_boxes_placed, int n_boxes_pl
     new->succ = tmp_front;
     //link it to the list
     tmp_back->succ = new;
-    printf("3 - Computed solution of new problem: %d\n", new->best_solution);
+    if(DEBUG_2) printf("3 - Computed solution of new problem: %d\n", new->best_solution);
     return new->best_solution;
 }
 
@@ -510,7 +645,7 @@ kp_sol_node* create_new_kp_sol_node_bfs(int max_capacity,
                                 boxes_to_place[i].ylen *
                                 boxes_to_place[i].zlen;
     }
-    int dual_bound = solve_knapsack_0_1_v3(volumes_not_placed, n_boxes_to_place, max_capacity);
+    int dual_bound = solve_knapsack_0_1_v5(volumes_not_placed, n_boxes_to_place, max_capacity);
     for(int i = 0; i < n_boxes_placed; i++){
         dual_bound += volumes_of_boxes_placed[i];
     }
@@ -520,13 +655,15 @@ kp_sol_node* create_new_kp_sol_node_bfs(int max_capacity,
 
     //--------------------------------------------------------------------
 
-    printf("CREATED new node for a solution.\n");
-    for(int i = 0; i < new->n_placed_boxes_volumes; i++){
-        printf("%d ", new->placed_boxes_volumes[i]);
+    if(DEBUG_1){
+        printf("CREATED new node for a solution.\n");
+        for(int i = 0; i < new->n_placed_boxes_volumes; i++){
+            printf("%d ", new->placed_boxes_volumes[i]);
+        }
+        printf(" - %d", new->max_capacity);
+        printf(" - %d", new->n_placed_boxes_volumes);
+        printf(" --- %d\n", new->best_solution);
     }
-    printf(" - %d", new->max_capacity);
-    printf(" - %d", new->n_placed_boxes_volumes);
-    printf(" --- %d\n", new->best_solution);
 
     return new;
 }
@@ -538,4 +675,10 @@ void free_kp_sol_node_list(){
         kp_sol_list_head = kp_sol_list_head->succ;
         free(tmp);
     }
+}
+
+
+
+int cmpfunc(const void * a, const void * b) {
+   return (*(int*)a - *(int*)b);
 }

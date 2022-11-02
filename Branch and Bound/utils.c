@@ -29,3 +29,7 @@ void append_progress_file(box* boxes_placed, int n_boxes){
     }
     fclose(fptr);
 }
+
+
+
+

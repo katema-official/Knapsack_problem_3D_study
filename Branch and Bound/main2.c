@@ -11,9 +11,9 @@
 
 
 //define container dimensions
-int cont_x = 100;//800;
-int cont_y = 100;//700;
-int cont_z = 100;//1000;
+int cont_x = 600;//860;//100;//800;
+int cont_y = 500;//322;//100;//700;
+int cont_z = 700;//590;//100;//1000;
 
 node* head = NULL;
 
@@ -37,6 +37,7 @@ node* generate_new_node(point* extreme_points, int n_extreme_points,
                         box new_box, int i_ep, int i_btp);
 
 void check_then_update_primal_bound(box* boxes, int n, int total_volume_of_boxes);
+void initialize_dual_bound();
 
 void explore_node();
 
@@ -47,6 +48,7 @@ int main(){
     srand(time(NULL));
 
     if(DEBUG_PROGRESS) reset_progress_file();
+    //initialize_dual_bound();
 
     //cleanup of a utility file
     FILE* p = fopen("./results.txt", "a");
@@ -59,7 +61,7 @@ int main(){
     int read_from_file = 1;
     if(read_from_file){
         //adapter from https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
-        FILE* f = fopen("./input.txt", "r");
+        FILE* f = fopen("./input2.txt", "r");
         if (f == NULL){exit(EXIT_FAILURE);}
 
         //how many boxes are there?
@@ -137,6 +139,11 @@ int main(){
         qsort(boxes, n_boxes, sizeof(box), comparator_boxes_volume);
     }
 
+    for(int i = 0; i < n_boxes; i++){
+        printf("%d %d %d %d %d %d\n", boxes[i].xlen, boxes[i].ylen, boxes[i].zlen,
+                boxes[i].x0, boxes[i].y0, boxes[i].z0);
+    }
+
     char** ordered_boxes_names = (char**) malloc(n_boxes*sizeof(char*));
     for(int i = 0; i < n_boxes; i++){
         int index = -1;
@@ -196,59 +203,62 @@ int main(){
     for(int i = n_boxes-1; i >= 0; i--){    //BEFORE THE ORDER WAS REVERSED AND IT REQUIRED A LOT MORE TIME!!! (of course but still cool)
         int** rotations = rotations_of_box(boxes[i]);
         for(int j = 0; j < 6; j++){
-            box this_box;
-            copy_box(&this_box, boxes[i]);
-            this_box.x0 = 0;
-            this_box.y0 = 0;
-            this_box.z0 = 0;
-            this_box.xlen = rotations[j][0];
-            this_box.ylen = rotations[j][1];
-            this_box.zlen = rotations[j][2];
+            //if the box, in that rotation, is inside the container...
+            if(rotations[j][0] <= cont_x && rotations[j][1] <= cont_y && rotations[j][2] <= cont_z){
+                box this_box;
+                copy_box(&this_box, boxes[i]);
+                this_box.x0 = 0;
+                this_box.y0 = 0;
+                this_box.z0 = 0;
+                this_box.xlen = rotations[j][0];
+                this_box.ylen = rotations[j][1];
+                this_box.zlen = rotations[j][2];
 
-            node* this_node = malloc(sizeof(node));
+                node* this_node = malloc(sizeof(node));
 
-            //initialize boxes placed given the placed box
-            this_node->bp_len = 1;
-            this_node->boxes_placed = (box*) malloc(this_node->bp_len * sizeof(box));
-            this_node->boxes_placed[0] = this_box;
+                //initialize boxes placed given the placed box
+                this_node->bp_len = 1;
+                this_node->boxes_placed = (box*) malloc(this_node->bp_len * sizeof(box));
+                this_node->boxes_placed[0] = this_box;
 
-            //initialize boxes to place given that we already placed a box
-            this_node->btp_len = n_boxes-1;
-            this_node->boxes_to_place = get_copy_boxes_except_one(boxes, n_boxes, i);
+                //initialize boxes to place given that we already placed a box
+                this_node->btp_len = n_boxes-1;
+                this_node->boxes_to_place = get_copy_boxes_except_one(boxes, n_boxes, i);
 
-            //initialize extreme points given the placed box
-            this_node->ep_len = 3;
-            this_node->extreme_points = (point*) malloc(this_node->ep_len * sizeof(point));
+                //initialize extreme points given the placed box
+                this_node->ep_len = 3;
+                this_node->extreme_points = (point*) malloc(this_node->ep_len * sizeof(point));
 
-            this_node->extreme_points[0].x = this_box.x0 + this_box.xlen;
-            this_node->extreme_points[0].y = 0;
-            this_node->extreme_points[0].z = 0;
-            this_node->extreme_points[0].width = cont_x - this_node->extreme_points[0].x;
-            this_node->extreme_points[0].height = cont_y;
-            this_node->extreme_points[0].depth = cont_z;
-            this_node->extreme_points[0].spawnpoint = right_of_box;
+                this_node->extreme_points[0].x = this_box.x0 + this_box.xlen;
+                this_node->extreme_points[0].y = 0;
+                this_node->extreme_points[0].z = 0;
+                this_node->extreme_points[0].width = cont_x - this_node->extreme_points[0].x;
+                this_node->extreme_points[0].height = cont_y;
+                this_node->extreme_points[0].depth = cont_z;
+                this_node->extreme_points[0].spawnpoint = right_of_box;
 
-            this_node->extreme_points[1].x = 0;
-            this_node->extreme_points[1].y = this_box.y0 + this_box.ylen;
-            this_node->extreme_points[1].z = 0;
-            this_node->extreme_points[1].width = cont_x;
-            this_node->extreme_points[1].height = cont_y - this_node->extreme_points[1].y;
-            this_node->extreme_points[1].depth = cont_z;
-            this_node->extreme_points[1].spawnpoint = top_of_box;
+                this_node->extreme_points[1].x = 0;
+                this_node->extreme_points[1].y = this_box.y0 + this_box.ylen;
+                this_node->extreme_points[1].z = 0;
+                this_node->extreme_points[1].width = cont_x;
+                this_node->extreme_points[1].height = cont_y - this_node->extreme_points[1].y;
+                this_node->extreme_points[1].depth = cont_z;
+                this_node->extreme_points[1].spawnpoint = top_of_box;
 
-            this_node->extreme_points[2].x = 0;
-            this_node->extreme_points[2].y = 0;
-            this_node->extreme_points[2].z = this_box.z0 + this_box.zlen;
-            this_node->extreme_points[2].width = cont_x;
-            this_node->extreme_points[2].height = cont_y;
-            this_node->extreme_points[2].depth = cont_z - this_node->extreme_points[2].z;
-            this_node->extreme_points[2].spawnpoint = front_of_box;
+                this_node->extreme_points[2].x = 0;
+                this_node->extreme_points[2].y = 0;
+                this_node->extreme_points[2].z = this_box.z0 + this_box.zlen;
+                this_node->extreme_points[2].width = cont_x;
+                this_node->extreme_points[2].height = cont_y;
+                this_node->extreme_points[2].depth = cont_z - this_node->extreme_points[2].z;
+                this_node->extreme_points[2].spawnpoint = front_of_box;
 
-            //initialize the successor
-            this_node->succ = head;
+                //initialize the successor
+                this_node->succ = head;
 
-            //this is a LIFO ordering
-            head = this_node;
+                //this is a LIFO ordering
+                head = this_node;
+            }
 
         }
         for(int i = 0; i < 6; i++){
@@ -284,10 +294,7 @@ int main(){
         explore_node();
     }
 
-    printf("buah\n");
-
     print_results(boxes, n_boxes, boxes_names);
-
 
     free(volumes);
     free_kp_sol_node_list();
@@ -304,8 +311,8 @@ int main(){
 
 
 void print_results(box* all_boxes, int n_boxes, char** boxes_names){
-    printf("aaa: %s\n", boxes_names[2]);
-    printf("%d\n", n_optimal_feasible_solution_found);
+    FILE* f = fopen("./results/result.txt", "w");
+    fprintf(f, "%d\n", n_optimal_feasible_solution_found);
     for(int i = 0; i < n_optimal_feasible_solution_found; i++){
         int index_name = -1;
         //I want to find the name of the boxes of the optimal solution
@@ -318,7 +325,6 @@ void print_results(box* all_boxes, int n_boxes, char** boxes_names){
                     rots[k][2] == optimal_feasible_solution_found[i].zlen){
                         //the box is the same
                         index_name = j;
-                        printf("index name: %d\n", index_name);
                         b.xlen = -1;
                         b.ylen = -1;
                         b.zlen = -1;
@@ -335,7 +341,8 @@ void print_results(box* all_boxes, int n_boxes, char** boxes_names){
         }
 
 
-        printf("%d %d %d %d %d %d %s\n", optimal_feasible_solution_found[i].xlen,
+        if(boxes_names!=NULL) fprintf(f, "%d %d %d %d %d %d %s\n", 
+                                        optimal_feasible_solution_found[i].xlen,
                                         optimal_feasible_solution_found[i].ylen,
                                         optimal_feasible_solution_found[i].zlen,
                                         optimal_feasible_solution_found[i].x0,
@@ -343,6 +350,7 @@ void print_results(box* all_boxes, int n_boxes, char** boxes_names){
                                         optimal_feasible_solution_found[i].z0,
                                         boxes_names[index_name]);
     }
+    fclose(f);
 }
 
 
@@ -431,6 +439,7 @@ void explore_node(){
     }
     if(capacity < 0){
         capacity = 0;
+        printf("NOOOO\n");
     }
     
 
@@ -442,12 +451,10 @@ void explore_node(){
                                     current_node->boxes_placed[i].zlen;
     }
     qsort(volumes_of_placed_boxes, current_node->bp_len, sizeof(int), comp1);
-    printf("sono arrivato fino a qui...\n");
     dual_bound = get_dual_bound_using_kp_0_1_bfs(volumes_of_placed_boxes, current_node->bp_len,
                             capacity, current_node->boxes_to_place, current_node->btp_len);
-    printf("dual bound here = %d, primal bound = %d\n", dual_bound, primal_bound);
+    if(DEBUG_1) printf("dual bound here = %d, primal bound = %d\n", dual_bound, primal_bound);
     free(volumes_of_placed_boxes);
-    printf("NON sono arrivato fino a qui...\n");
     //---------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------
@@ -456,7 +463,7 @@ void explore_node(){
     //than the volume occupied by the optimal feasible solution found so far (the primal bound),
     //we can close this node and avoid exploring all subsequent sub-nodes (sub-problems)
     if(dual_bound > primal_bound){
-        printf("ok, explore\n");
+        if(DEBUG_1) printf("ok, explore\n");
         //it is still worth to explore this sub-problems (and so its (feasible) sub-problems)
         //So, we now have to generate all the feasible sub-problems from this.
         //This is done in the following way:
@@ -469,7 +476,7 @@ void explore_node(){
         //   -NO: skip
         for(int p_index = 0; p_index < current_node->ep_len; p_index++){
             point p = current_node->extreme_points[p_index];
-            for(int b_index = 0; b_index < current_node->btp_len; b_index++){
+            for(int b_index = current_node->btp_len - 1; b_index >= 0; b_index--){   //IN THIS WAY WE PREFER FIRST THE SOLUTION WITH BIGGER BOXES
                 box b = current_node->boxes_to_place[b_index];
                 int** rots = rotations_of_box(b);
                 for(int r_index = 0; r_index < 6; r_index++){
@@ -486,11 +493,7 @@ void explore_node(){
 
                     //first check: does the box go outside of the container?
                     int not_ok = 0;
-                    //printf("the next box I'd like to put? It's:");
-                    //printf("%d %d %d %d %d %d\n", b_copy.xlen, b_copy.ylen, b_copy.zlen,
-                    //        b_copy.x0, b_copy.y0, b_copy.z0);
                     if(!is_box_outside_container(b_copy)){
-                        //printf("...and it's not outside container!\n");
                         //if not: does it collide with any other previously placed box?
                         for(int i = 0; i < current_node->bp_len; i++){
                             not_ok += do_boxes_overlap(b_copy, current_node->boxes_placed[i]);
@@ -518,7 +521,7 @@ void explore_node(){
 
     }else{
         //this node can be closed
-        printf("close!\n");
+        if(DEBUG_1) printf("close!\n");
     }
     free(current_node->boxes_placed);
     free(current_node->boxes_to_place);
@@ -604,8 +607,6 @@ node* generate_new_node(point* extreme_points, int n_extreme_points,
 
     //copy the boxes to place removing the box placed right now
     box* new_boxes_to_place = get_copy_boxes_except_one(boxes_to_place, n_boxes_to_place, i_btp);
-    //if(new_boxes_to_place == NULL) printf("consistent? NULL & %d\n", n_boxes_to_place-1);
-    //else printf("consistent? Not NULL & %d\n", n_boxes_to_place-1);
 
     node* new_node = malloc(sizeof(node));
     new_node->bp_len = n_boxes_placed+1;
@@ -632,11 +633,60 @@ void check_then_update_primal_bound(box* boxes, int n, int total_volume_of_boxes
         copy_boxes(&optimal_feasible_solution_found, boxes, n);
         primal_bound = total_volume_of_boxes;
         n_optimal_feasible_solution_found = n;
-        printf("new partial optimal solution! It's:\n");
-        //print_results();
+        if(DEBUG_1) printf("new partial optimal solution! It's:\n");
+        if(DEBUG_1) print_results(boxes, n, NULL);
     }
 }
 
+//function that initializes the primal bound to a value given by the user
+//(it's the user's responsibility to grant that the given primal bound is
+//a real primal bound)
+void initialize_dual_bound(){
+    FILE* f = fopen("./results/primal_bound_start.txt", "r");
+    char* line = NULL;
+    size_t len = 0;
+    size_t read;
+    char delim[] = " ";
+    int box_index = 0;
+
+    read = getline(&line, &len, f);
+    int n = atoi(line);
+
+    box* initial_boxes = malloc(n*sizeof(box));
+    int initial_total_volume = 0;
+
+    while ((read = getline(&line, &len, f)) != -1) {
+        //protocol of a line: xlen ylen zlen x0 y0 z0 name\n
+        char** info_of_a_box = (char**) malloc(7*sizeof(char*));
+        line[read-1] = delim[0];
+        line[read-2] = delim[0];
+        char* token = strtok(line, delim);
+        int i = 0;
+        while(token != NULL){
+            int len = strlen(token);
+            info_of_a_box[i] = token;
+            i++;
+            token = strtok(NULL, delim);
+        }
+        box b;
+        b.xlen = atoi(info_of_a_box[0]);
+        b.ylen = atoi(info_of_a_box[1]);
+        b.zlen = atoi(info_of_a_box[2]);
+        b.x0 = atoi(info_of_a_box[3]);
+        b.y0 = atoi(info_of_a_box[4]);
+        b.z0 = atoi(info_of_a_box[5]);
+        initial_boxes[box_index] = b;
+        initial_total_volume += b.xlen*b.ylen*b.zlen;
+        box_index++;
+        free(info_of_a_box);
+    }
+    fclose(f);
+    if(line){free(line);}
+
+    check_then_update_primal_bound(initial_boxes, n, initial_total_volume);
+
+
+}
 
 
 
@@ -647,4 +697,6 @@ int comp1(const void * a, const void * b){
     int b1 = *(const int*) b;
     return a1 - b1;
 }
+
+
 

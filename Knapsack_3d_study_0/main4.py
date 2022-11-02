@@ -69,13 +69,13 @@ def make_a_step():
         y0 = int(elements[4])
         z0 = int(elements[5])
         MyBoxes.boxes_new.append(Box("a", xlen, ylen, zlen,
-                                     rgb(math.e ** (i + 5) * 10 % 255, math.e ** (i + 10) * 10 % 255,
-                                         math.e ** (i + 15) * 10 % 255), x0, y0, z0))
+                                     rgb(math.e ** (i + 27) * 15 % 255, math.e ** (i + 54) * 25 % 255,
+                                         math.e ** (i + 81) * 20 % 255), x0, y0, z0))
     #a = [int(elem) for elem in file.readline()[:-1].split(" ")[:-1]]
     #b = [int(elem) for elem in file.readline()[:-1].split(" ")[:-1]]
     #c = [int(elem) for elem in file.readline()[:-1].split(" ")[:-1]]
 
-    place_boxes_in_space(MyBoxes.boxes_new, False)
+    place_boxes_in_space(MyBoxes.boxes_new, True)
     # print("best_volume = " + str(SimulatedAnnealing.best_volume / (cont_x * cont_y * cont_z)))
 
 
@@ -85,7 +85,7 @@ def input(key):
     if key == "l":
         make_a_step()
     if key == "k":
-        for i in range(10000):
+        for i in range(100):
             make_a_step()
 
 
@@ -99,6 +99,7 @@ def place_boxes_in_space(boxes, all=False):
             volume_covered += box.xlen * box.ylen * box.zlen
         else:
             if(box.x0 + box.xlen <= cont_x and box.y0 + box.ylen <= cont_y and box.z0 + box.zlen <= cont_z):
+                print("aaaaa")
                 box.entity = place_box(box.x0, box.y0, box.z0, box.xlen, box.ylen, box.zlen, box.color)
                 boxes_effectively_placed.append(box)
                 volume_covered += box.xlen * box.ylen * box.zlen

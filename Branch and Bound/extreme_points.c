@@ -126,7 +126,7 @@ int* find_unavailable_points(point* points, int p_len, box* boxes_to_place, int 
 
     int* ret = NULL;
     if(tot_unavailable > 0){
-        printf("tot_unavailable = %d\n", tot_unavailable);
+        if(DEBUG_1) printf("tot_unavailable = %d\n", tot_unavailable);
         ret = malloc((tot_unavailable+1) * sizeof(int));
         ret[0] = tot_unavailable;
         for(int i = 1; i < tot_unavailable + 1; i++){
@@ -150,7 +150,7 @@ void exclude_unavailable_points(point** all_points, int all_points_len,
         return;
     }
 
-    printf("all_points_len = %d, indexes_to_exclude_len = %d\n", all_points_len, indexes_to_exclude_len);
+    if(DEBUG_1) printf("all_points_len = %d, indexes_to_exclude_len = %d\n", all_points_len, indexes_to_exclude_len);
     point* new_set_of_points = malloc((all_points_len - indexes_to_exclude_len) * sizeof(point));
     int a = 0;
     int b = 0;
@@ -180,7 +180,7 @@ void exclude_unavailable_points(point** all_points, int all_points_len,
             (*all_points)[i].width, (*all_points)[i].height, (*all_points)[i].depth);
     }*/
 
-    printf("points updated\n");
+    if(DEBUG_1) printf("points updated\n");
 
 }
 
