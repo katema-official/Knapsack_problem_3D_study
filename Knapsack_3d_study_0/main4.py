@@ -5,7 +5,7 @@ import ursina
 from boxmodule_ursina import *
 from boxmodule_misc import *
 
-file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\Branch and Bound\\results\\progresses.txt", "r")
+file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\Branch_and_Bound_2\\results\\progresses2.txt", "r")
 #file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\hmg_based_implementation_v1\\" +
 #            "Interesting_data\\final_results_relaxed.txt", "r")
 
@@ -69,8 +69,9 @@ def make_a_step():
         y0 = int(elements[4])
         z0 = int(elements[5])
         MyBoxes.boxes_new.append(Box("a", xlen, ylen, zlen,
-                                     rgb(math.e ** (i + 27) * 15 % 255, math.e ** (i + 54) * 25 % 255,
-                                         math.e ** (i + 81) * 20 % 255), x0, y0, z0))
+                                     rgb(math.e ** ((xlen*ylen*zlen) + 27) * 15 % 255,
+                                         math.e ** ((xlen*ylen*zlen) + 54) * 25 % 255,
+                                         math.e ** ((xlen*ylen*zlen) + 81) * 20 % 255), x0, y0, z0))
     #a = [int(elem) for elem in file.readline()[:-1].split(" ")[:-1]]
     #b = [int(elem) for elem in file.readline()[:-1].split(" ")[:-1]]
     #c = [int(elem) for elem in file.readline()[:-1].split(" ")[:-1]]
@@ -86,6 +87,12 @@ def input(key):
         make_a_step()
     if key == "k":
         for i in range(100):
+            make_a_step()
+    if key == "j":
+        for i in range(1000):
+            make_a_step()
+    if key == "h":
+        for i in range(10000):
             make_a_step()
 
 
