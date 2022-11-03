@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
+#define DEBUG_ADVANCED_POINTS 0
 
 
 //function that, given a point, if it is a point spawned on the right or in front of box,
@@ -38,119 +38,190 @@ int comp_left(const void * a, const void * b){
 
 //despite the name, it returns the (minimum, certain) volume that can't be occupied in that point
 int find_box_touching_point_left(point p, box* boxes_placed, int n_boxes_placed){
-    box minimum_box_on_the_left_but_above;
-    minimum_box_on_the_left_but_above.y0 = -1;
+    box box_left;
+    box box_behind;
+    box_left.x0 = -1;
+    box_behind.x0 = -1;
     
     for(int i = 0; i < n_boxes_placed; i++){
         box b = boxes_placed[i];
-        if(b.x0 + b.xlen == p.x && b.z0 == p.z && b.y0 == p.y){
-            return b.ylen * b.zlen * p.width;
+
+        //if this box is the one EXACTLY behind wrt the point p...
+        if(b.z0 + b.zlen == p.z && 
+            b.y0 <= p.y && p.y < b.y0 + b.ylen &&
+                b.x0 <= p.x && p.x < b.x0 + b.xlen){
+                    box_behind = b;
+                    if(DEBUG_ADVANCED_POINTS) printf("box behind (1) found.\
+                        (x0, y0, z0) of box = (%d,%d,%d). This message should not appear twice in a row\n", 
+                        box_behind.x0, box_behind.y0, box_behind.z0);
         }
-        if(b.x0 + b.xlen == p.x && b.z0 == p.z && b.y0 > p.y){
-            if(minimum_box_on_the_left_but_above.y0 == -1){
-                minimum_box_on_the_left_but_above = b;
-            }else{
-                if(b.y0 < minimum_box_on_the_left_but_above.y0){
-                    minimum_box_on_the_left_but_above = b;
-                }
+
+        //if this box is the one EXACTLY on the left wrt the point p...
+        if(b.x0 + b.xlen == p.x &&
+            b.y0 == p.y && b.z0 == p.z){
+                box_left = b;
+                if(DEBUG_ADVANCED_POINTS) printf("box on the left (1) found.\
+                        (x0, y0, z0) of box = (%d,%d,%d). This message should not appear twice in a row\n", 
+                        box_left.x0, box_left.y0, box_left.z0);
             }
-        }
     }
 
-    //no point might be found, if the point is the result of a projection. In that case,
-    //let's do something simple: among all the boxes that are touching on the left with respect
-    //to the point, let's take the one with minimum height.
-    return (minimum_box_on_the_left_but_above.y0 + minimum_box_on_the_left_but_above.ylen - p.y)*
-            minimum_box_on_the_left_but_above.zlen * p.width;
-
-    /*
-
-    //first: find all the boxes that are exactly confining, on the left, with this point
-    //second: consider only the ones in front of the point
-    //(actually, we are doing the two things at the same time)
-    int count_1 = 0;
-    int* indexes = malloc(n_boxes_placed*sizeof(int));
-    for(int i = 0; i < n_boxes_placed; i++){
-        box b = boxes_placed[i];
-        if(b.x0 + b.xlen == p.x && b.z0 >= p.z){
-            indexes[count_1] = i;
-            count_1++;
-        }
+    int z;
+    if(box_left.x0 != -1){
+        z = box_left.zlen;
+    }else{
+        //since there is no face (of another box, because of projection) on the left, we can't say anything
+        return 0;
     }
 
-    //third: among these, consider only:
-    //1) the box that is exactly on the left with respect to "p" (of course)
-    //2) all the following boxes that touch the face of the preceeding one (along the z axis)
-    //2.1) but only if their height is greater than the one of the first box
-    box* boxes_important = malloc(count_1*sizeof(box));
-    for(int i = 0; i < count_1; i++){
-        boxes_important[i] = boxes_placed[indexes[i]];
-    }
-    free(indexes);
-    qsort(boxes_important, count_1, sizeof(box), comp_left);
-
-    assert(boxes_important[0].z0, p.z);
-    int z_current = boxes_important[0].z0 + boxes_important[0].zlen;
-    int count_2 = 1;
-    for(int i = 1; i < count_1; i++){
-        if(z_current == boxes_important[i].z0){
-            z_current += boxes_important[i].zlen;
-            count_2++;
-        }else{
-            break;
-        }
+    int x;
+    if(box_behind.x0 != -1){
+        x = box_behind.x0 + box_behind.xlen - p.x;
+    }else if(p.z == 0){
+        x = p.width;    //works if all the points were updated before calling this function
+    }else{
+        //since there is no face (of another box or of the wall) behind, we can't say anything
+        return 0;
     }
 
-    //we found the boxes we were looking for
-    //I do a little trick: the first entry of the array is a false box, that will contain,
-    //in x0, the length of this array
-    box* ret = malloc((count_2+1)*sizeof(box));
-    box fake;
-    fake.x0 = count_2;
-    for(int i = 1; i < count_2+1; i++){
-        ret[i] = boxes_important[i-1];
+    int y;
+    if(box_behind.x0 != -1){
+        y = min(box_behind.ylen, box_left.ylen);
+    }else{
+        y = box_left.ylen;
     }
-    free(boxes_important);
-    return ret;
-    */
+    return x*y*z;
+
+    
+
 
 }
 
 int find_box_touching_point_below(point p, box* boxes_placed, int n_boxes_placed){
-    //here it's even easier: "p" is for sure a point above a box, so let's find that box!
+    box box_below;
+    box box_left;
+    box box_behind;
+    box_below.x0 = -1;
+    box_left.x0 = -1;
+    box_behind.x0 = -1;
+
     for(int i = 0; i < n_boxes_placed; i++){
         box b = boxes_placed[i];
+        //point p was "born" above a box. First, let's find it.
         if(b.y0 + b.ylen == p.y && b.x0 == p.x && b.z0 == p.z){
-            return b.xlen * b.zlen * p.height;
+            box_below = b;
+            if(DEBUG_ADVANCED_POINTS) printf("box below (3) found.\
+                        (x0, y0, z0) of box = (%d,%d,%d). This message should not appear twice in a row\n", 
+                        box_below.x0, box_below.y0, box_below.z0);
+        }
+
+        //then we need to find the two boxes on the left...
+        if(b.x0 + b.xlen == p.x &&
+            b.y0 <= p.y && p.y < b.y0 + b.ylen &&
+            b.z0 <= p.z && p.z < b.z0 + b.zlen){
+                box_left = b;
+                if(DEBUG_ADVANCED_POINTS) printf("box on the left (3) found.\
+                        (x0, y0, z0) of box = (%d,%d,%d). This message should not appear twice in a row\n", 
+                        box_left.x0, box_left.y0, box_left.z0);
+        }
+        //...and behind
+        if(b.z0 + b.zlen == p.z &&
+            b.y0 <= p.y && p.y < b.y0 + b.ylen &&
+            b.x0 <= p.x && p.x < b.x0 + b.xlen){
+                box_behind = b;
+                if(DEBUG_ADVANCED_POINTS) printf("box behind (3) found.\
+                        (x0, y0, z0) of box = (%d,%d,%d). This message should not appear twice in a row\n", 
+                        box_behind.x0, box_behind.y0, box_behind.z0);
         }
     }
+
+    if(box_behind.x0 == -1){
+        //no box behind was found
+        if(p.z > 0){
+            return 0;
+        }
+    }
+    if(box_left.x0 == -1){
+        //no box on the left was found
+        if(p.x > 0){
+            return 0;
+        }
+    }
+
+    
+    int x;
+    int y;
+    int z;
+    x = box_below.xlen;
+    z = box_below.zlen;
+    if(box_behind.x0 != -1 && box_left.x0 != -1){
+        y = min(box_behind.y0 + box_behind.ylen - p.y, box_left.y0 + box_left.ylen - p.y);
+    }else if(box_behind.x0 == -1 && box_left.x0 == -1){
+        y = p.height;   //the point has p.x = p.z = 0
+    }else if(box_behind.x0 == -1 && p.z == 0){
+        y = box_left.y0 + box_left.ylen - p.y;
+    }else if(box_left.x0 == -1 && p.x == 0){
+        y = box_behind.y0 + box_behind.ylen - p.y;
+    }
+    return x*y*z;
+
 }
 
 int find_box_touching_point_behind(point p, box* boxes_placed, int n_boxes_placed){
-    box minimum_box_behind_but_above;
-    minimum_box_behind_but_above.y0 = -1;
+    box box_left;
+    box box_behind;
+    box_left.x0 = -1;
+    box_behind.x0 = -1;
     
     for(int i = 0; i < n_boxes_placed; i++){
         box b = boxes_placed[i];
-        if(b.z0 + b.zlen == p.z && b.x0 == p.x && b.y0 == p.y){
-            return b.ylen * b.xlen * p.depth;
+
+        //if this box is the one EXACTLY on the left wrt the point p...
+        if(b.x0 + b.xlen == p.x && 
+            b.y0 <= p.y && p.y < b.y0 + b.ylen &&
+                b.z0 <= p.z && p.z < b.z0 + b.zlen){
+                    box_left = b;
+                    if(DEBUG_ADVANCED_POINTS) printf("box on the left (2) found.\
+                        (x0, y0, z0) of box = (%d,%d,%d). This message should not appear twice in a row\n", 
+                        box_left.x0, box_left.y0, box_left.z0);
         }
-        if(b.z0 + b.zlen == p.z && b.x0 == p.x && b.y0 > p.y){
-            if(minimum_box_behind_but_above.y0 == -1){
-                minimum_box_behind_but_above = b;
-            }else{
-                if(b.y0 < minimum_box_behind_but_above.y0){
-                    minimum_box_behind_but_above = b;
-                }
+
+        //if this box is the one EXACTLY behind wrt the point p...
+        if(b.z0 + b.zlen == p.z &&
+            b.x0 == p.x && b.y0 == p.y){
+                box_behind = b;
+                if(DEBUG_ADVANCED_POINTS) printf("box behind (2) found.\
+                        (x0, y0, z0) of box = (%d,%d,%d). This message should not appear twice in a row\n", 
+                        box_behind.x0, box_behind.y0, box_behind.z0);
             }
-        }
     }
 
-    //no point might be found, if the point is the result of a projection. In that case,
-    //let's do something simple: among all the boxes that are touching on the back with respect
-    //to the point, let's take the one with minimum height.
-    return (minimum_box_behind_but_above.y0 + minimum_box_behind_but_above.ylen - p.y)*
-            minimum_box_behind_but_above.xlen * p.depth;
+    int x;
+    if(box_behind.x0 != -1){
+        x = box_behind.xlen;
+    }else{
+        //since there is no face (of another box, because of projection) behind, we can't say anything
+        return 0;
+    }
+    
+    int z;
+    if(box_left.x0 != -1){
+        z = box_left.z0 + box_left.zlen - p.z;
+    }else if(p.x == 0){
+        z = p.depth;    //works if all the points were updated before calling this function
+    }else{
+        //Since there is no face (of another box or of the wall) on the left, we can't say anything
+        return 0;
+    }
+
+    int y;
+    if(box_left.x0 != -1){
+        y = min(box_behind.ylen, box_left.ylen);
+    }else{
+        y = box_behind.ylen;
+    }
+
+    return x*y*z;
 
 }
 
@@ -178,15 +249,22 @@ int capacity_minus_unavailable_points_volume(int capacity, box* boxes_placed, in
     for(int i = 0; i < n_points_to_exclude; i++){
         point p = points_to_exclude[i];
         if(DEBUG_1) printf("p to remove from capacity = %d %d %d - %d\n", p.x, p.y, p.z, p.spawnpoint);
+        int r;
         switch(p.spawnpoint){
             case right_of_box:
-                capacity -= find_box_touching_point_left(p, boxes_placed, n_boxes_placed);
+                r = find_box_touching_point_left(p, boxes_placed, n_boxes_placed);
+                //printf("r = %d\n", r);
+                capacity -= r;
             break;
             case top_of_box:
-                capacity -= find_box_touching_point_below(p, boxes_placed, n_boxes_placed);
+                r = find_box_touching_point_below(p, boxes_placed, n_boxes_placed);
+                //printf("r = %d\n", r);
+                capacity -= r;
             break;
             case front_of_box:
-                capacity -= find_box_touching_point_behind(p, boxes_placed, n_boxes_placed);
+                r = find_box_touching_point_behind(p, boxes_placed, n_boxes_placed);
+                //printf("r = %d\n", r);
+                capacity -= r;
             break;
             default:
             break;
