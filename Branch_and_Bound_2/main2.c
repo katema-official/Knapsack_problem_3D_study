@@ -206,7 +206,8 @@ int main(){
     //extreme point, in any of the 6 possible configurations
     for(int i = n_boxes-1; i >= 0; i--){    //BEFORE THE ORDER WAS REVERSED AND IT REQUIRED A LOT MORE TIME!!! (of course but still cool)
         int** rotations = rotations_of_box(boxes[i]);
-        for(int j = 0; j < 6; j++){
+        int n_of_rotations = rotations[0][0];
+        for(int j = 1; j < n_of_rotations+1; j++){
             //if the box, in that rotation, is inside the container...
             if(rotations[j][0] <= cont_x && rotations[j][1] <= cont_y && rotations[j][2] <= cont_z){
                 box this_box;
@@ -265,7 +266,7 @@ int main(){
             }
 
         }
-        for(int i = 0; i < 6; i++){
+        for(int i = 0; i < n_of_rotations+1; i++){
             free(rotations[i]);
         }
         free(rotations);
@@ -327,7 +328,8 @@ void print_results(box* all_boxes, int n_boxes, char** boxes_names){
         for(int j = 0; j < n_boxes; j++){
             box b = all_boxes[j];
             int** rots = rotations_of_box(b);
-            for(int k = 0; k < 6; k++){
+            int n_of_rotations = rots[0][0];
+            for(int k = 1; k < n_of_rotations+1; k++){
                 if(rots[k][0] == optimal_feasible_solution_found[i].xlen &&
                     rots[k][1] == optimal_feasible_solution_found[i].ylen &&
                     rots[k][2] == optimal_feasible_solution_found[i].zlen){
@@ -339,7 +341,7 @@ void print_results(box* all_boxes, int n_boxes, char** boxes_names){
                         break;
                 }
             }
-            for(int k = 0; k < 6; k++){
+            for(int k = 0; k < n_of_rotations+1; k++){
                 free(rots[k]);
             }
             free(rots);
@@ -502,7 +504,8 @@ void explore_node(){
             for(int b_index = current_node->btp_len - 1; b_index >= 0; b_index--){   //IN THIS WAY WE PREFER FIRST THE SOLUTION WITH BIGGER BOXES
                 box b = current_node->boxes_to_place[b_index];
                 int** rots = rotations_of_box(b);
-                for(int r_index = 0; r_index < 6; r_index++){
+                int n_of_rotations = rots[0][0];
+                for(int r_index = 1; r_index < n_of_rotations+1; r_index++){
                     int* current_rotation = rots[r_index];
                     box b_copy;
                     copy_box(&b_copy, b);
@@ -533,7 +536,7 @@ void explore_node(){
                         }
                     }
                 }
-                for(int i = 0; i < 6; i++){
+                for(int i = 0; i < n_of_rotations+1; i++){
                     free(rots[i]);
                 }
                 free(rots);

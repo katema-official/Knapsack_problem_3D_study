@@ -62,9 +62,60 @@ void copy_boxes(box** dst, box* src, int len){
 }
 
 int** rotations_of_box(box b){
-    int** rots = malloc(6*sizeof(int*));
+    if(b.xlen == b.ylen && b.ylen == b.zlen){
+        int** rots = malloc(2*sizeof(int*));
+        rots[0] = malloc(1*sizeof(int));
+        rots[0][0] = 1;
+        rots[1] = malloc(3*sizeof(int));
+        rots[1][0] = b.xlen;
+        rots[1][1] = b.ylen;
+        rots[1][2] = b.zlen;
+        return rots;
+    }
 
-    for(int i=0; i < 6; i++){
+    int unique = 0;
+    int doubled = 0;
+    if(b.xlen == b.ylen){
+        unique = b.zlen;
+        doubled = b.xlen;
+    }
+    if(b.ylen == b.zlen){
+        unique = b.xlen;
+        doubled = b.ylen;
+    }
+    if(b.zlen == b.xlen){
+        unique = b.ylen;
+        doubled = b.zlen;
+    }
+    if(unique > 0){
+        int** rots = malloc(4*sizeof(int*));
+        rots[0] = malloc(1*sizeof(int));
+        rots[0][0] = 3;
+        for(int i = 1; i < 4; i++){
+            rots[i] = malloc(3*sizeof(int));
+        }
+
+        rots[1][0] = unique;
+        rots[1][1] = doubled;
+        rots[1][2] = doubled;
+
+        rots[2][0] = doubled;
+        rots[2][1] = unique;
+        rots[2][2] = doubled;
+
+        rots[3][0] = doubled;
+        rots[3][1] = doubled;
+        rots[3][2] = unique;
+
+        return rots;
+    }
+    
+
+    int** rots = malloc(7*sizeof(int*));
+
+    rots[0] = malloc(1*sizeof(int));
+    rots[0][0] = 6;
+    for(int i=1; i < 7; i++){
         rots[i] = malloc(3*sizeof(int));
     }
 
@@ -72,29 +123,29 @@ int** rotations_of_box(box b){
     int ylen = b.ylen;
     int zlen = b.zlen;
 
-    rots[0][0] = xlen;
-    rots[0][1] = ylen;
-    rots[0][2] = zlen;
-
     rots[1][0] = xlen;
-    rots[1][1] = zlen;
-    rots[1][2] = ylen;
+    rots[1][1] = ylen;
+    rots[1][2] = zlen;
 
-    rots[2][0] = ylen;
-    rots[2][1] = xlen;
-    rots[2][2] = zlen;
+    rots[2][0] = xlen;
+    rots[2][1] = zlen;
+    rots[2][2] = ylen;
 
     rots[3][0] = ylen;
-    rots[3][1] = zlen;
-    rots[3][2] = xlen;
+    rots[3][1] = xlen;
+    rots[3][2] = zlen;
 
-    rots[4][0] = zlen;
-    rots[4][1] = xlen;
-    rots[4][2] = ylen;
+    rots[4][0] = ylen;
+    rots[4][1] = zlen;
+    rots[4][2] = xlen;
 
     rots[5][0] = zlen;
-    rots[5][1] = ylen;
-    rots[5][2] = xlen;
+    rots[5][1] = xlen;
+    rots[5][2] = ylen;
+
+    rots[6][0] = zlen;
+    rots[6][1] = ylen;
+    rots[6][2] = xlen;
 
     return rots;
 

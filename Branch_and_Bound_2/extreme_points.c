@@ -96,7 +96,8 @@ int* find_unavailable_points(point* points, int p_len, box* boxes_to_place, int 
             //further that box
             if(min_box_dim <= max_point_dim){
                 int** rotations = rotations_of_box(b);
-                for(int k = 0; k < 6; k++){
+                int n_of_rotations = rotations[0][0];
+                for(int k = 1; k < n_of_rotations+1; k++){
                     //let's see if this box, with this rotation, fits in that point.
                     //if it does, the point is available (there is at least a box that can stay there)
                     if(rotations[k][0] <= p.width && 
@@ -106,7 +107,7 @@ int* find_unavailable_points(point* points, int p_len, box* boxes_to_place, int 
                             break;
                         }
                 }
-                for(int i = 0; i < 6; i++){
+                for(int i = 0; i < n_of_rotations+1; i++){
                     free(rotations[i]);
                 }
                 free(rotations);
