@@ -9282,4 +9282,4 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 646, primal bound = 882
 close!
-TOTAL TIME: 0.421394
+TOTAL TIME: 0.11

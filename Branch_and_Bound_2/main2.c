@@ -313,8 +313,10 @@ int main(){
     free(optimal_feasible_solution_found);
 
     end = clock();
-    cpu_time_used = (((double) (end-start)) / CLOCKS_PER_SEC) / 60;
-    printf("TOTAL TIME: %f\n", cpu_time_used);
+    cpu_time_used = (((double) (end-start)) / CLOCKS_PER_SEC);
+    int mins = cpu_time_used/60;
+    int secs = ((int)cpu_time_used)%60;
+    printf("TOTAL TIME: %d.%d\n", mins, secs);
 
 }
 
