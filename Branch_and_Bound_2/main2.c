@@ -362,6 +362,7 @@ void print_results(box* all_boxes, int n_boxes, char** boxes_names){
                                         optimal_feasible_solution_found[i].z0,
                                         boxes_names[index_name]);
     }
+    fprintf(f, "---\n");
     fclose(f);
 }
 
@@ -401,7 +402,7 @@ void explore_node(){
     node* current_node = head;
     head = head->succ;
 
-    if(DEBUG_PROGRESS) append_progress_file(current_node->boxes_placed, current_node->bp_len);
+    if(DEBUG_PROGRESS) append_progress_file_partial_solution(current_node->boxes_placed, current_node->bp_len);
 
     //0) update, if possible, the primal bound
     int v = 0;
@@ -439,6 +440,9 @@ void explore_node(){
             free(current_node->boxes_to_place);
             free(current_node->extreme_points);
             free(current_node);
+            //this node can be closed
+            if(DEBUG_PROGRESS) append_progress_file_solution_separator();
+            if(DEBUG_3) printf("no points!\n");
             return;
         }
 
@@ -555,6 +559,7 @@ void explore_node(){
     free(current_node->boxes_to_place);
     free(current_node->extreme_points);
     free(current_node);
+    if(DEBUG_PROGRESS) append_progress_file_solution_separator();
 
 }
 

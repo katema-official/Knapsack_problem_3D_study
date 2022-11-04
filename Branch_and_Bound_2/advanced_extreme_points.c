@@ -71,6 +71,16 @@ int find_box_touching_point_left(point p, box* boxes_placed, int n_boxes_placed)
         z = box_left.zlen;
     }else{
         //since there is no face (of another box, because of projection) on the left, we can't say anything
+        if(DEBUG_PROGRESS){
+            box b_to_print;
+            b_to_print.x0 = p.x;
+            b_to_print.y0 = p.y;
+            b_to_print.z0 = p.z;
+            b_to_print.xlen = 0;
+            b_to_print.ylen = 0;
+            b_to_print.zlen = 0;
+            append_progress_file_box_volume_excluded(b_to_print);
+        }
         return 0;
     }
 
@@ -81,6 +91,16 @@ int find_box_touching_point_left(point p, box* boxes_placed, int n_boxes_placed)
         x = p.width;    //works if all the points were updated before calling this function
     }else{
         //since there is no face (of another box or of the wall) behind, we can't say anything
+        if(DEBUG_PROGRESS){
+            box b_to_print;
+            b_to_print.x0 = p.x;
+            b_to_print.y0 = p.y;
+            b_to_print.z0 = p.z;
+            b_to_print.xlen = 0;
+            b_to_print.ylen = 0;
+            b_to_print.zlen = 0;
+            append_progress_file_box_volume_excluded(b_to_print);
+        }
         return 0;
     }
 
@@ -90,6 +110,18 @@ int find_box_touching_point_left(point p, box* boxes_placed, int n_boxes_placed)
     }else{
         y = box_left.ylen;
     }
+
+    if(DEBUG_PROGRESS){
+        box b_to_print;
+        b_to_print.x0 = p.x;
+        b_to_print.y0 = p.y;
+        b_to_print.z0 = p.z;
+        b_to_print.xlen = x;
+        b_to_print.ylen = y;
+        b_to_print.zlen = z;
+        append_progress_file_box_volume_excluded(b_to_print);
+    }
+    
     return x*y*z;
 
     
@@ -138,12 +170,32 @@ int find_box_touching_point_below(point p, box* boxes_placed, int n_boxes_placed
     if(box_behind.x0 == -1){
         //no box behind was found
         if(p.z > 0){
+            if(DEBUG_PROGRESS){
+                box b_to_print;
+                b_to_print.x0 = p.x;
+                b_to_print.y0 = p.y;
+                b_to_print.z0 = p.z;
+                b_to_print.xlen = 0;
+                b_to_print.ylen = 0;
+                b_to_print.zlen = 0;
+                append_progress_file_box_volume_excluded(b_to_print);
+            }
             return 0;
         }
     }
     if(box_left.x0 == -1){
         //no box on the left was found
         if(p.x > 0){
+            if(DEBUG_PROGRESS){
+                box b_to_print;
+                b_to_print.x0 = p.x;
+                b_to_print.y0 = p.y;
+                b_to_print.z0 = p.z;
+                b_to_print.xlen = 0;
+                b_to_print.ylen = 0;
+                b_to_print.zlen = 0;
+                append_progress_file_box_volume_excluded(b_to_print);
+            }
             return 0;
         }
     }
@@ -152,8 +204,19 @@ int find_box_touching_point_below(point p, box* boxes_placed, int n_boxes_placed
     int x;
     int y;
     int z;
-    x = box_below.xlen;
-    z = box_below.zlen;
+
+    if(box_behind.x0 != -1){
+        x = min(box_below.xlen, box_behind.x0 + box_behind.xlen - p.x);
+    }else{
+        x = box_below.xlen;
+    }
+
+    if(box_left.x0 != -1){
+        z = min(z = box_below.zlen, box_left.z0 + box_left.zlen - p.z);
+    }else{
+        z = box_below.zlen;
+    }
+
     if(box_behind.x0 != -1 && box_left.x0 != -1){
         y = min(box_behind.y0 + box_behind.ylen - p.y, box_left.y0 + box_left.ylen - p.y);
     }else if(box_behind.x0 == -1 && box_left.x0 == -1){
@@ -163,6 +226,18 @@ int find_box_touching_point_below(point p, box* boxes_placed, int n_boxes_placed
     }else if(box_left.x0 == -1 && p.x == 0){
         y = box_behind.y0 + box_behind.ylen - p.y;
     }
+
+    if(DEBUG_PROGRESS){
+        box b_to_print;
+        b_to_print.x0 = p.x;
+        b_to_print.y0 = p.y;
+        b_to_print.z0 = p.z;
+        b_to_print.xlen = x;
+        b_to_print.ylen = y;
+        b_to_print.zlen = z;
+        append_progress_file_box_volume_excluded(b_to_print);
+    }
+
     return x*y*z;
 
 }
@@ -201,6 +276,16 @@ int find_box_touching_point_behind(point p, box* boxes_placed, int n_boxes_place
         x = box_behind.xlen;
     }else{
         //since there is no face (of another box, because of projection) behind, we can't say anything
+        if(DEBUG_PROGRESS){
+            box b_to_print;
+            b_to_print.x0 = p.x;
+            b_to_print.y0 = p.y;
+            b_to_print.z0 = p.z;
+            b_to_print.xlen = 0;
+            b_to_print.ylen = 0;
+            b_to_print.zlen = 0;
+            append_progress_file_box_volume_excluded(b_to_print);
+        }
         return 0;
     }
     
@@ -211,6 +296,16 @@ int find_box_touching_point_behind(point p, box* boxes_placed, int n_boxes_place
         z = p.depth;    //works if all the points were updated before calling this function
     }else{
         //Since there is no face (of another box or of the wall) on the left, we can't say anything
+        if(DEBUG_PROGRESS){
+            box b_to_print;
+            b_to_print.x0 = p.x;
+            b_to_print.y0 = p.y;
+            b_to_print.z0 = p.z;
+            b_to_print.xlen = 0;
+            b_to_print.ylen = 0;
+            b_to_print.zlen = 0;
+            append_progress_file_box_volume_excluded(b_to_print);
+        }
         return 0;
     }
 
@@ -219,6 +314,17 @@ int find_box_touching_point_behind(point p, box* boxes_placed, int n_boxes_place
         y = min(box_behind.ylen, box_left.ylen);
     }else{
         y = box_behind.ylen;
+    }
+
+    if(DEBUG_PROGRESS){
+        box b_to_print;
+        b_to_print.x0 = p.x;
+        b_to_print.y0 = p.y;
+        b_to_print.z0 = p.z;
+        b_to_print.xlen = x;
+        b_to_print.ylen = y;
+        b_to_print.zlen = z;
+        append_progress_file_box_volume_excluded(b_to_print);
     }
 
     return x*y*z;
@@ -246,6 +352,7 @@ int find_box_touching_point_behind(point p, box* boxes_placed, int n_boxes_place
 //smaller than the total length of the point.
 int capacity_minus_unavailable_points_volume(int capacity, box* boxes_placed, int n_boxes_placed,
                     point* points_to_exclude, int n_points_to_exclude){
+    if(DEBUG_PROGRESS) append_progress_file_box_volumes_number(n_points_to_exclude);
     for(int i = 0; i < n_points_to_exclude; i++){
         point p = points_to_exclude[i];
         if(DEBUG_1) printf("p to remove from capacity = %d %d %d - %d\n", p.x, p.y, p.z, p.spawnpoint);

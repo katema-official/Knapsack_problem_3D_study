@@ -1,0 +1,79 @@
+8|5|6|a
+6|5|7|b
+4|9|7|c
+7|8|9|d
+3|4|10|e
+6|9|5|f
+10|3|10|g
+4|4|4|h
+
+
+con controllo:
+1.76
+33786 righe in aaa.txt
+174477 righe in progresses2.txt
+
+4
+5 9 6 0 0 0 f
+7 9 4 0 0 6 c
+3 10 4 7 0 6 e
+5 8 6 5 0 0 a
+
+
+
+senza controllo:
+3.32
+40717 righe in aaa.txt
+468913 right in progresses2.txt
+
+[stesso risultato]
+
+
+
+con controllo, ma soprattutto avendo ridotto le rotazioni al minimo indispensabile:
+0.42
+9285 righe in aaa.txt
+38975 right in progresses2.txt
+(conta anche che, quando hai eseguito questo ultimo test, avevi meno del 20% di batteria, quindi eri in risparmio energetico!)
+
+[stesso risultato]
+
+
+
+----------------
+Avendo aggiustato (definitivamente? Teoria: sì, pratica: da verificare con accurati testbench) l'esclusione dei volumi indotti
+dai punti inammissibili...
+NON avendo cambiato il calcolo del dual bound (ovvero usando ancora l'algoritmo di programmazione dinamica con la lista inefficiente)
+l'istanza è tale per cui:
+(Also, sono attaccato alla corrente e ho la batteria al massimo)
+
+0.14
+10146 righe in aaa.txt
+54576 right in progresses2.txt
+
+Risultato: peggiorato di poco rispetto al caso precedente, ma ci ho guadagnato che ora l'algoritmo è CORRETTO (butta via...)
+[stesso risultato]
+
+TODO: 
+-aggiornare l'algoritmo di programmazione dinamica e tutta la sua infrastruttura
+con un algoritmo per la subset sum intelligente, dove costruisci un albero di soluzioni
+parziali che ogni volta percorri per trovare, data la sequenza (ordinata) di volumi
+che hai in mano, la sub-sum massimale inferiore o uguale alla capacità data (capacità,
+come prima, ottenuta escludendo il volume delle scatole già piazzate e dei punti
+dove non si può più mettere niente)
+-creare un nuovo progresses.txt dove, assieme alle scatole piazzate in quel sottoproblema,
+vengono elencati anche i volumi "eterei" (come fossero scatole, magari di un colore
+particolare tipo il bianco o il rosso), ovvero quelli che NON possono essere in alcun
+modo occupati da successive scatole (sarebbe un buon test di correttezza)
+
+
+Col print degli spazi inutilizzabili:
+(no spina di corrente per i prossimi due)
+
+1.5
+17448 righe in aaa.txt (hai aggiunto no points!)
+87161 righe in progresses2.txt
+
+togliendo ogni debug:
+
+0.12
