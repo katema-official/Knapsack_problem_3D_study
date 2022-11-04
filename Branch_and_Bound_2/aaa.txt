@@ -17444,4 +17444,4 @@ no points!
 no points!
 dual bound here = 694, primal bound = 882
 close!
-TOTAL TIME: 1.10
+TOTAL TIME: 0.10
