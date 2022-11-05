@@ -6,7 +6,7 @@ from boxmodule_ursina import *
 from boxmodule_misc import *
 
 file_dir = os.path.dirname(os.path.realpath('__file__'))
-file_name = os.path.join(file_dir, '..\\Branch_and_Bound_2\\results\\progresses2.txt')
+file_name = os.path.join(file_dir, '..\\Branch_and_Bound_3\\results\\progresses2.txt')
 
 file = open(file_name, "r")
 #file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\hmg_based_implementation_v1\\" +
