@@ -42,9 +42,25 @@ void append_progress_file_partial_solution(box* boxes_placed, int n_boxes,
 
 
 //to print after the partial solution and (possibly) the volumes to exclude have been printed.
-void append_progress_file_solution_separator(){
+//This tells also what is the "fate" of this node:
+//0) it will generate at least another solution
+//1) it won't generate new solutions, because of a dual bound lower than the primal bound
+//2) it won't generate new solutions because there are no points available
+void append_progress_file_solution_separator(int fate, int dual, int primal){
     FILE* fptr = fopen(filename_progress,"a");
     fprintf(fptr, "---\n");
+    switch(fate){
+        case 0:
+            fprintf(fptr, "--- explore: dual > primal - %f > %f\n", (float) dual, (float) primal);
+        break;
+        case 1:
+            fprintf(fptr, "--- close: dual <= primal - %f <= %f\n", (float) dual, (float) primal);
+        break;
+        case 2:
+            fprintf(fptr, "--- close: no more points available\n");
+        break;
+    }
+
     fclose(fptr);
 }
 

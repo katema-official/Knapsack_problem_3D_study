@@ -115,3 +115,8 @@ scendono a 0.0 -> ricorda che l'istanza è (relativamente) piccola)
 Ho fatto delle prove mettendo a confronto le due finestre di ursina, la nuova 
 implementazione risparmia 2000 configurazioni (stica mica male)
 
+(a bug risolto, così che ora garantisco sempre la preservazione dell'ottimalità)
+
+0.5
+15998 aaa.txt
+89547 progresses2.txt (hai tolto i volumi da escludere "fasulli" che avevano uno 0 in una qualche dimensione)

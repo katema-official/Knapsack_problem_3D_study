@@ -61,6 +61,8 @@ def make_a_step():
     n_boxes = int(file.readline()[:-1])
     print(n_boxes)
 
+    volume_occupied_absolute = 0
+
     for i in range(n_boxes):
         line = file.readline()[:-1]
         elements = line.split(" ")
@@ -75,6 +77,7 @@ def make_a_step():
                                      rgb(math.e ** ((xlen*ylen*zlen) + 27) * 15 % 255,
                                          math.e ** ((xlen*ylen*zlen) + 54) * 25 % 255,
                                          math.e ** ((xlen*ylen*zlen) + 81) * 20 % 255), x0, y0, z0))
+        volume_occupied_absolute += xlen*ylen*zlen
 
     line = file.readline()[:-1]
     if line != "---":
@@ -93,6 +96,10 @@ def make_a_step():
             MyBoxes.boxes_new.append(Box("a", xlen, ylen, zlen, rgb(255, 0, 0), x0, y0, z0))
         line = file.readline()[:-1]
     print(line)
+    line = file.readline()[:-1]
+    print(line)
+
+    print(volume_occupied_absolute / (cont_x*cont_y*cont_z))
 
     place_boxes_in_space(MyBoxes.boxes_new, True)
     # print("best_volume = " + str(SimulatedAnnealing.best_volume / (cont_x * cont_y * cont_z)))
@@ -128,7 +135,7 @@ def place_boxes_in_space(boxes, all=False):
                 box.entity = place_box(box.x0, box.y0, box.z0, box.xlen, box.ylen, box.zlen, box.color)
                 boxes_effectively_placed.append(box)
                 volume_covered += box.xlen * box.ylen * box.zlen
-    print(volume_covered/(cont_x*cont_y*cont_z))
+    #print(volume_covered/(cont_x*cont_y*cont_z))
 
     if check_if_boxes_overlap_2(boxes_effectively_placed): print("Si sovrappongono")
 

@@ -448,6 +448,7 @@ void explore_node(){
             //generate new ones.
             if(DEBUG_PROGRESS) append_progress_file_partial_solution(current_node->boxes_placed, current_node->bp_len,
                                                 current_node->volumes_to_exclude, current_node->vte_len);
+            if(DEBUG_PROGRESS) append_progress_file_solution_separator(2, dual_bound, primal_bound);
             free(points_unavailable);
             free(current_node->boxes_placed);
             free(current_node->boxes_to_place);
@@ -455,7 +456,6 @@ void explore_node(){
             free(current_node->volumes_to_exclude);
             free(current_node);
             //this node can be closed
-            if(DEBUG_PROGRESS) append_progress_file_solution_separator();
             if(DEBUG_3) printf("no points!\n");
             return;
         }
@@ -508,10 +508,6 @@ void explore_node(){
         printf("NOOOO\n");
     }
 
-    if(DEBUG_PROGRESS) append_progress_file_partial_solution(current_node->boxes_placed, current_node->bp_len,
-                                                current_node->volumes_to_exclude, current_node->vte_len);
-    
-
     //1.2) solve the knapsack problem
     int* volumes_of_placed_boxes = malloc(current_node->bp_len * sizeof(int));
     for(int i = 0; i < current_node->bp_len; i++){
@@ -532,6 +528,9 @@ void explore_node(){
     //than the volume occupied by the optimal feasible solution found so far (the primal bound),
     //we can close this node and avoid exploring all subsequent sub-nodes (sub-problems)
     if(dual_bound > primal_bound){
+        if(DEBUG_PROGRESS) append_progress_file_partial_solution(current_node->boxes_placed, current_node->bp_len,
+                                                current_node->volumes_to_exclude, current_node->vte_len);
+        if(DEBUG_PROGRESS) append_progress_file_solution_separator(0, dual_bound, primal_bound);
         if(DEBUG_3) printf("ok, explore\n");
         //it is still worth to explore this sub-problems (and so its (feasible) sub-problems)
         //So, we now have to generate all the feasible sub-problems from this.
@@ -592,6 +591,9 @@ void explore_node(){
 
     }else{
         //this node can be closed
+        if(DEBUG_PROGRESS) append_progress_file_partial_solution(current_node->boxes_placed, current_node->bp_len,
+                                                current_node->volumes_to_exclude, current_node->vte_len);
+        if(DEBUG_PROGRESS) append_progress_file_solution_separator(1, dual_bound, primal_bound);
         if(DEBUG_3) printf("close!\n");
     }
     free(current_node->boxes_placed);
@@ -599,7 +601,7 @@ void explore_node(){
     free(current_node->extreme_points);
     free(current_node->volumes_to_exclude);
     free(current_node);
-    if(DEBUG_PROGRESS) append_progress_file_solution_separator();
+    
 
 }
 

@@ -74,16 +74,19 @@ dual bound here = 844, primal bound = 844
 close!
 dual bound here = 844, primal bound = 844
 close!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
@@ -107,6 +110,7 @@ ok, explore
 no points!
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
@@ -304,6 +308,7 @@ dual bound here = 994, primal bound = 844
 ok, explore
 no points!
 no points!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 844
 close!
 dual bound here = 930, primal bound = 844
@@ -363,6 +368,7 @@ dual bound here = 994, primal bound = 844
 ok, explore
 no points!
 no points!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 844
 close!
 dual bound here = 930, primal bound = 844
@@ -420,8 +426,10 @@ dual bound here = 754, primal bound = 844
 close!
 dual bound here = 994, primal bound = 844
 ok, explore
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 844
 close!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 844
 close!
 dual bound here = 844, primal bound = 844
@@ -508,11 +516,13 @@ no points!
 no points!
 dual bound here = 844, primal bound = 844
 close!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
@@ -536,11 +546,13 @@ ok, explore
 no points!
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
@@ -791,6 +803,7 @@ dual bound here = 754, primal bound = 844
 close!
 no points!
 no points!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 844
 close!
 dual bound here = 994, primal bound = 844
@@ -827,6 +840,7 @@ dual bound here = 754, primal bound = 844
 close!
 no points!
 no points!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 844
 close!
 dual bound here = 900, primal bound = 844
@@ -900,8 +914,10 @@ dual bound here = 844, primal bound = 844
 close!
 no points!
 no points!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 844
 close!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 844
 close!
 dual bound here = 994, primal bound = 844
@@ -942,6 +958,7 @@ dual bound here = 886, primal bound = 844
 ok, explore
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
@@ -965,6 +982,7 @@ ok, explore
 no points!
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
@@ -988,11 +1006,13 @@ ok, explore
 no points!
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
@@ -1248,12 +1268,14 @@ dual bound here = 754, primal bound = 844
 close!
 no points!
 no points!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 844
 close!
 dual bound here = 994, primal bound = 844
 ok, explore
 no points!
 no points!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 844
 close!
 dual bound here = 964, primal bound = 844
@@ -1311,8 +1333,10 @@ dual bound here = 844, primal bound = 844
 close!
 no points!
 no points!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 844
 close!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 844
 close!
 dual bound here = 886, primal bound = 844
@@ -1469,6 +1493,7 @@ ok, explore
 no points!
 dual bound here = 964, primal bound = 882
 ok, explore
+capacity = 420. Items: 210 240 252 300 504 res = 300
 dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
@@ -1888,6 +1913,7 @@ dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
+capacity = 420. Items: 210 240 252 300 504 res = 300
 dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
@@ -2129,6 +2155,7 @@ no points!
 no points!
 dual bound here = 916, primal bound = 882
 ok, explore
+capacity = 420. Items: 210 240 252 300 504 res = 300
 dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
@@ -2297,6 +2324,7 @@ dual bound here = 904, primal bound = 882
 ok, explore
 no points!
 no points!
+capacity = 420. Items: 210 240 252 300 504 res = 300
 dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
@@ -2521,6 +2549,7 @@ dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 754, primal bound = 882
 close!
+capacity = 420. Items: 210 240 252 300 504 res = 300
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -2755,6 +2784,7 @@ dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 754, primal bound = 882
 close!
+capacity = 420. Items: 210 240 252 300 504 res = 300
 dual bound here = 754, primal bound = 882
 close!
 dual bound here = 874, primal bound = 882
@@ -2914,6 +2944,7 @@ dual bound here = 964, primal bound = 882
 ok, explore
 dual bound here = 754, primal bound = 882
 close!
+capacity = 420. Items: 210 240 252 300 504 res = 300
 dual bound here = 754, primal bound = 882
 close!
 dual bound here = 916, primal bound = 882
@@ -3142,6 +3173,7 @@ dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
+capacity = 420. Items: 210 240 252 300 504 res = 300
 dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
@@ -3310,6 +3342,7 @@ no points!
 no points!
 dual bound here = 754, primal bound = 882
 close!
+capacity = 420. Items: 210 240 252 300 504 res = 300
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -3714,6 +3747,7 @@ dual bound here = 964, primal bound = 882
 ok, explore
 dual bound here = 754, primal bound = 882
 close!
+capacity = 420. Items: 210 240 252 300 504 res = 300
 dual bound here = 754, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
@@ -3760,6 +3794,7 @@ dual bound here = 754, primal bound = 882
 close!
 dual bound here = 972, primal bound = 882
 ok, explore
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -4070,6 +4105,7 @@ no points!
 no points!
 dual bound here = 736, primal bound = 882
 close!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -4169,6 +4205,7 @@ dual bound here = 736, primal bound = 882
 close!
 dual bound here = 972, primal bound = 882
 ok, explore
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -4459,6 +4496,7 @@ no points!
 no points!
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -4557,6 +4595,7 @@ no points!
 no points!
 dual bound here = 972, primal bound = 882
 ok, explore
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -4857,6 +4896,7 @@ no points!
 no points!
 dual bound here = 736, primal bound = 882
 close!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -4956,6 +4996,7 @@ dual bound here = 736, primal bound = 882
 close!
 dual bound here = 972, primal bound = 882
 ok, explore
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -5052,6 +5093,7 @@ dual bound here = 852, primal bound = 882
 close!
 dual bound here = 736, primal bound = 882
 close!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -5344,6 +5386,7 @@ dual bound here = 736, primal bound = 882
 close!
 dual bound here = 972, primal bound = 882
 ok, explore
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -5441,6 +5484,7 @@ no points!
 no points!
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -5743,6 +5787,7 @@ no points!
 no points!
 dual bound here = 972, primal bound = 882
 ok, explore
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -5840,6 +5885,7 @@ no points!
 no points!
 no points!
 no points!
+capacity = 420. Items: 64 120 210 240 270 504 res = 394
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -12567,6 +12613,7 @@ dual bound here = 736, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
+capacity = 420. Items: 64 210 252 270 300 504 res = 364
 dual bound here = 724, primal bound = 882
 close!
 dual bound here = 676, primal bound = 882
@@ -12587,6 +12634,7 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 994, primal bound = 882
 ok, explore
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 882
 close!
 dual bound here = 916, primal bound = 882
@@ -13197,6 +13245,7 @@ dual bound here = 736, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
+capacity = 420. Items: 64 210 252 270 300 504 res = 364
 dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
@@ -13235,6 +13284,7 @@ dual bound here = 946, primal bound = 882
 ok, explore
 dual bound here = 946, primal bound = 882
 ok, explore
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -13363,6 +13413,7 @@ dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
+capacity = 420. Items: 64 210 252 270 300 504 res = 364
 dual bound here = 724, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
@@ -13379,6 +13430,7 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 994, primal bound = 882
 ok, explore
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -13759,6 +13811,7 @@ dual bound here = 676, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
+capacity = 420. Items: 64 210 252 270 300 504 res = 364
 dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
@@ -13795,6 +13848,7 @@ dual bound here = 946, primal bound = 882
 ok, explore
 dual bound here = 916, primal bound = 882
 ok, explore
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -14395,6 +14449,7 @@ dual bound here = 736, primal bound = 882
 close!
 dual bound here = 736, primal bound = 882
 close!
+capacity = 420. Items: 64 210 252 270 300 504 res = 364
 dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
@@ -14426,6 +14481,7 @@ no points!
 no points!
 no points!
 no points!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
@@ -14800,6 +14856,7 @@ dual bound here = 736, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
+capacity = 420. Items: 64 210 252 270 300 504 res = 364
 dual bound here = 724, primal bound = 882
 close!
 dual bound here = 676, primal bound = 882
@@ -14838,6 +14895,7 @@ dual bound here = 946, primal bound = 882
 ok, explore
 dual bound here = 916, primal bound = 882
 ok, explore
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -15132,6 +15190,7 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -15178,6 +15237,7 @@ dual bound here = 754, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -15560,6 +15620,7 @@ dual bound here = 754, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -15604,6 +15665,7 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -15908,6 +15970,7 @@ no points!
 no points!
 no points!
 no points!
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -15952,6 +16015,7 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
+capacity = 420. Items: 210 240 252 270 504 res = 270
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -15994,4 +16058,4 @@ no points!
 no points!
 dual bound here = 694, primal bound = 882
 close!
-TOTAL TIME: 0.13
+TOTAL TIME: 0.14

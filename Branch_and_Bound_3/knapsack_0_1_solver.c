@@ -263,6 +263,7 @@ int solve_knapsack_0_1_v4(int* volumes, int n_items, int capacity){
 //you can bet I had fun optimizing this. One more version, even better! Less calculations in later items!
 int solve_knapsack_0_1_v5(int* volumes, int n_items, int capacity){
     qsort(volumes, n_items, sizeof(int), cmpfunc);  //gives better performace? In C and CUDA? hell if I know lmao
+    
     if(capacity == 0 || n_items == 0){
         return 0;
     }
