@@ -188,7 +188,7 @@ no points!
 dual bound here = 694, primal bound = 844
 close!
 no points!
-dual bound here = 814, primal bound = 844
+dual bound here = 844, primal bound = 844
 close!
 dual bound here = 964, primal bound = 844
 ok, explore
@@ -200,7 +200,7 @@ close!
 no points!
 dual bound here = 844, primal bound = 844
 close!
-dual bound here = 870, primal bound = 844
+dual bound here = 934, primal bound = 844
 ok, explore
 no points!
 dual bound here = 964, primal bound = 844
@@ -234,11 +234,18 @@ dual bound here = 964, primal bound = 844
 ok, explore
 no points!
 no points!
-dual bound here = 870, primal bound = 844
+dual bound here = 900, primal bound = 844
 ok, explore
 no points!
-dual bound here = 844, primal bound = 844
-close!
+dual bound here = 964, primal bound = 844
+ok, explore
+dual bound here = 964, primal bound = 844
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 900, primal bound = 844
 ok, explore
 no points!
@@ -247,8 +254,9 @@ close!
 no points!
 dual bound here = 844, primal bound = 844
 close!
-dual bound here = 694, primal bound = 844
-close!
+dual bound here = 882, primal bound = 844
+ok, explore
+no points!
 dual bound here = 964, primal bound = 844
 ok, explore
 dual bound here = 946, primal bound = 844
@@ -270,7 +278,7 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 900, primal bound = 844
+dual bound here = 964, primal bound = 844
 ok, explore
 no points!
 dual bound here = 882, primal bound = 844
@@ -285,15 +293,20 @@ no points!
 no points!
 dual bound here = 694, primal bound = 844
 close!
-dual bound here = 844, primal bound = 844
-close!
+dual bound here = 946, primal bound = 844
+ok, explore
+dual bound here = 946, primal bound = 844
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 994, primal bound = 844
 ok, explore
 no points!
 no points!
 dual bound here = 754, primal bound = 844
 close!
-dual bound here = 900, primal bound = 844
+dual bound here = 930, primal bound = 844
 ok, explore
 no points!
 dual bound here = 964, primal bound = 844
@@ -304,12 +317,13 @@ close!
 dual bound here = 934, primal bound = 844
 ok, explore
 no points!
-dual bound here = 870, primal bound = 844
+dual bound here = 912, primal bound = 844
 ok, explore
 no points!
-dual bound here = 694, primal bound = 844
-close!
 dual bound here = 900, primal bound = 844
+ok, explore
+no points!
+dual bound here = 946, primal bound = 844
 ok, explore
 no points!
 dual bound here = 964, primal bound = 844
@@ -1041,25 +1055,6 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 900, primal bound = 844
-ok, explore
-no points!
-dual bound here = 882, primal bound = 844
-ok, explore
-no points!
-dual bound here = 934, primal bound = 844
-ok, explore
-no points!
-dual bound here = 694, primal bound = 844
-close!
-dual bound here = 964, primal bound = 844
-ok, explore
-no points!
-no points!
-dual bound here = 844, primal bound = 844
-close!
-dual bound here = 964, primal bound = 844
-ok, explore
 dual bound here = 964, primal bound = 844
 ok, explore
 no points!
@@ -1082,18 +1077,49 @@ ok, explore
 no points!
 no points!
 no points!
+dual bound here = 964, primal bound = 844
+ok, explore
+dual bound here = 964, primal bound = 844
+ok, explore
+no points!
+dual bound here = 882, primal bound = 844
+ok, explore
+no points!
+dual bound here = 934, primal bound = 844
+ok, explore
+no points!
+dual bound here = 694, primal bound = 844
+close!
+dual bound here = 964, primal bound = 844
+ok, explore
+no points!
+no points!
+dual bound here = 946, primal bound = 844
+ok, explore
 dual bound here = 946, primal bound = 844
 ok, explore
 no points!
-dual bound here = 870, primal bound = 844
+no points!
+no points!
+dual bound here = 946, primal bound = 844
+ok, explore
+no points!
+dual bound here = 900, primal bound = 844
 ok, explore
 no points!
 dual bound here = 964, primal bound = 844
 ok, explore
 no points!
 no points!
-dual bound here = 844, primal bound = 844
-close!
+dual bound here = 964, primal bound = 844
+ok, explore
+dual bound here = 964, primal bound = 844
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 900, primal bound = 844
 ok, explore
 no points!
@@ -1102,8 +1128,9 @@ dual bound here = 694, primal bound = 844
 close!
 dual bound here = 844, primal bound = 844
 close!
-dual bound here = 694, primal bound = 844
-close!
+dual bound here = 882, primal bound = 844
+ok, explore
+no points!
 dual bound here = 900, primal bound = 844
 ok, explore
 dual bound here = 882, primal bound = 844
@@ -1113,7 +1140,7 @@ no points!
 no points!
 dual bound here = 694, primal bound = 844
 close!
-dual bound here = 814, primal bound = 844
+dual bound here = 844, primal bound = 844
 close!
 dual bound here = 964, primal bound = 844
 ok, explore
@@ -1125,7 +1152,7 @@ dual bound here = 694, primal bound = 844
 close!
 dual bound here = 844, primal bound = 844
 close!
-dual bound here = 870, primal bound = 844
+dual bound here = 934, primal bound = 844
 ok, explore
 no points!
 dual bound here = 964, primal bound = 844
@@ -1232,12 +1259,12 @@ close!
 dual bound here = 964, primal bound = 844
 ok, explore
 no points!
-dual bound here = 900, primal bound = 844
+dual bound here = 930, primal bound = 844
 ok, explore
 no points!
 dual bound here = 736, primal bound = 844
 close!
-dual bound here = 870, primal bound = 844
+dual bound here = 912, primal bound = 844
 ok, explore
 no points!
 dual bound here = 934, primal bound = 844
@@ -1251,11 +1278,12 @@ dual bound here = 964, primal bound = 844
 ok, explore
 no points!
 no points!
+dual bound here = 946, primal bound = 844
+ok, explore
+no points!
 dual bound here = 900, primal bound = 844
 ok, explore
 no points!
-dual bound here = 694, primal bound = 844
-close!
 dual bound here = 754, primal bound = 844
 close!
 dual bound here = 994, primal bound = 844
@@ -1445,8 +1473,10 @@ dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
@@ -1505,11 +1535,12 @@ dual bound here = 796, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 930, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 882, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
@@ -1611,8 +1642,9 @@ no points!
 dual bound here = 916, primal bound = 882
 ok, explore
 no points!
-dual bound here = 852, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
 dual bound here = 916, primal bound = 882
 ok, explore
 no points!
@@ -1760,8 +1792,10 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 930, primal bound = 882
 ok, explore
 no points!
@@ -1785,12 +1819,14 @@ dual bound here = 882, primal bound = 882
 close!
 dual bound here = 852, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 930, primal bound = 882
 ok, explore
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 no points!
 no points!
@@ -1803,7 +1839,7 @@ ok, explore
 no points!
 dual bound here = 852, primal bound = 882
 close!
-dual bound here = 706, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 964, primal bound = 882
 ok, explore
@@ -1812,8 +1848,10 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 no points!
 no points!
@@ -1842,18 +1880,22 @@ no points!
 no points!
 dual bound here = 964, primal bound = 882
 ok, explore
-dual bound here = 754, primal bound = 882
-close!
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
 no points!
-dual bound here = 706, primal bound = 882
+dual bound here = 796, primal bound = 882
 close!
-dual bound here = 706, primal bound = 882
+dual bound here = 796, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
@@ -1863,7 +1905,7 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 826, primal bound = 882
+dual bound here = 874, primal bound = 882
 close!
 dual bound here = 844, primal bound = 882
 close!
@@ -1878,11 +1920,11 @@ no points!
 no points!
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 706, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
@@ -1892,7 +1934,7 @@ dual bound here = 706, primal bound = 882
 close!
 no points!
 no points!
-dual bound here = 706, primal bound = 882
+dual bound here = 796, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
@@ -1900,7 +1942,7 @@ dual bound here = 882, primal bound = 882
 close!
 no points!
 no points!
-dual bound here = 706, primal bound = 882
+dual bound here = 796, primal bound = 882
 close!
 dual bound here = 930, primal bound = 882
 ok, explore
@@ -1955,7 +1997,7 @@ dual bound here = 882, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 826, primal bound = 882
+dual bound here = 874, primal bound = 882
 close!
 dual bound here = 964, primal bound = 882
 ok, explore
@@ -1990,7 +2032,7 @@ no points!
 no points!
 dual bound here = 852, primal bound = 882
 close!
-dual bound here = 664, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
 dual bound here = 916, primal bound = 882
 ok, explore
@@ -2063,7 +2105,7 @@ close!
 no points!
 no points!
 no points!
-dual bound here = 706, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
@@ -2109,9 +2151,9 @@ dual bound here = 904, primal bound = 882
 ok, explore
 dual bound here = 916, primal bound = 882
 ok, explore
-dual bound here = 694, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
-dual bound here = 706, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
@@ -2167,9 +2209,9 @@ no points!
 no points!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
+dual bound here = 882, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
 dual bound here = 900, primal bound = 882
 ok, explore
@@ -2190,30 +2232,32 @@ no points!
 no points!
 dual bound here = 882, primal bound = 882
 close!
+dual bound here = 930, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
 no points!
 dual bound here = 852, primal bound = 882
 close!
-dual bound here = 852, primal bound = 882
-close!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 664, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+dual bound here = 916, primal bound = 882
+ok, explore
 no points!
 dual bound here = 930, primal bound = 882
 ok, explore
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
+dual bound here = 882, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
@@ -2228,12 +2272,14 @@ dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
+dual bound here = 930, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 852, primal bound = 882
-close!
 dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 904, primal bound = 882
@@ -2305,30 +2351,32 @@ no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
-dual bound here = 874, primal bound = 882
-close!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 874, primal bound = 882
-close!
 dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 874, primal bound = 882
+close!
+dual bound here = 930, primal bound = 882
 ok, explore
 no points!
 dual bound here = 882, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
+dual bound here = 882, primal bound = 882
 close!
-dual bound here = 904, primal bound = 882
+dual bound here = 930, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 840, primal bound = 882
+dual bound here = 882, primal bound = 882
 close!
-dual bound here = 904, primal bound = 882
+dual bound here = 930, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -2351,14 +2399,18 @@ no points!
 no points!
 dual bound here = 852, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
-close!
 dual bound here = 852, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 852, primal bound = 882
 close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 no points!
@@ -2383,7 +2435,7 @@ no points!
 dual bound here = 916, primal bound = 882
 ok, explore
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -2402,10 +2454,12 @@ ok, explore
 dual bound here = 916, primal bound = 882
 ok, explore
 no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 852, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
 dual bound here = 916, primal bound = 882
 ok, explore
 no points!
@@ -2443,19 +2497,31 @@ dual bound here = 754, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 826, primal bound = 882
+dual bound here = 874, primal bound = 882
 close!
 dual bound here = 844, primal bound = 882
 close!
 no points!
 no points!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 844, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 706, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 no points!
 dual bound here = 826, primal bound = 882
@@ -2469,10 +2535,10 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 664, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+dual bound here = 916, primal bound = 882
+ok, explore
 dual bound here = 754, primal bound = 882
 close!
 dual bound here = 916, primal bound = 882
@@ -2492,7 +2558,7 @@ dual bound here = 882, primal bound = 882
 close!
 no points!
 no points!
-dual bound here = 706, primal bound = 882
+dual bound here = 796, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
@@ -2500,7 +2566,7 @@ dual bound here = 706, primal bound = 882
 close!
 no points!
 no points!
-dual bound here = 706, primal bound = 882
+dual bound here = 796, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
@@ -2518,7 +2584,7 @@ dual bound here = 882, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 826, primal bound = 882
+dual bound here = 874, primal bound = 882
 close!
 dual bound here = 930, primal bound = 882
 ok, explore
@@ -2564,7 +2630,7 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 664, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
 dual bound here = 852, primal bound = 882
 close!
@@ -2646,7 +2712,7 @@ close!
 no points!
 no points!
 no points!
-dual bound here = 706, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
@@ -2711,9 +2777,9 @@ dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 706, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 916, primal bound = 882
 ok, explore
@@ -2758,8 +2824,10 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 no points!
 no points!
@@ -2788,8 +2856,10 @@ no points!
 no points!
 dual bound here = 930, primal bound = 882
 ok, explore
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 no points!
 no points!
@@ -2802,7 +2872,7 @@ close!
 dual bound here = 900, primal bound = 882
 ok, explore
 no points!
-dual bound here = 706, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 930, primal bound = 882
 ok, explore
@@ -2812,7 +2882,7 @@ dual bound here = 882, primal bound = 882
 close!
 dual bound here = 852, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 964, primal bound = 882
 ok, explore
@@ -2821,8 +2891,10 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 930, primal bound = 882
 ok, explore
 no points!
@@ -2844,16 +2916,20 @@ dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 754, primal bound = 882
-close!
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
 no points!
-dual bound here = 706, primal bound = 882
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 796, primal bound = 882
 close!
-dual bound here = 706, primal bound = 882
+dual bound here = 796, primal bound = 882
 close!
-dual bound here = 826, primal bound = 882
+dual bound here = 874, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
@@ -2874,9 +2950,9 @@ no points!
 no points!
 dual bound here = 844, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
-dual bound here = 706, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
@@ -2896,24 +2972,24 @@ no points!
 no points!
 dual bound here = 796, primal bound = 882
 close!
-dual bound here = 904, primal bound = 882
+dual bound here = 930, primal bound = 882
 ok, explore
 no points!
 dual bound here = 882, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 904, primal bound = 882
+dual bound here = 930, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 930, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 840, primal bound = 882
+dual bound here = 882, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
+dual bound here = 882, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
@@ -2929,8 +3005,10 @@ no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
-dual bound here = 874, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 882, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
@@ -2945,7 +3023,7 @@ no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -2981,13 +3059,17 @@ dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 852, primal bound = 882
 close!
 dual bound here = 852, primal bound = 882
-close!
-dual bound here = 840, primal bound = 882
-close!
-dual bound here = 840, primal bound = 882
 close!
 dual bound here = 964, primal bound = 882
 ok, explore
@@ -3025,14 +3107,16 @@ ok, explore
 dual bound here = 916, primal bound = 882
 ok, explore
 no points!
-dual bound here = 882, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
 dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 852, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -3042,15 +3126,27 @@ dual bound here = 754, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 844, primal bound = 882
-close!
-dual bound here = 706, primal bound = 882
+dual bound here = 904, primal bound = 882
+ok, explore
+dual bound here = 904, primal bound = 882
+ok, explore
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 826, primal bound = 882
+dual bound here = 874, primal bound = 882
 close!
 dual bound here = 844, primal bound = 882
 close!
@@ -3071,10 +3167,10 @@ ok, explore
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 664, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+dual bound here = 916, primal bound = 882
+ok, explore
 no points!
 no points!
 dual bound here = 754, primal bound = 882
@@ -3126,12 +3222,14 @@ dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
+dual bound here = 930, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 852, primal bound = 882
-close!
 dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 904, primal bound = 882
@@ -3151,7 +3249,7 @@ close!
 no points!
 no points!
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 930, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -3159,14 +3257,16 @@ dual bound here = 882, primal bound = 882
 close!
 dual bound here = 852, primal bound = 882
 close!
-dual bound here = 852, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 664, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+dual bound here = 916, primal bound = 882
+ok, explore
 no points!
 no points!
 no points!
@@ -3174,9 +3274,9 @@ dual bound here = 930, primal bound = 882
 ok, explore
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
+dual bound here = 882, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
@@ -3187,14 +3287,14 @@ close!
 no points!
 no points!
 no points!
-dual bound here = 840, primal bound = 882
+dual bound here = 882, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
 dual bound here = 900, primal bound = 882
 ok, explore
 no points!
-dual bound here = 840, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
@@ -3301,9 +3401,10 @@ no points!
 no points!
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 930, primal bound = 882
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 dual bound here = 904, primal bound = 882
@@ -3322,8 +3423,9 @@ dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 852, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
 dual bound here = 916, primal bound = 882
 ok, explore
 no points!
@@ -3618,8 +3720,10 @@ dual bound here = 904, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 dual bound here = 796, primal bound = 882
 close!
@@ -3752,7 +3856,7 @@ dual bound here = 912, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 826, primal bound = 882
+dual bound here = 856, primal bound = 882
 close!
 dual bound here = 912, primal bound = 882
 ok, explore
@@ -3787,10 +3891,10 @@ dual bound here = 972, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 882, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
 dual bound here = 886, primal bound = 882
 ok, explore
 no points!
@@ -3811,10 +3915,10 @@ dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 646, primal bound = 882
 close!
-dual bound here = 646, primal bound = 882
-close!
 dual bound here = 852, primal bound = 882
 close!
+dual bound here = 886, primal bound = 882
+ok, explore
 dual bound here = 826, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
@@ -3836,7 +3940,7 @@ dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 886, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -3854,8 +3958,9 @@ dual bound here = 886, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 852, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 no points!
 dual bound here = 852, primal bound = 882
 close!
@@ -4073,8 +4178,9 @@ dual bound here = 942, primal bound = 882
 ok, explore
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 852, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
 no points!
 no points!
 dual bound here = 826, primal bound = 882
@@ -4090,7 +4196,7 @@ dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 796, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
 dual bound here = 916, primal bound = 882
 ok, explore
@@ -4116,23 +4222,33 @@ dual bound here = 886, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 706, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
 no points!
 no points!
 dual bound here = 882, primal bound = 882
 close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 856, primal bound = 882
 close!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 912, primal bound = 882
 ok, explore
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 822, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
 no points!
 no points!
-dual bound here = 766, primal bound = 882
+no points!
+dual bound here = 856, primal bound = 882
 close!
 no points!
 no points!
@@ -4151,338 +4267,12 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 826, primal bound = 882
+dual bound here = 856, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-dual bound here = 916, primal bound = 882
-ok, explore
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 972, primal bound = 882
-ok, explore
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 972, primal bound = 882
-ok, explore
-dual bound here = 916, primal bound = 882
-ok, explore
-no points!
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 916, primal bound = 882
-ok, explore
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 826, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 736, primal bound = 882
-close!
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 646, primal bound = 882
-close!
-dual bound here = 646, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-dual bound here = 886, primal bound = 882
-ok, explore
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-dual bound here = 940, primal bound = 882
-ok, explore
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 796, primal bound = 882
-close!
-dual bound here = 766, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 796, primal bound = 882
-close!
-dual bound here = 706, primal bound = 882
-close!
-dual bound here = 736, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-no points!
-dual bound here = 736, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 736, primal bound = 882
-close!
-dual bound here = 940, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 736, primal bound = 882
-close!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-dual bound here = 942, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 942, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 940, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 852, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 826, primal bound = 882
-close!
-no points!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 916, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 796, primal bound = 882
-close!
-no points!
-dual bound here = 916, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 916, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 916, primal bound = 882
-ok, explore
 no points!
 dual bound here = 912, primal bound = 882
 ok, explore
@@ -4493,169 +4283,131 @@ close!
 dual bound here = 912, primal bound = 882
 ok, explore
 no points!
-dual bound here = 972, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 766, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 826, primal bound = 882
+close!
 dual bound here = 882, primal bound = 882
+close!
+dual bound here = 852, primal bound = 882
 close!
 dual bound here = 822, primal bound = 882
 close!
-no points!
-no points!
-dual bound here = 826, primal bound = 882
-close!
-no points!
-dual bound here = 912, primal bound = 882
+dual bound here = 972, primal bound = 882
 ok, explore
-no points!
-no points!
+dual bound here = 972, primal bound = 882
+ok, explore
 no points!
 no points!
 dual bound here = 972, primal bound = 882
 ok, explore
-dual bound here = 916, primal bound = 882
-ok, explore
 no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
 dual bound here = 852, primal bound = 882
 close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
 dual bound here = 826, primal bound = 882
-close!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 916, primal bound = 882
-ok, explore
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 796, primal bound = 882
-close!
-no points!
-dual bound here = 852, primal bound = 882
-close!
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-dual bound here = 886, primal bound = 882
-ok, explore
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 646, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 646, primal bound = 882
-close!
+dual bound here = 972, primal bound = 882
+ok, explore
 dual bound here = 916, primal bound = 882
 ok, explore
+no points!
 dual bound here = 852, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 646, primal bound = 882
-close!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 646, primal bound = 882
-close!
-dual bound here = 946, primal bound = 882
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
 no points!
 no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 912, primal bound = 882
+dual bound here = 886, primal bound = 882
 ok, explore
 no points!
 no points!
 no points!
-no points!
-no points!
-no points!
-dual bound here = 646, primal bound = 882
-close!
-dual bound here = 646, primal bound = 882
-close!
-dual bound here = 736, primal bound = 882
-close!
-dual bound here = 912, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 no points!
 dual bound here = 852, primal bound = 882
 close!
 dual bound here = 736, primal bound = 882
 close!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 646, primal bound = 882
+close!
+dual bound here = 646, primal bound = 882
+close!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
 dual bound here = 940, primal bound = 882
 ok, explore
 dual bound here = 886, primal bound = 882
 ok, explore
 no points!
 no points!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 856, primal bound = 882
+close!
 dual bound here = 886, primal bound = 882
 ok, explore
 no points!
@@ -4664,20 +4416,9 @@ dual bound here = 886, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 886, primal bound = 882
-ok, explore
 no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
+dual bound here = 826, primal bound = 882
+close!
 dual bound here = 736, primal bound = 882
 close!
 dual bound here = 736, primal bound = 882
@@ -4702,6 +4443,8 @@ ok, explore
 no points!
 no points!
 no points!
+dual bound here = 736, primal bound = 882
+close!
 dual bound here = 940, primal bound = 882
 ok, explore
 no points!
@@ -4716,83 +4459,38 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 706, primal bound = 882
-close!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 no points!
 no points!
-no points!
-no points!
-no points!
-dual bound here = 946, primal bound = 882
-ok, explore
 no points!
 dual bound here = 882, primal bound = 882
 close!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-dual bound here = 942, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 no points!
 no points!
-dual bound here = 916, primal bound = 882
-ok, explore
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
 no points!
 dual bound here = 912, primal bound = 882
 ok, explore
 no points!
-no points!
-no points!
 dual bound here = 886, primal bound = 882
 ok, explore
+no points!
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
 no points!
 no points!
 no points!
 dual bound here = 852, primal bound = 882
 close!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 940, primal bound = 882
+dual bound here = 886, primal bound = 882
 ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
 no points!
 no points!
 no points!
@@ -4800,68 +4498,48 @@ no points!
 no points!
 dual bound here = 736, primal bound = 882
 close!
-dual bound here = 972, primal bound = 882
-ok, explore
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 946, primal bound = 882
+dual bound here = 942, primal bound = 882
 ok, explore
+no points!
+no points!
 no points!
 dual bound here = 882, primal bound = 882
 close!
+dual bound here = 942, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 912, primal bound = 882
 ok, explore
 no points!
 no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 822, primal bound = 882
+close!
+dual bound here = 822, primal bound = 882
+close!
+dual bound here = 882, primal bound = 882
+close!
 dual bound here = 886, primal bound = 882
 ok, explore
 no points!
 no points!
 no points!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-dual bound here = 942, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 942, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
 dual bound here = 940, primal bound = 882
 ok, explore
@@ -4877,23 +4555,8 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 912, primal bound = 882
+dual bound here = 972, primal bound = 882
 ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 736, primal bound = 882
-close!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -4909,24 +4572,15 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 826, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 no points!
 no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 706, primal bound = 882
-close!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-no points!
-dual bound here = 942, primal bound = 882
+dual bound here = 972, primal bound = 882
 ok, explore
 dual bound here = 882, primal bound = 882
 close!
@@ -4937,7 +4591,7 @@ no points!
 dual bound here = 826, primal bound = 882
 close!
 no points!
-dual bound here = 942, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -4949,377 +4603,28 @@ no points!
 no points!
 dual bound here = 796, primal bound = 882
 close!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
 dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 dual bound here = 912, primal bound = 882
 ok, explore
-no points!
-no points!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 766, primal bound = 882
-close!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
 no points!
 no points!
 dual bound here = 856, primal bound = 882
 close!
-dual bound here = 916, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 822, primal bound = 882
-close!
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 916, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 916, primal bound = 882
-ok, explore
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 852, primal bound = 882
-close!
 dual bound here = 912, primal bound = 882
 ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 646, primal bound = 882
-close!
-dual bound here = 646, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-dual bound here = 886, primal bound = 882
-ok, explore
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 736, primal bound = 882
-close!
-dual bound here = 940, primal bound = 882
-ok, explore
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 736, primal bound = 882
-close!
-no points!
-dual bound here = 796, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 766, primal bound = 882
-close!
-dual bound here = 796, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 736, primal bound = 882
-close!
-dual bound here = 706, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 940, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 736, primal bound = 882
-close!
-dual bound here = 972, primal bound = 882
-ok, explore
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-no points!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 736, primal bound = 882
-close!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 916, primal bound = 882
-ok, explore
-no points!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 942, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 852, primal bound = 882
-close!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 940, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 916, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 916, primal bound = 882
-ok, explore
-no points!
-dual bound here = 916, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 796, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 916, primal bound = 882
-ok, explore
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 852, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 826, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-dual bound here = 972, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 826, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
 no points!
 dual bound here = 972, primal bound = 882
 ok, explore
@@ -5346,6 +4651,899 @@ no points!
 dual bound here = 766, primal bound = 882
 close!
 no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+no points!
+dual bound here = 852, primal bound = 882
+close!
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+dual bound here = 972, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 822, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 646, primal bound = 882
+close!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 822, primal bound = 882
+close!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 646, primal bound = 882
+close!
+dual bound here = 646, primal bound = 882
+close!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 940, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 856, primal bound = 882
+close!
+dual bound here = 856, primal bound = 882
+close!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 826, primal bound = 882
+close!
+no points!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 940, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 882, primal bound = 882
+close!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 942, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 822, primal bound = 882
+close!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 822, primal bound = 882
+close!
+dual bound here = 940, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 972, primal bound = 882
+ok, explore
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 942, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 942, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 822, primal bound = 882
+close!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 822, primal bound = 882
+close!
+dual bound here = 940, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+dual bound here = 972, primal bound = 882
+ok, explore
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+no points!
+dual bound here = 882, primal bound = 882
+close!
+no points!
+dual bound here = 942, primal bound = 882
+ok, explore
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+no points!
+dual bound here = 942, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 856, primal bound = 882
+close!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+dual bound here = 972, primal bound = 882
+ok, explore
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 856, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 856, primal bound = 882
+close!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 856, primal bound = 882
+close!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 852, primal bound = 882
+close!
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+dual bound here = 972, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 822, primal bound = 882
+close!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 646, primal bound = 882
+close!
+dual bound here = 646, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 940, primal bound = 882
+ok, explore
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 856, primal bound = 882
+close!
+dual bound here = 856, primal bound = 882
+close!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 736, primal bound = 882
+close!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 856, primal bound = 882
+close!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 940, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 972, primal bound = 882
+ok, explore
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 882, primal bound = 882
+close!
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 852, primal bound = 882
+close!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 736, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 942, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 822, primal bound = 882
+close!
+dual bound here = 822, primal bound = 882
+close!
+dual bound here = 852, primal bound = 882
+close!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 940, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 796, primal bound = 882
+close!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 852, primal bound = 882
+close!
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+no points!
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+dual bound here = 972, primal bound = 882
+ok, explore
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+no points!
+no points!
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+dual bound here = 972, primal bound = 882
+ok, explore
+no points!
+dual bound here = 972, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 766, primal bound = 882
+close!
+no points!
 no points!
 dual bound here = 886, primal bound = 882
 ok, explore
@@ -5371,7 +5569,7 @@ dual bound here = 646, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 646, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
 dual bound here = 822, primal bound = 882
 close!
@@ -5382,7 +5580,7 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 796, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
 no points!
 no points!
@@ -5408,13 +5606,16 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 646, primal bound = 882
+dual bound here = 822, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 646, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 882, primal bound = 882
 close!
 dual bound here = 972, primal bound = 882
@@ -5429,8 +5630,10 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 826, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 no points!
 dual bound here = 886, primal bound = 882
@@ -5522,7 +5725,7 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 706, primal bound = 882
+dual bound here = 736, primal bound = 882
 close!
 dual bound here = 940, primal bound = 882
 ok, explore
@@ -5740,7 +5943,7 @@ dual bound here = 912, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 826, primal bound = 882
+dual bound here = 856, primal bound = 882
 close!
 dual bound here = 912, primal bound = 882
 ok, explore
@@ -5764,8 +5967,9 @@ dual bound here = 886, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 852, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 no points!
 no points!
 dual bound here = 852, primal bound = 882
@@ -5774,9 +5978,9 @@ dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 646, primal bound = 882
 close!
+dual bound here = 886, primal bound = 882
+ok, explore
 dual bound here = 852, primal bound = 882
-close!
-dual bound here = 646, primal bound = 882
 close!
 dual bound here = 826, primal bound = 882
 close!
@@ -5799,7 +6003,7 @@ dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 886, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -5821,10 +6025,10 @@ dual bound here = 972, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 852, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
 dual bound here = 886, primal bound = 882
 ok, explore
 no points!
@@ -5957,8 +6161,10 @@ ok, explore
 no points!
 dual bound here = 840, primal bound = 882
 close!
-dual bound here = 826, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 840, primal bound = 882
 close!
 dual bound here = 840, primal bound = 882
@@ -5999,24 +6205,29 @@ ok, explore
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
+dual bound here = 870, primal bound = 882
+close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 870, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 870, primal bound = 882
+close!
 dual bound here = 870, primal bound = 882
 close!
 dual bound here = 814, primal bound = 882
 close!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 814, primal bound = 882
-close!
 dual bound here = 934, primal bound = 882
 ok, explore
 dual bound here = 904, primal bound = 882
@@ -6024,19 +6235,24 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 822, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 886, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 840, primal bound = 882
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 870, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
+dual bound here = 870, primal bound = 882
 close!
 dual bound here = 934, primal bound = 882
 ok, explore
@@ -6061,7 +6277,7 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
@@ -6081,8 +6297,9 @@ dual bound here = 904, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 822, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 724, primal bound = 882
 close!
 no points!
@@ -6092,11 +6309,17 @@ dual bound here = 724, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
-dual bound here = 826, primal bound = 882
+dual bound here = 874, primal bound = 882
 close!
-dual bound here = 814, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
@@ -6107,9 +6330,9 @@ close!
 no points!
 no points!
 no points!
-dual bound here = 766, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
-dual bound here = 766, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
@@ -6123,8 +6346,8 @@ ok, explore
 no points!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
 no points!
 no points!
 dual bound here = 724, primal bound = 882
@@ -6142,11 +6365,12 @@ no points!
 no points!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 822, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
 no points!
 no points!
-dual bound here = 766, primal bound = 882
+no points!
+dual bound here = 826, primal bound = 882
 close!
 dual bound here = 912, primal bound = 882
 ok, explore
@@ -6163,7 +6387,7 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 766, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
 dual bound here = 934, primal bound = 882
 ok, explore
@@ -6180,8 +6404,10 @@ dual bound here = 930, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 840, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 886, primal bound = 882
 ok, explore
 dual bound here = 694, primal bound = 882
@@ -6209,14 +6435,16 @@ no points!
 no points!
 dual bound here = 870, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
 no points!
 no points!
 no points!
@@ -6228,7 +6456,7 @@ no points!
 no points!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
+dual bound here = 870, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
@@ -6245,7 +6473,7 @@ no points!
 no points!
 dual bound here = 870, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
+dual bound here = 870, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
@@ -6359,7 +6587,7 @@ dual bound here = 904, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 840, primal bound = 882
+dual bound here = 870, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
@@ -6632,8 +6860,10 @@ dual bound here = 724, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
-dual bound here = 724, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 882, primal bound = 882
 close!
 dual bound here = 870, primal bound = 882
@@ -6650,8 +6880,10 @@ dual bound here = 904, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 724, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 dual bound here = 826, primal bound = 882
 close!
@@ -6724,8 +6956,10 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 724, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 930, primal bound = 882
 ok, explore
 no points!
@@ -6749,12 +6983,14 @@ dual bound here = 882, primal bound = 882
 close!
 dual bound here = 870, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
-dual bound here = 724, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 dual bound here = 840, primal bound = 882
 close!
@@ -6766,7 +7002,7 @@ dual bound here = 870, primal bound = 882
 close!
 dual bound here = 870, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 934, primal bound = 882
 ok, explore
@@ -6775,8 +7011,10 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 724, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 dual bound here = 840, primal bound = 882
 close!
@@ -6787,7 +7025,7 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 840, primal bound = 882
+dual bound here = 870, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
@@ -6805,8 +7043,10 @@ no points!
 no points!
 dual bound here = 934, primal bound = 882
 ok, explore
-dual bound here = 724, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
@@ -6824,9 +7064,9 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 676, primal bound = 882
+dual bound here = 766, primal bound = 882
 close!
-dual bound here = 676, primal bound = 882
+dual bound here = 766, primal bound = 882
 close!
 dual bound here = 814, primal bound = 882
 close!
@@ -6841,11 +7081,11 @@ no points!
 no points!
 dual bound here = 724, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
@@ -6925,7 +7165,7 @@ no points!
 no points!
 dual bound here = 870, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
+dual bound here = 870, primal bound = 882
 close!
 dual bound here = 814, primal bound = 882
 close!
@@ -6936,9 +7176,10 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 840, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
@@ -7005,14 +7246,15 @@ dual bound here = 904, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
-no points!
-no points!
+dual bound here = 886, primal bound = 882
+ok, explore
 no points!
 dual bound here = 694, primal bound = 882
+close!
+no points!
+no points!
+no points!
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 840, primal bound = 882
 close!
@@ -7052,9 +7294,9 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
-dual bound here = 634, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
@@ -7104,8 +7346,10 @@ dual bound here = 826, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
-dual bound here = 724, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 882, primal bound = 882
 close!
 dual bound here = 870, primal bound = 882
@@ -7200,8 +7444,10 @@ dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
-dual bound here = 724, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
@@ -7354,7 +7600,7 @@ no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
-dual bound here = 840, primal bound = 882
+dual bound here = 870, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
@@ -7527,62 +7773,63 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 904, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-dual bound here = 904, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 904, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 934, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 934, primal bound = 882
-ok, explore
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 904, primal bound = 882
-ok, explore
-no points!
-dual bound here = 904, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 904, primal bound = 882
-ok, explore
-no points!
-no points!
 dual bound here = 840, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 870, primal bound = 882
+close!
+dual bound here = 870, primal bound = 882
+close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+dual bound here = 870, primal bound = 882
+close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 870, primal bound = 882
 close!
 dual bound here = 870, primal bound = 882
 close!
@@ -7597,8 +7844,9 @@ ok, explore
 no points!
 dual bound here = 822, primal bound = 882
 close!
-dual bound here = 870, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
@@ -7608,7 +7856,7 @@ close!
 no points!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 840, primal bound = 882
 close!
@@ -7667,9 +7915,9 @@ dual bound here = 886, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 694, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
@@ -7714,8 +7962,10 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 724, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 dual bound here = 930, primal bound = 882
 ok, explore
@@ -7731,205 +7981,43 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 840, primal bound = 882
-close!
-dual bound here = 904, primal bound = 882
-ok, explore
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-dual bound here = 724, primal bound = 882
-close!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 840, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-dual bound here = 724, primal bound = 882
-close!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
-dual bound here = 934, primal bound = 882
-ok, explore
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 724, primal bound = 882
-close!
-dual bound here = 930, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 904, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-dual bound here = 934, primal bound = 882
-ok, explore
-dual bound here = 724, primal bound = 882
-close!
-dual bound here = 724, primal bound = 882
-close!
-dual bound here = 724, primal bound = 882
-close!
-dual bound here = 724, primal bound = 882
-close!
-no points!
-dual bound here = 904, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 676, primal bound = 882
-close!
-dual bound here = 676, primal bound = 882
-close!
-dual bound here = 934, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-no points!
-dual bound here = 814, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 724, primal bound = 882
-close!
-dual bound here = 724, primal bound = 882
-close!
-dual bound here = 934, primal bound = 882
-ok, explore
-dual bound here = 814, primal bound = 882
-close!
-dual bound here = 912, primal bound = 882
-ok, explore
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 766, primal bound = 882
-close!
-dual bound here = 912, primal bound = 882
-ok, explore
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 766, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-dual bound here = 724, primal bound = 882
-close!
-no points!
-dual bound here = 882, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 634, primal bound = 882
-close!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 724, primal bound = 882
-close!
-dual bound here = 934, primal bound = 882
-ok, explore
-dual bound here = 912, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 724, primal bound = 882
-close!
-no points!
-dual bound here = 930, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 840, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 840, primal bound = 882
-close!
 dual bound here = 870, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
-no points!
-no points!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 dual bound here = 886, primal bound = 882
 ok, explore
 dual bound here = 886, primal bound = 882
 ok, explore
+no points!
 no points!
 no points!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
+dual bound here = 840, primal bound = 882
+close!
+no points!
+no points!
+dual bound here = 870, primal bound = 882
+close!
+dual bound here = 870, primal bound = 882
+close!
+dual bound here = 724, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 724, primal bound = 882
+close!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 870, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
@@ -7948,8 +8036,10 @@ dual bound here = 930, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 840, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 886, primal bound = 882
 ok, explore
 dual bound here = 694, primal bound = 882
@@ -7959,21 +8049,21 @@ ok, explore
 no points!
 dual bound here = 934, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 904, primal bound = 882
-ok, explore
-no points!
-no points!
 dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
+dual bound here = 724, primal bound = 882
+close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 dual bound here = 904, primal bound = 882
 ok, explore
+no points!
+no points!
 no points!
 no points!
 no points!
@@ -7991,6 +8081,177 @@ no points!
 no points!
 no points!
 no points!
+no points!
+no points!
+dual bound here = 814, primal bound = 882
+close!
+dual bound here = 724, primal bound = 882
+close!
+dual bound here = 724, primal bound = 882
+close!
+dual bound here = 724, primal bound = 882
+close!
+dual bound here = 724, primal bound = 882
+close!
+dual bound here = 934, primal bound = 882
+ok, explore
+dual bound here = 814, primal bound = 882
+close!
+dual bound here = 912, primal bound = 882
+ok, explore
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 912, primal bound = 882
+ok, explore
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 724, primal bound = 882
+close!
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 694, primal bound = 882
+close!
+no points!
+no points!
+dual bound here = 870, primal bound = 882
+close!
+dual bound here = 870, primal bound = 882
+close!
+dual bound here = 724, primal bound = 882
+close!
+dual bound here = 934, primal bound = 882
+ok, explore
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 724, primal bound = 882
+close!
+no points!
+dual bound here = 930, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 840, primal bound = 882
+close!
+no points!
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 870, primal bound = 882
+close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 882, primal bound = 882
+close!
+dual bound here = 870, primal bound = 882
+close!
+dual bound here = 724, primal bound = 882
+close!
+dual bound here = 934, primal bound = 882
+ok, explore
+dual bound here = 912, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 930, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 724, primal bound = 882
+close!
+dual bound here = 724, primal bound = 882
+close!
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 826, primal bound = 882
+close!
+dual bound here = 766, primal bound = 882
+close!
+dual bound here = 766, primal bound = 882
+close!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 814, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
@@ -8035,8 +8296,10 @@ close!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
-dual bound here = 826, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 840, primal bound = 882
 close!
 dual bound here = 840, primal bound = 882
@@ -8058,16 +8321,21 @@ dual bound here = 886, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 822, primal bound = 882
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 870, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 870, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
-dual bound here = 840, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 934, primal bound = 882
 ok, explore
 no points!
@@ -8090,8 +8358,13 @@ close!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
-dual bound here = 814, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 870, primal bound = 882
 close!
 dual bound here = 870, primal bound = 882
@@ -8106,8 +8379,9 @@ no points!
 dual bound here = 886, primal bound = 882
 ok, explore
 no points!
-dual bound here = 822, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
@@ -8139,7 +8413,7 @@ no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
-dual bound here = 694, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
@@ -8151,18 +8425,24 @@ dual bound here = 814, primal bound = 882
 close!
 no points!
 no points!
-dual bound here = 826, primal bound = 882
+dual bound here = 874, primal bound = 882
 close!
-dual bound here = 814, primal bound = 882
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
-close!
 no points!
-dual bound here = 766, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
-dual bound here = 766, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
@@ -8173,8 +8453,8 @@ no points!
 no points!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
 dual bound here = 724, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
@@ -8213,8 +8493,12 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 826, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -8240,8 +8524,10 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 826, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -8335,7 +8621,7 @@ no points!
 no points!
 dual bound here = 964, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -8452,7 +8738,7 @@ dual bound here = 664, primal bound = 882
 close!
 dual bound here = 852, primal bound = 882
 close!
-dual bound here = 904, primal bound = 882
+dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -8468,7 +8754,7 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 900, primal bound = 882
+dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 dual bound here = 916, primal bound = 882
@@ -8511,7 +8797,7 @@ close!
 dual bound here = 886, primal bound = 882
 ok, explore
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -8530,7 +8816,7 @@ no points!
 dual bound here = 934, primal bound = 882
 ok, explore
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 dual bound here = 934, primal bound = 882
@@ -8607,9 +8893,13 @@ no points!
 no points!
 dual bound here = 964, primal bound = 882
 ok, explore
-dual bound here = 844, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -8619,9 +8909,17 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 844, primal bound = 882
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 664, primal bound = 882
 close!
-dual bound here = 886, primal bound = 882
+no points!
+dual bound here = 664, primal bound = 882
+close!
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 dual bound here = 634, primal bound = 882
@@ -8629,20 +8927,26 @@ close!
 no points!
 dual bound here = 634, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
+dual bound here = 934, primal bound = 882
+ok, explore
+dual bound here = 694, primal bound = 882
 close!
+dual bound here = 946, primal bound = 882
+ok, explore
+dual bound here = 946, primal bound = 882
+ok, explore
 dual bound here = 694, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 694, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
@@ -8664,8 +8968,13 @@ close!
 dual bound here = 634, primal bound = 882
 close!
 no points!
-dual bound here = 844, primal bound = 882
-close!
+dual bound here = 946, primal bound = 882
+ok, explore
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
@@ -8677,10 +8986,10 @@ dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 664, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 934, primal bound = 882
+ok, explore
 no points!
 dual bound here = 964, primal bound = 882
 ok, explore
@@ -8703,7 +9012,7 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 900, primal bound = 882
+dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 dual bound here = 882, primal bound = 882
@@ -8717,8 +9026,13 @@ dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 844, primal bound = 882
-close!
+dual bound here = 946, primal bound = 882
+ok, explore
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 dual bound here = 870, primal bound = 882
@@ -8740,7 +9054,7 @@ no points!
 dual bound here = 886, primal bound = 882
 ok, explore
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 dual bound here = 904, primal bound = 882
@@ -8794,10 +9108,10 @@ dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 664, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 934, primal bound = 882
+ok, explore
 no points!
 dual bound here = 984, primal bound = 882
 ok, explore
@@ -8858,12 +9172,17 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 664, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
 dual bound here = 840, primal bound = 882
 close!
-dual bound here = 844, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 no points!
@@ -8880,7 +9199,7 @@ dual bound here = 822, primal bound = 882
 close!
 no points!
 no points!
-dual bound here = 796, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
@@ -8896,7 +9215,7 @@ dual bound here = 646, primal bound = 882
 close!
 no points!
 no points!
-dual bound here = 796, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
 dual bound here = 916, primal bound = 882
 ok, explore
@@ -8913,11 +9232,11 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 822, primal bound = 882
+dual bound here = 840, primal bound = 882
 close!
 dual bound here = 840, primal bound = 882
 close!
-dual bound here = 886, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -8936,10 +9255,11 @@ ok, explore
 no points!
 dual bound here = 972, primal bound = 882
 ok, explore
-dual bound here = 822, primal bound = 882
+dual bound here = 840, primal bound = 882
 close!
-dual bound here = 870, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 934, primal bound = 882
 ok, explore
 no points!
@@ -9004,8 +9324,12 @@ dual bound here = 870, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 no points!
@@ -9074,7 +9398,7 @@ dual bound here = 634, primal bound = 882
 close!
 no points!
 no points!
-dual bound here = 664, primal bound = 882
+dual bound here = 694, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
 close!
@@ -9167,19 +9491,21 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
 no points!
 dual bound here = 904, primal bound = 882
 ok, explore
 no points!
 no points!
 no points!
-dual bound here = 664, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
 no points!
 no points!
-dual bound here = 822, primal bound = 882
+dual bound here = 840, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
@@ -9207,8 +9533,9 @@ dual bound here = 870, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 870, primal bound = 882
-close!
+dual bound here = 900, primal bound = 882
+ok, explore
+no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 dual bound here = 886, primal bound = 882
@@ -9216,7 +9543,7 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -9243,23 +9570,23 @@ no points!
 no points!
 dual bound here = 964, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 904, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 no points!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 574, primal bound = 882
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+dual bound here = 694, primal bound = 882
 close!
 dual bound here = 964, primal bound = 882
 ok, explore
@@ -9270,13 +9597,18 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 844, primal bound = 882
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 826, primal bound = 882
 close!
-dual bound here = 796, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
-dual bound here = 796, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -9292,20 +9624,41 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 634, primal bound = 882
-close!
-dual bound here = 664, primal bound = 882
-close!
 dual bound here = 694, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 844, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
 close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 dual bound here = 964, primal bound = 882
@@ -9332,14 +9685,22 @@ no points!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 870, primal bound = 882
-close!
+dual bound here = 900, primal bound = 882
+ok, explore
+no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 844, primal bound = 882
-close!
+dual bound here = 964, primal bound = 882
+ok, explore
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 dual bound here = 694, primal bound = 882
@@ -9382,8 +9743,15 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 dual bound here = 916, primal bound = 882
@@ -9410,13 +9778,16 @@ no points!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 984, primal bound = 882
 ok, explore
 dual bound here = 900, primal bound = 882
 ok, explore
-dual bound here = 694, primal bound = 882
+dual bound here = 870, primal bound = 882
 close!
 no points!
 no points!
@@ -9431,7 +9802,7 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 916, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 dual bound here = 852, primal bound = 882
@@ -9455,10 +9826,14 @@ no points!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 646, primal bound = 882
-close!
-dual bound here = 646, primal bound = 882
-close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 972, primal bound = 882
 ok, explore
 no points!
@@ -9586,10 +9961,20 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 694, primal bound = 882
 close!
 dual bound here = 964, primal bound = 882
@@ -9682,10 +10067,88 @@ ok, explore
 no points!
 no points!
 no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+dual bound here = 870, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
 dual bound here = 780, primal bound = 882
 close!
 dual bound here = 984, primal bound = 882
@@ -9758,10 +10221,13 @@ no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 no points!
-dual bound here = 664, primal bound = 882
-close!
-dual bound here = 664, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 646, primal bound = 882
@@ -9772,10 +10238,12 @@ dual bound here = 826, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 646, primal bound = 882
-close!
-dual bound here = 646, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
 dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 822, primal bound = 882
@@ -9784,14 +10252,15 @@ no points!
 no points!
 dual bound here = 826, primal bound = 882
 close!
-dual bound here = 886, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 dual bound here = 972, primal bound = 882
 ok, explore
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 840, primal bound = 882
 close!
 dual bound here = 934, primal bound = 882
 ok, explore
@@ -9812,10 +10281,13 @@ no points!
 dual bound here = 934, primal bound = 882
 ok, explore
 no points!
-dual bound here = 634, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 972, primal bound = 882
 ok, explore
 dual bound here = 886, primal bound = 882
@@ -9934,58 +10406,70 @@ close!
 no points!
 dual bound here = 634, primal bound = 882
 close!
+dual bound here = 934, primal bound = 882
+ok, explore
+dual bound here = 934, primal bound = 882
+ok, explore
+dual bound here = 934, primal bound = 882
+ok, explore
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 664, primal bound = 882
+close!
+dual bound here = 634, primal bound = 882
+close!
+no points!
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 664, primal bound = 882
+close!
+dual bound here = 634, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 904, primal bound = 882
 ok, explore
-dual bound here = 934, primal bound = 882
-ok, explore
-dual bound here = 934, primal bound = 882
-ok, explore
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 946, primal bound = 882
-ok, explore
-no points!
-dual bound here = 664, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
-no points!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-dual bound here = 664, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
-dual bound here = 946, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 934, primal bound = 882
 ok, explore
 no points!
-no points!
-no points!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
 dual bound here = 984, primal bound = 882
 ok, explore
 dual bound here = 964, primal bound = 882
@@ -9997,10 +10481,18 @@ dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 844, primal bound = 882
-close!
+dual bound here = 900, primal bound = 882
+ok, explore
+no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 no points!
@@ -10032,8 +10524,11 @@ no points!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 916, primal bound = 882
 ok, explore
 no points!
@@ -10057,8 +10552,15 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 694, primal bound = 882
 close!
 dual bound here = 964, primal bound = 882
@@ -10152,7 +10654,7 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -10181,8 +10683,9 @@ dual bound here = 946, primal bound = 882
 ok, explore
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 870, primal bound = 882
-close!
+dual bound here = 900, primal bound = 882
+ok, explore
+no points!
 dual bound here = 852, primal bound = 882
 close!
 dual bound here = 870, primal bound = 882
@@ -10198,10 +10701,12 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
 no points!
-dual bound here = 664, primal bound = 882
+no points!
+no points!
+dual bound here = 852, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
@@ -10215,7 +10720,7 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 822, primal bound = 882
+dual bound here = 840, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
@@ -10228,32 +10733,54 @@ no points!
 no points!
 dual bound here = 964, primal bound = 882
 ok, explore
+dual bound here = 964, primal bound = 882
+ok, explore
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 904, primal bound = 882
 ok, explore
-dual bound here = 694, primal bound = 882
-close!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
+no points!
+dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 904, primal bound = 882
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 844, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 574, primal bound = 882
-close!
-dual bound here = 844, primal bound = 882
-close!
+no points!
+no points!
+no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 no points!
@@ -10263,9 +10790,9 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 796, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
-dual bound here = 796, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
 dual bound here = 934, primal bound = 882
 ok, explore
@@ -10276,20 +10803,24 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 886, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 no points!
 no points!
 no points!
 no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 664, primal bound = 882
-close!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
+dual bound here = 694, primal bound = 882
 close!
 dual bound here = 780, primal bound = 882
 close!
@@ -10316,10 +10847,15 @@ no points!
 no points!
 dual bound here = 840, primal bound = 882
 close!
-dual bound here = 664, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
-dual bound here = 844, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 984, primal bound = 882
 ok, explore
 dual bound here = 852, primal bound = 882
@@ -10373,7 +10909,7 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 796, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
 dual bound here = 916, primal bound = 882
 ok, explore
@@ -10389,13 +10925,14 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 796, primal bound = 882
+dual bound here = 826, primal bound = 882
 close!
 dual bound here = 972, primal bound = 882
 ok, explore
-dual bound here = 870, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 840, primal bound = 882
 close!
 dual bound here = 934, primal bound = 882
 ok, explore
@@ -10460,9 +10997,9 @@ no points!
 no points!
 dual bound here = 840, primal bound = 882
 close!
-dual bound here = 822, primal bound = 882
+dual bound here = 840, primal bound = 882
 close!
-dual bound here = 886, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -10483,8 +11020,12 @@ dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
 dual bound here = 870, primal bound = 882
 close!
 dual bound here = 916, primal bound = 882
@@ -10588,7 +11129,7 @@ close!
 no points!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 664, primal bound = 882
+dual bound here = 694, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
 ok, explore
@@ -10617,10 +11158,13 @@ no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 no points!
-dual bound here = 664, primal bound = 882
-close!
-dual bound here = 664, primal bound = 882
-close!
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
 dual bound here = 852, primal bound = 882
 close!
 dual bound here = 840, primal bound = 882
@@ -10681,7 +11225,7 @@ dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 822, primal bound = 882
 close!
-dual bound here = 886, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -10694,10 +11238,12 @@ dual bound here = 646, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 646, primal bound = 882
-close!
-dual bound here = 646, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 no points!
 no points!
 dual bound here = 826, primal bound = 882
@@ -10751,10 +11297,11 @@ no points!
 no points!
 dual bound here = 972, primal bound = 882
 ok, explore
-dual bound here = 822, primal bound = 882
+dual bound here = 840, primal bound = 882
 close!
-dual bound here = 870, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 934, primal bound = 882
 ok, explore
 no points!
@@ -10763,10 +11310,13 @@ no points!
 dual bound here = 934, primal bound = 882
 ok, explore
 no points!
-dual bound here = 634, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
 dual bound here = 840, primal bound = 882
 close!
 dual bound here = 840, primal bound = 882
@@ -10843,7 +11393,7 @@ no points!
 no points!
 dual bound here = 934, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 dual bound here = 634, primal bound = 882
 close!
@@ -10864,10 +11414,22 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
 dual bound here = 694, primal bound = 882
 close!
 dual bound here = 886, primal bound = 882
@@ -10943,10 +11505,88 @@ no points!
 no points!
 no points!
 no points!
+dual bound here = 964, primal bound = 882
+ok, explore
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 870, primal bound = 882
 close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 900, primal bound = 882
 ok, explore
 no points!
@@ -10955,7 +11595,7 @@ no points!
 no points!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 870, primal bound = 882
 close!
 dual bound here = 972, primal bound = 882
 ok, explore
@@ -10983,10 +11623,14 @@ no points!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 646, primal bound = 882
-close!
-dual bound here = 646, primal bound = 882
-close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
 dual bound here = 972, primal bound = 882
 ok, explore
 dual bound here = 886, primal bound = 882
@@ -11005,7 +11649,7 @@ dual bound here = 886, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 916, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 dual bound here = 904, primal bound = 882
@@ -11169,15 +11813,25 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 984, primal bound = 882
 ok, explore
 dual bound here = 964, primal bound = 882
 ok, explore
-dual bound here = 900, primal bound = 882
+dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 dual bound here = 882, primal bound = 882
@@ -11191,8 +11845,13 @@ no points!
 no points!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 844, primal bound = 882
-close!
+dual bound here = 946, primal bound = 882
+ok, explore
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -11240,10 +11899,10 @@ no points!
 no points!
 dual bound here = 964, primal bound = 882
 ok, explore
-dual bound here = 664, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 934, primal bound = 882
+ok, explore
 no points!
 no points!
 no points!
@@ -11269,7 +11928,7 @@ no points!
 dual bound here = 886, primal bound = 882
 ok, explore
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 dual bound here = 904, primal bound = 882
@@ -11300,12 +11959,12 @@ dual bound here = 852, primal bound = 882
 close!
 dual bound here = 664, primal bound = 882
 close!
-dual bound here = 904, primal bound = 882
+dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 no points!
 no points!
-dual bound here = 900, primal bound = 882
+dual bound here = 964, primal bound = 882
 ok, explore
 no points!
 dual bound here = 964, primal bound = 882
@@ -11424,7 +12083,7 @@ ok, explore
 no points!
 dual bound here = 840, primal bound = 882
 close!
-dual bound here = 904, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -11436,7 +12095,7 @@ dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 dual bound here = 840, primal bound = 882
@@ -11487,44 +12146,61 @@ dual bound here = 870, primal bound = 882
 close!
 dual bound here = 964, primal bound = 882
 ok, explore
-dual bound here = 844, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
-dual bound here = 634, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
-dual bound here = 634, primal bound = 882
-close!
-no points!
-no points!
-dual bound here = 886, primal bound = 882
-ok, explore
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 844, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
-ok, explore
-no points!
-no points!
-no points!
-no points!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
-close!
-dual bound here = 844, primal bound = 882
-close!
-dual bound here = 964, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 664, primal bound = 882
 close!
+dual bound here = 664, primal bound = 882
+close!
+no points!
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+dual bound here = 934, primal bound = 882
+ok, explore
 dual bound here = 634, primal bound = 882
 close!
+dual bound here = 634, primal bound = 882
+close!
+no points!
+no points!
+dual bound here = 946, primal bound = 882
+ok, explore
+dual bound here = 946, primal bound = 882
+ok, explore
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 934, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+dual bound here = 964, primal bound = 882
+ok, explore
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 934, primal bound = 882
+ok, explore
 no points!
 no points!
 no points!
@@ -11537,10 +12213,16 @@ no points!
 no points!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 826, primal bound = 882
-close!
-dual bound here = 826, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
@@ -11589,8 +12271,10 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 826, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
 dual bound here = 972, primal bound = 882
 ok, explore
 dual bound here = 886, primal bound = 882
@@ -11619,8 +12303,12 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 826, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 dual bound here = 886, primal bound = 882
@@ -11715,7 +12403,7 @@ dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -11828,7 +12516,7 @@ no points!
 no points!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 942, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -11847,12 +12535,16 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 822, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 882, primal bound = 882
 close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 882, primal bound = 882
 close!
 dual bound here = 822, primal bound = 882
@@ -11927,7 +12619,7 @@ no points!
 no points!
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 454, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
@@ -11940,9 +12632,9 @@ dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
-dual bound here = 634, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
-dual bound here = 394, primal bound = 882
+dual bound here = 694, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
 close!
@@ -11977,7 +12669,7 @@ no points!
 no points!
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 916, primal bound = 882
+dual bound here = 930, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -11991,12 +12683,13 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
+dual bound here = 840, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 852, primal bound = 882
-close!
+dual bound here = 900, primal bound = 882
+ok, explore
+no points!
 dual bound here = 664, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
@@ -12013,9 +12706,9 @@ dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 no points!
-dual bound here = 736, primal bound = 882
-close!
 dual bound here = 822, primal bound = 882
+close!
+dual bound here = 852, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
@@ -12046,16 +12739,16 @@ no points!
 no points!
 dual bound here = 724, primal bound = 882
 close!
-dual bound here = 934, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 840, primal bound = 882
+dual bound here = 882, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 840, primal bound = 882
 close!
 no points!
 no points!
-dual bound here = 840, primal bound = 882
+dual bound here = 870, primal bound = 882
 close!
 dual bound here = 634, primal bound = 882
 close!
@@ -12064,7 +12757,7 @@ close!
 no points!
 dual bound here = 724, primal bound = 882
 close!
-dual bound here = 886, primal bound = 882
+dual bound here = 912, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -12073,20 +12766,27 @@ no points!
 no points!
 dual bound here = 724, primal bound = 882
 close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 946, primal bound = 882
+ok, explore
+no points!
 dual bound here = 852, primal bound = 882
 close!
-dual bound here = 904, primal bound = 882
-ok, explore
-no points!
-dual bound here = 664, primal bound = 882
-close!
 dual bound here = 664, primal bound = 882
 close!
 no points!
 no points!
 dual bound here = 634, primal bound = 882
 close!
-dual bound here = 822, primal bound = 882
+dual bound here = 840, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
 close!
@@ -12153,7 +12853,7 @@ no points!
 dual bound here = 694, primal bound = 882
 close!
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 dual bound here = 964, primal bound = 882
@@ -12162,10 +12862,10 @@ no points!
 dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 916, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 dual bound here = 964, primal bound = 882
@@ -12225,8 +12925,9 @@ dual bound here = 754, primal bound = 882
 close!
 dual bound here = 930, primal bound = 882
 ok, explore
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
 dual bound here = 882, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
@@ -12275,7 +12976,7 @@ dual bound here = 724, primal bound = 882
 close!
 dual bound here = 912, primal bound = 882
 ok, explore
-dual bound here = 886, primal bound = 882
+dual bound here = 904, primal bound = 882
 ok, explore
 no points!
 dual bound here = 886, primal bound = 882
@@ -12325,8 +13026,9 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 882, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
@@ -12424,13 +13126,13 @@ dual bound here = 754, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 664, primal bound = 882
+dual bound here = 690, primal bound = 882
 close!
 dual bound here = 706, primal bound = 882
 close!
 dual bound here = 706, primal bound = 882
 close!
-dual bound here = 706, primal bound = 882
+dual bound here = 736, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
@@ -12497,11 +13199,11 @@ dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
-dual bound here = 660, primal bound = 882
+dual bound here = 676, primal bound = 882
 close!
-dual bound here = 646, primal bound = 882
+dual bound here = 664, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
 close!
@@ -12515,19 +13217,19 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 994, primal bound = 882
 ok, explore
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 916, primal bound = 882
+ok, explore
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 736, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 928, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 946, primal bound = 882
 ok, explore
@@ -12750,7 +13452,7 @@ dual bound here = 754, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 dual bound here = 916, primal bound = 882
@@ -12843,7 +13545,7 @@ dual bound here = 724, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 dual bound here = 912, primal bound = 882
@@ -12871,7 +13573,7 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 916, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 dual bound here = 916, primal bound = 882
@@ -12988,13 +13690,13 @@ dual bound here = 706, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 664, primal bound = 882
+dual bound here = 690, primal bound = 882
 close!
 dual bound here = 736, primal bound = 882
 close!
 dual bound here = 736, primal bound = 882
 close!
-dual bound here = 706, primal bound = 882
+dual bound here = 736, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
@@ -13053,15 +13755,13 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 660, primal bound = 882
-close!
-dual bound here = 694, primal bound = 882
+dual bound here = 676, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
 close!
@@ -13071,27 +13771,29 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 646, primal bound = 882
+dual bound here = 694, primal bound = 882
+close!
+dual bound here = 664, primal bound = 882
 close!
 dual bound here = 994, primal bound = 882
 ok, explore
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 754, primal bound = 882
-close!
-dual bound here = 736, primal bound = 882
-close!
-dual bound here = 904, primal bound = 882
+dual bound here = 916, primal bound = 882
+ok, explore
+dual bound here = 886, primal bound = 882
+ok, explore
+dual bound here = 928, primal bound = 882
 ok, explore
 dual bound here = 946, primal bound = 882
 ok, explore
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 dual bound here = 754, primal bound = 882
 close!
@@ -13139,8 +13841,9 @@ no points!
 no points!
 dual bound here = 930, primal bound = 882
 ok, explore
-dual bound here = 754, primal bound = 882
-close!
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
 dual bound here = 882, primal bound = 882
 close!
 dual bound here = 754, primal bound = 882
@@ -13231,7 +13934,7 @@ dual bound here = 724, primal bound = 882
 close!
 dual bound here = 912, primal bound = 882
 ok, explore
-dual bound here = 886, primal bound = 882
+dual bound here = 904, primal bound = 882
 ok, explore
 no points!
 dual bound here = 886, primal bound = 882
@@ -13260,8 +13963,9 @@ dual bound here = 694, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
-dual bound here = 694, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 882, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
@@ -13409,7 +14113,7 @@ dual bound here = 754, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 916, primal bound = 882
 ok, explore
 no points!
 dual bound here = 916, primal bound = 882
@@ -13461,7 +14165,7 @@ dual bound here = 724, primal bound = 882
 close!
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 dual bound here = 912, primal bound = 882
@@ -13517,7 +14221,7 @@ dual bound here = 904, primal bound = 882
 ok, explore
 dual bound here = 946, primal bound = 882
 ok, explore
-dual bound here = 916, primal bound = 882
+dual bound here = 934, primal bound = 882
 ok, explore
 no points!
 dual bound here = 916, primal bound = 882
@@ -13784,12 +14488,13 @@ no points!
 no points!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 694, primal bound = 882
+dual bound here = 840, primal bound = 882
 close!
 dual bound here = 664, primal bound = 882
 close!
-dual bound here = 852, primal bound = 882
-close!
+dual bound here = 900, primal bound = 882
+ok, explore
+no points!
 dual bound here = 754, primal bound = 882
 close!
 no points!
@@ -13824,7 +14529,7 @@ no points!
 no points!
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 916, primal bound = 882
+dual bound here = 930, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -13833,11 +14538,11 @@ no points!
 no points!
 dual bound here = 754, primal bound = 882
 close!
+dual bound here = 852, primal bound = 882
+close!
 dual bound here = 822, primal bound = 882
 close!
-dual bound here = 736, primal bound = 882
-close!
-dual bound here = 886, primal bound = 882
+dual bound here = 912, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -13846,18 +14551,18 @@ no points!
 no points!
 dual bound here = 724, primal bound = 882
 close!
-dual bound here = 934, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 694, primal bound = 882
-close!
 dual bound here = 840, primal bound = 882
+close!
+dual bound here = 882, primal bound = 882
 close!
 no points!
 no points!
 dual bound here = 634, primal bound = 882
 close!
-dual bound here = 840, primal bound = 882
+dual bound here = 870, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
@@ -13930,16 +14635,16 @@ dual bound here = 904, primal bound = 882
 ok, explore
 dual bound here = 904, primal bound = 882
 ok, explore
-dual bound here = 904, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 dual bound here = 664, primal bound = 882
 close!
-dual bound here = 664, primal bound = 882
+dual bound here = 852, primal bound = 882
 close!
 no points!
 no points!
-dual bound here = 822, primal bound = 882
+dual bound here = 840, primal bound = 882
 close!
 dual bound here = 634, primal bound = 882
 close!
@@ -13948,17 +14653,24 @@ close!
 no points!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 852, primal bound = 882
+dual bound here = 904, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
+no points!
+no points!
+dual bound here = 694, primal bound = 882
 close!
 dual bound here = 964, primal bound = 882
 ok, explore
 dual bound here = 964, primal bound = 882
 ok, explore
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
-dual bound here = 904, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 dual bound here = 946, primal bound = 882
@@ -13967,7 +14679,7 @@ no points!
 dual bound here = 964, primal bound = 882
 ok, explore
 no points!
-dual bound here = 916, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -14028,7 +14740,7 @@ no points!
 dual bound here = 736, primal bound = 882
 close!
 no points!
-dual bound here = 942, primal bound = 882
+dual bound here = 946, primal bound = 882
 ok, explore
 no points!
 no points!
@@ -14042,8 +14754,9 @@ no points!
 no points!
 dual bound here = 882, primal bound = 882
 close!
-dual bound here = 822, primal bound = 882
-close!
+dual bound here = 886, primal bound = 882
+ok, explore
+no points!
 dual bound here = 912, primal bound = 882
 ok, explore
 no points!
@@ -14060,9 +14773,12 @@ dual bound here = 822, primal bound = 882
 close!
 dual bound here = 882, primal bound = 882
 close!
+dual bound here = 916, primal bound = 882
+ok, explore
+no points!
+no points!
+no points!
 dual bound here = 882, primal bound = 882
-close!
-dual bound here = 822, primal bound = 882
 close!
 dual bound here = 940, primal bound = 882
 ok, explore
@@ -14139,12 +14855,12 @@ close!
 no points!
 dual bound here = 754, primal bound = 882
 close!
-dual bound here = 454, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 736, primal bound = 882
 close!
 no points!
-dual bound here = 634, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 724, primal bound = 882
 close!
@@ -14162,7 +14878,7 @@ ok, explore
 no points!
 dual bound here = 694, primal bound = 882
 close!
-dual bound here = 394, primal bound = 882
+dual bound here = 694, primal bound = 882
 close!
 dual bound here = 994, primal bound = 882
 ok, explore
@@ -14426,7 +15142,7 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 664, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
@@ -14444,7 +15160,7 @@ ok, explore
 no points!
 no points!
 no points!
-dual bound here = 694, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 694, primal bound = 882
 close!
@@ -15252,12 +15968,12 @@ no points!
 no points!
 no points!
 no points!
-dual bound here = 664, primal bound = 882
+dual bound here = 754, primal bound = 882
 close!
 dual bound here = 736, primal bound = 882
 close!
 no points!
-dual bound here = 694, primal bound = 882
+dual bound here = 724, primal bound = 882
 close!
 dual bound here = 904, primal bound = 882
 ok, explore
@@ -15278,4 +15994,4 @@ no points!
 no points!
 dual bound here = 694, primal bound = 882
 close!
-TOTAL TIME: 0.5
+TOTAL TIME: 0.13

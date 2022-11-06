@@ -407,8 +407,6 @@ void explore_node(){
     node* current_node = head;
     head = head->succ;
 
-    if(DEBUG_PROGRESS) append_progress_file_partial_solution(current_node->boxes_placed, current_node->bp_len,
-                                                current_node->volumes_to_exclude, current_node->vte_len);
 
     //0) update, if possible, the primal bound
     int v = 0;
@@ -448,10 +446,13 @@ void explore_node(){
             //if the points to remove are all the extreme points of this instance, don't
             //even bother computing anything except the primal bound: this instance can't
             //generate new ones.
+            if(DEBUG_PROGRESS) append_progress_file_partial_solution(current_node->boxes_placed, current_node->bp_len,
+                                                current_node->volumes_to_exclude, current_node->vte_len);
             free(points_unavailable);
             free(current_node->boxes_placed);
             free(current_node->boxes_to_place);
             free(current_node->extreme_points);
+            free(current_node->volumes_to_exclude);
             free(current_node);
             //this node can be closed
             if(DEBUG_PROGRESS) append_progress_file_solution_separator();
@@ -506,6 +507,9 @@ void explore_node(){
         capacity = 0;
         printf("NOOOO\n");
     }
+
+    if(DEBUG_PROGRESS) append_progress_file_partial_solution(current_node->boxes_placed, current_node->bp_len,
+                                                current_node->volumes_to_exclude, current_node->vte_len);
     
 
     //1.2) solve the knapsack problem

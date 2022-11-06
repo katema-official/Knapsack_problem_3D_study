@@ -10,7 +10,7 @@ file_name = os.path.join(file_dir, '..\\Branch_and_Bound_3\\results\\progresses2
 
 file = open(file_name, "r")
 #file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\hmg_based_implementation_v1\\" +
-#            "Interesting_data\\final_results_relaxed.txt", "r")
+#k            "Interesting_data\\final_results_relaxed.txt", "r")
 
 def isOverlapping1D(box1,box2):
     return box1[1] > box2[0] and box2[1] > box1[0]
@@ -137,7 +137,7 @@ def destroy_placed_boxes_in_space(boxes):
         ursina.destroy(box.entity)
 
 if __name__ == "__main__":
-    app = Ursina()
+    app = Ursina(borderless = False)
     create_container()
     finished = False
 

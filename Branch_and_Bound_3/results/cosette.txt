@@ -111,3 +111,7 @@ Non sto piangendo, mi è solo entrato un Knapsack nello'occhio
 
 (i tempi riportati sopra sono con tutti i debug del caso attivo, se li disattivi 
 scendono a 0.0 -> ricorda che l'istanza è (relativamente) piccola)
+
+Ho fatto delle prove mettendo a confronto le due finestre di ursina, la nuova 
+implementazione risparmia 2000 configurazioni (stica mica male)
+

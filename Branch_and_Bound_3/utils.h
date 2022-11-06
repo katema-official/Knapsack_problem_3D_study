@@ -5,10 +5,10 @@
 
 #define max(a,b) (((a) > (b)) ? (a) : (b))
 #define min(a,b) (((a) < (b)) ? (a) : (b))
-#define DEBUG_PROGRESS 0
+#define DEBUG_PROGRESS 1
 #define DEBUG_1 0
 #define DEBUG_2 0
-#define DEBUG_3 0
+#define DEBUG_3 1
 
 
 //int comparator_boxes_volume(const void* a, const void* b);
