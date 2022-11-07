@@ -347,8 +347,11 @@ box find_box_touching_point_behind(point p, box* boxes_placed, int n_boxes_place
 //2) they touch an already placed box.
 //in the first case, the actual length that contributes to the volume to be removed is
 //smaller than the total length of the point.
+
+//IF one of volumes generated in this way is already present, we discard it.
 box* get_unavailable_points_volume(box* boxes_placed, int n_boxes_placed,
-                    point* points_to_exclude, int n_points_to_exclude){
+                    point* points_to_exclude, int n_points_to_exclude,
+                    box* volumes_to_exclude_given, int n_volumes_to_exclude_given){
     box* tmp = malloc(n_points_to_exclude*sizeof(box));
     int tmp_len = 0;
     for(int i = 0; i < n_points_to_exclude; i++){
@@ -358,28 +361,24 @@ box* get_unavailable_points_volume(box* boxes_placed, int n_boxes_placed,
         switch(p.spawnpoint){
             case right_of_box:
                 b_found = find_box_touching_point_left(p, boxes_placed, n_boxes_placed);
-                if(b_found.x0 != -1){
-                    tmp[tmp_len] = b_found;
-                    tmp_len++;
-                }
             break;
             case top_of_box:
                 b_found = find_box_touching_point_below(p, boxes_placed, n_boxes_placed);
-                if(b_found.x0 != -1){
-                    tmp[tmp_len] = b_found;
-                    tmp_len++;
-                }
             break;
             case front_of_box:
                 b_found = find_box_touching_point_behind(p, boxes_placed, n_boxes_placed);
-                if(b_found.x0 != -1){
-                    tmp[tmp_len] = b_found;
-                    tmp_len++;
-                }
             break;
             default:
             break;
         }
+        if(b_found.x0 != -1){
+            if(!is_volume_to_exclude_aready_present(b_found, volumes_to_exclude_given, n_volumes_to_exclude_given)){
+                tmp[tmp_len] = b_found;
+                tmp_len++;
+            }
+        }
+
+
     }
 
     box* res = malloc((1 + tmp_len) * sizeof(box));
@@ -402,6 +401,17 @@ int is_point_not_redundant(point new_p, point* points, int n_points){
     return 1;
 }
 
+//function to check if a volume to exclude we'd like to add to the lsit of volumes to exclude is already present
+int is_volume_to_exclude_aready_present(box new_volume_to_exclude, box* volumes_to_exclude_given, int n_volumes_to_exclude_given){
+    for(int i = 0; i < n_volumes_to_exclude_given; i++){
+        box b = volumes_to_exclude_given[i];
+        if(b.x0 == new_volume_to_exclude.x0 && b.y0 == new_volume_to_exclude.y0 && b.z0 == new_volume_to_exclude.z0 && 
+            b.xlen == new_volume_to_exclude.xlen && b.ylen == new_volume_to_exclude.ylen && b.zlen == new_volume_to_exclude.zlen){
+                return 1;
+        }
+    }
+    return 0;
+}
 
 
 

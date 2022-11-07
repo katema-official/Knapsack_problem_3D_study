@@ -1,5 +1,6 @@
 #used to study how the C port of main3 behaves
 import math
+import os
 
 import ursina
 from boxmodule_ursina import *

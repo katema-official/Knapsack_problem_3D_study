@@ -467,7 +467,7 @@ void explore_node(){
         }
 
         box* volumes_induced_by_points_unavailable = get_unavailable_points_volume(current_node->boxes_placed,
-                                                            current_node->bp_len, pts_tmp, n);
+                                                            current_node->bp_len, pts_tmp, n, current_node->volumes_to_exclude, current_node->vte_len);
         int n_boxes_volumes_unavailable = volumes_induced_by_points_unavailable[0].x0;  //check the function above to see why this is ok
         for(int i = 1; i < n_boxes_volumes_unavailable + 1; i++){
             capacity -= volumes_induced_by_points_unavailable[i].xlen * 
