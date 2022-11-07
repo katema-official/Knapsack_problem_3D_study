@@ -76,7 +76,7 @@ def make_a_step():
         MyBoxes.boxes_new.append(Box("a", xlen, ylen, zlen,
                                      rgb(math.e ** ((xlen*ylen*zlen) + 27) * 15 % 255,
                                          math.e ** ((xlen*ylen*zlen) + 54) * 25 % 255,
-                                         math.e ** ((xlen*ylen*zlen) + 81) * 20 % 255), x0, y0, z0))
+                                         math.e ** ((xlen*ylen*zlen) + 81) * 20 % 255), x0, y0, z0, 1))
         volume_occupied_absolute += xlen*ylen*zlen
 
     line = file.readline()[:-1]
@@ -93,7 +93,7 @@ def make_a_step():
             x0 = int(elements[3])
             y0 = int(elements[4])
             z0 = int(elements[5])
-            MyBoxes.boxes_new.append(Box("a", xlen, ylen, zlen, rgb(255, 0, 0), x0, y0, z0))
+            MyBoxes.boxes_new.append(Box("a", xlen, ylen, zlen, rgb(255, 0, 0), x0, y0, z0, 0.5))
         line = file.readline()[:-1]
     print(line)
     line = file.readline()[:-1]
@@ -126,13 +126,13 @@ def place_boxes_in_space(boxes, all=False):
     volume_covered = 0
     for box in boxes:
         if all == True:
-            box.entity = place_box(box.x0, box.y0, box.z0, box.xlen, box.ylen, box.zlen, box.color)
+            box.entity = place_box(box.x0, box.y0, box.z0, box.xlen, box.ylen, box.zlen, box.color, box.alpha)
             boxes_effectively_placed.append(box)
             volume_covered += box.xlen * box.ylen * box.zlen
         else:
             if(box.x0 + box.xlen <= cont_x and box.y0 + box.ylen <= cont_y and box.z0 + box.zlen <= cont_z):
                 print("aaaaa")
-                box.entity = place_box(box.x0, box.y0, box.z0, box.xlen, box.ylen, box.zlen, box.color)
+                box.entity = place_box(box.x0, box.y0, box.z0, box.xlen, box.ylen, box.zlen, box.color, box.alpha)
                 boxes_effectively_placed.append(box)
                 volume_covered += box.xlen * box.ylen * box.zlen
     #print(volume_covered/(cont_x*cont_y*cont_z))

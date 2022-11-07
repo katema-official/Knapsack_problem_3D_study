@@ -98,16 +98,18 @@ def enlarge_boxes(boxes):
 
 # Function that, given a LBB point and the width, height and depth of a box,
 # places a box with those dimensions with the specified LBB point.
-def place_box(x0, y0, z0, x_len, y_len, z_len, color_box = None):
+def place_box(x0, y0, z0, x_len, y_len, z_len, color_box = None, alpha_box = None):
     color_box = color_box if color_box!=None else rgb(random.randint(0, 255),
                                                       random.randint(0, 255), random.randint(0, 255))
-    box = Entity(model='cube', color=color_box, scale=1, collider='box')
+    box = Entity(model='cube', color=color_box, scale=1, collider='box', texture="white_cube")
     box.scale_x = x_len
     box.scale_y = y_len
     box.scale_z = z_len
     box.position = (0 - bs.cont_x / 2 + x0 + x_len / 2,
                     0 - bs.cont_y / 2 + y0 + y_len / 2,
                     0 + bs.cont_z / 2 - z0 - z_len / 2)
+
+    box.alpha = alpha_box if alpha_box != None else 1
 
     return box
 
@@ -116,7 +118,7 @@ def place_box(x0, y0, z0, x_len, y_len, z_len, color_box = None):
 
 #Class that represents a box to be packed.
 class Box:
-    def __init__(self, name, xlen, ylen, zlen, color=None, x0=None, y0=None, z0=None):
+    def __init__(self, name, xlen, ylen, zlen, color=None, x0=None, y0=None, z0=None, alpha=1):
         self.name = name    #identifier of the box
         self.xlen = xlen    #its length along the x axis
         self.ylen = ylen    #its length along the y axis
@@ -126,6 +128,7 @@ class Box:
         self.z0 = z0        #the z cordinate of its LBB point
         self.entity = None  #The entity associated with this box. It's the actual box basically (of ursina)
         self.color = color   #color to be used for this boxed. If Node, will be chosen randomly
+        self.alpha = alpha
 
 #Class to represent a point
 class Point:
