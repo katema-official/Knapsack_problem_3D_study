@@ -14,6 +14,7 @@ box volume_induced_by_point_to_consider(point p, box* placed_boxes, int n_placed
 int is_box_left_touching___point(point p, box b);
 int is_box_behind_touching___point(point p, box b);
 int is_box_below_touching___point(point p, box b);
+int* get_lengths_air_of_unavailable_point(point p, box* boxes, int n_boxes);
 
 
 #endif

@@ -12,9 +12,9 @@
 
 
 //define container dimensions
-int cont_x = 10;//600;//860;//100;//800;
+int cont_x = 20;//600;//860;//100;//800;
 int cont_y = 10;//500;//322;//100;//700;
-int cont_z = 10;//700;//590;//100;//1000;
+int cont_z = 15;//700;//590;//100;//1000;
 
 node* head = NULL;
 
@@ -55,10 +55,6 @@ int main(){
 
     if(DEBUG_PROGRESS) reset_progress_file();
     //initialize_dual_bound();
-
-    //cleanup of a utility file
-    FILE* p = fopen("./results.txt", "a");
-    fclose(p);
     
     int n_boxes = 0;
     box* boxes;
@@ -67,7 +63,7 @@ int main(){
     int read_from_file = 1;
     if(read_from_file){
         //adapter from https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
-        FILE* f = fopen("./input3.txt", "r");
+        FILE* f = fopen("./input4.txt", "r");
         if (f == NULL){exit(EXIT_FAILURE);}
 
         //how many boxes are there?
@@ -328,7 +324,7 @@ int main(){
 
 
 void print_results(box* all_boxes, int n_boxes, char** boxes_names){
-    FILE* f = fopen("./results/result.txt", "w");
+    FILE* f = fopen("./results/result3.txt", "w");
     fprintf(f, "%d\n", n_optimal_feasible_solution_found);
     for(int i = 0; i < n_optimal_feasible_solution_found; i++){
         int index_name = -1;
@@ -431,9 +427,7 @@ void explore_node(){
     //1.1.2) remove the volume of the boxes already contained
     capacity = capacity_minus_placed_boxes(capacity, current_node->boxes_placed, current_node->bp_len);
 
-    
-
-    //1.1.4) find new points that cannot contain any box
+    //1.1.3) find new points that cannot contain any box
     int* points_unavailable = find_unavailable_points(current_node->extreme_points, current_node->ep_len,
                                             current_node->boxes_to_place, current_node->btp_len);
     if(points_unavailable != NULL){
@@ -461,19 +455,14 @@ void explore_node(){
             int index = points_unavailable[i];    //remember that points_unavailable contains INDEXES!
             pts_tmp[i-1] = current_node->extreme_points[index];
         }
-
+        
         box* volumes_induced_by_points_unavailable = get_unavailable_points_volume(current_node->boxes_placed,
                                                             current_node->bp_len, pts_tmp, n, current_node->volumes_to_exclude, current_node->vte_len);
         int n_boxes_volumes_unavailable = volumes_induced_by_points_unavailable[0].x0;  //check the function above to see why this is ok
-        /*for(int i = 1; i < n_boxes_volumes_unavailable + 1; i++){
-            capacity -= volumes_induced_by_points_unavailable[i].xlen * 
-                        volumes_induced_by_points_unavailable[i].ylen * 
-                        volumes_induced_by_points_unavailable[i].zlen;
-        }*/
         
         free(pts_tmp);
 
-        //1.1.5) let's add, to this sub-problem (so that this will be propagated to all subsequent
+        //1.1.4) let's add, to this sub-problem (so that this will be propagated to all subsequent
         //sub-problems), the box volumes to be excluded
         box* new_volumes_to_exclude = malloc(n_boxes_volumes_unavailable * sizeof(box));
         for(int i = 0; i < n_boxes_volumes_unavailable; i++){
@@ -486,7 +475,7 @@ void explore_node(){
                                             new_volumes_to_exclude, n_boxes_volumes_unavailable);
         free(new_volumes_to_exclude);
 
-        //1.1.6) let's try to remove even more volumes, induced by the current unavailable volumes
+        //1.1.5) let's try to remove even more volumes, induced by the current unavailable volumes
         deduce_even_more_unavailable_points_volume(&(current_node->volumes_to_exclude), &(current_node->vte_len), 
                 current_node->boxes_placed, current_node->bp_len);
 
@@ -507,7 +496,7 @@ void explore_node(){
         printf("NOOOO\n");
     }
 
-    //1.1.3) remove the volume of the boxes volumes unavailable (to exclude)
+    //1.1.7) remove the volume of the boxes volumes unavailable (to exclude)
     for(int i = 0; i < current_node->vte_len; i++){
         capacity -= current_node->volumes_to_exclude[i].xlen * 
                     current_node->volumes_to_exclude[i].ylen * 

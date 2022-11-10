@@ -1,0 +1,156 @@
+==498== Memcheck, a memory error detector
+==498== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==498== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==498== Command: ./main2.out
+==498== Parent PID: 11
+==498== 
+==498== 
+==498== Process terminating with default action of signal 2 (SIGINT)
+==498==    at 0x4960D39: open (open64.c:48)
+==498==    by 0x48E3015: _IO_file_open (fileops.c:189)
+==498==    by 0x48E32D9: _IO_file_fopen@@GLIBC_2.2.5 (fileops.c:281)
+==498==    by 0x48D598D: __fopen_internal (iofopen.c:75)
+==498==    by 0x48D598D: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==498==    by 0x10BFBF: append_progress_file_partial_solution (utils.c:26)
+==498==    by 0x10A9CC: explore_node (main2.c:439)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== HEAP SUMMARY:
+==498==     in use at exit: 41,758 bytes in 621 blocks
+==498==   total heap usage: 182,236 allocs, 181,615 frees, 13,586,068 bytes allocated
+==498== 
+==498== 4 bytes in 1 blocks are still reachable in loss record 1 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10E944: create_new_kp_sol_node_bfs (knapsack_0_1_solver.c:638)
+==498==    by 0x10E741: get_dual_bound_using_kp_0_1_bfs (knapsack_0_1_solver.c:554)
+==498==    by 0x10AFC7: explore_node (main2.c:514)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 24 bytes in 1 blocks are still reachable in loss record 2 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10CA3C: find_unavailable_points (extreme_points.c:131)
+==498==    by 0x10A960: explore_node (main2.c:431)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 30 bytes in 15 blocks are still reachable in loss record 3 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x109C5F: main (main2.c:165)
+==498== 
+==498== 32 bytes in 1 blocks are still reachable in loss record 4 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10E91B: create_new_kp_sol_node_bfs (knapsack_0_1_solver.c:631)
+==498==    by 0x10E741: get_dual_bound_using_kp_0_1_bfs (knapsack_0_1_solver.c:554)
+==498==    by 0x10AFC7: explore_node (main2.c:514)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 32 bytes in 2 blocks are still reachable in loss record 5 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10E944: create_new_kp_sol_node_bfs (knapsack_0_1_solver.c:638)
+==498==    by 0x10E7A9: get_dual_bound_using_kp_0_1_bfs (knapsack_0_1_solver.c:568)
+==498==    by 0x10AFC7: explore_node (main2.c:514)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 60 bytes in 1 blocks are still reachable in loss record 6 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10A212: main (main2.c:281)
+==498== 
+==498== 64 bytes in 2 blocks are still reachable in loss record 7 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10E91B: create_new_kp_sol_node_bfs (knapsack_0_1_solver.c:631)
+==498==    by 0x10E7A9: get_dual_bound_using_kp_0_1_bfs (knapsack_0_1_solver.c:568)
+==498==    by 0x10AFC7: explore_node (main2.c:514)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 120 bytes in 1 blocks are still reachable in loss record 8 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x109A7D: main (main2.c:149)
+==498== 
+==498== 120 bytes in 1 blocks are still reachable in loss record 9 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10BBBC: check_then_update_primal_bound (main2.c:711)
+==498==    by 0x10A8DC: explore_node (main2.c:415)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 360 bytes in 1 blocks are still reachable in loss record 10 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x1094F3: main (main2.c:77)
+==498== 
+==498== 472 bytes in 1 blocks are still reachable in loss record 11 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x48D592D: __fopen_internal (iofopen.c:65)
+==498==    by 0x48D592D: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==498==    by 0x10BFBF: append_progress_file_partial_solution (utils.c:26)
+==498==    by 0x10A9CC: explore_node (main2.c:439)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 936 bytes in 39 blocks are still reachable in loss record 12 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x109F13: main (main2.c:224)
+==498== 
+==498== 1,200 bytes in 22 blocks are still reachable in loss record 13 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10BA76: generate_new_node (main2.c:685)
+==498==    by 0x10B2F5: explore_node (main2.c:567)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 1,344 bytes in 22 blocks are still reachable in loss record 14 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10B4FE: generate_new_node (main2.c:613)
+==498==    by 0x10B2F5: explore_node (main2.c:567)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 1,584 bytes in 22 blocks are still reachable in loss record 15 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10BAA3: generate_new_node (main2.c:688)
+==498==    by 0x10B2F5: explore_node (main2.c:567)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 2,012 bytes in 164 blocks are still reachable in loss record 16 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10E944: create_new_kp_sol_node_bfs (knapsack_0_1_solver.c:638)
+==498==    by 0x10E8CF: get_dual_bound_using_kp_0_1_bfs (knapsack_0_1_solver.c:617)
+==498==    by 0x10AFC7: explore_node (main2.c:514)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 2,352 bytes in 22 blocks are still reachable in loss record 17 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10C67D: get_copy_points_except_one (extreme_points.c:63)
+==498==    by 0x10B733: generate_new_node (main2.c:654)
+==498==    by 0x10B2F5: explore_node (main2.c:567)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 2,808 bytes in 39 blocks are still reachable in loss record 18 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x109EE5: main (main2.c:220)
+==498== 
+==498== 3,276 bytes in 39 blocks are still reachable in loss record 19 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x109F9D: main (main2.c:233)
+==498== 
+==498== 5,248 bytes in 164 blocks are still reachable in loss record 20 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10E91B: create_new_kp_sol_node_bfs (knapsack_0_1_solver.c:631)
+==498==    by 0x10E8CF: get_dual_bound_using_kp_0_1_bfs (knapsack_0_1_solver.c:617)
+==498==    by 0x10AFC7: explore_node (main2.c:514)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 6,576 bytes in 22 blocks are still reachable in loss record 21 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10D459: get_copy_boxes_except_one (boxes.c:160)
+==498==    by 0x10BA54: generate_new_node (main2.c:680)
+==498==    by 0x10B2F5: explore_node (main2.c:567)
+==498==    by 0x10A2E9: main (main2.c:301)
+==498== 
+==498== 13,104 bytes in 39 blocks are still reachable in loss record 22 of 22
+==498==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==498==    by 0x10D459: get_copy_boxes_except_one (boxes.c:160)
+==498==    by 0x109F6A: main (main2.c:229)
+==498== 
+==498== LEAK SUMMARY:
+==498==    definitely lost: 0 bytes in 0 blocks
+==498==    indirectly lost: 0 bytes in 0 blocks
+==498==      possibly lost: 0 bytes in 0 blocks
+==498==    still reachable: 41,758 bytes in 621 blocks
+==498==         suppressed: 0 bytes in 0 blocks
+==498== 
+==498== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
