@@ -236,7 +236,6 @@ box compute_volume_coverable_from_point(point p, box* boxes, int n_boxes){
             x = min(x, box_right.x0 - p.x);
         }
     }
-    //FAI LO STESSO PER QUANDO CADE A DESTRA
 
     //int x = min(x1, min(x2, min(x3, x4)));
     //int y = min(y1, min(y2, min(y3, y4)));
