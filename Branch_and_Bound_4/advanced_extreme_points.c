@@ -374,6 +374,9 @@ box* get_unavailable_points_volume(box* boxes_placed, int n_boxes_placed,
         box b_found;
         if(DEBUG_1) printf("p to remove from capacity = %d %d %d - %d\n", p.x, p.y, p.z, p.spawnpoint);
         b_found = compute_volume_coverable_from_point(p, boxes_placed, n_boxes_placed);
+        //TODO: qui, partendo dai punti da escludere "PRIMARI", cerchi solo (a sinistra, dietro e sotto) sulle scatole normali.
+        //ma ci sono controesempi che mostrano come potrebbe essere utile considerare anche le scatole rosse che già hai
+        //per ottenere un duale più forte.
         if(b_found.x0 != -1){
             if(!is_volume_to_exclude_aready_present(b_found, volumes_to_exclude_given, n_volumes_to_exclude_given)){
                 tmp[tmp_len] = b_found;

@@ -221,6 +221,35 @@ box compute_volume_coverable_from_point(point p, box* boxes, int n_boxes){
     int y = min(y1, y3);
     int z = min(z1, z3);
 
+    
+
+    if(box_right.x0 != -1 && (box_right.x0 <= box_behind.x0 + box_behind.xlen)){
+        z = min(z, z2);
+        y = min(y, y2);
+        printf("GIA 1\n");
+    }
+
+    if(box_front.x0 != -1 && (box_front.z0 <= box_left.z0 + box_left.zlen)){
+        x = min(x, x2);
+        y = min(y, y2);
+        printf("GIA 2\n");
+    }
+
+    if(box_above.x0 != -1 && (box_above.x0 + box_above.xlen <= box_behind.x0 + box_behind.xlen)){
+        x = min(x, x4);
+        printf("GIA 3\n");
+    }
+
+    if(box_above.x0 != -1 && (box_above.z0 + box_above.zlen <= box_left.z0 + box_above.zlen)){
+        z = min(z, z4);
+        printf("GIA 4\n");
+    }
+
+
+
+
+
+    /*
     //if there is a box placed above this unavailable volume, and it is above the box behind...
     if(box_above.x0 != -1 && (box_above.y0 == box_behind.y0 + box_behind.ylen)){
         //... we have to check if, because of it, a box was placed in front of it (pulled to the ground)
@@ -235,7 +264,7 @@ box compute_volume_coverable_from_point(point p, box* boxes, int n_boxes){
         if(box_right.x0 == box_above.x0 + box_above.xlen){
             x = min(x, box_right.x0 - p.x);
         }
-    }
+    }*/
 
     //int x = min(x1, min(x2, min(x3, x4)));
     //int y = min(y1, min(y2, min(y3, y4)));
