@@ -398,11 +398,22 @@ box* get_unavailable_points_volume(box* boxes_placed, int n_boxes_placed,
 
 
 //function to check if a point we'd like to add to a list of points is already present
-int is_point_not_redundant(point new_p, point* points, int n_points){
+int is_point_not_redundant(point new_p, point* points, int n_points,
+            box* boxes_placed, int n_boxes_placed){
     for(int i = 0; i < n_points; i++){
         if(new_p.x == points[i].x && new_p.y == points[i].y && new_p.z == points[i].z){
             printf("sorry, point %d %d %d is considered redundant\n", new_p.x, new_p.y, new_p.z);
             return 0;
+        }
+    }
+    if(boxes_placed != NULL){
+        for(int i = 0; i < n_boxes_placed; i++){
+            box b = boxes_placed[i];
+            if(b.x0 <= new_p.x && new_p.x < b.x0 + b.xlen &&
+                b.y0 <= new_p.y && new_p.y < b.y0 + b.ylen &&
+                b.z0 <= new_p.z && new_p.z < b.z0 + b.zlen){
+                    return 0;
+                }
         }
     }
     return 1;

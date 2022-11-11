@@ -125,7 +125,7 @@ void add_points_from_volume_to_exclude(box b, point** points_to_consider, int* n
     for(int i = 0; i < 3; i++){
         point point_to_test = new_points[i];
         if(point_to_test.x < cont_x && point_to_test.y < cont_y && point_to_test.z < cont_z){
-            if(is_point_not_redundant(point_to_test, *points_to_consider, *n_points_to_consider)){
+            if(is_point_not_redundant(point_to_test, *points_to_consider, *n_points_to_consider, NULL, 0)){
                 if(!is_point_inside_some_box(point_to_test, volumes_to_exclude, n_volumes_to_exclude, boxes_placed, n_boxes_placed)){
                     if(1 || DEBUG_ADVANCED_EXTREME_POINTS_PLUS) printf("new point to consider! is: %d %d %d\n", point_to_test.x, point_to_test.y, point_to_test.z);
                     copy_point(&( (*points_to_consider)[(*n_points_to_consider)] ), point_to_test);

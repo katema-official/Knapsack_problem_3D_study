@@ -645,8 +645,8 @@ node* generate_new_node(point* extreme_points, int n_extreme_points,
     //we don't need to project p2 down: it's by definition on top of a box
     project_point_down(&p3, new_boxes_placed, n_boxes_placed+1);
 
-    int p1_valid = is_point_not_redundant(p1, extreme_points, n_extreme_points);
-    int p3_valid = is_point_not_redundant(p3, extreme_points, n_extreme_points);
+    int p1_valid = is_point_not_redundant(p1, extreme_points, n_extreme_points, boxes_placed, n_boxes_placed);
+    int p3_valid = is_point_not_redundant(p3, extreme_points, n_extreme_points, boxes_placed, n_boxes_placed);
 
 
     //copy the extreme points by removing the point in which the box has been placed, 
