@@ -380,7 +380,7 @@ box* get_unavailable_points_volume(box* boxes_placed, int n_boxes_placed,
         if(b_found.x0 != -1){
             if(!is_volume_to_exclude_aready_present(b_found, volumes_to_exclude_given, n_volumes_to_exclude_given)){
                 tmp[tmp_len] = b_found;
-                printf("b_found AAA = %d %d %d %d %d %d\n", b_found.xlen, b_found.ylen, b_found.zlen, b_found.x0, b_found.y0, b_found.z0);
+                if(DEBUG_MISC) printf("b_found AAA = %d %d %d %d %d %d\n", b_found.xlen, b_found.ylen, b_found.zlen, b_found.x0, b_found.y0, b_found.z0);
                 tmp_len++;
             }
         }
@@ -402,7 +402,7 @@ int is_point_not_redundant(point new_p, point* points, int n_points,
             box* boxes_placed, int n_boxes_placed){
     for(int i = 0; i < n_points; i++){
         if(new_p.x == points[i].x && new_p.y == points[i].y && new_p.z == points[i].z){
-            printf("sorry, point %d %d %d is considered redundant\n", new_p.x, new_p.y, new_p.z);
+            if(DEBUG_MISC) printf("sorry, point %d %d %d is considered redundant\n", new_p.x, new_p.y, new_p.z);
             return 0;
         }
     }

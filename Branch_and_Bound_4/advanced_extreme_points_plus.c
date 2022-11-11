@@ -49,13 +49,13 @@ void deduce_even_more_unavailable_points_volume(box** volumes_to_exclude, int* n
         //2) in add_points_from_volume_to_exclude we automatically remove useless points
         for(int i = 0; i < n_final_volumes_to_exclude; i++){
             box b = final_volumes_to_exclude[i];    //the red box (volumes to exclude)
-            printf("b.xlen AAA 4 = %d\n", b.xlen);
+            if(DEBUG_MISC) printf("b.xlen AAA 4 = %d\n", b.xlen);
             add_points_from_volume_to_exclude(b, &points_to_consider, &n_points_to_consider,
                     final_volumes_to_exclude, n_final_volumes_to_exclude, boxes_placed, n_boxes_placed);
 
         }
 
-        printf("n_point_to_consider = %d\n", n_points_to_consider);
+        if(DEBUG_MISC) printf("n_point_to_consider = %d\n", n_points_to_consider);
 
         //3) for each of those points, see if they induce new volumes to exclude
         for(int i = 0; i < n_points_to_consider; i++){
@@ -67,7 +67,7 @@ void deduce_even_more_unavailable_points_volume(box** volumes_to_exclude, int* n
                                             boxes_placed, n_boxes_placed, final_volumes_to_exclude, n_final_volumes_to_exclude);
             if(volume_induced.x0 != -1){
                 //4) add the new volume to exclude to the array of volumes to exclude
-                printf("NEW volume induced: %d %d %d %d %d %d\n", volume_induced.xlen, volume_induced.ylen, volume_induced.zlen, 
+                if(DEBUG_MISC) printf("NEW volume induced: %d %d %d %d %d %d\n", volume_induced.xlen, volume_induced.ylen, volume_induced.zlen, 
                     volume_induced.x0, volume_induced.y0, volume_induced.z0);
                 final_volumes_to_exclude[n_final_volumes_to_exclude] = volume_induced;
                 n_final_volumes_to_exclude++;
@@ -76,7 +76,7 @@ void deduce_even_more_unavailable_points_volume(box** volumes_to_exclude, int* n
 
         free(points_to_consider);
 
-        printf("current_n_final_volumes_to_exclude = %d, n_final_volumes_to_exclude = %d\n", current_n_final_volumes_to_exclude, n_final_volumes_to_exclude);
+        if(DEBUG_MISC) printf("current_n_final_volumes_to_exclude = %d, n_final_volumes_to_exclude = %d\n", current_n_final_volumes_to_exclude, n_final_volumes_to_exclude);
 
     }while (current_n_final_volumes_to_exclude < n_final_volumes_to_exclude);
     
@@ -96,7 +96,7 @@ void add_points_from_volume_to_exclude(box b, point** points_to_consider, int* n
         box* volumes_to_exclude, int n_volumes_to_exclude, box* boxes_placed, int n_boxes_placed){
     point* new_points = malloc(3*sizeof(point));
 
-    printf("b.xlen AAA 5 = %d\n", b.xlen);
+    if(DEBUG_MISC) printf("b.xlen AAA 5 = %d\n", b.xlen);
 
     new_points[0].x = b.x0 + b.xlen;
     new_points[0].y = b.y0;
@@ -115,9 +115,9 @@ void add_points_from_volume_to_exclude(box b, point** points_to_consider, int* n
     new_points[2].spawnpoint = front_of_box;
     project_unavailable_point_down(&(new_points[2]), boxes_placed, n_boxes_placed, volumes_to_exclude, n_volumes_to_exclude);
 
-    if(1 || DEBUG_ADVANCED_EXTREME_POINTS_PLUS) printf("new candidate point is: %d %d %d\n", new_points[0].x, new_points[0].y, new_points[0].z);
-    if(1 || DEBUG_ADVANCED_EXTREME_POINTS_PLUS) printf("new candidate point is: %d %d %d\n", new_points[1].x, new_points[1].y, new_points[1].z);
-    if(1 || DEBUG_ADVANCED_EXTREME_POINTS_PLUS) printf("new candidate point is: %d %d %d\n", new_points[2].x, new_points[2].y, new_points[2].z);
+    if(DEBUG_ADVANCED_EXTREME_POINTS_PLUS) printf("new candidate point is: %d %d %d\n", new_points[0].x, new_points[0].y, new_points[0].z);
+    if(DEBUG_ADVANCED_EXTREME_POINTS_PLUS) printf("new candidate point is: %d %d %d\n", new_points[1].x, new_points[1].y, new_points[1].z);
+    if(DEBUG_ADVANCED_EXTREME_POINTS_PLUS) printf("new candidate point is: %d %d %d\n", new_points[2].x, new_points[2].y, new_points[2].z);
 
     //a point of this kind can only be added if:
     //1) it's not already present in the array
@@ -127,7 +127,7 @@ void add_points_from_volume_to_exclude(box b, point** points_to_consider, int* n
         if(point_to_test.x < cont_x && point_to_test.y < cont_y && point_to_test.z < cont_z){
             if(is_point_not_redundant(point_to_test, *points_to_consider, *n_points_to_consider, NULL, 0)){
                 if(!is_point_inside_some_box(point_to_test, volumes_to_exclude, n_volumes_to_exclude, boxes_placed, n_boxes_placed)){
-                    if(1 || DEBUG_ADVANCED_EXTREME_POINTS_PLUS) printf("new point to consider! is: %d %d %d\n", point_to_test.x, point_to_test.y, point_to_test.z);
+                    if(DEBUG_ADVANCED_EXTREME_POINTS_PLUS) printf("new point to consider! is: %d %d %d\n", point_to_test.x, point_to_test.y, point_to_test.z);
                     copy_point(&( (*points_to_consider)[(*n_points_to_consider)] ), point_to_test);
                     (*n_points_to_consider) += 1;
                 }
@@ -193,12 +193,12 @@ box volume_induced_by_point_to_consider(point p, box* placed_boxes, int n_placed
     int is_there_box_below = boxes_to_exclude_around[2].x0 == -1 ? 0 : 1;
 
     if(is_there_box_left + is_there_box_behind + is_there_box_below < 2){
-        printf("there are no >=2 boxes around");
+        if(DEBUG_MISC) printf("there are no >=2 boxes around");
         free(boxes_to_exclude_around);
         return ret;
     }
 
-    printf("ma qui ci arrivo\n");
+    if(DEBUG_MISC) printf("ma qui ci arrivo\n");
 
     int left_behind = (is_there_box_left && is_there_box_behind);
     int left_below = (is_there_box_left && is_there_box_below);
@@ -213,7 +213,7 @@ box volume_induced_by_point_to_consider(point p, box* placed_boxes, int n_placed
         if((left_behind && (boxes_around[2].x0 == -1 && p.y > 0)) || 
             (left_below && (boxes_around[1].x0 == -1 && p.z > 0)) || 
             (behind_below && (boxes_around[0].x0 == -1 && p.x > 0))){
-                printf("qui?");
+                if(DEBUG_MISC) printf("qui?\n");
                 free(boxes_to_exclude_around);
                 free(boxes_around);
                 return ret;
@@ -260,7 +260,7 @@ box volume_induced_by_point_to_consider(point p, box* placed_boxes, int n_placed
     int x = min(x1, x3);
     int y = min(y1, y3);
     int z = min(z1, z3);
-    printf("x, y e z di questo nuovo volume rosso: %d %d %d\n", x, y, z);
+    if(DEBUG_MISC) printf("x, y e z di questo nuovo volume rosso: %d %d %d\n", x, y, z);
 
     ret.xlen = x;
     ret.ylen = y;
@@ -270,12 +270,12 @@ box volume_induced_by_point_to_consider(point p, box* placed_boxes, int n_placed
     free(boxes_around);
 
     if(ret.xlen == 0 || ret.ylen == 0 || ret.zlen == 0){
-        printf("ma perché scusa?\n");
+        if(DEBUG_MISC) printf("ma perché scusa?\n");
         ret.x0 = -1;
         return ret;
     }
 
-    printf("tutt'appost\n");
+    if(DEBUG_MISC) printf("tutt'appost\n");
 
     return ret;
 

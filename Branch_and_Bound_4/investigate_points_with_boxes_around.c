@@ -15,7 +15,7 @@ int is_box_left_touching___point(point p, box b){
     if(b.x0 + b.xlen == p.x && 
         b.y0 <= p.y && p.y < b.y0 + b.ylen && 
         b.z0 <= p.z && p.z < b.z0 + b.zlen){
-            printf("yes left\n");
+            if(DEBUG_MISC) printf("yes left\n");
             return 1;
     }
     return 0;
@@ -26,7 +26,7 @@ int is_box_behind_touching___point(point p, box b){
     if(b.x0 <= p.x && p.x < b.x0 + b.xlen && 
         b.y0 <= p.y && p.y < b.y0 + b.ylen && 
         b.z0 + b.zlen == p.z){
-            printf("yes behind\n");
+            if(DEBUG_MISC) printf("yes behind\n");
             return 1;
     }
     return 0;
@@ -37,7 +37,7 @@ int is_box_below_touching___point(point p, box b){
     if(b.x0 <= p.x && p.x < b.x0 + b.xlen && 
         b.y0 + b.ylen == p.y && 
         b.z0 <= p.z && p.z < b.z0 + b.zlen){
-            printf("yes below\n");
+            if(DEBUG_MISC) printf("yes below\n");
             return 1;
     }
     return 0;
@@ -155,11 +155,13 @@ box* boxes_around_point(point p, box* boxes, int n_boxes){
     copy_box(&ret[4], box_front);
     copy_box(&ret[5], box_above);
 
-    printf("################ SCATOLE ATTORNO AL PUNTO %d %d %d ##############\n", p.x, p.y, p.z);
-    for(int i = 0; i < 6; i++){
-        printf("%d %d %d %d %d %d\n", ret[i].xlen, ret[i].ylen, ret[i].zlen, ret[i].x0, ret[i].y0, ret[i].z0);
+    if(DEBUG_MISC){ 
+        printf("################ SCATOLE ATTORNO AL PUNTO %d %d %d ##############\n", p.x, p.y, p.z);
+        for(int i = 0; i < 6; i++){
+            printf("%d %d %d %d %d %d\n", ret[i].xlen, ret[i].ylen, ret[i].zlen, ret[i].x0, ret[i].y0, ret[i].z0);
+        }
+        printf("#################################################################\n");
     }
-    printf("#################################################################\n");
 
     return ret;
 }
@@ -226,23 +228,23 @@ box compute_volume_coverable_from_point(point p, box* boxes, int n_boxes){
     if(box_right.x0 != -1 && (box_right.x0 <= box_behind.x0 + box_behind.xlen)){
         z = min(z, z2);
         y = min(y, y2);
-        printf("GIA 1\n");
+        if(DEBUG_MISC) printf("GIA 1\n");
     }
 
     if(box_front.x0 != -1 && (box_front.z0 <= box_left.z0 + box_left.zlen)){
         x = min(x, x2);
         y = min(y, y2);
-        printf("GIA 2\n");
+        if(DEBUG_MISC) printf("GIA 2\n");
     }
 
     if(box_above.x0 != -1 && (box_above.x0 + box_above.xlen <= box_behind.x0 + box_behind.xlen)){
         x = min(x, x4);
-        printf("GIA 3\n");
+        if(DEBUG_MISC) printf("GIA 3\n");
     }
 
     if(box_above.x0 != -1 && (box_above.z0 + box_above.zlen <= box_left.z0 + box_above.zlen)){
         z = min(z, z4);
-        printf("GIA 4\n");
+        if(DEBUG_MISC) printf("GIA 4\n");
     }
 
 
@@ -296,7 +298,7 @@ box compute_volume_coverable_from_point(point p, box* boxes, int n_boxes){
 void project_unavailable_point_down(point* p, box* placed_boxes, int n_placed_boxes, box* unavailable_volumes, int n_unavailable_volumes){
     if(p->spawnpoint == top_of_box) return;
 
-    printf("Hi| p.x = %d\n", p->x);
+    if(DEBUG_MISC) printf("Hi| p.x = %d\n", p->x);
 
     int point_height_1 = 0;
     for(int i = 0; i < n_placed_boxes; i++){
