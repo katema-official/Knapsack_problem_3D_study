@@ -130,3 +130,32 @@ No davvero, prova a eseguire la versione di Branch_and_Bound_3 e quella di branc
 Piangerai anche tu dalla gioia
 11.030 nodi generati vs 10.255
 (sì sì ridi ridi se pensi sia poco, ne riparliamo su istanze più grandi, e non questa che ha solo 8 scatole e contx=conty=contz)
+
+
+
+
+Zio.
+Tu, ogni volta che scendi per un nodo, ti porti dietro TUTTE le maledette scatole che non hai ancora posizionato.
+Non pensi sia meglio escludere quelle che SAI PER CERTO non potrai mettere?
+E lo puoi fare? Certo caro. leggiti la nota IMMENSA che ti sei scritto in uno degli ultimi commit, dove studi
+un modo intelligente per rimuovere più volume possibile che sai di non poter occupare da un nodo.
+Fatto quello, se ti avanzano dei punti in cui puoi mettere delle scatole, guardali (i punti) uno ad uno:
+per ognuno di essi, controlla ogni scatola.
+Se c'è una scatola (o più di una scatola) che non riesce a posizionarsi IN NESSUN PUNTO di quelli disponibili:
+non portartela dietro al sotto-albero successivo.
+E sai perché? Perché così facendo, quando risolvi il subset-sum per il calcolo del primale, le uniche scatole di cui
+considererai il volume, saranno le uniche ad avere una chance di essere posizionate.
+
+TL:DR; te ogni volta ti porti al nodo successivo tutte le scatole non posizionate nella configurazione corrente.
+Sebbene questo non ti permetta comunque, per come hai scritto il codice, di generare soluzioni inammissibili (ove alcune
+scatole escono dal container), queste sono comunque tenute di conto nel risolvere il subset sum. E questa è una cosa stupida.
+
+Good work, Katema del futuro!
+
+P.S. controlla anche la scatola sotto, per vedere se c'è una scatola a destra o una davanti (o entrambe) di cui tenere di conto
+per il calcolo del volume rosso.
+
+Un'altra roba: i punti che spawnano a destra di una scatola, cerca di "spingerli" più che puoi indietro (ovvero finché non toccano
+un'altra scatola, che penso possa anche essere rossa?), perché tipo con l'istanza mst_36_v_20_560, dove non tenevo di conto di questa
+cosa, venivano fuori soluzioni parecchio stupide. 
+Stessa cosa per i punti che nascono davanti a una scatola: spingili più che puoi a sinistra.

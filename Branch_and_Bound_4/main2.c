@@ -12,9 +12,9 @@
 
 
 //define container dimensions
-int cont_x = 20;//600;//860;//100;//800;
-int cont_y = 10;//500;//322;//100;//700;
-int cont_z = 15;//700;//590;//100;//1000;
+int cont_x = 80;//20;//600;//860;//100;//800;
+int cont_y = 70;//10;//500;//322;//100;//700;
+int cont_z = 100;//15;//700;//590;//100;//1000;
 
 node* head = NULL;
 
@@ -30,7 +30,11 @@ box* optimal_feasible_solution_found;    //the optimal solution found so far. It
 //these boxes)
 int n_optimal_feasible_solution_found = 0;
 
+char** boxes_names; //I keep the name of the boxes in a separate array.
+int number_of_current_node = 0;
+
 void print_results(box* all_boxes, int n_boxes, char** boxes_names);
+void print_new_best_solution(box* all_boxes, int n_boxes, char** boxes_names);
 
 node* generate_new_node(point* extreme_points, int n_extreme_points, 
                         box* boxes_placed, int n_boxes_placed, 
@@ -38,7 +42,7 @@ node* generate_new_node(point* extreme_points, int n_extreme_points,
                         box* volumes_to_exclude, int n_volumes_to_exclude,
                         box new_box, int i_ep, int i_btp);
 
-void check_then_update_primal_bound(box* boxes, int n, int total_volume_of_boxes);
+int check_then_update_primal_bound(box* boxes, int n, int total_volume_of_boxes);
 void initialize_dual_bound();
 
 void explore_node();
@@ -58,12 +62,12 @@ int main(){
     
     int n_boxes = 0;
     box* boxes;
-    char** boxes_names; //I keep the name of the boxes in a separate array.
+    
 
     int read_from_file = 1;
     if(read_from_file){
         //adapter from https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
-        FILE* f = fopen("./input4.txt", "r");
+        FILE* f = fopen("./input5.txt", "r");
         if (f == NULL){exit(EXIT_FAILURE);}
 
         //how many boxes are there?
@@ -298,6 +302,7 @@ int main(){
     //exhaustive B&B exploration begins: all nodes in the list represent open nodes
     //of the tree, that therfore must be explored.
     while(head != NULL){
+        number_of_current_node++;
         explore_node();
     }
 
@@ -369,7 +374,53 @@ void print_results(box* all_boxes, int n_boxes, char** boxes_names){
 }
 
 
+void print_new_best_solution(box* all_boxes, int n_boxes, char** boxes_names){
+    FILE* f = fopen("./results/best_solutions_found.txt", "a");
+    fprintf(f, "%d\n", n_optimal_feasible_solution_found);
+    for(int i = 0; i < n_optimal_feasible_solution_found; i++){
+        int index_name = -1;
+        //I want to find the name of the boxes of the optimal solution
+        for(int j = 0; j < n_boxes; j++){
+            box b = all_boxes[j];
+            int** rots = rotations_of_box(b);
+            int n_of_rotations = rots[0][0];
+            for(int k = 1; k < n_of_rotations+1; k++){
+                if(rots[k][0] == optimal_feasible_solution_found[i].xlen &&
+                    rots[k][1] == optimal_feasible_solution_found[i].ylen &&
+                    rots[k][2] == optimal_feasible_solution_found[i].zlen){
+                        //the box is the same
+                        index_name = j;
+                        b.xlen = -1;
+                        b.ylen = -1;
+                        b.zlen = -1;
+                        break;
+                }
+            }
+            for(int k = 0; k < n_of_rotations+1; k++){
+                free(rots[k]);
+            }
+            free(rots);
+            if(index_name != -1){
+                break;
+            }
+        }
 
+
+        if(boxes_names!=NULL) fprintf(f, "%d %d %d %d %d %d %s\n", 
+                                        optimal_feasible_solution_found[i].xlen,
+                                        optimal_feasible_solution_found[i].ylen,
+                                        optimal_feasible_solution_found[i].zlen,
+                                        optimal_feasible_solution_found[i].x0,
+                                        optimal_feasible_solution_found[i].y0,
+                                        optimal_feasible_solution_found[i].z0,
+                                        boxes_names[index_name]);
+    }
+    fprintf(f, "---\n");
+    fclose(f);
+    f = fopen("./results/best_solutions_found_index.txt", "a");
+    fprintf(f, "%d\n", number_of_current_node);
+    fclose(f);
+}
 
 
 
@@ -412,7 +463,9 @@ void explore_node(){
                 current_node->boxes_placed[i].ylen * 
                 current_node->boxes_placed[i].zlen;
     }
-    check_then_update_primal_bound(current_node->boxes_placed, current_node->bp_len, v);
+    if(check_then_update_primal_bound(current_node->boxes_placed, current_node->bp_len, v) == 1){
+        print_new_best_solution(current_node->boxes_placed, current_node->bp_len, boxes_names);
+    }
 
     //---------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------
@@ -705,7 +758,7 @@ node* generate_new_node(point* extreme_points, int n_extreme_points,
 //THEN updates the primal_bound with "total_volume_of_boxes" (the volume occupied
 //by the "boxes") and the optimal_feasible_solution_found with "boxes"
 
-void check_then_update_primal_bound(box* boxes, int n, int total_volume_of_boxes){
+int check_then_update_primal_bound(box* boxes, int n, int total_volume_of_boxes){
     if(total_volume_of_boxes > primal_bound){
         if(optimal_feasible_solution_found) free(optimal_feasible_solution_found);
         optimal_feasible_solution_found = malloc(n*sizeof(box));
@@ -714,7 +767,10 @@ void check_then_update_primal_bound(box* boxes, int n, int total_volume_of_boxes
         n_optimal_feasible_solution_found = n;
         if(DEBUG_1) printf("new partial optimal solution! It's:\n");
         if(DEBUG_1) print_results(boxes, n, NULL);
+
+        return 1;   //the value has been updated
     }
+    return 0;   //the value has NOT been updated
 }
 
 //function that initializes the primal bound to a value given by the user

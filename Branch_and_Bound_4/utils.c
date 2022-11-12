@@ -5,7 +5,7 @@
 #include <math.h>
 #include "utils.h"
 
-char* filename_progress = "./results/progresses4.txt";
+char* filename_progress = "./results/progresses5.txt";
 
 double get_random() { return (double)rand() / (double)RAND_MAX; }
 
