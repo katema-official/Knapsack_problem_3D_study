@@ -7,7 +7,7 @@ from boxmodule_ursina import *
 from boxmodule_misc import *
 
 file_dir = os.path.dirname(os.path.realpath('__file__'))
-file_name = os.path.join(file_dir, '..\\Branch_and_Bound_4\\results\\progresses4.txt')
+file_name = os.path.join(file_dir, '..\\Branch_and_Bound_4\\results\\best_solutions_found.txt')
 
 file = open(file_name, "r")
 #file = open("C:\\Users\\aless\\Desktop\\Knapsack_problem_3D_study\\C_stuff\\hmg_based_implementation_v1\\" +
@@ -97,8 +97,8 @@ def make_a_step():
             MyBoxes.boxes_new.append(Box("a", xlen, ylen, zlen, rgb(255, 0, 0), x0, y0, z0, 0.5))
         line = file.readline()[:-1]
     print(line)
-    line = file.readline()[:-1]
-    print(line)
+    #line = file.readline()[:-1]
+    #print(line)
 
     print(volume_occupied_absolute / (cont_x*cont_y*cont_z))
 
